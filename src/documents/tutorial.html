@@ -1,0 +1,366 @@
+---
+layout: default
+title: Tutorial
+---
+
+<div class="clearfix inner">
+<!--
+add note about jQuery Cookbook, license and stuff
+ -->
+<div class="toc"><p><b>Table of Contents</b></p>
+<ul>
+<li><a href="#introduction-id14">Introduction</a></li>
+<li><a href="#automating_unit_testing">Automating Unit Testing</a></li>
+<li><a href="#asserting_results">Asserting Results</a></li>
+<li><a href="#testing_synchronous_callbacks">Testing Synchronous Callbacks</a></li>
+<li><a href="#testing_asynchronous_callbacks">Testing Asynchronous Callbacks</a></li>
+<li><a href="#testing_user_actions">Testing User Actions</a></li>
+<li><a href="#keeping_tests_atomic">Keeping Tests Atomic</a></li>
+<li><a href="#grouping_tests">Grouping Tests</a></li>
+<li><a href="#selecting_tests_to_run">Selecting Tests to Run</a></li>
+</ul>
+
+<div class="sect1" title="Introduction"><div class="titlepage"><div><div><h2 class="title" id="introduction-id14" style="clear: both">Introduction</h2></div></div><div></div></div><p><a class="indexterm" name="index-118A170CU7M"></a><a class="indexterm" name="I_indexterm18_d1e26585"></a>Automated testing of software is an essential tool in
+      development. Unit tests are the basic building blocks for automated
+      tests: each component, the unit, of software is accompanied by a test
+      that can be run by a test runner over and over again without any human
+      interaction. In other words, you can write a test once and run it as
+      often as necessary without any additional cost.</p><p>In addition to the benefits of good test coverage, testing can
+      also drive the design of software, known as <span class="emphasis"><em>test-driven
+      design</em></span>, where a test is written before an implementation. You
+      start writing a very simple test, verify that it fails (because the code
+      to be tested doesn&#8217;t exist yet), and then write the necessary
+      implementation until the test passes. Once that happens, you extend the
+      test to cover more of the desired functionality and implement again. By
+      repeating those steps, the resulting code looks usually much different
+      from what you&#8217;d get by starting with the implementation.</p><p>Unit testing in JavaScript isn&#8217;t much different from in other
+      programming languages. You need a small framework that provides a test
+      runner, as well as some utilities to write the actual tests.</p></div><div class="sect1" title="Automating Unit Testing"><div class="titlepage"><div><div><h2 class="title" id="automating_unit_testing" style="clear: both">Automating Unit Testing</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-162">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="index-517G172FO3Q"></a>You want to automate testing your applications and
+        frameworks, maybe even benefit from test-driven design. Writing your
+        own testing framework may be tempting, but it involves a lot of work
+        to cover all the details and special requirements of testing
+        JavaScript code in various browsers.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-158">Solution</h3></div></div><div></div></div><p>While there are other unit testing frameworks for JavaScript, we
+        will take a look at <a class="ulink" href="http://jquery-cookbook.com/go/qunit" target="_top">QUnit</a>. QUnit
+        <a class="indexterm" name="I_indexterm18_d1e26619"></a>is jQuery&#8217;s unit test framework and is used by a wide
+        variety of projects.</p><p>To use QUnit, you need to include jQuery and two QUnit files on
+        your HTML page. QUnit consists of <code class="literal">testrunner.js</code>, the test runner and testing
+        framework, and <code class="literal">testsuite.css</code>, which styles the test
+        suite page to display test results:</p><pre class="programlisting" id="I_programlisting18_d1e26633">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+ &lt;title&gt;QUnit basic example&lt;/title&gt;
+ &lt;link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css" &gt;
+ &lt;script src="http://code.jquery.com/qunit/qunit-git.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+   test("a basic test example", function() {
+    ok( true, "this test is fine" );
+    var value = "hello";
+    equals( value, "hello", "We expect value to be hello" );
+    });
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;div id="main"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><p>Opening this file in a browser gives the result shown in <a class="xref" href="#test_results_fig" title="Figure&nbsp;1.1.&nbsp;Test result in a browser">Figure&nbsp;1.1, &#8220;Test result in a browser&#8221;</a>.</p><div class="figure-float"><div class="figure"><p class="title" id="test_results_fig"><b>Figure&nbsp;1.1.&nbsp;Test result in a browser</b></p><div class="figure-contents"><div class="mediaobject"><img id="I_mediaobject18_d1e26642" src="figs/web/jqcb_1801.png" width="486" alt="Test result in a browser"></div></div></div><br class="figure-break"></div><p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="main"</code>. This is required for all QUnit
+        tests, even when the element itself is empty. This provides the
+        fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called &#8220;Keeping Tests Atomic&#8221;</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
+        <code class="literal">testrunner.js</code> include. It consists
+        of a call to the <code class="literal">test</code> function,
+        with two arguments: the name of the test as a string, which is later
+        used to display the test results, and a function. The function
+        contains the actual testing code, which involves one or more
+        assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equals()</code>, which are explained in detail in
+        <a class="xref" href="#asserting_results" title="Asserting Results">the section called &#8220;Asserting Results&#8221;</a>.</p><p>Note that there is no <code class="literal">document-ready</code> block. The test runner
+        handles that: calling <code class="literal">test()</code> just
+        adds the test to a queue, and its execution is deferred and controlled
+        by the test runner.</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id166">Discussion</h3></div></div><div></div></div><p>The header of the test suite displays the page title, a green
+        bar when all tests passed (a red bar when at least one test failed), a
+        gray bar with the <code class="literal">navigator.userAgent</code> string (handy for
+        screenshots of test results in different browsers), and a bar with a
+        few checkboxes to filter test results.</p><p>&#8220;Hide passed tests&#8221; is useful when a lot of tests ran and only a
+        few failed. Checking the checkbox will hide everything that passed,
+        making it easier to focus on the tests that failed.</p><p>&#8220;Hide missing tests&#8221; is useful when you have a lot of tests that
+        are just placeholders, indicated by the test name &#8220;missing
+        test&#8212;untested code is broken code.&#8221; This can be useful when you have a
+        large untested code base and added placeholders for every test that
+        still needs to be written. In order to focus on tests that are already
+        implemented, you can use the checkbox to temporarily hide the
+        placeholder tests.</p><p>The actual contents of the page are the test results. Each entry
+        in the numbered list starts with the name of the test followed by, in
+        parentheses, the number of failed, passed, and total assertions.
+        Clicking the entry will show the results of each assertion, usually
+        with details about expected and actual results. Double-clicking will
+        run just that test (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a> for
+        details).</p><p>Below the test results is a summary, showing the total time it
+        took to run all tests as well as the overall number of total and
+        failed assertions.<a class="indexterm" name="I_indexterm18_d1e26706"></a></p></div></div><div class="sect1" title="Asserting Results"><div class="titlepage"><div><div><h2 class="title" id="asserting_results" style="clear: both">Asserting Results</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-163">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26714"></a>Essential elements of any unit test are assertions. The
+        author of the test needs to express the results expected and have the
+        unit testing framework compare them to the actual values that an
+        implementation produces.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-159">Solution</h3></div></div><div></div></div><p>QUnit provides three assertions.</p><div class="sect3" title="ok( boolean[, message ])"><div class="titlepage"><div><div><h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( boolean[, message ])</h4></div></div><div></div></div><p>The most basic one is <code class="literal">ok()</code><a class="indexterm" name="I_indexterm18_d1e26732"></a>, which requires just one Boolean argument. When the
+          argument is true, the assertion passes; otherwise, it fails. In
+          addition, it accepts a string to display as a message in the test
+          results:</p><pre class="programlisting" id="I_programlisting18_d1e26736">test("ok test", function() {
+    ok(true, "ok succeeds");
+    ok(false, "ok fails");
+});</pre></div><div class="sect3" title="equals( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="equals_open_parenthesis_actual_comma_exp">equals( actual, expected[, message ])</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equals</code>
+          assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected
+          arguments. When they are equal, the assertion passes; otherwise, it
+          fails. When it fails, both actual and expected values are displayed
+          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">test("equals test", function() {
+    equals("", 0, "equals succeeds");
+    equals("three", 3, "equals fails");
+});</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equals()</code> makes it much easier to debug
+          tests that failed, because it&#8217;s obvious which value caused the test
+          to fail.</p></div><div class="sect3" title="same( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="same_open_parenthesis_actual_comma_expec">same( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">same()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equals()</code> and is a better choice in most
+          cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison
+          operator (<code class="literal">===</code>). That way,
+          <code class="literal">undefined</code> doesn&#8217;t equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of
+          objects so that <code class="literal">{key: value}</code> is
+          equal to <code class="literal">{key: value}</code>, even when
+          comparing two objects with distinct identities.</p><p><code class="literal">same()</code> also handles NaN,
+          dates, regular expressions, arrays, and functions, while <code class="literal">equals()</code> would just check the object
+          identity:</p><pre class="programlisting" id="I_programlisting18_d1e26808">test("same test", function() {
+    same(undefined, undefined, "same succeeds");
+    same("", 0, "same fails");
+});</pre><p>In case you want to explicitly not compare the content of two
+          values, <code class="literal">equals()</code> can still be
+          used. In general, <code class="literal">same()</code> is the
+          better choice.</p></div></div></div><div class="sect1" title="Testing Synchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_synchronous_callbacks" style="clear: both">Testing Synchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-164">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26825"></a><a class="indexterm" name="I_indexterm18_d1e26830"></a><a class="indexterm" name="I_indexterm18_d1e26835"></a>When testing code with a lot of callbacks, it happens
+        every once in a while that a test that actually should fail just
+        passes, with the assertions in question never showing up in the test
+        results. When the assertions are in a callback that is never called,
+        the assertions aren&#8217;t called either, causing the test to silently
+        pass.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-160">Solution</h3></div></div><div></div></div><p>QUnit provides a special assertion to define the number of
+        assertions a test contains. When the test completes without the
+        correct number of assertions, it will fail, no matter what result the
+        other assertions, if any, produced.</p><p>Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the
+        number of expected assertions as the only argument:</p><pre class="programlisting" id="I_programlisting18_d1e26851">test("a test", function() {
+    expect(1);
+    $("input").myPlugin({
+        initialized: function() {
+            ok(true, "plugin initialized");
+        }
+    });
+});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id167">Discussion</h3></div></div><div></div></div><p><code class="literal">expect()</code><a class="indexterm" name="I_indexterm18_d1e26859"></a> provides the most value when actually testing
+        callbacks. When all code is running in the scope of the test function,
+        <code class="literal">expect()</code> provides no additional
+        value&#8212;any error preventing assertions to run would cause the test to
+        fail anyway, because the test runner catches the error and considers
+        the test as failed.</p></div></div><div class="sect1" title="Testing Asynchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_asynchronous_callbacks" style="clear: both">Testing Asynchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-165">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26873"></a><a class="indexterm" name="I_indexterm18_d1e26878"></a><a class="indexterm" name="I_indexterm18_d1e26883"></a>While <code class="literal">expect()</code> is
+        useful to test synchronous callbacks (see <a class="xref" href="#testing_synchronous_callbacks" title="Testing Synchronous Callbacks">the section called &#8220;Testing Synchronous Callbacks&#8221;</a>), it falls short when
+        testing asynchronous callbacks. Asynchronous callbacks conflict with
+        the way the test runner queues and executes tests. When code under
+        test starts a timeout or interval or an Ajax request, the test runner
+        will just continue running the rest of the test, as well as other
+        tests following it, instead of waiting for the result of the
+        asynchronous operation.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-161">Solution</h3></div></div><div></div></div><p>There are two functions to manually synchronize the test runner
+        with the asynchronous operation. Call <code class="literal">stop()</code><a class="indexterm" name="I_indexterm18_d1e26901"></a> before any asynchronous operation, and call <code class="literal">start()</code><a class="indexterm" name="I_indexterm18_d1e26907"></a> after all assertions are done, and the test runner can
+        continue with other tests:</p><pre class="programlisting" id="I_programlisting18_d1e26911">test("a test", function() {
+    stop();
+    $.getJSON("/someurl", function(result) {
+        equals(result.value, "someExpectedValue");
+        start();
+    });
+});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id168">Discussion</h3></div></div><div></div></div><p>A shortcoming of this approach to manual synchronization is the
+        risk that <code class="literal">start()</code> is never called
+        when the code under test fails elsewhere. In that case, the test
+        runner never continues and therefore never finishes to display the end
+        result. It can&#8217;t even display the result for the current test, so all
+        that is displayed is the result of the previous test.</p><p>When that happens, you first need to identify the test that
+        doesn&#8217;t finish by looking for the previous test that finished and then
+        finding that test in code and skipping to the next test. Once that is
+        done, you can ease debugging by adding a timeout argument to the call
+        to <code class="literal">stop()</code>:</p><pre class="programlisting" id="I_programlisting18_d1e26926">test("a test", function() {
+    stop(500);
+    $.getJSON("/someurl", function(result) {
+        equals(result.value, "someExpectedValue");
+        start();
+    });
+});</pre><p>In this example, the test runner would wait 500 ms for the test
+        to finish (using <code class="literal">setTimeout</code>); otherwise, it would
+        declare the test as failed and continue running. By seeing the result
+        of other tests, it can be much easier to identify the actual problem
+        and fix it.</p><p>Nonetheless, the timeout argument shouldn&#8217;t be used for regular
+        tests. If you added it for debugging, remove it once the test works
+        again.</p><p>Why is that? The drawback of the timeout is that it makes tests
+        undeterministic. When running the test on a slow machine or under
+        heavy load, the timeout may be too short, causing an otherwise
+        perfectly fine test to fail. Hunting a bug that doesn&#8217;t exist at all
+        is a very time-consuming and frustrating experience&#8212;avoid it.</p></div></div><div class="sect1" title="Testing User Actions"><div class="titlepage"><div><div><h2 class="title" id="testing_user_actions" style="clear: both">Testing User Actions</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-166">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26944"></a><a class="indexterm" name="I_indexterm18_d1e26949"></a><a class="indexterm" name="I_indexterm18_d1e26954"></a>Code that relies on actions initiated by the user can&#8217;t
+        be tested by just calling a function. Usually an anonymous function is
+        bound to an element&#8217;s event, e.g., a click, which has to be
+        simulated.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-164">Solution</h3></div></div><div></div></div><p>You can trigger the event using jQuery&#8217;s <code class="literal">trigger()</code> method <a class="indexterm" name="I_indexterm18_d1e26968"></a>and test that the expected behavior occurred. If you
+        don&#8217;t want the native browser events to be triggered, you can use
+        <code class="literal">triggerHandler()</code><a class="indexterm" name="I_indexterm18_d1e26974"></a> to just execute the bound event handlers. This is
+        useful when testing a click event on a link, where <code class="literal">trigger()</code> would cause the browser to change
+        the location, which is hardly desired behavior in a test.</p><p>Let&#8217;s assume we have a simple key logger that we want to
+        test:</p><pre class="programlisting" id="I_programlisting18_d1e26983">var keylogger = {
+    log: null,
+    init: function() {
+        keylogger.log = [];
+        $(document).unbind("keydown").keydown(function(event) {
+            keylogger.log.push(event.keyCode);
+        });
+    }
+};</pre><p>We can manually trigger a keypress event to see whether the
+        logger is working:</p><pre class="programlisting" id="I_programlisting18_d1e26987">test("basic keylogger behavior", function() {
+    // initialize
+   keylogger.init();
+
+    // trigger event
+    var event = $.Event("keydown");
+    event.keyCode = 9;
+    $(document).trigger(event);
+
+    // verify expected behavior
+    same(keylogger.log.length, 1, "a key was logged");
+    same(keylogger.log[0], 9, "correct key was logged");
+});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id169">Discussion</h3></div></div><div></div></div><p>If your event handler doesn&#8217;t rely on any specific properties of
+        the event, you can just call <code class="literal">.trigger(eventType)</code>. However, if your event
+        handler does rely on specific properties of the event, you will need
+        to create an event object using <code class="literal">$.Event</code> and set the necessary properties, as
+        shown previously.</p><p>It&#8217;s also important to trigger all relevant events for complex
+        behaviors such as dragging, which is comprised of mousedown, at least
+        one mousemove, and a mouseup. Keep in mind that even some events that
+        seem simple are actually compound; e.g., a click is really a
+        mousedown, mouseup, and then click. Whether you actually need to
+        trigger all three of these depends on the code under test. Triggering
+        a click works for most cases.</p></div></div><div class="sect1" title="Keeping Tests Atomic"><div class="titlepage"><div><div><h2 class="title" id="keeping_tests_atomic" style="clear: both">Keeping Tests Atomic</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-167">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e27009"></a>When tests are lumped together, it&#8217;s possible to have
+        tests that should pass but fail or tests that should fail but pass.
+        This is a result of a test having invalid results because of side
+        effects of a previous test:</p><pre class="programlisting" id="I_programlisting18_d1e27015">test("2 asserts", function() {
+    $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages&lt;/span&gt;.&lt;/div&gt;");
+    same($("#main div").length, 1, "added message link successfully");
+    $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
+    same($("#main span").length, 1, "added notification successfully");
+});</pre><p>Notice the first <code class="literal">append()</code>
+        adds a <code class="literal">&lt;span&gt;</code> that the second
+        assert doesn&#8217;t take into account.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-165">Solution</h3></div></div><div></div></div><p>Use the <code class="literal">test()</code> method to keep
+        tests atomic, being careful to keep each assertion clean of any
+        possible side effects. You should only rely on the fixture markup,
+        inside the <code class="literal">#main</code> element. Modifying
+        and relying on anything else can have side effects:</p><pre class="programlisting" id="I_programlisting18_d1e27036">test("test 1", function() {
+    $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages
+&lt;/span&gt;.&lt;/div&gt;");
+    same($("#main div").length, 1, "added message link successfully");
+});
+test("test 2", function() {
+    $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
+    same($("#main span").length, 1, "added notification successfully");
+});</pre><p>QUnit will reset the elements inside the <code class="literal">#main</code> element after each test, removing any
+        events that may have existed. As long as you use elements only within
+        this fixture, you don&#8217;t have to manually clean up after your tests to
+        keep them atomic.</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id170">Discussion</h3></div></div><div></div></div><p>In addition to the <code class="literal">#main</code>
+        fixture element, QUnit will also clean up properties of jQuery itself:
+        <code class="literal">$.event.global</code> and <code class="literal">$.ajaxSettings</code>. Any global events like
+        <code class="literal">$().ajaxStart()</code> are managed by
+        jQuery in <code class="literal">$.event.global</code>&#8212;if your
+        test had bound lots of them, it could slow down the test runner
+        significantly when running a lot of tests. By cleaning the property,
+        QUnit ensures that your tests aren&#8217;t affected by global events.</p><p>The same applies to <code class="literal">$.ajaxSettings</code>, which is usually used via
+        <code class="literal">$.ajaxSetup()</code> to configure common
+        properties for <code class="literal">$.ajax()</code>
+        calls.</p><p>In addition to the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
+        test:</p><pre class="programlisting" id="I_programlisting18_d1e27081">test("global pollution", function(){
+    window.pollute = true;
+    same(pollute, true);
+});</pre><p>In a normal test run, this passes as a valid result. Running the
+        same test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top"><code class="literal">noglobals</code> flag</a> will cause the test
+        to fail, because QUnit detected that it polluted the window
+        object.</p><p>There is no need to use this flag all the time, but it can be
+        handy to detect global namespace pollution that may be problematic in
+        combination with third-party libraries. And it helps to detect bugs in
+        tests caused by side effects.</p></div></div><div class="sect1" title="Grouping Tests"><div class="titlepage"><div><div><h2 class="title" id="grouping_tests" style="clear: both">Grouping Tests</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-168">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e27099"></a><a class="indexterm" name="I_indexterm18_d1e27104"></a>You&#8217;ve split up all of your tests to keep them atomic
+        and free of side effects, but you want to keep them logically
+        organized and be able to run a specific group of tests on their
+        own.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-166">Solution</h3></div></div><div></div></div><p>You can use the <code class="literal">module()</code>
+        function <a class="indexterm" name="I_indexterm18_d1e27118"></a>to group tests together:</p><pre class="programlisting" id="I_programlisting18_d1e27122">module("group a");
+test("a basic test example", function() {
+    ok( true, "this test is fine" );
+});
+test("a basic test example 2", function() {
+    ok( true, "this test is fine" );
+});
+
+module("group b");
+test("a basic test example 3", function() {
+    ok( true, "this test is fine" );
+});
+test("a basic test example 4", function() {
+    ok( true, "this test is fine" );
+});</pre><p>All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module.
+        The test names will all be preceded by the module name in the test
+        results. You can then use that module name to select tests to run (see
+        <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>).</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id171">Discussion</h3></div></div><div></div></div><p>In addition to grouping tests, <code class="literal">module()</code> can be used to extract common code
+        from tests within that module. The <code class="literal">module()</code> function takes an optional second
+        parameter to define functions to run before and after each test within
+        the module:</p><pre class="programlisting" id="I_programlisting18_d1e27142">module("module", {
+    setup: function() {
+        ok(true, "one extra assert per test");
+    }, teardown: function() {
+        ok(true, "and one extra assert after each test");
+    }
+});
+test("test with setup and teardown", function() {
+    expect(2);
+});</pre><p>You can specify both setup and teardown properties together, or
+        just one of them.</p><p>Calling <code class="literal">module()</code> again
+        without the additional argument will simply reset any setup/teardown
+        functions defined by another module previously.</p></div></div><div class="sect1" title="Selecting Tests to Run"><div class="titlepage"><div><div><h2 class="title" id="selecting_tests_to_run" style="clear: both">Selecting Tests to Run</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-169">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e27158"></a>When debugging a failing test, it can be a huge waste of
+        time to rerun the entire test suite after every little change to your
+        code just to see whether a single test now passes.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-167">Solution</h3></div></div><div></div></div><p>QUnit offers URL filtering to select the tests to run. This
+        works best when <span class="keep-together">combined with</span>
+        modules. You can run just the tests from a given module by appending a
+        query string with the module name to the test suite URL. For example,
+        <code class="literal">test.html?validation</code> will run all tests
+        in the module named <code class="literal">validation</code>:</p><pre class="programlisting" id="I_programlisting18_d1e27178">// test.html?validation - just the validation module
+// test.html?validation&amp;tooltip - validation and tooltip module
+// test.html?!validation - exclude the validation module
+// test.html?test 3 - just "test 3", the url will be displayed as test.html?test%203
+module("validation");
+test("test 1", function () {
+    ok(true, "bool succeeds");
+});
+test("test 2", function () {
+    equals(5, 5.0, "equals succeeds");
+});
+module("tooltip");
+test("test 3", function () {
+    same(true, 3 == 3, "same succeeds");
+});
+test("test 4", function () {
+    ok(false, "bool fails");
+});
+module("other");
+test("test 5", function () {
+    equals(3, 5, "equals fails");
+});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id172">Discussion</h3></div></div><div></div></div><p>You can combine tests from various modules by specifying
+        multiple modules at once, delimited with the ampersand; e.g., <code class="literal">test.html?validation&amp;tooltip</code> would run
+        tests that contain <code class="literal">validation</code> or
+        <code class="literal">tooltip</code>.</p><p>You can exclude tests using the exclamation mark; e.g., <code class="literal">test.html?!validation</code> would run all tests
+        except those from the <code class="literal">validation</code>
+        module.</p><p>Instead of manually modifying the URL, you can also double-click
+        any of the test results to rerun just that test. QUnit will use the
+        same filtering mechanism by appending the name of the test to the
+        current location.<a class="indexterm" name="I_indexterm18_d1e27206"></a></p></div>
+
+
+<!-- TODO put in sidebar -->
+<div class="titlepage"><div><div><h2 class="title" id="Further_tutorials" style="clear: both">Further tutorials</h2><div></div></div>
+<ul><li> <a href="http://www.swift-lizard.com/2009/11/24/test-driven-development-with-jquery-qunit/" class="external text" title="http://www.swift-lizard.com/2009/11/24/test-driven-development-with-jquery-qunit/">A short QUnit introduction in english</a>
+</li><li> <a href="http://www.aspnetzone.de/blogs/robertobez/archive/2009/12/02/jQuery-javascript-qunit-unit-test-framework.aspx" class="external text" title="http://www.aspnetzone.de/blogs/robertobez/archive/2009/12/02/jQuery-javascript-qunit-unit-test-framework.aspx">A short QUnit introduction in german</a>
+</li><li> <a href="http://net.tutsplus.com/tutorials/javascript-ajax/how-to-test-your-javascript-code-with-qunit/" class="external text" title="http://net.tutsplus.com/tutorials/javascript-ajax/how-to-test-your-javascript-code-with-qunit/">Nettuts on Testing with QUnit</a>
+</li><li> <a href="http://twoguysarguing.wordpress.com/2010/11/02/make-javascript-tests-part-of-your-build-qunit-rhino/" class="external text" title="http://twoguysarguing.wordpress.com/2010/11/02/make-javascript-tests-part-of-your-build-qunit-rhino/">Running QUnit tests with Rhino</a>
+</li><li> <a href="http://martinfowler.com/articles/nonDeterminism.html" class="external text" title="http://martinfowler.com/articles/nonDeterminism.html">Martin Fowler on Eradicating Non-Determinism in Tests. Not QUnit specific, but very useful advice and a lot of it applies to JavaScript</a>
+</li><li> <a href="http://msdn.microsoft.com/en-us/scriptjunkie/gg749824.aspx" class="external text" title="http://msdn.microsoft.com/en-us/scriptjunkie/gg749824.aspx">ScriptJunkie article on Automating JavaScript Testing with QUnit</a>
+</li></ul>
+<p>If you want to read more on unit testing JavaScript (not specific to QUnit), check out the book <a href="http://tddjs.com/" class="external text" title="http://tddjs.com/">Test-Driven JavaScript Development</a>.
+</p>
+
+</div>
+</div>
+</div>
+</div>
