@@ -7,6 +7,10 @@
 	"engines" : {
 		"node": ">=0.4.0"
 	},
-	"docpad": {
-	}
+  "docpad": {
+    "enableUnlistedPlugins": true,
+    "enabledPlugins": {
+      "pygments": true
+    }
+  }
 }
