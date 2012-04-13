@@ -221,7 +221,7 @@ test( "a test", 1, function() {
         asynchronous operation.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-161">Solution</h3></div></div><div></div></div><p>
         Instead of wrapping your assertions in a <code class="literal">test()</code>, use <code class="literal">asyncTest()</code> and call <code class="literal">start()</code> when your test block is complete and ready to resume:
         </p><pre class="programlisting">
-asynctest( "asynchronous test: one second later!", function() {
+asyncTest( "asynchronous test: one second later!", function() {
   expect( 1 );
 
   setTimeout(function() {
@@ -236,7 +236,7 @@ Practical Example:
 
 <pre class="programlisting">
 
-asynctest( "asynchronous test: video ready to play", 1, function() {
+asyncTest( "asynchronous test: video ready to play", 1, function() {
   var $video = $( "video" );
 
   $video.on( "canplaythrough", function() {
