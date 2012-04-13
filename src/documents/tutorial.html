@@ -56,7 +56,7 @@ add note about jQuery Cookbook, license and stuff
    test("a basic test example", function() {
     ok( true, "this test is fine" );
     var value = "hello";
-    equals( value, "hello", "We expect value to be hello" );
+    equal( value, "hello", "We expect value to be hello" );
     });
 &lt;/script&gt;
 
@@ -72,7 +72,7 @@ add note about jQuery Cookbook, license and stuff
         with two arguments: the name of the test as a string, which is later
         used to display the test results, and a function. The function
         contains the actual testing code, which involves one or more
-        assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equals()</code>, which are explained in detail in
+        assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in
         <a class="xref" href="#asserting_results" title="Asserting Results">the section called &#8220;Asserting Results&#8221;</a>.</p><p>Note that there is no <code class="literal">document-ready</code> block. The test runner
         handles that: calling <code class="literal">test()</code> just
         adds the test to a queue, and its execution is deferred and controlled
@@ -105,28 +105,28 @@ add note about jQuery Cookbook, license and stuff
           results:</p><pre class="programlisting" id="I_programlisting18_d1e26736">test("ok test", function() {
     ok(true, "ok succeeds");
     ok(false, "ok fails");
-});</pre></div><div class="sect3" title="equals( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="equals_open_parenthesis_actual_comma_exp">equals( actual, expected[, message ])</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equals</code>
+});</pre></div><div class="sect3" title="equal( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected[, message ])</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equal</code>
           assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected
           arguments. When they are equal, the assertion passes; otherwise, it
           fails. When it fails, both actual and expected values are displayed
-          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">test("equals test", function() {
-    equals("", 0, "equals succeeds");
-    equals("three", 3, "equals fails");
-});</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equals()</code> makes it much easier to debug
+          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">test("equal test", function() {
+    equal("", 0, "equal succeeds");
+    equal("three", 3, "equal fails");
+});</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
           tests that failed, because it&#8217;s obvious which value caused the test
-          to fail.</p></div><div class="sect3" title="same( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="same_open_parenthesis_actual_comma_expec">same( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">same()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equals()</code> and is a better choice in most
+          to fail.</p></div><div class="sect3" title="same( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="same_open_parenthesis_actual_comma_expec">same( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">same()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most
           cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison
           operator (<code class="literal">===</code>). That way,
           <code class="literal">undefined</code> doesn&#8217;t equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of
           objects so that <code class="literal">{key: value}</code> is
           equal to <code class="literal">{key: value}</code>, even when
           comparing two objects with distinct identities.</p><p><code class="literal">same()</code> also handles NaN,
-          dates, regular expressions, arrays, and functions, while <code class="literal">equals()</code> would just check the object
+          dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object
           identity:</p><pre class="programlisting" id="I_programlisting18_d1e26808">test("same test", function() {
     same(undefined, undefined, "same succeeds");
     same("", 0, "same fails");
 });</pre><p>In case you want to explicitly not compare the content of two
-          values, <code class="literal">equals()</code> can still be
+          values, <code class="literal">equal()</code> can still be
           used. In general, <code class="literal">same()</code> is the
           better choice.</p></div></div></div><div class="sect1" title="Testing Synchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_synchronous_callbacks" style="clear: both">Testing Synchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-164">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26825"></a><a class="indexterm" name="I_indexterm18_d1e26830"></a><a class="indexterm" name="I_indexterm18_d1e26835"></a>When testing code with a lot of callbacks, it happens
         every once in a while that a test that actually should fail just
@@ -161,7 +161,7 @@ add note about jQuery Cookbook, license and stuff
         continue with other tests:</p><pre class="programlisting" id="I_programlisting18_d1e26911">test("a test", function() {
     stop();
     $.getJSON("/someurl", function(result) {
-        equals(result.value, "someExpectedValue");
+        equal(result.value, "someExpectedValue");
         start();
     });
 });</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id168">Discussion</h3></div></div><div></div></div><p>A shortcoming of this approach to manual synchronization is the
@@ -176,7 +176,7 @@ add note about jQuery Cookbook, license and stuff
         to <code class="literal">stop()</code>:</p><pre class="programlisting" id="I_programlisting18_d1e26926">test("a test", function() {
     stop(500);
     $.getJSON("/someurl", function(result) {
-        equals(result.value, "someExpectedValue");
+        equal(result.value, "someExpectedValue");
         start();
     });
 });</pre><p>In this example, the test runner would wait 500 ms for the test
@@ -325,7 +325,7 @@ test("test 1", function () {
     ok(true, "bool succeeds");
 });
 test("test 2", function () {
-    equals(5, 5.0, "equals succeeds");
+    equal(5, 5.0, "equal succeeds");
 });
 module("tooltip");
 test("test 3", function () {
@@ -336,7 +336,7 @@ test("test 4", function () {
 });
 module("other");
 test("test 5", function () {
-    equals(3, 5, "equals fails");
+    equal(3, 5, "equal fails");
 });</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id172">Discussion</h3></div></div><div></div></div><p>You can combine tests from various modules by specifying
         multiple modules at once, delimited with the ampersand; e.g., <code class="literal">test.html?validation&amp;tooltip</code> would run
         tests that contain <code class="literal">validation</code> or
