@@ -12,8 +12,8 @@ add note about jQuery Cookbook, license and stuff
 <li><a href="#introduction-id14">Introduction</a></li>
 <li><a href="#automating_unit_testing">Automating Unit Testing</a></li>
 <li><a href="#asserting_results">Asserting Results</a></li>
-<li><a href="#testing_synchronous_callbacks">Testing Synchronous Callbacks</a></li>
-<li><a href="#testing_asynchronous_callbacks">Testing Asynchronous Callbacks</a></li>
+<li><a href="#synchronous_callbacks">Synchronous Callbacks</a></li>
+<li><a href="#asynchronous_callbacks">Asynchronous Callbacks</a></li>
 <li><a href="#testing_user_actions">Testing User Actions</a></li>
 <li><a href="#keeping_tests_atomic">Keeping Tests Atomic</a></li>
 <li><a href="#grouping_tests">Grouping Tests</a></li>
@@ -54,7 +54,7 @@ add note about jQuery Cookbook, license and stuff
  &lt;script src="http://code.jquery.com/qunit/qunit-git.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
-  test("a basic test example", function() {
+  test( "a basic test example", function() {
     var value = "hello";
     equal( value, "hello", "We expect value to be hello" );
   });
@@ -99,24 +99,39 @@ add note about jQuery Cookbook, license and stuff
         failed assertions.<a class="indexterm" name="I_indexterm18_d1e26706"></a></p></div></div><div class="sect1" title="Asserting Results"><div class="titlepage"><div><div><h2 class="title" id="asserting_results" style="clear: both">Asserting Results</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-163">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26714"></a>Essential elements of any unit test are assertions. The
         author of the test needs to express the results expected and have the
         unit testing framework compare them to the actual values that an
-        implementation produces.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-159">Solution</h3></div></div><div></div></div><p>QUnit provides three assertions.</p><div class="sect3" title="ok( boolean[, message ])"><div class="titlepage"><div><div><h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( boolean[, message ])</h4></div></div><div></div></div><p>The most basic one is <code class="literal">ok()</code><a class="indexterm" name="I_indexterm18_d1e26732"></a>, which requires just one Boolean argument. When the
-          argument is true, the assertion passes; otherwise, it fails. In
+        implementation produces.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-159">Solution</h3></div></div><div></div></div><p>QUnit provides three assertions.</p><div class="sect3" title="ok( truthy [, message ] )"><div class="titlepage"><div><div><h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( truthy [, message ] )</h4></div></div><div></div></div><p>The most basic one is <code class="literal">ok()</code><a class="indexterm" name="I_indexterm18_d1e26732"></a>, which requires just one argument.
+        If the argument evaluates to true, the assertion passes; otherwise, it fails. In
           addition, it accepts a string to display as a message in the test
           results:</p><pre class="programlisting" id="I_programlisting18_d1e26736">
-test("ok test", function() {
-  ok( true, "ok succeeds" );
-  ok( false, "ok fails" );
-});</pre></div><div class="sect3" title="equal( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected[, message ])</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equal</code>
+test( "ok test", function() {
+  ok( true, "true succeeds" );
+  ok( "non-empty", "non-empty string succeeds" );
+
+  ok( false, "false fails" );
+  ok( 0, "0 fails" );
+  ok( NaN, "NaN fails" );
+  ok( "", "empty string fails" );
+  ok( null, "null fails" );
+  ok( undefined, "undefined fails" );
+});</pre></div><div class="sect3" title="equal( actual, expected [, message ] )"><div class="titlepage"><div><div><h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected [, message ] )</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equal</code>
           assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected
           arguments. When they are equal, the assertion passes; otherwise, it
           fails. When it fails, both actual and expected values are displayed
-          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">
-test("equal test", function() {
-  equal( "", 0, "equal succeeds" );
-  equal( "three", 3, "equal fails" );
-});</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
+          in the test result, in addition to a given message:</p>
+
+<pre class="programlisting" id="I_programlisting18_d1e26752">
+test( "equal test", function() {
+  equal( 0, 0, "Zero; equal succeeds" );
+  equal( "", 0, "Empty, Zero; equal succeeds" );
+  equal( "", "", "Empty, Empty; equal succeeds" );
+  equal( 0, 0, "Zero, Zero; equal succeeds" );
+
+  equal( "three", 3, "Three, 3; equal fails" );
+  equal( null, false, "null, false; equal fails" );
+});
+</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
           tests that failed, because it&#8217;s obvious which value caused the test
-          to fail.</p></div><div class="sect3" title="deepEqual( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="deepEqual_open_parenthesis_actual_comma_expec">deepEqual( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">deepEqual()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most
+          to fail.</p></div><div class="sect3" title="deepEqual( actual, expected [, message ] )"><div class="titlepage"><div><div><h4 class="title" id="deepEqual_open_parenthesis_actual_comma_expec">deepEqual( actual, expected [, message ] )</h4></div></div><div></div></div><p>The <code class="literal">deepEqual()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most
           cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison
           operator (<code class="literal">===</code>). That way,
           <code class="literal">undefined</code> doesn&#8217;t equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of
@@ -125,74 +140,112 @@ test("equal test", function() {
           comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN,
           dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object
           identity:</p><pre class="programlisting" id="I_programlisting18_d1e26808">
-test("deepEqual test", function() {
-  deepEqual(undefined, undefined, "deepEqual succeeds");
-  deepEqual("", 0, "deepEqual fails");
+test( "deepEqual test", function() {
+  var obj = { foo: "bar" };
+
+  deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
 });</pre><p>In case you want to explicitly not compare the content of two
           values, <code class="literal">equal()</code> can still be
           used. In general, <code class="literal">deepEqual()</code> is the
-          better choice.</p></div></div></div><div class="sect1" title="Testing Synchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_synchronous_callbacks" style="clear: both">Testing Synchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-164">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26825"></a><a class="indexterm" name="I_indexterm18_d1e26830"></a><a class="indexterm" name="I_indexterm18_d1e26835"></a>When testing code with a lot of callbacks, it happens
-        every once in a while that a test that actually should fail just
-        passes, with the assertions in question never showing up in the test
-        results. When the assertions are in a callback that is never called,
-        the assertions aren&#8217;t called either, causing the test to silently
-        pass.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-160">Solution</h3></div></div><div></div></div><p>QUnit provides a special assertion to define the number of
+          better choice.</p></div></div></div><div class="sect1" title="Synchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="synchronous_callbacks" style="clear: both">Synchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-164">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26825"></a><a class="indexterm" name="I_indexterm18_d1e26830"></a><a class="indexterm" name="I_indexterm18_d1e26835"></a>
+          Occasionally, circumstances in your code may prevent callback assertions
+          to never be called, causing the test to fail silently.</p>
+        </div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-160">Solution</h3></div></div><div></div></div><p>
+        QUnit provides a special assertion to define the number of
         assertions a test contains. When the test completes without the
         correct number of assertions, it will fail, no matter what result the
         other assertions, if any, produced.</p><p>Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the
-        number of expected assertions as the only argument:</p><pre class="programlisting" id="I_programlisting18_d1e26851">test("a test", function() {
-    expect(1);
-    $("input").myPlugin({
-        initialized: function() {
-            ok(true, "plugin initialized");
-        }
-    });
-});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id167">Discussion</h3></div></div><div></div></div><p><code class="literal">expect()</code><a class="indexterm" name="I_indexterm18_d1e26859"></a> provides the most value when actually testing
+        number of expected assertions as the only argument:</p><pre class="programlisting" id="I_programlisting18_d1e26851">
+test( "a test", function() {
+  expect( 2 );
+
+  function calc( x, operation ) {
+    return operation( x );
+  }
+
+  var result = calc( 2, function( x ) {
+    ok( true, "calc() calls operation function" );
+    return x * x;
+  });
+
+  equal( result, 4, "2 square equals 4" );
+});
+</pre>
+
+<p>
+Alternatively, the expectation count can be passed as the second parameter to test():
+</p>
+
+<pre class="programlisting">
+test( "a test", 2, function() {
+
+  function calc( x, operation ) {
+    return operation( x );
+  }
+
+  var result = calc( 2, function( x ) {
+    ok( true, "calc() calls operation function" );
+    return x * x;
+  });
+
+  equal( result, 4, "2 square equals 4" );
+});
+</pre>
+
+<p>
+Practical Example:
+</p>
+
+<pre class="programlisting">
+test( "a test", 1, function() {
+  var $body = $( "body" );
+
+  $body.on( "click", function() {
+    ok( true, "body was clicked!" );
+  });
+
+  $body.trigger( "click" );
+});
+</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id167">Discussion</h3></div></div><div></div></div><p><code class="literal">expect()</code><a class="indexterm" name="I_indexterm18_d1e26859"></a> provides the most value when actually testing
         callbacks. When all code is running in the scope of the test function,
         <code class="literal">expect()</code> provides no additional
         value&#8212;any error preventing assertions to run would cause the test to
-        fail anyway, because the test runner catches the error and considers
-        the test as failed.</p></div></div><div class="sect1" title="Testing Asynchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_asynchronous_callbacks" style="clear: both">Testing Asynchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-165">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26873"></a><a class="indexterm" name="I_indexterm18_d1e26878"></a><a class="indexterm" name="I_indexterm18_d1e26883"></a>While <code class="literal">expect()</code> is
-        useful to test synchronous callbacks (see <a class="xref" href="#testing_synchronous_callbacks" title="Testing Synchronous Callbacks">the section called &#8220;Testing Synchronous Callbacks&#8221;</a>), it falls short when
-        testing asynchronous callbacks. Asynchronous callbacks conflict with
+        fail anyway, because the test runner catches the error and fails the unit.
+        </p></div></div><div class="sect1" title="Asynchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="asynchronous_callbacks" style="clear: both">Asynchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-165">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26873"></a><a class="indexterm" name="I_indexterm18_d1e26878"></a><a class="indexterm" name="I_indexterm18_d1e26883"></a>While <code class="literal">expect()</code> is
+        useful to test synchronous callbacks (see <a class="xref" href="#synchronous_callbacks" title="Synchronous Callbacks">the section called &#8220;Synchronous Callbacks&#8221;</a>), it falls short when
+        Asynchronous callbacks. Asynchronous callbacks conflict with
         the way the test runner queues and executes tests. When code under
         test starts a timeout or interval or an Ajax request, the test runner
         will just continue running the rest of the test, as well as other
         tests following it, instead of waiting for the result of the
-        asynchronous operation.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-161">Solution</h3></div></div><div></div></div><p>There are two functions to manually synchronize the test runner
-        with the asynchronous operation. Call <code class="literal">stop()</code><a class="indexterm" name="I_indexterm18_d1e26901"></a> before any asynchronous operation, and call <code class="literal">start()</code><a class="indexterm" name="I_indexterm18_d1e26907"></a> after all assertions are done, and the test runner can
-        continue with other tests:</p><pre class="programlisting" id="I_programlisting18_d1e26911">test("a test", function() {
-    stop();
-    $.getJSON("/someurl", function(result) {
-        equal(result.value, "someExpectedValue");
-        start();
-    });
-});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id168">Discussion</h3></div></div><div></div></div><p>A shortcoming of this approach to manual synchronization is the
-        risk that <code class="literal">start()</code> is never called
-        when the code under test fails elsewhere. In that case, the test
-        runner never continues and therefore never finishes to display the end
-        result. It can&#8217;t even display the result for the current test, so all
-        that is displayed is the result of the previous test.</p><p>When that happens, you first need to identify the test that
-        doesn&#8217;t finish by looking for the previous test that finished and then
-        finding that test in code and skipping to the next test. Once that is
-        done, you can ease debugging by adding a timeout argument to the call
-        to <code class="literal">stop()</code>:</p><pre class="programlisting" id="I_programlisting18_d1e26926">test("a test", function() {
-    stop(500);
-    $.getJSON("/someurl", function(result) {
-        equal(result.value, "someExpectedValue");
-        start();
-    });
-});</pre><p>In this example, the test runner would wait 500 ms for the test
-        to finish (using <code class="literal">setTimeout</code>); otherwise, it would
-        declare the test as failed and continue running. By seeing the result
-        of other tests, it can be much easier to identify the actual problem
-        and fix it.</p><p>Nonetheless, the timeout argument shouldn&#8217;t be used for regular
-        tests. If you added it for debugging, remove it once the test works
-        again.</p><p>Why is that? The drawback of the timeout is that it makes tests
-        undeterministic. When running the test on a slow machine or under
-        heavy load, the timeout may be too short, causing an otherwise
-        perfectly fine test to fail. Hunting a bug that doesn&#8217;t exist at all
-        is a very time-consuming and frustrating experience&#8212;avoid it.</p></div></div><div class="sect1" title="Testing User Actions"><div class="titlepage"><div><div><h2 class="title" id="testing_user_actions" style="clear: both">Testing User Actions</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-166">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26944"></a><a class="indexterm" name="I_indexterm18_d1e26949"></a><a class="indexterm" name="I_indexterm18_d1e26954"></a>Code that relies on actions initiated by the user can&#8217;t
+        asynchronous operation.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-161">Solution</h3></div></div><div></div></div><p>
+        Instead of wrapping your assertions in a <code class="literal">test()</code>, use <code class="literal">asyncTest()</code> and call <code class="literal">start()</code> when your test block is complete and ready to resume:
+        </p><pre class="programlisting">
+asynctest( "asynchronous test: one second later!", function() {
+  expect( 1 );
+
+  setTimeout(function() {
+    ok( true, "Passed and ready to resume!" );
+    start();
+  }, 1000);
+});
+</pre>
+<p>
+Practical Example:
+</p>
+
+<pre class="programlisting">
+
+asynctest( "asynchronous test: video ready to play", 1, function() {
+  var $video = $( "video" );
+
+  $video.on( "canplaythrough", function() {
+    ok( true, "video has loaded and is ready to play" );
+    start();
+  });
+});
+
+</pre></div></div><div class="sect1" title="Testing User Actions"><div class="titlepage"><div><div><h2 class="title" id="testing_user_actions" style="clear: both">Testing User Actions</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-166">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26944"></a><a class="indexterm" name="I_indexterm18_d1e26949"></a><a class="indexterm" name="I_indexterm18_d1e26954"></a>Code that relies on actions initiated by the user can&#8217;t
         be tested by just calling a function. Usually an anonymous function is
         bound to an element&#8217;s event, e.g., a click, which has to be
         simulated.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-164">Solution</h3></div></div><div></div></div><p>You can trigger the event using jQuery&#8217;s <code class="literal">trigger()</code> method <a class="indexterm" name="I_indexterm18_d1e26968"></a>and test that the expected behavior occurred. If you
@@ -200,27 +253,39 @@ test("deepEqual test", function() {
         <code class="literal">triggerHandler()</code><a class="indexterm" name="I_indexterm18_d1e26974"></a> to just execute the bound event handlers. This is
         useful when testing a click event on a link, where <code class="literal">trigger()</code> would cause the browser to change
         the location, which is hardly desired behavior in a test.</p><p>Let&#8217;s assume we have a simple key logger that we want to
-        test:</p><pre class="programlisting" id="I_programlisting18_d1e26983">var keylogger = {
-    log: null,
-    init: function() {
-        keylogger.log = [];
-        $(document).unbind("keydown").keydown(function(event) {
-            keylogger.log.push(event.keyCode);
-        });
-    }
-};</pre><p>We can manually trigger a keypress event to see whether the
-        logger is working:</p><pre class="programlisting" id="I_programlisting18_d1e26987">test("basic keylogger behavior", function() {
-    // initialize
-   keylogger.init();
+        test:</p>
+<pre class="programlisting">
+function KeyLogger( target ) {
+  if ( !(this instanceof KeyLogger) ) {
+    return new KeyLogger( target );
+  }
+  this.target = target;
+  this.log = [];
 
-    // trigger event
-    var event = $.Event("keydown");
-    event.keyCode = 9;
-    $(document).trigger(event);
+  var self = this;
 
-    // verify expected behavior
-    deepEqual(keylogger.log.length, 1, "a key was logged");
-    deepEqual(keylogger.log[0], 9, "correct key was logged");
+  this.target.off( "keydown" ).on( "keydown", function( event ) {
+    self.log.push( event.keyCode );
+  });
+}
+</pre><p>We can manually trigger a keypress event to see whether the
+        logger is working:</p>
+<pre class="programlisting">
+test( "keylogger api behavior", function() {
+
+  var event,
+      $doc = $( document ),
+      keys = KeyLogger( $doc );
+
+  // trigger event
+  event = $.Event( "keydown" );
+  event.keyCode = 9;
+  $doc.trigger( event );
+
+  // verify expected behavior
+  equal( keys.log.length, 1, "a key was logged" );
+  equal( keys.log[ 0 ], 9, "correct key was logged" );
+
 });</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id169">Discussion</h3></div></div><div></div></div><p>If your event handler doesn&#8217;t rely on any specific properties of
         the event, you can just call <code class="literal">.trigger(eventType)</code>. However, if your event
         handler does rely on specific properties of the event, you will need
@@ -234,44 +299,52 @@ test("deepEqual test", function() {
         a click works for most cases.</p></div></div><div class="sect1" title="Keeping Tests Atomic"><div class="titlepage"><div><div><h2 class="title" id="keeping_tests_atomic" style="clear: both">Keeping Tests Atomic</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-167">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e27009"></a>When tests are lumped together, it&#8217;s possible to have
         tests that should pass but fail or tests that should fail but pass.
         This is a result of a test having invalid results because of side
-        effects of a previous test:</p><pre class="programlisting" id="I_programlisting18_d1e27015">test("2 asserts", function() {
-    $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages&lt;/span&gt;.&lt;/div&gt;");
-    deepEqual($("#main div").length, 1, "added message link successfully");
-    $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
-    deepEqual($("#main span").length, 1, "added notification successfully");
-});</pre><p>Notice the first <code class="literal">append()</code>
-        adds a <code class="literal">&lt;span&gt;</code> that the second
-        assert doesn&#8217;t take into account.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-165">Solution</h3></div></div><div></div></div><p>Use the <code class="literal">test()</code> method to keep
+        effects of a previous test:</p><pre class="programlisting">
+test( "2 asserts", function() {
+  var $fixture = $( "#qunit-fixture" );
+
+  $fixture.append( "&lt;div&gt;hello!&lt;/div&gt;" );
+  equal( $( "div", $fixture ).length, 1, "div added successfully!" );
+
+  $fixture.append( "&lt;span&gt;hello!&lt;/span&gt;" );
+  equal( $( "span", $fixture ).length, 1, "span added successfully!" );
+});
+</pre>
+<p>The first <code class="literal">append()</code>
+        adds a <code class="literal">&lt;div&gt;</code> that the second
+        <code>equal()</code> doesn&#8217;t take into account.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-165">Solution</h3></div></div><div></div></div><p>Use the <code class="literal">test()</code> method to keep
         tests atomic, being careful to keep each assertion clean of any
         possible side effects. You should only rely on the fixture markup,
-        inside the <code class="literal">#main</code> element. Modifying
-        and relying on anything else can have side effects:</p><pre class="programlisting" id="I_programlisting18_d1e27036">test("test 1", function() {
-    $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages
-&lt;/span&gt;.&lt;/div&gt;");
-    deepEqual($("#main div").length, 1, "added message link successfully");
+        inside the <code class="literal">#qunit-fixture</code> element. Modifying
+        and relying on anything else can have side effects:</p>
+<pre class="programlisting">
+
+test( "Appends a div", function() {
+  var $fixture = $( "#qunit-fixture" );
+
+  $fixture.append( "&lt;div&gt;hello!&lt;/div&gt;" );
+  equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 });
-test("test 2", function() {
-    $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
-    deepEqual($("#main span").length, 1, "added notification successfully");
-});</pre><p>QUnit will reset the elements inside the <code class="literal">#main</code> element after each test, removing any
+
+test( "Appends a span", function() {
+  var $fixture = $( "#qunit-fixture" );
+
+  $fixture.append("&lt;span&gt;hello!&lt;/span&gt;" );
+  equal( $( "span", $fixture ).length, 1, "span added successfully!" );
+});
+</pre><p>QUnit will reset the elements inside the <code class="literal">#qunit-fixture</code> element after each test, removing any
         events that may have existed. As long as you use elements only within
         this fixture, you don&#8217;t have to manually clean up after your tests to
-        keep them atomic.</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id170">Discussion</h3></div></div><div></div></div><p>In addition to the <code class="literal">#main</code>
-        fixture element, QUnit will also clean up properties of jQuery itself:
-        <code class="literal">$.event.global</code> and <code class="literal">$.ajaxSettings</code>. Any global events like
-        <code class="literal">$().ajaxStart()</code> are managed by
-        jQuery in <code class="literal">$.event.global</code>&#8212;if your
-        test had bound lots of them, it could slow down the test runner
-        significantly when running a lot of tests. By cleaning the property,
-        QUnit ensures that your tests aren&#8217;t affected by global events.</p><p>The deepEqual applies to <code class="literal">$.ajaxSettings</code>, which is usually used via
-        <code class="literal">$.ajaxSetup()</code> to configure common
-        properties for <code class="literal">$.ajax()</code>
-        calls.</p><p>In addition to the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
-        test:</p><pre class="programlisting" id="I_programlisting18_d1e27081">test("global pollution", function(){
-    window.pollute = true;
-    deepEqual(pollute, true);
-});</pre><p>In a normal test run, this passes as a valid result. Running the
-        deepEqual test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top"><code class="literal">noglobals</code> flag</a> will cause the test
+        keep them atomic.</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id170">Pollution</h3></div></div><div></div></div><p>In addition to the <code class="literal">#qunit-fixture</code>
+        fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
+        test:</p>
+<pre class="programlisting">
+test( "global pollution", function() {
+  window.pollute = true;
+  ok( pollute, "nasty pollution" );
+});
+</pre><p>In a normal test run, this passes as a valid result. Running the
+        <code>ok()</code> test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top">noglobals flag</a> will cause the test
         to fail, because QUnit detected that it polluted the window
         object.</p><p>There is no need to use this flag all the time, but it can be
         handy to detect global namespace pollution that may be problematic in
@@ -280,35 +353,38 @@ test("test 2", function() {
         and free of side effects, but you want to keep them logically
         organized and be able to run a specific group of tests on their
         own.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-166">Solution</h3></div></div><div></div></div><p>You can use the <code class="literal">module()</code>
-        function <a class="indexterm" name="I_indexterm18_d1e27118"></a>to group tests together:</p><pre class="programlisting" id="I_programlisting18_d1e27122">module("group a");
-test("a basic test example", function() {
-    ok( true, "this test is fine" );
+        function <a class="indexterm" name="I_indexterm18_d1e27118"></a>to group tests together:</p><pre class="programlisting" id="I_programlisting18_d1e27122">
+module( "group a" );
+test( "a basic test example", function() {
+  ok( true, "this test is fine" );
 });
-test("a basic test example 2", function() {
-    ok( true, "this test is fine" );
+test( "a basic test example 2", function() {
+  ok( true, "this test is fine" );
 });
 
-module("group b");
-test("a basic test example 3", function() {
-    ok( true, "this test is fine" );
+module( "group b" );
+test( "a basic test example 3", function() {
+  ok( true, "this test is fine" );
 });
-test("a basic test example 4", function() {
-    ok( true, "this test is fine" );
+test( "a basic test example 4", function() {
+  ok( true, "this test is fine" );
 });</pre><p>All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module.
         The test names will all be preceded by the module name in the test
         results. You can then use that module name to select tests to run (see
         <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>).</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id171">Discussion</h3></div></div><div></div></div><p>In addition to grouping tests, <code class="literal">module()</code> can be used to extract common code
         from tests within that module. The <code class="literal">module()</code> function takes an optional second
         parameter to define functions to run before and after each test within
-        the module:</p><pre class="programlisting" id="I_programlisting18_d1e27142">module("module", {
-    setup: function() {
-        ok(true, "one extra assert per test");
-    }, teardown: function() {
-        ok(true, "and one extra assert after each test");
-    }
+        the module:</p>
+<pre class="programlisting">
+module( "module", {
+  setup: function() {
+    ok( true, "one extra assert per test" );
+  }, teardown: function() {
+    ok( true, "and one extra assert after each test" );
+  }
 });
-test("test with setup and teardown", function() {
-    expect(2);
+test( "test with setup and teardown", function() {
+  expect( 2 );
 });</pre><p>You can specify both setup and teardown properties together, or
         just one of them.</p><p>Calling <code class="literal">module()</code> again
         without the additional argument will simply reset any setup/teardown
@@ -319,28 +395,34 @@ test("test with setup and teardown", function() {
         modules. You can run just the tests from a given module by appending a
         query string with the module name to the test suite URL. For example,
         <code class="literal">test.html?validation</code> will run all tests
-        in the module named <code class="literal">validation</code>:</p><pre class="programlisting" id="I_programlisting18_d1e27178">// test.html?validation - just the validation module
+        in the module named <code class="literal">validation</code>:</p>
+<pre class="programlisting" id="I_programlisting18_d1e27178">
+// test.html?validation - just the validation module
 // test.html?validation&amp;tooltip - validation and tooltip module
 // test.html?!validation - exclude the validation module
 // test.html?test 3 - just "test 3", the url will be displayed as test.html?test%203
-module("validation");
-test("test 1", function () {
-    ok(true, "bool succeeds");
+
+module( "validation" );
+test( "test 1", function () {
+  ok( true, "bool succeeds" );
 });
-test("test 2", function () {
-    equal(5, 5.0, "equal succeeds");
+test( "test 2", function () {
+  equal( 5, 5.0, "equal succeeds" );
 });
-module("tooltip");
-test("test 3", function () {
-    deepEqual(true, 3 == 3, "deepEqual succeeds");
+
+module( "tooltip" );
+test( "test 3", function () {
+  deepEqual( 3 === 3, true, "deepEqual succeeds" );
 });
-test("test 4", function () {
-    ok(false, "bool fails");
+test( "test 4", function () {
+  ok( false, "fails!" );
 });
-module("other");
-test("test 5", function () {
-    equal(3, 5, "equal fails");
-});</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id172">Discussion</h3></div></div><div></div></div><p>You can combine tests from various modules by specifying
+
+module( "other" );
+test( "test 5", function () {
+  equal( 3, 5, "equal fails" );
+});
+</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id172">Discussion</h3></div></div><div></div></div><p>You can combine tests from various modules by specifying
         multiple modules at once, delimited with the ampersand; e.g., <code class="literal">test.html?validation&amp;tooltip</code> would run
         tests that contain <code class="literal">validation</code> or
         <code class="literal">tooltip</code>.</p><p>You can exclude tests using the exclamation mark; e.g., <code class="literal">test.html?!validation</code> would run all tests
