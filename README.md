@@ -3,7 +3,7 @@
 
 ## Usage
 
-* [Install DocPad](https://github.com/bevry/docpad)
+* [Install DocPad](https://github.com/bevry/docpad), needs a 'global' install
 * `docpad run`
 * [Open http://localhost:9778/](http://localhost:9778/)
 * Edit files in src directory

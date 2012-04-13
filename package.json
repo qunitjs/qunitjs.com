@@ -1,5 +1,6 @@
 {
 	"name": "qunitjs.com",
+	"version": "0.0.0",
 	"dependencies": {
 		"docpad": "4.1.x"
 	},
