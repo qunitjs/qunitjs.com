@@ -45,7 +45,8 @@ add note about jQuery Cookbook, license and stuff
         variety of projects.</p><p>To use QUnit, you need to include jQuery and two QUnit files on
         your HTML page. QUnit consists of <code class="literal">testrunner.js</code>, the test runner and testing
         framework, and <code class="literal">testsuite.css</code>, which styles the test
-        suite page to display test results:</p><pre class="programlisting" id="I_programlisting18_d1e26633">&lt;!DOCTYPE html&gt;
+        suite page to display test results:</p><pre class="programlisting" id="I_programlisting18_d1e26633">
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
  &lt;title&gt;QUnit basic example&lt;/title&gt;
@@ -53,11 +54,10 @@ add note about jQuery Cookbook, license and stuff
  &lt;script src="http://code.jquery.com/qunit/qunit-git.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
-   test("a basic test example", function() {
-    ok( true, "this test is fine" );
+  test("a basic test example", function() {
     var value = "hello";
     equal( value, "hello", "We expect value to be hello" );
-    });
+  });
 &lt;/script&gt;
 
 &lt;/head&gt;
@@ -102,32 +102,35 @@ add note about jQuery Cookbook, license and stuff
         implementation produces.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-159">Solution</h3></div></div><div></div></div><p>QUnit provides three assertions.</p><div class="sect3" title="ok( boolean[, message ])"><div class="titlepage"><div><div><h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( boolean[, message ])</h4></div></div><div></div></div><p>The most basic one is <code class="literal">ok()</code><a class="indexterm" name="I_indexterm18_d1e26732"></a>, which requires just one Boolean argument. When the
           argument is true, the assertion passes; otherwise, it fails. In
           addition, it accepts a string to display as a message in the test
-          results:</p><pre class="programlisting" id="I_programlisting18_d1e26736">test("ok test", function() {
-    ok(true, "ok succeeds");
-    ok(false, "ok fails");
+          results:</p><pre class="programlisting" id="I_programlisting18_d1e26736">
+test("ok test", function() {
+  ok( true, "ok succeeds" );
+  ok( false, "ok fails" );
 });</pre></div><div class="sect3" title="equal( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected[, message ])</h4></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26742"></a>The <code class="literal">equal</code>
           assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected
           arguments. When they are equal, the assertion passes; otherwise, it
           fails. When it fails, both actual and expected values are displayed
-          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">test("equal test", function() {
-    equal("", 0, "equal succeeds");
-    equal("three", 3, "equal fails");
+          in the test result, in addition to a given message:</p><pre class="programlisting" id="I_programlisting18_d1e26752">
+test("equal test", function() {
+  equal( "", 0, "equal succeeds" );
+  equal( "three", 3, "equal fails" );
 });</pre><p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
           tests that failed, because it&#8217;s obvious which value caused the test
-          to fail.</p></div><div class="sect3" title="same( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="same_open_parenthesis_actual_comma_expec">same( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">same()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most
+          to fail.</p></div><div class="sect3" title="deepEqual( actual, expected[, message ])"><div class="titlepage"><div><div><h4 class="title" id="deepEqual_open_parenthesis_actual_comma_expec">deepEqual( actual, expected[, message ])</h4></div></div><div></div></div><p>The <code class="literal">deepEqual()</code><a class="indexterm" name="I_indexterm18_d1e26769"></a> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most
           cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison
           operator (<code class="literal">===</code>). That way,
           <code class="literal">undefined</code> doesn&#8217;t equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of
           objects so that <code class="literal">{key: value}</code> is
           equal to <code class="literal">{key: value}</code>, even when
-          comparing two objects with distinct identities.</p><p><code class="literal">same()</code> also handles NaN,
+          comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN,
           dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object
-          identity:</p><pre class="programlisting" id="I_programlisting18_d1e26808">test("same test", function() {
-    same(undefined, undefined, "same succeeds");
-    same("", 0, "same fails");
+          identity:</p><pre class="programlisting" id="I_programlisting18_d1e26808">
+test("deepEqual test", function() {
+  deepEqual(undefined, undefined, "deepEqual succeeds");
+  deepEqual("", 0, "deepEqual fails");
 });</pre><p>In case you want to explicitly not compare the content of two
           values, <code class="literal">equal()</code> can still be
-          used. In general, <code class="literal">same()</code> is the
+          used. In general, <code class="literal">deepEqual()</code> is the
           better choice.</p></div></div></div><div class="sect1" title="Testing Synchronous Callbacks"><div class="titlepage"><div><div><h2 class="title" id="testing_synchronous_callbacks" style="clear: both">Testing Synchronous Callbacks</h2></div></div><div></div></div><div class="sect2" title="Problem"><div class="titlepage"><div><div><h3 class="title" id="problem-164">Problem</h3></div></div><div></div></div><p><a class="indexterm" name="I_indexterm18_d1e26825"></a><a class="indexterm" name="I_indexterm18_d1e26830"></a><a class="indexterm" name="I_indexterm18_d1e26835"></a>When testing code with a lot of callbacks, it happens
         every once in a while that a test that actually should fail just
         passes, with the assertions in question never showing up in the test
@@ -216,8 +219,8 @@ add note about jQuery Cookbook, license and stuff
     $(document).trigger(event);
 
     // verify expected behavior
-    same(keylogger.log.length, 1, "a key was logged");
-    same(keylogger.log[0], 9, "correct key was logged");
+    deepEqual(keylogger.log.length, 1, "a key was logged");
+    deepEqual(keylogger.log[0], 9, "correct key was logged");
 });</pre></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id169">Discussion</h3></div></div><div></div></div><p>If your event handler doesn&#8217;t rely on any specific properties of
         the event, you can just call <code class="literal">.trigger(eventType)</code>. However, if your event
         handler does rely on specific properties of the event, you will need
@@ -233,9 +236,9 @@ add note about jQuery Cookbook, license and stuff
         This is a result of a test having invalid results because of side
         effects of a previous test:</p><pre class="programlisting" id="I_programlisting18_d1e27015">test("2 asserts", function() {
     $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages&lt;/span&gt;.&lt;/div&gt;");
-    same($("#main div").length, 1, "added message link successfully");
+    deepEqual($("#main div").length, 1, "added message link successfully");
     $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
-    same($("#main span").length, 1, "added notification successfully");
+    deepEqual($("#main span").length, 1, "added notification successfully");
 });</pre><p>Notice the first <code class="literal">append()</code>
         adds a <code class="literal">&lt;span&gt;</code> that the second
         assert doesn&#8217;t take into account.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-165">Solution</h3></div></div><div></div></div><p>Use the <code class="literal">test()</code> method to keep
@@ -245,11 +248,11 @@ add note about jQuery Cookbook, license and stuff
         and relying on anything else can have side effects:</p><pre class="programlisting" id="I_programlisting18_d1e27036">test("test 1", function() {
     $("#main").append("&lt;div&gt;Click here for &lt;span class='bold'&gt;messages
 &lt;/span&gt;.&lt;/div&gt;");
-    same($("#main div").length, 1, "added message link successfully");
+    deepEqual($("#main div").length, 1, "added message link successfully");
 });
 test("test 2", function() {
     $("#main").append("&lt;span&gt;You have a message!&lt;/span&gt;");
-    same($("#main span").length, 1, "added notification successfully");
+    deepEqual($("#main span").length, 1, "added notification successfully");
 });</pre><p>QUnit will reset the elements inside the <code class="literal">#main</code> element after each test, removing any
         events that may have existed. As long as you use elements only within
         this fixture, you don&#8217;t have to manually clean up after your tests to
@@ -260,15 +263,15 @@ test("test 2", function() {
         jQuery in <code class="literal">$.event.global</code>&#8212;if your
         test had bound lots of them, it could slow down the test runner
         significantly when running a lot of tests. By cleaning the property,
-        QUnit ensures that your tests aren&#8217;t affected by global events.</p><p>The same applies to <code class="literal">$.ajaxSettings</code>, which is usually used via
+        QUnit ensures that your tests aren&#8217;t affected by global events.</p><p>The deepEqual applies to <code class="literal">$.ajaxSettings</code>, which is usually used via
         <code class="literal">$.ajaxSetup()</code> to configure common
         properties for <code class="literal">$.ajax()</code>
         calls.</p><p>In addition to the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
         test:</p><pre class="programlisting" id="I_programlisting18_d1e27081">test("global pollution", function(){
     window.pollute = true;
-    same(pollute, true);
+    deepEqual(pollute, true);
 });</pre><p>In a normal test run, this passes as a valid result. Running the
-        same test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top"><code class="literal">noglobals</code> flag</a> will cause the test
+        deepEqual test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top"><code class="literal">noglobals</code> flag</a> will cause the test
         to fail, because QUnit detected that it polluted the window
         object.</p><p>There is no need to use this flag all the time, but it can be
         handy to detect global namespace pollution that may be problematic in
@@ -329,7 +332,7 @@ test("test 2", function () {
 });
 module("tooltip");
 test("test 3", function () {
-    same(true, 3 == 3, "same succeeds");
+    deepEqual(true, 3 == 3, "deepEqual succeeds");
 });
 test("test 4", function () {
     ok(false, "bool fails");
@@ -344,7 +347,7 @@ test("test 5", function () {
         except those from the <code class="literal">validation</code>
         module.</p><p>Instead of manually modifying the URL, you can also double-click
         any of the test results to rerun just that test. QUnit will use the
-        same filtering mechanism by appending the name of the test to the
+        deepEqual filtering mechanism by appending the name of the test to the
         current location.<a class="indexterm" name="I_indexterm18_d1e27206"></a></p></div>
 
 
