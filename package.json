@@ -2,7 +2,9 @@
 	"name": "qunitjs.com",
 	"version": "0.0.0",
 	"dependencies": {
-		"docpad": "4.1.x"
+		"docpad": "5.0.x",
+		"docpad-plugin-eco": "latest",
+		"docpad-plugin-partials": "latest"
 	},
 	"engines" : {
 		"node": ">=0.4.0"
