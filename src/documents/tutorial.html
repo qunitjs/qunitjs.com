@@ -50,7 +50,7 @@ add note about jQuery Cookbook, license and stuff
 &lt;html&gt;
 &lt;head&gt;
  &lt;title&gt;QUnit basic example&lt;/title&gt;
- &lt;link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css" &gt;
+ &lt;link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css"&gt;
  &lt;script src="http://code.jquery.com/qunit/qunit-git.js"&gt;&lt;/script&gt;
 
 &lt;script&gt;
@@ -62,9 +62,9 @@ add note about jQuery Cookbook, license and stuff
 
 &lt;/head&gt;
 &lt;body&gt;
- &lt;div id="main"&gt;&lt;/div&gt;
+ &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre><p>Opening this file in a browser gives the result shown in <a class="xref" href="#test_results_fig" title="Figure&nbsp;1.1.&nbsp;Test result in a browser">Figure&nbsp;1.1, &#8220;Test result in a browser&#8221;</a>.</p><div class="figure-float"><div class="figure"><p class="title" id="test_results_fig"><b>Figure&nbsp;1.1.&nbsp;Test result in a browser</b></p><div class="figure-contents"><div class="mediaobject"><img id="I_mediaobject18_d1e26642" src="figs/web/jqcb_1801.png" width="486" alt="Test result in a browser"></div></div></div><br class="figure-break"></div><p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="main"</code>. This is required for all QUnit
+&lt;/html&gt;</pre><p>Opening this file in a browser gives the result shown in <a class="xref" href="#test_results_fig" title="Figure&nbsp;1.1.&nbsp;Test result in a browser">Figure&nbsp;1.1, &#8220;Test result in a browser&#8221;</a>.</p><div class="figure-float"><div class="figure"><p class="title" id="test_results_fig"><b>Figure&nbsp;1.1.&nbsp;Test result in a browser</b></p><div class="figure-contents"><div class="mediaobject"><img id="I_mediaobject18_d1e26642" src="figs/web/jqcb_1801.png" width="486" alt="Test result in a browser"></div></div></div><br class="figure-break"></div><p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit
         tests, even when the element itself is empty. This provides the
         fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called &#8220;Keeping Tests Atomic&#8221;</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
         <code class="literal">testrunner.js</code> include. It consists

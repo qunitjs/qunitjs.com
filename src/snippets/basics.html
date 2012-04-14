@@ -1,17 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>QUnit Example</title>
-  <link rel="stylesheet" href="/static/resources/css/qunit.css">
-  <script src="/static/resources/js/qunit.js"></script>
+  <title>QUnit Tests</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css">
 </head>
 <body>
-  <div id="qunit"></div>
+  <h1 id="qunit-header">QUnit Hello World</h1>
+  <h2 id="qunit-banner"></h2>
+  <ol id="qunit-tests"></ol>
+  <script src="http://code.jquery.com/qunit/qunit-git.js"></script>
   <script>
-    test("hello", function() {
-      ok(true, "Passed!");
-    });
+  test("Test The Truth!", function() {
+    ok( true, "Passed!" );
+  });
   </script>
 </body>
 </html>
