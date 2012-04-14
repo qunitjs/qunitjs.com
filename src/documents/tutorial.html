@@ -394,13 +394,11 @@ test( "test with setup and teardown", function() {
         works best when <span class="keep-together">combined with</span>
         modules. You can run just the tests from a given module by appending a
         query string with the module name to the test suite URL. For example,
-        <code class="literal">test.html?validation</code> will run all tests
+        <code class="literal">test.html?filter=validation</code> will run all tests
         in the module named <code class="literal">validation</code>:</p>
 <pre class="programlisting" id="I_programlisting18_d1e27178">
-// test.html?validation - just the validation module
-// test.html?validation&amp;tooltip - validation and tooltip module
-// test.html?!validation - exclude the validation module
-// test.html?test 3 - just "test 3", the url will be displayed as test.html?test%203
+// test.html?filter=validation - just the validation module
+// test.html?filter=test 3 - just "test 3"
 
 module( "validation" );
 test( "test 1", function () {
