@@ -4,52 +4,55 @@ layout: default
 ---
 
 <div class="clearfix inner">
-	<h2 class="title">QUnit: A JavaScript Unit Testing framework.</h2>
-	<div class="col2-1">
-		<h2>What is QUnit?</h2>
-		<p>
-			QUnit is a powerful, easy-to-use, JavaScript test suite. It's used by the jQuery project to test its code and plugins but is capable of testing any generic JavaScript code (and even capable of testing JavaScript code on the server-side).
-		</p>
-		<p>
-			QUnit is especially useful for regression testing: Whenever a bug is reported, write a test that asserts the existence of that particular bug. Then fix it and commit both. Every time you work on the code again, run the tests. If the bug comes up again - a regression - you'll spot it immediately and know how to fix it, because you know what code you just changed.
-		</p>
-		<p>
-			Having good unit test coverage makes safe refactoring easy and cheap. You can run the tests after each small refactoring step and always know what change broke something.
-		</p>
-		<p>
-			QUnit is similar to other unit testing frameworks like JUnit, but makes use of the features JavaScript provides and helps with testing code in the browser, eg. with its stop/start facilities for testing asynchronous code.
-		</p>
-		<h2>Getting Started</h2>
-        <p>
-            To get started, let’s look at a minimal QUnit testsuite, the Hello World of QUnit:
-        </p>
+  <h2 class="title">QUnit: A JavaScript Unit Testing framework.</h2>
+  <div class="col2-1">
+    <h2>What is QUnit?</h2>
+    <p class="blurb">
+      QUnit is a powerful, easy-to-use JavaScript unit test suite. It's used by the
+      jQuery, jQuery UI and jQuery Mobile projects and is capable of testing any generic JavaScript
+      code, <a href="https://github.com/jquery/qunit/tree/master/test">including itself</a>!
+    </p>
+    <h2>Get Involved</h2>
+    <ul>
+      <li>To see more examples, check out the unit tests of <a href="https://github.com/jquery/jquery/tree/master/test/unit">jQuery</a>, <a href="https://github.com/jquery/jquery-ui/tree/master/tests/unit">jQuery UI</a> or the <a href="https://github.com/jzaefferer/jquery-validation/tree/master/test">jQuery Validation Plugin</a>.</li>
+      <li>The code is located at: <a href="http://github.com/jquery/qunit">http://github.com/jquery/qunit</a>.</li>
+      <li>Planning for QUnit and other testing tools also happens on the on the <a href="http://jquerytesting.pbworks.com/">jQuery Testing Team planning wiki</a>.</li>
+      <li>Please post to the <a href="http://forum.jquery.com/qunit-and-testing">QUnit and testing forum</a> for anything related to QUnit or testing in general.</li>
+      <li>For announcements, follow <a href="http://twitter.com/qunitjs">@qunitjs</a></li>
+    </ul>
+  </div>
 
-        <!-- TODO insert snippets/basics.html here, escaped and highlighted -->
+  <div class="col2-1">
+    <h2>Getting Started</h2>
 
-	</div>
 
-	<div class="col2-1">
-	     <p>
-            This is a very minimalistic testsuite. It declares a doctype, includes the CSS and JS files for QUnit, defines another script element with a single QUnit test and assert, and a little bit of additional markup for QUnit to output testresults. The call to the test() function defines a test with the name of “hello”. QUnit will then run this test once the page has loaded. The second argument, a function passed to test(), contains the actual testcode to run, here a call to ok(). The first argument defines if the assertion passes or not, the second specifies a message to output. In this case, the boolean true will always pass, as we’re not yet testing anything really.
-        </p>
-		<p>The #qunit-header element should contain the name of the testsuite, and won't be modified by QUnit. The #qunit-banner element will change based on the results of the test abd will show up as red if a test failed or green, if all tests passed. The #qunit-userAgent elements is used to display the navigator.userAgent property. The #qunit-tests element will be used as a container for the test results.</p>
+{% codeblock lang:html %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>QUnit Example</title>
+  <link rel="stylesheet" href="qunit.css">
+  <script src="qunit.js"></script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <script>
+    test("hello", function() {
+      ok(true, "Passed!");
+    });
+  </script>
+</body>
+</html>
+{% endcodeblock %}
 
-		<p>The #qunit-fixture element can be used to provide and manipulate test markup, and will automatically be reset after each test (<a href="http://docs.jquery.com/QUnit/QUnit.reset">see QUnit.reset</a>). The element is styled with position:absolute; top:-10000px; left:-10000; - with these, it won't be obstructing the result, without affecting code that relies on the affected elements to be visible (instead of display:none). Older QUnit versions would only work with the #main element, which is deprecated, but still supported. It just won't get any default styles.</p>
+    <p>
+      Save this example as an HTML file and open it in your browser. It should look like this:
+    </p>
 
-		<p>
-			If we open this as a html file in a browser, we’ll see this output:
-		</p>
-
-		<p>
-			[live output?]
-		</p>
-		<h2>Get Involved</h2>
-		<ul>
-		    <li>To see more examples, check out the unit tests of <a href="https://github.com/jquery/jquery/tree/master/test/unit">jQuery</a>, <a href="https://github.com/jquery/jquery-ui/tree/master/tests/unit">jQuery UI</a> or the <a href="https://github.com/jzaefferer/jquery-validation/tree/master/test">jQuery Validation Plugin</a>.</li>
-		    <li>The code is located at: <a href="http://github.com/jquery/qunit">http://github.com/jquery/qunit</a>.</li>
-		    <li>Planning for QUnit and other testing tools also happens on the on the <a href="http://jquerytesting.pbworks.com/">jQuery Testing Team planning wiki</a>.</li>
-		    <li>Please post to the <a href="http://forum.jquery.com/qunit-and-testing">QUnit and testing forum</a> for anything related to QUnit or testing in general.</li>
-		    <li>For announcements, follow <a href="http://twitter.com/qunitjs">@qunitjs</a></li>
-		</ul>
-	</div>
+    <p>
+      <!-- todo: don't let Rick do stuff like this... ^RW -->
+      <iframe src="example-index.html" style="width:100%;height:300px;border:0px"></iframe>
+    </p>
+  </div>
 </div>
