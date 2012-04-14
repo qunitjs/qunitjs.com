@@ -4,7 +4,8 @@
 	"dependencies": {
 		"docpad": "5.0.x",
 		"docpad-plugin-eco": "latest",
-		"docpad-plugin-partials": "latest"
+		"docpad-plugin-partials": "latest",
+		"docpad-plugin-pygments": "latest"
 	},
 	"engines" : {
 		"node": ">=0.4.0"
