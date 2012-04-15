@@ -6,94 +6,97 @@ title: API Documentation
 <!-- TODO: cleanup
  -->
 <div class="clearfix inner">
-<div id="toctitle"><h2>Contents</h2></div>
-<ul>
-<li class="toclevel-1"><a href="#API_documentation"><span class="tocnumber">1</span> <span class="toctext">API documentation</span></a></li>
-<li class="toclevel-1"><a href="#URL_Parameters"><span class="tocnumber">2</span> <span class="toctext">URL Parameters</span></a></li>
-<li class="toclevel-1"><a href="#Integration_into_Browser_Automation_Tools"><span class="tocnumber">3</span> <span class="toctext">Integration into Browser Automation Tools</span></a></li>
-<li class="toclevel-1"><a href="#Reference_Test_Suites"><span class="tocnumber">4</span> <span class="toctext">Reference Test Suites</span></a></li>
-<li class="toclevel-1"><a href="#Further_tutorials"><span class="tocnumber">5</span> <span class="toctext">Further tutorials</span></a></li>
-<li class="toclevel-1"><a href="#Extensions_and_integrations"><span class="tocnumber">6</span> <span class="toctext">Extensions and integrations</span></a></li>
-</ul>
-
-<p><div class="options list"><table class="options examples" cellspacing="0"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
-</table><b class="options">Setup:</b><table class="options examples" cellspacing="0"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
-</p><p><tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/test#nameexpectedtest" title="QUnit/test">test(&nbsp;name,&nbsp;<span class="optional">expected</span>,&nbsp;test )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Add a test to run.</td></tr>
+<!--
+  <h2 class="title">Contents</h2>
+  <ul>
+    <li><a href="#API_documentation">API Documentation</a></li>
+    <li><a href="#Testsuite_Events">Test Suite Events</a></li>
+  </ul>
 
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/asyncTest#nameexpectedtest" title="QUnit/asyncTest">asyncTest(&nbsp;name,&nbsp;<span class="optional">expected</span>,&nbsp;test )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Add an asynchronous test to run. The test must include a call to start().</td></tr>
+ -->
+  <h2 class="title" id="API_documentation">API Documentation</h2>
+  <div class="col2-1">
 
-</p><p><tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/expect#amount" title="QUnit/expect">expect(&nbsp;amount )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Specify how many assertions are expected to run within a test.</td></tr>
+    <a class="title"><h3>Test</h3></a>
+
+    <p class="blurb">test( title, expected, test )</p>
+    <p>Add a test to run.</p>
+
+    <p class="blurb">asyncTest( name, expected, test )</p>
+    <p>Add an asynchronous test to run. The test must include a call to start().</p>
+
+    <p class="blurb">expect( amount )</p>
+    <p>Specify how many assertions are expected to run within a test.</p>
+
+    <p class="blurb">module( name, lifecycle )</p>
+    <p>Separate tests into modules.</p>
+
+<!--
+    QUnit.init( )
+    Initialize the test runner (if the runner has already run it'll be re-initialized, effectively resetting it). This method does not need to be called in the normal use of QUnit.
+    QUnit.reset( )
+    Automatically called by QUnit after each test. Can be called by test code, though usually its better to seperate test code with multiple calls to test().
+
+ -->
+
+    <a class="title"><h3>Async Control</h3></a>
+
+    <p class="blurb">start( decrement )</p>
+    <p>Start running tests again after the testrunner was stopped. See stop().</p>
+
+    <p class="blurb">stop( increment )</p>
+    <p>Stop the testrunner to wait for async tests to run. Call start() to continue.</p>
 
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/module#namelifecycle" title="QUnit/module">module(&nbsp;name,&nbsp;<span class="optional">lifecycle</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Separate tests into modules.</td></tr>
+  </div>
 
+  <div class="col2-1">
 
+    <a class="title"><h3>Assert</h3></a>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/QUnit.init" title="QUnit/QUnit.init">QUnit.init( )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Initialize the test runner (if the runner has already run it'll be re-initialized, effectively resetting it). This method does not need to be called in the normal use of QUnit.</td></tr>
+    <p class="blurb">ok( state, message )</p>
+    <p>A boolean assertion, equivalent to JUnit's assertTrue. Passes if the first argument is truthy.</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/QUnit.reset" title="QUnit/QUnit.reset">QUnit.reset( )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Automatically called by QUnit after each test. Can be called by test code, though usually its better to seperate test code with multiple calls to test().</td></tr>
-</p><p></table><b class="options">Assertions:</b><table class="options examples" cellspacing="0"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
-</p><p><tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/ok#statemessage" title="QUnit/ok">ok(&nbsp;state,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A boolean assertion, equivalent to JUnit's assertTrue. Passes if the first argument is truthy.</td></tr>
+    <p class="blurb">equal( actual, expected, message )</p>
+    <p>A comparison assertion, equivalent to JUnit's assertEquals.</p>
 
+    <p class="blurb">notEqual( actual, expected, message )</p>
+    <p>A comparison assertion, equivalent to JUnit's assertNotEquals.</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/equal#actualexpectedmessage" title="QUnit/equal">equal(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A comparison assertion, equivalent to JUnit's assertEquals.</td></tr>
+    <p class="blurb">deepEqual( actual, expected, message )</p>
+    <p>A deep recursive comparison assertion, working on primitive types, arrays and objects.</p>
 
+    <p class="blurb">notDeepEqual( actual, expected, message )</p>
+    <p>A deep recursive comparison assertion, working on primitive types, arrays and objects, with the result inverted, passing when some property isn't equal.</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/notEqual#actualexpectedmessage" title="QUnit/notEqual">notEqual(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A comparison assertion, equivalent to JUnit's assertNotEquals.</td></tr>
+    <p class="blurb">strictEqual( actual, expected, message )</p>
+    <p>A stricter comparison assertion then equal.</p>
 
+    <p class="blurb">notStrictEqual( actual, expected, message )</p>
+    <p>A stricter comparison assertion then notEqual.</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/deepEqual#actualexpectedmessage" title="QUnit/deepEqual">deepEqual(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A deep recursive comparison assertion, working on primitive types, arrays and objects.</td></tr>
+    <p class="blurb">raises( block, expected, message )</p>
 
+    <p>Assertion to test if a callback throws an exception when run.</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/notDeepEqual#actualexpectedmessage" title="QUnit/notDeepEqual">notDeepEqual(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A deep recursive comparison assertion, working on primitive types, arrays and objects, with the result inverted, passing when some property isn't equal.</td></tr>
+  </div>
+</div>
+<div class="clearfix inner">
 
+  <h2 class="title" id="Testsuite_Events">Callbacks</h2>
+  <div class="col2-1">
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/strictEqual#actualexpectedmessage" title="QUnit/strictEqual">strictEqual(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A stricter comparison assertion then equal.</td></tr>
+    <p>Subscribe to events emitted by the test suite</p>
 
+    <p class="blurb">QUnit.log( callback )</p>
+    <p class="blurb">QUnit.testStart( callback )</p>
+    <p class="blurb">QUnit.testDone( callback )</p>
+    <p class="blurb">QUnit.moduleStart( callback )</p>
+    <p class="blurb">QUnit.moduleDone( callback )</p>
+    <p class="blurb">QUnit.begin( callback )</p>
+    <p class="blurb">QUnit.done( callback )</p>
 
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/notStrictEqual#actualexpectedmessage" title="QUnit/notStrictEqual">notStrictEqual(&nbsp;actual,&nbsp;expected,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">A stricter comparison assertion then notEqual.</td></tr>
-
-
-<tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/raises#blockexpectedmessage" title="QUnit/raises">raises(&nbsp;block,&nbsp;<span class="optional">expected</span>,&nbsp;<span class="optional">message</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Assertion to test if a callback throws an exception when run.</td></tr>
-
-</p><p></table><b class="options">Asynchronous Testing:</b><table class="options examples" cellspacing="0"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
-</p><p><tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/start#decrement" title="QUnit/start">start(&nbsp;<span class="optional">decrement</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Start running tests again after the testrunner was stopped. See <a href="http://docs.jquery.com/QUnit/stop" title="QUnit/stop">stop()</a>.</td></tr>
-
-</p><p><tr class="option"><td><b><a href="http://docs.jquery.com/QUnit/stop#increment" title="QUnit/stop">stop(&nbsp;<span class="optional">increment</span> )</a></b></td><td class="default"></td></tr><tr><td colspan="2" class="desc">Stop the testrunner to wait for async tests to run. Call <a href="http://docs.jquery.com/QUnit/start" title="QUnit/start">start()</a> to continue.</td></tr>
-
-</tbody></table></div>
-</p>
-<a name="URL_Parameters"></a><h2> URL Parameters </h2>
-<p>You can customize individual testruns via URL paramters. To start, click the Rerun-link next to any test result  to have QUnit only run that single test. This adds&nbsp;?filter=[name-of-test] to the URL.
-</p><p>You can also add "?filter=[module]" URL to run only tests within that module, e.g. <a href="http://swarm.jquery.org/git/jquery/test/?filter=effects" class="external free" title="http://swarm.jquery.org/git/jquery/test/?filter=effects">http://swarm.jquery.org/git/jquery/test/?filter=effects</a> runs only tests for effects.
-</p><p>Two more filters can be activated manually by editing the URL, or by clicking the checkboxes in the header:
-</p>
-<ul><li> <b>?noglobals</b>: QUnit will detect if a test introduced a new global variable (aka new properties on the window object), making that test fail. This helps finding accidental global variables, e.g. introduced by forgetting a var-keyword at the right place.
-</li><li> <b>?notrycatch</b>: This tells QUnit to runs tests without a surrounding try-catch block. If an exception is thrown, it will break the testrunner (it won't continue running any tests), but the original exception is very likely to contain much more useful information, like a stacktrace. All JavaScript implementations handle rethrowing exceptions very badly, so this can help debugging a particular problem.
-</li></ul>
-<a name="Integration_into_Browser_Automation_Tools"></a><h2> Integration into Browser Automation Tools </h2>
-<p>To integrate QUnit into browser automation tools, those doing the work of launching various browsers and gathering the results, QUnit provides a simple microformat for its test result.
-</p>
-<pre>
- &lt;p id=&quot;qunit-testresult&quot; class=&quot;result&quot;&gt;
-   Tests completed in 221 milliseconds.&lt;br/&gt;
-   &lt;span class=&quot;passed&quot;&gt;232&lt;/span&gt; tests of
-   &lt;span class=&quot;total&quot;&gt;232&lt;/span&gt; passed,
-   &lt;span class=&quot;failed&quot;&gt;0&lt;/span&gt; failed.
- &lt;/p&gt;
-</pre>
-<p>Additionally, QUnit provides a series of callbacks that can be overwritten to provide updates when various actions occur. All of them (except begin) receive a single argument with the properties listed here:
-</p>
-<ul><li> <code>QUnit.log({ result, actual, expected, message })</code> is called whenever an assertion is completed. <code>result</code> is a boolean (true for passing, false for failing) and <code>message</code> is a string description provided by the assertion.
-</li><li> <code>QUnit.testStart({ name })</code> is called whenever a new test batch of assertions starts running. <code>name</code> is the string name of the test batch.
-</li><li> <code>QUnit.testDone({ name, failed, passed, total })</code> is called whenever a batch of assertions finishes running. <code>name</code> is the string name of the test batch. <code>failed</code> is the number of test failures that occurred. <code>total</code> is the total number of test assertions that occurred. Passed is the number of test assertions that passed.
-</li><li> <code>QUnit.moduleStart({ name })</code> is called whenever a new module of tests starts running. <code>name</code> is the string name of the module.
-</li><li> <code>QUnit.moduleDone({ name, failed, passed, total })</code> is called whenever a module finishes running. <code>name</code> is the string name of the module. <code>failed</code> is the number of module failures that occurred. <code>total</code> is the total number of module assertions that occurred. Passed is the number of module assertions that passed.
-</li><li> <code>QUnit.begin()</code> is called once before running any tests. (a better would've been QUnit.start, but thats already in use elsewhere and can't be changed.)
-</li><li> <code>QUnit.done({ failed, passed, total, runtime })</code> is called whenever all the tests have finished running. <code>failed</code> is the number of failures that occurred. <code>total</code> is the total number of assertions that occurred, passed the passing assertions. <code>runtime</code> is the time in milliseconds to run the tests from start to finish.
-</li></ul>
-<p>Additionally <code>QUnit.reset</code> is called after every test group. If the default, resetting the #qunit-fixture element, isn't enough, you can override or proxy it to add additional resets.
-</p>
+  </div>
 
 </div>
