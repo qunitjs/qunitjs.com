@@ -34,20 +34,22 @@ layout: default
   <title>QUnit Example</title>
   <link rel="stylesheet" href="qunit.css">
   <script src="qunit.js"></script>
+  <script src="tests.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
-  <script>
-    test("hello", function() {
-      ok(true, "Passed!");
-    });
-  </script>
 </body>
 </html>
 {% endcodeblock %}
 
+{% codeblock lang:javascript %}
+  test("hello", function() {
+    ok(true, "Passed!");
+  });
+{% endcodeblock %}
+
     <p>
-      Save this example as an HTML file and open it in your browser. It should look like this:
+      It should look like this:
     </p>
 
     <p>
