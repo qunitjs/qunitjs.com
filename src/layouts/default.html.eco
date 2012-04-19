@@ -44,7 +44,7 @@
 			<!-- secondary nav -->
 			<nav class="clearfix">
 				<ul>
-					<% for document in @database.findAll($nor: [url: $startsWith: '/static']).sortArray(order:1): %>
+					<% for document in @database.findAll(menuOrder: $exists: true).sortArray(menuOrder:1): %>
 						<li class="<%= 'active'  if @document.url is document.url %>">
 							<a href="<%= document.url %>" property="dc:title"><%= document.title %></a>
 						</li>

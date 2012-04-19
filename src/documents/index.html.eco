@@ -1,6 +1,7 @@
 ---
 title: Overview
 layout: default
+menuOrder: 10
 ---
 
 <div class="clearfix inner">
@@ -14,6 +15,7 @@ layout: default
     </p>
     <h3>Get Involved</h3>
     <ul>
+      <li>Check out the <a href="/api.html">API documentation</a> or the <a href="cookbook.html">Cookbook</a> to learn how to use QUnit</li>
       <li>To see more examples, check out the unit tests of <a href="https://github.com/jquery/jquery/tree/master/test/unit">jQuery</a>, <a href="https://github.com/jquery/jquery-ui/tree/master/tests/unit">jQuery UI</a> or the <a href="https://github.com/jzaefferer/jquery-validation/tree/master/test">jQuery Validation Plugin</a>.</li>
       <li>The code is located at: <a href="http://github.com/jquery/qunit">http://github.com/jquery/qunit</a>.</li>
       <li>Planning for QUnit and other testing tools also happens on the on the <a href="http://jquerytesting.pbworks.com/">jQuery Testing Team planning wiki</a>.</li>
@@ -22,7 +24,7 @@ layout: default
     </ul>
     <h3>History</h3>
     <p>
-        John Resig!
+        QUnit was originally developed by John Resig as part of jQuery. In 2008 it got its own home, name and API documentation, allowing others to use it for their unit testing as well. At the time it still dependended on jQuery. A rewrite in 2009 fixed that, now QUnit runs completelty standalone.
     </p>
   </div>
 
