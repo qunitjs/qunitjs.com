@@ -1,3 +1,3 @@
-test("hello", function() {
-  ok(true, "Passed!");
+test( "hello test", function() {
+  ok( true, "Passed!" );
 });
