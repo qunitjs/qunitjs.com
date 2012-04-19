@@ -13,14 +13,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <link rel="shortcut icon" href="/static/resources/i/favicon.ico">
-  <link rel="stylesheet" href="/static/resources/css/style.css?v=1">
-  <link rel="stylesheet" href="/static/resources/css/syntax-highlight.css?v=1">
+  <link rel="shortcut icon" href="/resources/i/favicon.ico">
+  <link rel="stylesheet" href="/resources/css/style.css?v=1">
+  <link rel="stylesheet" href="/resources/css/syntax-highlight.css?v=1">
 
-  <script src="/static/resources/js/respond.min.js"></script>
-  <script src="/static/resources/js/modernizr-1.5.min.js"></script>
+  <script src="/resources/js/respond.min.js"></script>
+  <script src="/resources/js/modernizr-1.5.min.js"></script>
   <!--[if (gte IE 6)&(lte IE 8)]>
-  <script src="/static/resources/js/selectivizr.js"></script>
+  <script src="/resources/js/selectivizr.js"></script>
   <![endif]-->
 </head>
 
@@ -44,7 +44,7 @@
 			<!-- secondary nav -->
 			<nav class="clearfix">
 				<ul>
-					<% for document in @documents: %>
+					<% for document in @database.findAll($nor: [url: $startsWith: '/static']).sortArray(order:1): %>
 						<li class="<%= 'active'  if @document.url is document.url %>">
 							<a href="<%= document.url %>" property="dc:title"><%= document.title %></a>
 						</li>
@@ -75,7 +75,7 @@
 
 	<!-- scripts // Must use either 1.5.0 or 1.5.2, but 1.5.1 will break our menus -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>!window.jQuery && document.write(unescape('%3Cscript src="/static/resources/js/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="/resources/js/jquery-1.7.1.min.js"%3E%3C/script%3E'))</script>
 
 	<script id="tooltip-template" type="text/html">
 	  <div class="tooltip">
@@ -84,12 +84,12 @@
 	  </div>
 	</script>
 
-	<script src="/static/resources/js/plugins/jquery.ba-outside-events.min.js"></script>
-	<script src="/static/resources/js/plugins/syntaxhighlighter.min.js"></script>
-	<script src="/static/resources/js/plugins/jquery.infieldlabel.min.js"></script>
-	<script src="/static/resources/js/plugins/app.base.js"></script>
-	<script src="/static/resources/js/plugins.js"></script>
-	<script src="/static/resources/js/scripts.js"></script>
+	<script src="/resources/js/plugins/jquery.ba-outside-events.min.js"></script>
+	<script src="/resources/js/plugins/syntaxhighlighter.min.js"></script>
+	<script src="/resources/js/plugins/jquery.infieldlabel.min.js"></script>
+	<script src="/resources/js/plugins/app.base.js"></script>
+	<script src="/resources/js/plugins.js"></script>
+	<script src="/resources/js/scripts.js"></script>
 
 	<!-- /scripts -->
 </body>

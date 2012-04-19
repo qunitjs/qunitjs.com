@@ -12,7 +12,7 @@ layout: default
       jQuery, jQuery UI and jQuery Mobile projects and is capable of testing any generic JavaScript
       code, <a href="https://github.com/jquery/qunit/tree/master/test">including itself</a>!
     </p>
-    <h2>Get Involved</h2>
+    <h3>Get Involved</h3>
     <ul>
       <li>To see more examples, check out the unit tests of <a href="https://github.com/jquery/jquery/tree/master/test/unit">jQuery</a>, <a href="https://github.com/jquery/jquery-ui/tree/master/tests/unit">jQuery UI</a> or the <a href="https://github.com/jzaefferer/jquery-validation/tree/master/test">jQuery Validation Plugin</a>.</li>
       <li>The code is located at: <a href="http://github.com/jquery/qunit">http://github.com/jquery/qunit</a>.</li>
@@ -20,6 +20,10 @@ layout: default
       <li>Please post to the <a href="http://forum.jquery.com/qunit-and-testing">QUnit and testing forum</a> for anything related to QUnit or testing in general.</li>
       <li>For announcements, follow <a href="http://twitter.com/qunitjs">@qunitjs</a></li>
     </ul>
+    <h3>History</h3>
+    <p>
+        John Resig!
+    </p>
   </div>
 
   <div class="col2-1">
@@ -32,7 +36,7 @@ layout: default
     The contents of tests.js:
 
 <code class="highlight" lang="javascript">
-  test("hello", function() {
+  test("hellox", function() {
     ok(true, "Passed!");
   });
 </code>
