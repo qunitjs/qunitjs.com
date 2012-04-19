@@ -27,23 +27,9 @@ layout: default
 
     A minimal QUnit test setup:
 
-<code class="highlight" lang="html">
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>QUnit Example</title>
-    <link rel="stylesheet" href="qunit.css">
-    <script src="qunit.js"></script>
-    <script src="tests.js"></script>
-  </head>
-  <body>
-    <div id="qunit"></div>
-  </body>
-  </html>
-</code>
+    <code class="highlight" lang="html"><%=@partial('example-index.html')%></code>
 
-  The contents of tests.js:
+    The contents of tests.js:
 
 <code class="highlight" lang="javascript">
   test("hello", function() {

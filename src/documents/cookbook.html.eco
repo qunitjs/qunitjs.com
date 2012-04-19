@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tutorial
+title: Cookbook
 ---
 
 <div class="clearfix inner">
@@ -46,15 +46,6 @@ title: Tutorial
         frameworks, maybe even benefit from test-driven design. Writing your
         own testing framework may be tempting, but it involves a lot of work
         to cover all the details and special requirements of testing
-<<<<<<< Updated upstream
-        JavaScript code in various browsers.</p></div><div class="sect2" title="Solution"><div class="titlepage"><div><div><h3 class="title" id="solution-158">Solution</h3></div></div><div></div></div><p>While there are other unit testing frameworks for JavaScript, we
-        will take a look at <a class="ulink" href="http://jquery-cookbook.com/go/qunit" target="_top">QUnit</a>. QUnit
-        <a class="indexterm" name="I_indexterm18_d1e26619"></a>is jQuery&#8217;s unit test framework and is used by a wide
-        variety of projects.</p><p>To use QUnit, you need to include jQuery and two QUnit files on
-        your HTML page. QUnit consists of <code class="literal">qunit.js</code>, the test runner and testing
-        framework, and <code class="literal">qunit.css</code>, which styles the test
-        suite page to display test results:</p><pre class="programlisting" id="I_programlisting18_d1e26633">
-=======
         JavaScript code in various browsers.</p>
   <div class="sect2" title="Solution">
     <h3 class="title" id="solution-158">Solution</h3>
@@ -62,36 +53,17 @@ title: Tutorial
       QUnit is jQuery's unit test framework and is used by a wide variety of projects.</p>
     <p>To use QUnit, you only need to include two QUnit files on your HTML page. QUnit consists of <code class="literal">qunit.js</code>, the test runner and testing framework, and <code class="literal">qunit.css</code>, which styles the test
         suite page to display test results:</p>
-    <pre class="programlisting" id="I_programlisting18_d1e26633">
->>>>>>> Stashed changes
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
- &lt;title&gt;QUnit basic example&lt;/title&gt;
- &lt;link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css"&gt;
- &lt;script src="http://code.jquery.com/qunit/qunit-git.js"&gt;&lt;/script&gt;
 
-&lt;script&gt;
-  test( "a basic test example", function() {
-    var value = "hello";
-    equal( value, "hello", "We expect value to be hello" );
-  });
-&lt;/script&gt;
+    <code class="highlight" lang="html"><%=@partial('example-cookbook-1-basics.html')%></code>
 
-&lt;/head&gt;
-&lt;body&gt;
- &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
-&lt;/body&gt;
-<<<<<<< Updated upstream
-&lt;/html&gt;</pre><p>Opening this file in a browser gives the result shown in <a class="xref" href="#test_results_fig" title="Figure&nbsp;1.1.&nbsp;Test result in a browser">Figure&nbsp;1.1, &#8220;Test result in a browser&#8221;</a>.</p><div class="figure-float"><div class="figure"><p class="title" id="test_results_fig"><b>Figure&nbsp;1.1.&nbsp;Test result in a browser</b></p><div class="figure-contents"><div class="mediaobject"><img id="I_mediaobject18_d1e26642" src="figs/web/jqcb_1801.png" width="486" alt="Test result in a browser"></div></div></div><br class="figure-break"></div><p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit
-=======
-&lt;/html&gt;</pre>
-<p>Opening this file in a browser gives the result shown below:</p>
+    <p>Opening this file in a browser gives the result shown below:</p>
 
-<p>TODO: Embed example here, look at how Ben Boyle did it on his qunitjs.com draft</p>
+    <p>
+      <!-- todo: don't let Rick do stuff like this... ^RW -->
+      <iframe src="/static/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
+    </p>
 
-<p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="main"</code>. This is required for all QUnit
->>>>>>> Stashed changes
+    <p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="main"</code>. This is required for all QUnit
         tests, even when the element itself is empty. This provides the
         fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called &#8220;Keeping Tests Atomic&#8221;</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
         <code class="literal">testrunner.js</code> include. It consists
@@ -103,7 +75,11 @@ title: Tutorial
         <a class="xref" href="#asserting_results" title="Asserting Results">the section called &#8220;Asserting Results&#8221;</a>.</p><p>Note that there is no <code class="literal">document-ready</code> block. The test runner
         handles that: calling <code class="literal">test()</code> just
         adds the test to a queue, and its execution is deferred and controlled
-        by the test runner.</p></div><div class="sect2" title="Discussion"><div class="titlepage"><div><div><h3 class="title" id="discussion-id166">Discussion</h3></div></div><div></div></div><p>The header of the test suite displays the page title, a green
+        by the test runner.</p>
+    </div>
+    <div class="sect2" title="Discussion">
+      <h3 class="title" id="discussion-id166">Discussion</h3>
+      <p>The header of the test suite displays the page title, a green
         bar when all tests passed (a red bar when at least one test failed), a
         gray bar with the <code class="literal">navigator.userAgent</code> string (handy for
         screenshots of test results in different browsers), and a bar with a
@@ -124,23 +100,24 @@ title: Tutorial
         details).</p><p>Below the test results is a summary, showing the total time it
         took to run all tests as well as the overall number of total and
         failed assertions.</p>
-      </div></div>
-      <div class="sect1" title="Asserting Results">
-        <h2 class="title" id="asserting_results">Asserting Results</h2>
-        <div class="sect2" title="Problem">
-          <h3 class="title" id="problem-163">Problem</h3>
-          <p>Essential elements of any unit test are assertions. The author of the test needs to express the results expected and have the
-        unit testing framework compare them to the actual values that an implementation produces.</p>
-        <div class="sect2" title="Solution">
-          <h3 class="title" id="solution-159">Solution</h3>
-          <p>QUnit provides three assertions.</p>
-          <div class="sect3" title="ok( truthy [, message ] )">
-            <h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( truthy [, message ] )</h4>
-            <p>The most basic one is <code class="literal">ok()</code>, which requires just one argument.
-        If the argument evaluates to true, the assertion passes; otherwise, it fails. In
-          addition, it accepts a string to display as a message in the test
-          results:</p>
-          <pre class="programlisting" id="I_programlisting18_d1e26736">
+      </div>
+    </div>
+    <div class="sect1" title="Asserting Results">
+      <h2 class="title" id="asserting_results">Asserting Results</h2>
+      <div class="sect2" title="Problem">
+        <h3 class="title" id="problem-163">Problem</h3>
+        <p>Essential elements of any unit test are assertions. The author of the test needs to express the results expected and have the
+      unit testing framework compare them to the actual values that an implementation produces.</p>
+      <div class="sect2" title="Solution">
+        <h3 class="title" id="solution-159">Solution</h3>
+        <p>QUnit provides three assertions.</p>
+        <div class="sect3" title="ok( truthy [, message ] )">
+          <h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( truthy [, message ] )</h4>
+          <p>The most basic one is <code class="literal">ok()</code>, which requires just one argument.
+      If the argument evaluates to true, the assertion passes; otherwise, it fails. In
+        addition, it accepts a string to display as a message in the test
+        results:</p>
+        <code class="highlight" lang="javascript">
 test( "ok test", function() {
   ok( true, "true succeeds" );
   ok( "non-empty", "non-empty string succeeds" );
@@ -151,17 +128,17 @@ test( "ok test", function() {
   ok( "", "empty string fails" );
   ok( null, "null fails" );
   ok( undefined, "undefined fails" );
-});</pre>
-</div>
-<div class="sect3" title="equal( actual, expected [, message ] )">
-  <h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected [, message ] )</h4>
-  <p>The <code class="literal">equal</code>
+});</code>
+    </div>
+    <div class="sect3" title="equal( actual, expected [, message ] )">
+      <h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected [, message ] )</h4>
+      <p>The <code class="literal">equal</code>
           assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected
           arguments. When they are equal, the assertion passes; otherwise, it
           fails. When it fails, both actual and expected values are displayed
           in the test result, in addition to a given message:</p>
 
-<pre class="programlisting" id="I_programlisting18_d1e26752">
+      <code class="highlight" lang="javascript">
 test( "equal test", function() {
   equal( 0, 0, "Zero; equal succeeds" );
   equal( "", 0, "Empty, Zero; equal succeeds" );
@@ -171,8 +148,8 @@ test( "equal test", function() {
   equal( "three", 3, "Three, 3; equal fails" );
   equal( null, false, "null, false; equal fails" );
 });
-</pre>
-<p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
+</code>
+      <p>Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug
           tests that failed, because it's obvious which value caused the test
           to fail.</p>
     </div>
@@ -187,12 +164,12 @@ test( "equal test", function() {
           comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN,
           dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object
           identity:</p>
-      <pre class="programlisting" id="I_programlisting18_d1e26808">
+      <code class="highlight" lang="javascript">
 test( "deepEqual test", function() {
   var obj = { foo: "bar" };
 
   deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
-});</pre>
+});</code>
       <p>In case you want to explicitly not compare the content of two
           values, <code class="literal">equal()</code> can still be
           used. In general, <code class="literal">deepEqual()</code> is the
@@ -214,7 +191,7 @@ test( "deepEqual test", function() {
         other assertions, if any, produced.</p>
       <p>Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the
         number of expected assertions as the only argument:</p>
-      <pre class="programlisting" id="I_programlisting18_d1e26851">
+      <code class="highlight" lang="javascript">
 test( "a test", function() {
   expect( 2 );
 
@@ -229,13 +206,13 @@ test( "a test", function() {
 
   equal( result, 4, "2 square equals 4" );
 });
-</pre>
+</code>
 
       <p>
       Alternatively, the expectation count can be passed as the second parameter to test():
       </p>
 
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 test( "a test", 2, function() {
 
   function calc( x, operation ) {
@@ -249,13 +226,13 @@ test( "a test", 2, function() {
 
   equal( result, 4, "2 square equals 4" );
 });
-</pre>
+</code>
 
     <p>
     Practical Example:
     </p>
 
-<pre class="programlisting">
+    <code class="highlight" lang="javascript">
 test( "a test", 1, function() {
   var $body = $( "body" );
 
@@ -265,7 +242,7 @@ test( "a test", 1, function() {
 
   $body.trigger( "click" );
 });
-</pre>
+</code>
     </div>
     <div class="sect2" title="Discussion">
       <h3 class="title" id="discussion-id167">Discussion</h3>
@@ -295,7 +272,7 @@ test( "a test", 1, function() {
       <p>
         Instead of wrapping your assertions in a <code class="literal">test()</code>, use <code class="literal">asyncTest()</code> and call <code class="literal">start()</code> when your test block is complete and ready to resume:
         </p>
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 asyncTest( "asynchronous test: one second later!", function() {
   expect( 1 );
 
@@ -304,12 +281,12 @@ asyncTest( "asynchronous test: one second later!", function() {
     start();
   }, 1000);
 });
-</pre>
+</code>
       <p>
       Practical Example:
       </p>
 
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 
 asyncTest( "asynchronous test: video ready to play", 1, function() {
   var $video = $( "video" );
@@ -320,7 +297,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
   });
 });
 
-</pre>
+</code>
     </div>
   </div>
   <div class="sect1" title="Testing User Actions">
@@ -340,7 +317,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
         useful when testing a click event on a link, where <code class="literal">trigger()</code> would cause the browser to change
         the location, which is hardly desired behavior in a test.</p><p>Let's assume we have a simple key logger that we want to
         test:</p>
-<pre class="programlisting">
+        <code class="highlight" lang="javascript">
 function KeyLogger( target ) {
   if ( !(this instanceof KeyLogger) ) {
     return new KeyLogger( target );
@@ -354,10 +331,10 @@ function KeyLogger( target ) {
     self.log.push( event.keyCode );
   });
 }
-</pre>
-<p>We can manually trigger a keypress event to see whether the
+</code>
+      <p>We can manually trigger a keypress event to see whether the
         logger is working:</p>
-<pre class="programlisting">
+      <code class="highlight" lang="javascript">
 test( "keylogger api behavior", function() {
 
   var event,
@@ -373,11 +350,11 @@ test( "keylogger api behavior", function() {
   equal( keys.log.length, 1, "a key was logged" );
   equal( keys.log[ 0 ], 9, "correct key was logged" );
 
-});</pre>
-  </div>
-  <div class="sect2" title="Discussion">
-    <h3 class="title" id="discussion-id169">Discussion</h3>
-    <p>If your event handler doesn't rely on any specific properties of
+});</code>
+    </div>
+    <div class="sect2" title="Discussion">
+      <h3 class="title" id="discussion-id169">Discussion</h3>
+      <p>If your event handler doesn't rely on any specific properties of
           the event, you can just call <code class="literal">.trigger(eventType)</code>. However, if your event
           handler does rely on specific properties of the event, you will need
           to create an event object using <code class="literal">$.Event</code> and set the necessary properties, as
@@ -398,7 +375,8 @@ test( "keylogger api behavior", function() {
       <p>When tests are lumped together, it's possible to have
         tests that should pass but fail or tests that should fail but pass.
         This is a result of a test having invalid results because of side
-        effects of a previous test:</p><pre class="programlisting">
+        effects of a previous test:</p>
+      <code class="highlight" lang="javascript">
 test( "2 asserts", function() {
   var $fixture = $( "#qunit-fixture" );
 
@@ -408,7 +386,7 @@ test( "2 asserts", function() {
   $fixture.append( "&lt;span&gt;hello!&lt;/span&gt;" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
-</pre>
+</code>
       <p>The first <code class="literal">append()</code>
         adds a <code class="literal">&lt;div&gt;</code> that the second
         <code>equal()</code> doesn't take into account.</p>
@@ -420,7 +398,7 @@ test( "2 asserts", function() {
         possible side effects. You should only rely on the fixture markup,
         inside the <code class="literal">#qunit-fixture</code> element. Modifying
         and relying on anything else can have side effects:</p>
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 
 test( "Appends a div", function() {
   var $fixture = $( "#qunit-fixture" );
@@ -435,7 +413,7 @@ test( "Appends a span", function() {
   $fixture.append("&lt;span&gt;hello!&lt;/span&gt;" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
-</pre>
+</code>
       <p>QUnit will reset the elements inside the <code class="literal">#qunit-fixture</code> element after each test, removing any
         events that may have existed. As long as you use elements only within
         this fixture, you don't have to manually clean up after your tests to
@@ -446,12 +424,12 @@ test( "Appends a span", function() {
       <p>In addition to the <code class="literal">#qunit-fixture</code>
         fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
         test:</p>
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 test( "global pollution", function() {
   window.pollute = true;
   ok( pollute, "nasty pollution" );
 });
-</pre>
+</code>
       <p>In a normal test run, this passes as a valid result. Running the
         <code>ok()</code> test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top">noglobals flag</a> will cause the test
         to fail, because QUnit detected that it polluted the window
@@ -475,7 +453,7 @@ test( "global pollution", function() {
       <h3 class="title" id="solution-166">Solution</h3>
       <p>You can use the <code class="literal">module()</code>
         function to group tests together:</p>
-      <pre class="programlisting" id="I_programlisting18_d1e27122">
+      <code class="highlight" lang="javascript">
 module( "group a" );
 test( "a basic test example", function() {
   ok( true, "this test is fine" );
@@ -490,7 +468,7 @@ test( "a basic test example 3", function() {
 });
 test( "a basic test example 4", function() {
   ok( true, "this test is fine" );
-});</pre>
+});</code>
       <p>All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module.
         The test names will all be preceded by the module name in the test
         results. You can then use that module name to select tests to run (see
@@ -502,7 +480,7 @@ test( "a basic test example 4", function() {
         from tests within that module. The <code class="literal">module()</code> function takes an optional second
         parameter to define functions to run before and after each test within
         the module:</p>
-      <pre class="programlisting">
+      <code class="highlight" lang="javascript">
 module( "module", {
   setup: function() {
     ok( true, "one extra assert per test" );
@@ -512,7 +490,7 @@ module( "module", {
 });
 test( "test with setup and teardown", function() {
   expect( 2 );
-});</pre>
+});</code>
       <p>You can specify both setup and teardown properties together, or
         just one of them.</p><p>Calling <code class="literal">module()</code> again
         without the additional argument will simply reset any setup/teardown
@@ -535,7 +513,7 @@ test( "test with setup and teardown", function() {
         query string with the module name to the test suite URL. For example,
         <code class="literal">test.html?filter=validation</code> will run all tests
         in the module named <code class="literal">validation</code>:</p>
-<pre class="programlisting" id="I_programlisting18_d1e27178">
+      <code class="highlight" lang="javascript">
 // test.html?filter=validation - just the validation module
 // test.html?filter=test 3 - just "test 3"
 
@@ -559,7 +537,7 @@ module( "other" );
 test( "test 5", function () {
   equal( 3, 5, "equal fails" );
 });
-</pre>
+</code>
     </div>
     <div class="sect2" title="Discussion">
       <h3 class="title" id="discussion-id172">Discussion</h3>
