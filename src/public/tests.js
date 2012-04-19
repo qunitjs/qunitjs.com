@@ -1,3 +1,3 @@
 test( "hello test", function() {
-  ok( true, "Passed!" );
+  ok( 5 > 0, "Passed!" );
 });
