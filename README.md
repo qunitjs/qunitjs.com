@@ -10,4 +10,6 @@
 
 ## Export to WordPress
 
-Coming soon!
+* [Install Grunt](https://github.com/cowboy/grunt), usually `npm install grunt -g` is enough
+* Run the default task, `render`: `grunt`
+* TODO: Get files from `export` folder into WordPress
