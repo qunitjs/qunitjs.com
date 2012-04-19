@@ -33,9 +33,7 @@ menuOrder: 10
 
     A minimal QUnit test setup:
 
-<code class="highlight" lang="html">
-  <%=@partial('example-index.html')%>
-</code>
+<code class="highlight" lang="html"><%=@partial('example-index.html')%></code>
 
     The contents of tests.js:
 
