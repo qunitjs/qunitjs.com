@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>QUnit basic example</title>
   <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
   <script src="http://code.jquery.com/qunit/qunit-git.js"></script>
   <script>
     test( "a basic test example", function() {
@@ -10,9 +15,5 @@
       equal( value, "hello", "We expect value to be hello" );
     });
   </script>
-</head>
-<body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
 </body>
 </html>
