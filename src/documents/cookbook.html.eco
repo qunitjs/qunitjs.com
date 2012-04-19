@@ -67,7 +67,7 @@ menuOrder: 20
       <iframe src="/static/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
     </p>
 
-    <p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="main"</code>. This is required for all QUnit
+    <p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit
         tests, even when the element itself is empty. This provides the
         fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called &#8220;Keeping Tests Atomic&#8221;</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
         <code class="literal">testrunner.js</code> include. It consists
@@ -290,7 +290,7 @@ asyncTest( "asynchronous test: one second later!", function() {
       Practical Example:
       </p>
 
-      <code class="highlight" lang="javascript">
+<code class="highlight" lang="javascript">
 
 asyncTest( "asynchronous test: video ready to play", 1, function() {
   var $video = $( "video" );
@@ -321,7 +321,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
         useful when testing a click event on a link, where <code class="literal">trigger()</code> would cause the browser to change
         the location, which is hardly desired behavior in a test.</p><p>Let's assume we have a simple key logger that we want to
         test:</p>
-        <code class="highlight" lang="javascript">
+<code class="highlight" lang="javascript">
 function KeyLogger( target ) {
   if ( !(this instanceof KeyLogger) ) {
     return new KeyLogger( target );
@@ -384,10 +384,10 @@ test( "keylogger api behavior", function() {
 test( "2 asserts", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append( "&lt;div&gt;hello!&lt;/div&gt;" );
+  $fixture.append( "<div>hello!</div>" );
   equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 
-  $fixture.append( "&lt;span&gt;hello!&lt;/span&gt;" );
+  $fixture.append( "<span>hello!</span>" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
 </code>
@@ -407,14 +407,14 @@ test( "2 asserts", function() {
 test( "Appends a div", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append( "&lt;div&gt;hello!&lt;/div&gt;" );
+  $fixture.append( "<div>hello!</div>" );
   equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 });
 
 test( "Appends a span", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append("&lt;span&gt;hello!&lt;/span&gt;" );
+  $fixture.append("<span>hello!</span>" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
 </code>
