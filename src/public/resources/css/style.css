@@ -2327,3 +2327,7 @@
 			border-radius: 0; }
 
 	}
+
+pre {
+  padding: 10px !important;
+}
