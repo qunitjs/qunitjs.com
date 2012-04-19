@@ -9,11 +9,5 @@
 	},
 	"engines" : {
 		"node": ">=0.4.0"
-	},
-  "docpad": {
-    "enableUnlistedPlugins": true,
-    "enabledPlugins": {
-      "pygments": true
-    }
-  }
+	}
 }
