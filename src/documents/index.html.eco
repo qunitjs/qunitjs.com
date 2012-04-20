@@ -26,6 +26,9 @@ menuOrder: 10
     <p>
         QUnit was originally developed by John Resig as part of jQuery. In 2008 it got its own home, name and API documentation, allowing others to use it for their unit testing as well. At the time it still dependended on jQuery. A rewrite in 2009 fixed that, now QUnit runs completelty standalone.
     </p>
+    <p>
+      QUnit's assertion methods follow the <a href="http://wiki.commonjs.org/wiki/Unit_Testing/1.0">CommonJS Unit Testing</a> specification, which was to some degree influenced by QUnit. A notable exception is <code class="literal">throws</code> (a reserved JavaScript identifier), which is called <code class="literal">raises</code> in QUnit.
+    </p>
   </div>
 
   <div class="col2-1">
