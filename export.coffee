@@ -22,7 +22,7 @@ docpadInstance = docpad.createInstance config, (err) ->
     docpadInstance.action 'generate', (err) ->
         # Check
         throw err  if err
-        #console.log(inspect(docpadInstance))
+
         # Save all the documents somewhere without their layouts
         docpadInstance.documents.forEach (document) ->
             # Prepare
@@ -33,3 +33,6 @@ docpadInstance = docpad.createInstance config, (err) ->
             result = fs.writeFileSync(outNoLayoutsPath, contentRenderedWithoutLayouts)
             if result instanceof Error
                 throw result
+
+        # Done
+        logger.log 'info', 'Export OK.'

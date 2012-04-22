@@ -2,6 +2,8 @@
 	"name": "qunitjs.com",
 	"version": "0.0.0",
 	"dependencies": {
+		"mkdirp": "latest",
+		"coffee-script": "1.3.x",
 		"docpad": "5.0.x",
 		"docpad-plugin-eco": "latest",
 		"docpad-plugin-partials": "latest",
