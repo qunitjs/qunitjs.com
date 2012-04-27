@@ -8,7 +8,7 @@
 		"docpad-plugin-eco": "latest",
 		"docpad-plugin-partials": "latest",
 		"docpad-plugin-pygments": "latest",
-		"grunt-wordpress": "0.0.1",
+		"grunt-wordpress": "0.0.2",
 		"grunt-html": "0.1.1"
 	},
 	"engines" : {
