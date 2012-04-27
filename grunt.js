@@ -2,11 +2,12 @@
 module.exports = function( grunt ) {
 
 grunt.loadNpmTasks( "grunt-wordpress" );
+grunt.loadNpmTasks( "grunt-html" );
 
 grunt.initConfig({
 	wordpress: grunt.file.readJSON( "config.json" ),
 	htmllint: {
-		out: "out/**/*.html"
+		out: "out/*.html"
 	}
 });
 
@@ -23,7 +24,5 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 		done();
 	});
 });
-
-grunt.registerTask( "default", "build htmllint" );
 
 };

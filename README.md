@@ -11,5 +11,6 @@
 ## Export to WordPress
 
 * [Install Grunt](https://github.com/cowboy/grunt), usually `npm install grunt -g` is enough
-* Run the default task, `render`: `grunt`
-* TODO: Get files from `export` folder into WordPress
+* Make a copy of config-sample.json, rename to config.json
+* Update config.json to point to local WordPress site
+* Run `grunt wordpress-publish`

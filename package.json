@@ -9,7 +9,7 @@
 		"docpad-plugin-partials": "latest",
 		"docpad-plugin-pygments": "latest",
 		"grunt-wordpress": "0.0.1",
-		"wordpress": "0.0.4"
+		"grunt-html": "0.1.1"
 	},
 	"engines" : {
 		"node": ">=0.4.0"
