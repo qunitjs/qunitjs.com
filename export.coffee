@@ -7,7 +7,7 @@ mkdirp = require('mkdirp').sync
 
 # Config
 config =
-    outNoLayoutsPath: path.join(__dirname,'out_export')
+    outNoLayoutsPath: path.join(__dirname, 'dist/page')
 
 # Create required directories
 mkdirp(config.outNoLayoutsPath + '/static')

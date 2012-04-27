@@ -1,3 +1,4 @@
 node_modules
 out
-out_export
+dist
+config.json

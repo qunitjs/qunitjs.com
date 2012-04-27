@@ -1,0 +1,7 @@
+{
+	"host": "wordpress.local",
+	"port": 80,
+	"path": "/xmlrpc.php",
+	"username": "admin",
+	"password": "admin"
+}
