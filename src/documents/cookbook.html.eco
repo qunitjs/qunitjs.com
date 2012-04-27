@@ -71,14 +71,14 @@ menuOrder: 20
 
     <p>The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit
         tests, even when the element itself is empty. This provides the
-        fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called &#8220;Keeping Tests Atomic&#8221;</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
+        fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.</p><p>The interesting part is the <code class="literal">&lt;script&gt;</code> element following the
         <code class="literal">testrunner.js</code> include. It consists
         of a call to the <code class="literal">test</code> function,
         with two arguments: the name of the test as a string, which is later
         used to display the test results, and a function. The function
         contains the actual testing code, which involves one or more
         assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in
-        <a class="xref" href="#asserting_results" title="Asserting Results">the section called &#8220;Asserting Results&#8221;</a>.</p><p>Note that there is no <code class="literal">document-ready</code> block. The test runner
+        <a class="xref" href="#asserting_results" title="Asserting Results">the section called "Asserting Results"</a>.</p><p>Note that there is no <code class="literal">document-ready</code> block. The test runner
         handles that: calling <code class="literal">test()</code> just
         adds the test to a queue, and its execution is deferred and controlled
         by the test runner.</p>
@@ -89,11 +89,11 @@ menuOrder: 20
         bar when all tests passed (a red bar when at least one test failed), a
         gray bar with the <code class="literal">navigator.userAgent</code> string (handy for
         screenshots of test results in different browsers), and a bar with a
-        few checkboxes to filter test results.</p><p>&#8220;Hide passed tests&#8221; is useful when a lot of tests ran and only a
+        few checkboxes to filter test results.</p><p>"Hide passed tests" is useful when a lot of tests ran and only a
         few failed. Checking the checkbox will hide everything that passed,
-        making it easier to focus on the tests that failed.</p><p>&#8220;Hide missing tests&#8221; is useful when you have a lot of tests that
-        are just placeholders, indicated by the test name &#8220;missing
-        test&#8212;untested code is broken code.&#8221; This can be useful when you have a
+        making it easier to focus on the tests that failed.</p><p>"Hide missing tests" is useful when you have a lot of tests that
+        are just placeholders, indicated by the test name "missing
+        test&#8212;untested code is broken code." This can be useful when you have a
         large untested code base and added placeholders for every test that
         still needs to be written. In order to focus on tests that are already
         implemented, you can use the checkbox to temporarily hide the
@@ -102,7 +102,7 @@ menuOrder: 20
         parentheses, the number of failed, passed, and total assertions.
         Clicking the entry will show the results of each assertion, usually
         with details about expected and actual results. Double-clicking will
-        run just that test (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a> for
+        run just that test (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a> for
         details).</p><p>Below the test results is a summary, showing the total time it
         took to run all tests as well as the overall number of total and
         failed assertions.</p>
@@ -255,7 +255,7 @@ test( "a test", 1, function() {
 
     <h3 class="title" id="problem-165">Problem</h3>
       <p>While <code class="literal">expect()</code> is
-      useful to test synchronous callbacks (see <a class="xref" href="#synchronous_callbacks" title="Synchronous Callbacks">the section called &#8220;Synchronous Callbacks&#8221;</a>), it falls short when
+      useful to test synchronous callbacks (see <a class="xref" href="#synchronous_callbacks" title="Synchronous Callbacks">the section called "Synchronous Callbacks"</a>), it falls short when
       Asynchronous callbacks. Asynchronous callbacks conflict with
       the way the test runner queues and executes tests. When code under
       test starts a timeout or interval or an Ajax request, the test runner
@@ -407,7 +407,7 @@ test( "Appends a span", function() {
 
       <h3 class="title" id="discussion-id170">Discussion</h3>
       <p>In addition to the <code class="literal">#qunit-fixture</code>
-        fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
+        fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following
         test:</p>
 <code class="highlight" lang="javascript">
 test( "global pollution", function() {
@@ -453,7 +453,7 @@ test( "a basic test example 4", function() {
       <p>All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module.
         The test names will all be preceded by the module name in the test
         results. You can then use that module name to select tests to run (see
-        <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called &#8220;Selecting Tests to Run&#8221;</a>).</p>
+        <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>).</p>
 
       <h3 class="title" id="discussion-id171">Discussion</h3>
       <p>In addition to grouping tests, <code class="literal">module()</code> can be used to extract common code
