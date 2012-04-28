@@ -2,6 +2,8 @@
 	"name": "qunitjs.com",
 	"version": "0.0.0",
 	"dependencies": {
+		"grunt": "0.3.x",
+		"rimraf": "latest",
 		"mkdirp": "latest",
 		"docpad": "5.1.x",
 		"docpad-plugin-eco": "latest",
