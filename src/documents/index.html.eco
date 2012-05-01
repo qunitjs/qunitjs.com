@@ -1,11 +1,9 @@
 ---
-title: Overview
+title: "QUnit: A JavaScript Unit Testing framework."
 layout: default
 menuOrder: 10
 ---
 
-<div class="clearfix inner">
-  <h2 class="title">QUnit: A JavaScript Unit Testing framework.</h2>
   <div class="col2-1">
     <h2>What is QUnit?</h2>
     <p class="blurb">
@@ -55,4 +53,3 @@ test( "hello test", function() {
       <iframe src="/static/example-index.html" style="width:100%;height:300px;border:0px"></iframe>
     </p>
   </div>
-</div>

@@ -44,7 +44,7 @@
 				<ul>
 					<% for document in @database.findAll(menuOrder: $exists: true).sortArray(menuOrder:1): %>
 						<li class="<%= 'active'  if @document.url is document.url %>">
-							<a href="<%= document.url %>" property="dc:title"><%= document.title %></a>
+							<a href="<%= document.url %>" property="dc:title"><% if document.url is "/index.html": %>Overview<% else: %><%= document.title %><% end %></a>
 						</li>
 					<% end %>
 				</ul>
@@ -62,7 +62,10 @@
 
 		<!-- body -->
 		<div id="body" class="clearfix{% if page.sidebar == true %} sidebar-right{% endif %}">
-			<%-@content%>
+			<div class="clearfix inner">
+				<h2 class="title"><%=@document.title%></h2>
+				<%-@content%>
+			</div>
 		</div>
 		<!-- /body -->
 
