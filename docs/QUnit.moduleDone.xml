@@ -1,0 +1,8 @@
+<entry type="method" name="QUnit.moduleDone">
+	<signature>
+		<argument name="callback">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc></desc>
+</entry>

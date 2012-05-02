@@ -1,0 +1,10 @@
+<entry type="method" name="stop">
+	<signature>
+		<argument name="increment">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc>
+		Stop the testrunner to wait for async tests to run. Call start() to continue.
+	</desc>
+</entry>

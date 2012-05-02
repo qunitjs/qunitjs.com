@@ -1,0 +1,16 @@
+<entry type="method" name="test">
+	<signature>
+		<argument name="title">
+			<desc></desc>
+		</argument>
+		<argument name="expected">
+			<desc></desc>
+		</argument>
+		<argument name="test">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc>
+		Add a test to run.
+	</desc>
+</entry>

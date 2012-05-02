@@ -1,0 +1,10 @@
+<entry type="method" name="start">
+	<signature>
+		<argument name="decrement">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc>
+		Start running tests again after the testrunner was stopped. See stop().
+	</desc>
+</entry>

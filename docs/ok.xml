@@ -1,0 +1,13 @@
+<entry type="method" name="ok">
+	<signature>
+		<argument name="state">
+			<desc></desc>
+		</argument>
+		<argument name="message">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc>
+		A boolean assertion, equivalent to JUnit’s assertTrue. Passes if the first argument is truthy.
+	</desc>
+</entry>

@@ -1,0 +1,16 @@
+<entry type="method" name="equal">
+	<signature>
+		<argument name="actual">
+			<desc></desc>
+		</argument>
+		<argument name="expected">
+			<desc></desc>
+		</argument>
+		<argument name="message">
+			<desc></desc>
+		</argument>
+	</signature>
+	<desc>
+		A comparison assertion, equivalent to JUnit’s assertEquals.
+	</desc>
+</entry>
