@@ -13,7 +13,7 @@
 
   <link rel="shortcut icon" href="/resources/i/favicon.ico">
   <link rel="stylesheet" href="/resources/css/style.css?v=1">
-  <link rel="stylesheet" href="/resources/css/syntax-highlight.css?v=1">
+  <link rel="stylesheet" href="/resources/css/theme-style.css?v=1">
 
   <script src="/resources/js/respond.min.js"></script>
   <script src="/resources/js/modernizr-1.5.min.js"></script>
@@ -61,9 +61,9 @@
 		<!-- /header -->
 
 		<!-- body -->
-		<div id="body" class="clearfix{% if page.sidebar == true %} sidebar-right{% endif %}">
+		<div id="body" class="clearfix">
 			<div class="clearfix inner">
-				<h2 class="title"><%=@document.title%></h2>
+				<h1 class="entry-title"><%=@document.title%></h1>
 				<%-@content%>
 			</div>
 		</div>
