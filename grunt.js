@@ -4,20 +4,29 @@ grunt.loadNpmTasks( "grunt-wordpress" );
 grunt.loadNpmTasks( "grunt-html" );
 
 grunt.initConfig({
-	wordpress: grunt.file.readJSON( "config.json" ),
 	htmllint: {
-		out: "out/*.html"
-	},
-	lint: {
-		grunt: "grunt.js"
+		out: "out/*.html",
+		resources: "resources/*.html"
 	},
 	jshint: {
 		options: {
 			undef: true,
 			node: true
 		}
-	}
+	},
+	lint: {
+		grunt: "grunt.js"
+	},
+	wordpress: grunt.utils._.extend({
+		dir: "dist/wordpress"
+	}, grunt.file.readJSON( "config.json" ) )
 });
+
+var // modules
+	path = require( "path" ),
+	
+	// files
+	resourceFiles = grunt.file.expandFiles( "resources/*" );
 
 function scriptHeader( document ) {
 	return "<script>{\n" +
@@ -33,7 +42,7 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 		path = require( "path" ),
 		mkdirp = require( "mkdirp" ).sync,
 		rimraf = require( "rimraf" ).sync,
-		distDir = path.join( __dirname, "dist/page" );
+		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "page" );
 
 
 	// Create required directories
@@ -70,6 +79,28 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 	});
 });
 
+grunt.registerTask( "build-resources", function() {
+	var task = this,
+		taskDone = task.async(),
+		targetDir = grunt.config( "wordpress.dir" ) + "/resources/";
+
+	grunt.file.mkdir( targetDir );
+
+	grunt.utils.async.forEachSeries( resourceFiles, function( fileName, fileDone )  {
+		grunt.file.copy( fileName, targetDir + path.basename( fileName ) );
+		fileDone();
+	}, function() {
+		if ( task.errorCount ) {
+			grunt.warn( "Task \"" + task.name + "\" failed." );
+			taskDone();
+			return;
+		}
+		grunt.log.writeln( "Built " + resourceFiles.length + " resources." );
+		taskDone();
+	});
+});
+
 grunt.registerTask( "default", "lint" );
+grunt.registerTask( "build-wordpress", "lint build build-resources");
 
 };
