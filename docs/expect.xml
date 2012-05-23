@@ -7,4 +7,5 @@
 	<desc>
 		Specify how many assertions are expected to run within a test.
 	</desc>
+	<category slug="test"/>
 </entry>

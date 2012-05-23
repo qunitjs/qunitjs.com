@@ -13,4 +13,5 @@
 	<desc>
 		A stricter comparison assertion then notEqual.
 	</desc>
+	<category slug="assert"/>
 </entry>

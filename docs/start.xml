@@ -7,4 +7,5 @@
 	<desc>
 		Start running tests again after the testrunner was stopped. See stop().
 	</desc>
+	<category slug="async-control"/>
 </entry>

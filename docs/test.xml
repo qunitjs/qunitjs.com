@@ -13,4 +13,5 @@
 	<desc>
 		Add a test to run.
 	</desc>
+	<category slug="test"/>
 </entry>

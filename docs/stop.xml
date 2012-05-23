@@ -7,4 +7,5 @@
 	<desc>
 		Stop the testrunner to wait for async tests to run. Call start() to continue.
 	</desc>
+	<category slug="async-control"/>
 </entry>

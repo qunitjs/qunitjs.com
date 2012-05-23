@@ -10,4 +10,5 @@
 	<desc>
 		Separate tests into modules.
 	</desc>
+	<category slug="test"/>
 </entry>

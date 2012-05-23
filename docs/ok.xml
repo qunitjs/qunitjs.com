@@ -10,4 +10,5 @@
 	<desc>
 		A boolean assertion, equivalent to JUnit’s assertTrue. Passes if the first argument is truthy.
 	</desc>
+	<category slug="assert"/>
 </entry>

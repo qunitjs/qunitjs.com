@@ -13,4 +13,5 @@
 	<desc>
 		A comparison assertion, equivalent to JUnit’s assertEquals.
 	</desc>
+	<category slug="assert"/>
 </entry>
