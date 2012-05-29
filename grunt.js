@@ -42,7 +42,7 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 		path = require( "path" ),
 		mkdirp = require( "mkdirp" ).sync,
 		rimraf = require( "rimraf" ).sync,
-		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "page" );
+		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "posts/page" );
 
 
 	// Create required directories
@@ -102,5 +102,6 @@ grunt.registerTask( "build-resources", function() {
 
 grunt.registerTask( "default", "lint" );
 grunt.registerTask( "build-wordpress", "lint build build-resources");
+grunt.registerTask( "deploy", "wordpress-deploy" );
 
 };
