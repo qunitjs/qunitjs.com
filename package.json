@@ -3,7 +3,6 @@
 	"version": "0.0.0",
 	"dependencies": {
 		"grunt": "0.3.x",
-		"mkdirp": "latest",
 		"docpad": "5.1.x",
 		"docpad-plugin-eco": "latest",
 		"docpad-plugin-partials": "latest",

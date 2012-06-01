@@ -44,11 +44,10 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 		docpad = require( "docpad" ),
 		fs = require( "fs" ),
 		path = require( "path" ),
-		mkdirp = require( "mkdirp" ).sync,
 		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "posts/page" );
 
 	// Create required directories
-	mkdirp( distDir );
+	grunt.file.mkdir( distDir );
 
 	// Create DocPad, and wait for it to load
 	docpadInstance = docpad.createInstance({}, function( err ) {
