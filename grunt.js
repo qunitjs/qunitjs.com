@@ -1,9 +1,13 @@
 module.exports = function( grunt ) {
 
-grunt.loadNpmTasks( "grunt-wordpress" );
+grunt.loadNpmTasks( "grunt-clean" );
 grunt.loadNpmTasks( "grunt-html" );
+grunt.loadNpmTasks( "grunt-wordpress" );
 
 grunt.initConfig({
+	clean: {
+		folder: "dist"
+	},
 	htmllint: {
 		out: "out/*.html",
 		resources: "resources/*.html"
@@ -41,12 +45,9 @@ grunt.registerTask( "build", "Render documents without layout using docpad-rende
 		fs = require( "fs" ),
 		path = require( "path" ),
 		mkdirp = require( "mkdirp" ).sync,
-		rimraf = require( "rimraf" ).sync,
 		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "posts/page" );
 
-
 	// Create required directories
-	rimraf( distDir );
 	mkdirp( distDir );
 
 	// Create DocPad, and wait for it to load
@@ -101,7 +102,7 @@ grunt.registerTask( "build-resources", function() {
 });
 
 grunt.registerTask( "default", "lint" );
-grunt.registerTask( "build-wordpress", "lint build build-resources");
+grunt.registerTask( "build-wordpress", "clean lint build build-resources");
 grunt.registerTask( "deploy", "wordpress-deploy" );
 
 };

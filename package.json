@@ -3,14 +3,14 @@
 	"version": "0.0.0",
 	"dependencies": {
 		"grunt": "0.3.x",
-		"rimraf": "latest",
 		"mkdirp": "latest",
 		"docpad": "5.1.x",
 		"docpad-plugin-eco": "latest",
 		"docpad-plugin-partials": "latest",
 		"docpad-plugin-pygments": "latest",
-		"grunt-wordpress": "0.1.0",
-		"grunt-html": "0.1.1"
+		"grunt-clean": "latest",
+		"grunt-html": "0.1.1",
+		"grunt-wordpress": "0.1.0"
 	},
 	"engines" : {
 		"node": ">=0.4.0"
