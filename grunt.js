@@ -6,7 +6,7 @@ grunt.loadNpmTasks( "grunt-wordpress" );
 
 grunt.initConfig({
 	clean: {
-		folder: "dist"
+		folder: "dist/"
 	},
 	htmllint: {
 		out: "out/*.html",
