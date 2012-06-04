@@ -53,7 +53,7 @@ grunt.registerTask( "build-pages", function() {
 	grunt.file.expand( "page/**.html" ).forEach(function( file ) {
 		grunt.file.copy( file, distDir + "/" + path.basename( file ), {
 			process: function( content ) {
-				return content.replace(/@partial\((.+)\)/, function(match, input) {
+				return content.replace(/@partial\((.+)\)/g, function(match, input) {
 					return htmlEscape( grunt.file.read( input ) );
 				});
 			}
