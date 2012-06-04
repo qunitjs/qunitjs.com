@@ -1,8 +1,6 @@
----
-title: "QUnit: A JavaScript Unit Testing framework."
-layout: default
-menuOrder: 10
----
+<script>{
+  "title": "QUnit: A JavaScript Unit Testing framework."
+}</script>
 
   <div class="col2-1">
     <h2>What is QUnit?</h2>
@@ -32,22 +30,21 @@ menuOrder: 10
 
     A minimal QUnit test setup:
 
-<code class="highlight" lang="html"><%=@partial('example-index.html')%></code>
+<pre><code>@partial(resources/example-index.html)</code></pre>
 
     The contents of tests.js:
 
-<code class="highlight" lang="javascript">
+<pre><code>
 test( "hello test", function() {
   ok( 1 == "1", "Passed!" );
 });
-</code>
+</code></pre>
 
     <p>
       The result:
     </p>
 
     <p>
-      <!-- todo: don't let Rick do stuff like this... ^RW -->
-      <iframe src="/static/example-index.html" style="width:100%;height:300px;border:0px"></iframe>
+      <iframe src="/resources/example-index.html" style="width:100%;height:300px;border:0px"></iframe>
     </p>
   </div>

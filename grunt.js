@@ -28,55 +28,47 @@ grunt.initConfig({
 
 var // modules
 	path = require( "path" ),
-	
-	// files
-	resourceFiles = grunt.file.expandFiles( "resources/*" );
+	pygmentize = require( "pygmentize" ),
 
-function scriptHeader( document ) {
-	return "<script>{\n" +
-		"\t\"title\": \"" + document.attributes.title + "\"\n" +
-		"}</script>\n\n";
+	// files
+	resourceFiles = grunt.file.expandFiles( "resources/*" ),
+	distDir = grunt.config( "wordpress.dir" ) + "/posts/page";
+
+function htmlEscape(text) {
+   return text.replace(/&/g,'&amp;').
+     replace(/</g, '&lt;').
+     replace(/>/g, '&gt;').
+     replace(/"/g, '&quot;').
+     replace(/'/g, '&#039;');
 }
 
-grunt.registerTask( "build", "Render documents without layout using docpad-render", function() {
-	var docpadInstance,
-		done = this.async(),
-		docpad = require( "docpad" ),
-		fs = require( "fs" ),
-		path = require( "path" ),
-		distDir = path.join( __dirname, grunt.config( "wordpress.dir" ), "posts/page" );
-
-	// Create required directories
+grunt.registerTask( "build-pages", function() {
 	grunt.file.mkdir( distDir );
-
-	// Create DocPad, and wait for it to load
-	docpadInstance = docpad.createInstance({}, function( err ) {
-		if ( err ) {
-			throw err;
-		}
-
-		// Generate the website
-		docpadInstance.action( "generate", function( err ) {
-			if ( err ) {
-				throw err;
+	grunt.file.expand( "page/**.html" ).forEach(function( file ) {
+		grunt.file.copy( file, distDir + "/" + path.basename( file ), {
+			process: function( content ) {
+				return content.replace(/@partial\((.+)\)/, function(match, input) {
+					return htmlEscape( grunt.file.read( input ) );
+				});
 			}
-
-			// Save all the documents somewhere without their layouts
-			docpadInstance.documents.forEach( function( document ) {
-				var content = document.get( "contentRenderedWithoutLayouts" ),
-					filePath = path.join( distDir, document.get( "relativePath" ) ).replace( /\.eco$/, "" ),
-					// Save the file
-					result = fs.writeFileSync(filePath, scriptHeader( document ) + content );
-
-				if ( result instanceof Error ) {
-					throw result;
-				}
-			});
-
-			grunt.log.writeln( "Generated" );
-			done();
 		});
 	});
+});
+
+grunt.registerTask( "build-pygmentize", function() {
+	grunt.utils.async.forEachSeries( grunt.file.expand( distDir + "/**.html" ), function( fileName, fileDone )  {
+		console.log("pygmentizing", fileName);
+		pygmentize.file( fileName, function( error, data ) {
+			if ( error ) {
+				grunt.verbose.error();
+				grunt.log.error( error );
+				fileDone();
+				return;
+			}
+			grunt.file.write( fileName, data );
+			fileDone();
+		});
+	}, this.async());
 });
 
 grunt.registerTask( "build-resources", function() {
@@ -101,7 +93,7 @@ grunt.registerTask( "build-resources", function() {
 });
 
 grunt.registerTask( "default", "lint" );
-grunt.registerTask( "build-wordpress", "clean lint build build-resources");
+grunt.registerTask( "build-wordpress", "clean lint build-pages build-pygmentize build-resources");
 grunt.registerTask( "deploy", "wordpress-deploy" );
 
 };

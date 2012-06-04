@@ -1,8 +1,6 @@
----
-layout: default
-title: Cookbook
-menuOrder: 20
----
+<script>{
+  "title": "Cookbook"
+}</script>
 
 <div class="col3-1">
   <ul>
@@ -45,11 +43,11 @@ menuOrder: 20
   <p>
     To use QUnit, you only need to include two QUnit files on your HTML page. QUnit consists of <code class="literal">qunit.js</code>, the test runner and testing framework, and <code class="literal">qunit.css</code>, which styles the test suite page to display test results:
   </p>
-  <code class="highlight" lang="html"><%=@partial('example-cookbook-1-basics.html')%></code>
+  <pre><code>@partial(resources/example-cookbook-1-basics.html)</code></pre>
   <p>Opening this file in a browser gives the result shown below:</p>
   <p>
     <!-- todo: don't let Rick do stuff like this... ^RW -->
-    <iframe src="/static/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
+    <iframe src="/resources/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
   </p>
   <p>
     The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit tests, even when the element itself is empty. This provides the fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.
