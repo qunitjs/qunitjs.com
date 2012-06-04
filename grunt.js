@@ -21,6 +21,12 @@ grunt.initConfig({
 	lint: {
 		grunt: "grunt.js"
 	},
+	watch: {
+		pages: {
+			files: "page/*.html",
+			tasks: "deploy"
+		}
+	},
 	wordpress: grunt.utils._.extend({
 		dir: "dist/wordpress"
 	}, grunt.file.readJSON( "config.json" ) )
