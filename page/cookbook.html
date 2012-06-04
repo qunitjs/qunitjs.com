@@ -92,7 +92,7 @@
   <p>
     The most basic one is <code class="literal">ok()</code>, which requires just one argument. If the argument evaluates to true, the assertion passes; otherwise, it fails. In addition, it accepts a string to display as a message in the test results:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "ok test", function() {
   ok( true, "true succeeds" );
   ok( "non-empty", "non-empty string succeeds" );
@@ -103,14 +103,14 @@ test( "ok test", function() {
   ok( "", "empty string fails" );
   ok( null, "null fails" );
   ok( undefined, "undefined fails" );
-});</code>
+});</code></pre>
 
   <h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected [, message ] )</h4>
   <p>
     The <code class="literal">equal</code> assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected arguments. When they are equal, the assertion passes; otherwise, it fails. When it fails, both actual and expected values are displayed in the test result, in addition to a given message:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "equal test", function() {
   equal( 0, 0, "Zero; equal succeeds" );
   equal( "", 0, "Empty, Zero; equal succeeds" );
@@ -120,7 +120,7 @@ test( "equal test", function() {
   equal( "three", 3, "Three, 3; equal fails" );
   equal( null, false, "null, false; equal fails" );
 });
-</code>
+</code></pre>
   <p>
     Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
   </p>
@@ -130,13 +130,13 @@ test( "equal test", function() {
     The <code class="literal">deepEqual()</code> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison operator (<code class="literal">===</code>). That way,
     <code class="literal">undefined</code> doesn't equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of objects so that <code class="literal">{key: value}</code> is equal to <code class="literal">{key: value}</code>, even when comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN, dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object identity:
   </p>
-<code class="highlight" lang="javascript">
+<pre><code>
 test( "deepEqual test", function() {
   var obj = { foo: "bar" };
 
   deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
 });
-</code>
+</code></pre>
   <p>
     In case you want to explicitly not compare the content of two values, <code class="literal">equal()</code> can still be used. In general, <code class="literal">deepEqual()</code> is the better choice.
   </p>
@@ -155,7 +155,7 @@ test( "deepEqual test", function() {
   <p>
     Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the number of expected assertions as the only argument:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "a test", function() {
   expect( 2 );
 
@@ -170,13 +170,13 @@ test( "a test", function() {
 
   equal( result, 4, "2 square equals 4" );
 });
-</code>
+</code></pre>
 
   <p>
     Alternatively, the expectation count can be passed as the second parameter to test():
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "a test", 2, function() {
 
   function calc( x, operation ) {
@@ -190,13 +190,13 @@ test( "a test", 2, function() {
 
   equal( result, 4, "2 square equals 4" );
 });
-</code>
+</code></pre>
 
   <p>
     Practical Example:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "a test", 1, function() {
   var $body = $( "body" );
 
@@ -206,7 +206,7 @@ test( "a test", 1, function() {
 
   $body.trigger( "click" );
 });
-</code>
+</code></pre>
 
   <h3 class="title" id="discussion-id167">Discussion</h3>
   <p>
@@ -224,7 +224,7 @@ test( "a test", 1, function() {
   <p>
     Instead of wrapping your assertions in a <code class="literal">test()</code>, use <code class="literal">asyncTest()</code> and call <code class="literal">start()</code> when your test block is complete and ready to resume:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 asyncTest( "asynchronous test: one second later!", function() {
   expect( 1 );
 
@@ -233,12 +233,12 @@ asyncTest( "asynchronous test: one second later!", function() {
     start();
   }, 1000);
 });
-</code>
+</code></pre>
   <p>
     Practical Example:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 
 asyncTest( "asynchronous test: video ready to play", 1, function() {
   var $video = $( "video" );
@@ -249,7 +249,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
   });
 });
 
-</code>
+</code></pre>
 
   <h2 class="title" id="testing_user_actions">Testing User Actions</h2>
 
@@ -265,7 +265,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
     Let's assume we have a simple key logger that we want to test:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 function KeyLogger( target ) {
   if ( !(this instanceof KeyLogger) ) {
     return new KeyLogger( target );
@@ -279,13 +279,13 @@ function KeyLogger( target ) {
     self.log.push( event.keyCode );
   });
 }
-</code>
+</code></pre>
   <p>
     We can manually trigger a keypress event to see whether the
     logger is working:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "keylogger api behavior", function() {
 
   var event,
@@ -301,7 +301,7 @@ test( "keylogger api behavior", function() {
   equal( keys.log.length, 1, "a key was logged" );
   equal( keys.log[ 0 ], 9, "correct key was logged" );
 
-});</code>
+});</code></pre>
 
   <h3 class="title" id="discussion-id169">Discussion</h3>
   <p>
@@ -315,17 +315,17 @@ test( "keylogger api behavior", function() {
     When tests are lumped together, it's possible to have tests that should pass but fail or tests that should fail but pass. This is a result of a test having invalid results because of side effects of a previous test:
   </p>
 
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "2 asserts", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append( "<div>hello!</div>" );
+  $fixture.append( "&lt;div>hello!&lt;/div>" );
   equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 
-  $fixture.append( "<span>hello!</span>" );
+  $fixture.append( "&lt;span>hello!&lt;/span>" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
-</code>
+</code></pre>
 
   <p>
     The first <code class="literal">append()</code> adds a <code class="literal">&lt;div&gt;</code> that the second <code>equal()</code> doesn't take into account.
@@ -335,22 +335,22 @@ test( "2 asserts", function() {
   <p>
     Use the <code class="literal">test()</code> method to keep tests atomic, being careful to keep each assertion clean of any possible side effects. You should only rely on the fixture markup, inside the <code class="literal">#qunit-fixture</code> element. Modifying and relying on anything else can have side effects:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 
 test( "Appends a div", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append( "<div>hello!</div>" );
+  $fixture.append( "&lt;div>hello!&lt;/div>" );
   equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 });
 
 test( "Appends a span", function() {
   var $fixture = $( "#qunit-fixture" );
 
-  $fixture.append("<span>hello!</span>" );
+  $fixture.append("&lt;span>hello!&lt;/span>" );
   equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
-</code>
+</code></pre>
   <p>
     QUnit will reset the elements inside the <code class="literal">#qunit-fixture</code> element after each test, removing any events that may have existed. As long as you use elements only within this fixture, you don't have to manually clean up after your tests to keep them atomic.
   </p>
@@ -359,12 +359,12 @@ test( "Appends a span", function() {
   <p>
     In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 test( "global pollution", function() {
   window.pollute = true;
   ok( pollute, "nasty pollution" );
 });
-</code>
+</code></pre>
   <p>
     In a normal test run, this passes as a valid result. Running the <code>ok()</code> test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top">noglobals flag</a> will cause the test to fail, because QUnit detected that it polluted the window object.
   </p>
@@ -383,7 +383,7 @@ test( "global pollution", function() {
   <p>
     You can use the <code class="literal">module()</code> function to group tests together:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 module( "group a" );
 test( "a basic test example", function() {
   ok( true, "this test is fine" );
@@ -398,7 +398,7 @@ test( "a basic test example 3", function() {
 });
 test( "a basic test example 4", function() {
   ok( true, "this test is fine" );
-});</code>
+});</code></pre>
   <p>
     All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>).
   </p>
@@ -407,7 +407,7 @@ test( "a basic test example 4", function() {
   <p>
     In addition to grouping tests, <code class="literal">module()</code> can be used to extract common code from tests within that module. The <code class="literal">module()</code> function takes an optional second parameter to define functions to run before and after each test within the module:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 module( "module", {
   setup: function() {
     ok( true, "one extra assert per test" );
@@ -417,7 +417,7 @@ module( "module", {
 });
 test( "test with setup and teardown", function() {
   expect( 2 );
-});</code>
+});</code></pre>
   <p>
     You can specify both setup and teardown properties together, or just one of them.
   </p>
@@ -435,7 +435,7 @@ test( "test with setup and teardown", function() {
   <p>
     QUnit offers URL filtering to select the tests to run. This works best when <span class="keep-together">combined with</span> modules. You can run just the tests from a given module by appending a query string with the module name to the test suite URL. For example, <code class="literal">test.html?filter=validation</code> will run all tests in the module named <code class="literal">validation</code>:
   </p>
-  <code class="highlight" lang="javascript">
+  <pre><code>
 // test.html?filter=validation - just the validation module
 // test.html?filter=test 3 - just "test 3"
 
@@ -459,7 +459,7 @@ module( "other" );
 test( "test 5", function () {
   equal( 3, 5, "equal fails" );
 });
-</code>
+</code></pre>
 
   <h3 class="title" id="discussion-id172">Discussion</h3>
   <p>
