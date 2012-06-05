@@ -1,9 +1,0 @@
-<entry type="method" name="QUnit.testStart">
-	<signature>
-		<argument name="callback">
-			<desc></desc>
-		</argument>
-	</signature>
-	<desc></desc>
-	<category slug="callbacks"/>
-</entry>
