@@ -9,7 +9,6 @@ grunt.initConfig({
 		folder: "dist/"
 	},
 	htmllint: {
-		out: "out/*.html",
 		resources: "resources/*.html"
 	},
 	jshint: {
