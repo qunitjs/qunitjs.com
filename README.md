@@ -1,16 +1,18 @@
-# Website for QUnit, built with [DocPad](https://github.com/bevry/docpad)
+qunitjs.com
+================
+
+## Requirements
+* <a href="http://www.xmlsoft.org/">libxml2</a>
+* <a href="http://xmlsoft.org/XSLT/">libxslt</a>
+* <a href="http://pygments.org/">Pygments</a>
+
+The `xmllint` and `xsltproc` and `pygmentize` utilities need to be in your path. If you are on Windows, you can get libxml2 and libxslt from <a href="http://sourceforge.net/projects/gnuwin32/files/">GnuWin32</a>.
+
+## Deploying
+
+1. `npm install`
+2. `cp config-sample.json config.json`
+3. Edit config.json per https://github.com/scottgonzalez/grunt-wordpress#config
+4. `grunt deploy`
 
 
-## Usage
-
-* [Install DocPad](https://github.com/bevry/docpad), needs a 'global' install
-* `docpad run`
-* [Open http://localhost:9778/](http://localhost:9778/)
-* Edit files in src directory
-
-## Export to WordPress
-
-* [Install Grunt](https://github.com/cowboy/grunt), usually `npm install grunt -g` is enough
-* Make a copy of config-sample.json, rename to config.json
-* Update config.json to point to local WordPress site
-* Run `grunt wordpress-publish`
