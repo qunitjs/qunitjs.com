@@ -3,6 +3,7 @@ module.exports = function( grunt ) {
 grunt.loadNpmTasks( "grunt-clean" );
 grunt.loadNpmTasks( "grunt-html" );
 grunt.loadNpmTasks( "grunt-wordpress" );
+grunt.loadNpmTasks( "grunt-jquery-content" );
 
 grunt.initConfig({
 	clean: {
@@ -26,6 +27,9 @@ grunt.initConfig({
 			tasks: "deploy"
 		}
 	},
+	"build-resources": {
+		all: grunt.file.expandFiles( "resources/*" )
+	},
 	wordpress: grunt.utils._.extend({
 		dir: "dist/wordpress"
 	}, grunt.file.readJSON( "config.json" ) )
@@ -36,7 +40,6 @@ var // modules
 	pygmentize = require( "pygmentize" ),
 
 	// files
-	resourceFiles = grunt.file.expandFiles( "resources/*" ),
 	distDir = grunt.config( "wordpress.dir" ) + "/posts/";
 
 function htmlEscape(text) {
@@ -74,27 +77,6 @@ grunt.registerTask( "build-pygmentize", function() {
 			fileDone();
 		});
 	}, this.async());
-});
-
-grunt.registerTask( "build-resources", function() {
-	var task = this,
-		taskDone = task.async(),
-		targetDir = grunt.config( "wordpress.dir" ) + "/resources/";
-
-	grunt.file.mkdir( targetDir );
-
-	grunt.utils.async.forEachSeries( resourceFiles, function( fileName, fileDone )  {
-		grunt.file.copy( fileName, targetDir + path.basename( fileName ) );
-		fileDone();
-	}, function() {
-		if ( task.errorCount ) {
-			grunt.warn( "Task \"" + task.name + "\" failed." );
-			taskDone();
-			return;
-		}
-		grunt.log.writeln( "Built " + resourceFiles.length + " resources." );
-		taskDone();
-	});
 });
 
 grunt.registerTask( "default", "lint" );
