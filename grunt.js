@@ -27,6 +27,9 @@ grunt.initConfig({
 			tasks: "deploy"
 		}
 	},
+	"build-pages": {
+		all: grunt.file.expandFiles( "page/*" )
+	},
 	"build-resources": {
 		all: grunt.file.expandFiles( "resources/*" )
 	},
@@ -35,52 +38,8 @@ grunt.initConfig({
 	}, grunt.file.readJSON( "config.json" ) )
 });
 
-var // modules
-	path = require( "path" ),
-	pygmentize = require( "pygmentize" ),
-
-	// files
-	distDir = grunt.config( "wordpress.dir" ) + "/posts/";
-
-function htmlEscape(text) {
-   return text.replace(/&/g,'&amp;').
-     replace(/</g, '&lt;').
-     replace(/>/g, '&gt;').
-     replace(/"/g, '&quot;').
-     replace(/'/g, '&#039;');
-}
-
-grunt.registerTask( "build-pages", function() {
-	grunt.file.mkdir( distDir );
-	grunt.file.expand( "page/**/*.html" ).forEach(function( file ) {
-		grunt.file.copy( file, distDir + file, {
-			process: function( content ) {
-				return content.replace(/@partial\((.+)\)/g, function(match, input) {
-					return htmlEscape( grunt.file.read( input ) );
-				});
-			}
-		});
-	});
-});
-
-grunt.registerTask( "build-pygmentize", function() {
-	grunt.utils.async.forEachSeries( grunt.file.expand( distDir + "/**/*.html" ), function( fileName, fileDone )  {
-		console.log("pygmentizing", fileName);
-		pygmentize.file( fileName, function( error, data ) {
-			if ( error ) {
-				grunt.verbose.error();
-				grunt.log.error( error );
-				fileDone();
-				return;
-			}
-			grunt.file.write( fileName, data );
-			fileDone();
-		});
-	}, this.async());
-});
-
 grunt.registerTask( "default", "lint" );
-grunt.registerTask( "build-wordpress", "clean lint build-pages build-pygmentize build-resources");
+grunt.registerTask( "build-wordpress", "clean lint build-pages build-resources");
 grunt.registerTask( "deploy", "wordpress-deploy" );
 
 };
