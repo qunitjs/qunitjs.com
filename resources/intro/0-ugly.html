@@ -25,12 +25,12 @@
 	window.onload = function() {
 		var links = document.getElementsByTagName("a");
 		for ( var i = 0; i < links.length; i++ ) {
-            if ( links[i].title ) {
-                var date = prettyDate(links[i].title);
-                if ( date ) {
-                    links[i].innerHTML = date;
+			if ( links[i].title ) {
+				var date = prettyDate(links[i].title);
+				if ( date ) {
+					links[i].innerHTML = date;
 				}
-            }
+			}
 		}
 	};
 	</script>
