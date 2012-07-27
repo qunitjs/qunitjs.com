@@ -18,7 +18,7 @@
 
 <p>That should be enough theory for now. Let’s look at a practical example, testing some JavaScript code that is currently mixed in with and connected to a page. The code looks for links with <code>title</code> attributes, using those titles to display when something was posted, as a relative time value, like “5 days ago”:</p>
 
-<pre><code>@partial(resources/intro/0-ugly.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/0-ugly.html)</code></pre>
 
 <p>If you ran that example, you’d see a problem: none of the dates get replaced. The code works, though. It loops through all anchors on the page and checks for a <code>title</code> property on each. If there is one, it passes it to the <code>prettyDate</code> function. If <code>prettyDate</code> returns a result, it updates the <code>innerHTML</code> of the link with the result.</p>
 
@@ -26,7 +26,7 @@
 
 <p>The problem is that for any date older then 31 days, <code>prettyDate</code> just returns undefined (implicitly, with a single <code>return</code> statement), leaving the text of the anchor as is. So, to see what’s supposed to happen, we can hardcode a “current” date:</p>
 
-<pre><code>@partial(resources/intro/1-mangled.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/1-mangled.html)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/1-mangled.html">Run this example.</a></li>
@@ -40,11 +40,11 @@
 
 <p>We need to make two changes for this to happen: pass the current date to the <code>prettyDate</code> function as an argument, instead of having it just use <code>new Date</code>, and extract the function to a separate file so that we can include the code on a separate page for unit tests.</p>
 
-<pre><code>@partial(resources/intro/2-getting-somewhere.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/2-getting-somewhere.html)</code></pre>
 
 <p>Here’s the contents of <code>prettydate.js</code>:</p>
 
-<pre><code>@partial(resources/intro/prettydate.js)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/prettydate.js)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/2-getting-somewhere.html">Run this example.</a></li>
@@ -52,7 +52,7 @@
 
 <p>Now that we have something to test, let’s write some actual unit tests:</p>
 
-<pre><code>@partial(resources/intro/3-first-test.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/3-first-test.html)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/3-first-test.html">Run this example.</a> (Make sure to enable a console such as Firebug or Chrome’s Web Inspector.)</li>
@@ -82,7 +82,7 @@
 
 <p>The choice of framework is mostly a matter of taste. For the rest of this article, we’ll use <a href="http://docs.jquery.com/Qunit">QUnit</a> (pronounced “q-unit”), because its style of describing tests is close to that of our ad-hoc test framework.</p>
 
-<pre><code>@partial(resources/intro/4-qunit-test.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/4-qunit-test.html)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/4-qunit-test.html">Run this example.</a></li>
@@ -132,11 +132,11 @@ test("prettydate basics", function() {
 
 <p>Now that the <code>prettyDate</code> function is tested well enough, let’s shift our focus back to the initial example. Along with the <code>prettyDate</code> function, it also selected some DOM elements and updated them, within the <code>window</code> load event handler. Applying the same principles as before, we should be able to refactor that code and test it. In addition, we’ll introduce a module for these two functions, to avoid cluttering the global namespace and to be able to give these individual functions more meaningful names.</p>
 
-<pre><code>@partial(resources/intro/6-qunit-dom.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/6-qunit-dom.html)</code></pre>
 
 <p>Here’s the contents of <code>prettydate2.js</code>:</p>
 
-<pre><code>@partial(resources/intro/prettydate2.js)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/prettydate2.js)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/6-qunit-dom.html">Run this example.</a></li>
@@ -150,7 +150,7 @@ test("prettydate basics", function() {
 
 <p>The next test, <code>prettyDate.update, one day later</code>, does nearly the same thing, except that it passes a different date to <code>prettyDate.update</code> and, therefore, expects different results for the two links. Let’s see if we can refactor these tests to remove the duplication.</p>
 
-<pre><code>@partial(resources/intro/7-qunit-dom-refactored.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/7-qunit-dom-refactored.html)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/7-qunit-dom-refactored.html">Run this example.</a></li>
@@ -162,7 +162,7 @@ test("prettydate basics", function() {
 
 <p>With that in place, let’s go back to our initial example and see what that looks like now, after the refactoring.</p>
 
-<pre><code>@partial(resources/intro/8-endstate.html)</code></pre>
+<pre><code data-linenum>@partial(resources/intro/8-endstate.html)</code></pre>
 
 <ul>
 <li><a href="/resources/intro/8-endstate.html">Run this example.</a></li>

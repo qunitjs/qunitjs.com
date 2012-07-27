@@ -33,13 +33,10 @@ grunt.initConfig({
 	"build-resources": {
 		all: grunt.file.expandFiles( "resources/**" )
 	},
-	wordpress: grunt.utils._.extend({
-		dir: "dist/wordpress"
-	}, grunt.file.readJSON( "config.json" ) )
+	wordpress: grunt.file.readJSON( "config.json" )
 });
 
 grunt.registerTask( "default", "lint" );
 grunt.registerTask( "build-wordpress", "clean lint build-pages build-resources");
-grunt.registerTask( "deploy", "wordpress-deploy" );
 
 };
