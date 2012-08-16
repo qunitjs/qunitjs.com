@@ -10,7 +10,8 @@ grunt.initConfig({
 		folder: "dist/"
 	},
 	htmllint: {
-		resources: "resources/*.html"
+		resources: "resources/*.html",
+		page: "page/*.html"
 	},
 	jshint: {
 		options: {
@@ -33,7 +34,9 @@ grunt.initConfig({
 	"build-resources": {
 		all: grunt.file.expandFiles( "resources/**" )
 	},
-	wordpress: grunt.file.readJSON( "config.json" )
+	wordpress: grunt.utils._.extend({
+		dir: "dist/wordpress"
+	}, grunt.file.readJSON( "config.json" ) )
 });
 
 grunt.registerTask( "default", "lint" );
