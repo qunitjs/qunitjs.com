@@ -307,6 +307,14 @@ test( "keylogger api behavior", function() {
   <p>
     If your event handler doesn't rely on any specific properties of the event, you can just call <code class="literal">.trigger(eventType)</code>. However, if your event handler does rely on specific properties of the event, you will need to create an event object using <code class="literal">$.Event</code> and set the necessary properties, as shown previously.</p><p>It's also important to trigger all relevant events for complex behaviors such as dragging, which is comprised of mousedown, at least one mousemove, and a mouseup. Keep in mind that even some events that seem simple are actually compound; e.g., a click is really a mousedown, mouseup, and then click. Whether you actually need to trigger all three of these depends on the code under test. Triggering a click works for most cases.
   </p>
+  <p>
+    If thats not enough, you have a few framework options that help simulating user events:
+  </p>
+  <ul>
+    <li><a href="https://github.com/jupiterjs/syn">syn</a> "is a synthetic event library that pretty much handles typing, clicking, moving, and dragging exactly how a real user would perform those actions". Used by FuncUnit, which is based on QUnit, for functional testing of web applications.</li>
+    <li><a href="https://github.com/ephox/JSRobot/">JSRobot</a> - "A testing utility for web-apps that can generate real keystrokes rather than simply simulating the JavaScript event firing. This allows the keystroke to trigger the built-in browser behaviour which isn't otherwise possible."</li>
+    <li><a href="http://dojotoolkit.org/reference-guide/1.8/util/dohrobot.html">DOH Robot</a> "provides an API that enables testers to automate their UI tests using real, cross-platform, system-level input events". This gets you the closest to "real" browser events, but uses Java applets for that.</li>
+  </ul>
 
   <h2 class="title" id="keeping_tests_atomic">Keeping Tests Atomic</h2>
 
