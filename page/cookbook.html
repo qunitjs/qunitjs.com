@@ -12,7 +12,7 @@
   <li><a href="#testing_user_actions">Testing User Actions</a></li>
   <li><a href="#keeping_tests_atomic">Keeping Tests Atomic</a></li>
   <li><a href="#grouping_tests">Grouping Tests</a></li>
-  <li><a href="#selecting_tests_to_run">Selecting Tests to Run</a></li>
+  <li><a href="#efficient_development">Efficient Development</a></li>
   <li><a href="#more_tutorials">More Tutorials</a></li>
   </ul>
 </div>
@@ -46,7 +46,6 @@
   <pre><code data-linenum>@partial(resources/example-cookbook-1-basics.html)</code></pre>
   <p>Opening this file in a browser gives the result shown below:</p>
   <p>
-    <!-- todo: don't let Rick do stuff like this... ^RW -->
     <iframe src="/resources/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
   </p>
   <p>
@@ -62,18 +61,22 @@
 
   <h3 class="title" id="discussion-id166">Discussion</h3>
   <p>
-    The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a gray bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers), and a bar with a few checkboxes to filter test results.
+    The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a bar with a few checkboxes to filter test results and a blue bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers).
   </p>
   <p>
-    "Hide passed tests" is useful when a lot of tests ran and only a
-    few failed. Checking the checkbox will hide everything that passed,
-    making it easier to focus on the tests that failed.
+    Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient_development" title="Efficient Devlopment">the Efficient Devlopment</a> section below).
   </p>
   <p>
-    The actual contents of the page are the test results. Each entry in the numbered list starts with the name of the test followed by, in parentheses, the number of failed, passed, and total assertions. Clicking the entry will show the results of each assertion, usually with details about expected and actual results. Double-clicking will run just that test (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a> for details).
+    Checking "Check for Globals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
   </p>
   <p>
-    Below the test results is a summary, showing the total time it took to run all tests as well as the overall number of total and failed assertions.
+    The "No try-catch" ckeckbox tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremdensly debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
+  </p>
+  <p>
+    Below the header is a summary, showing the total time it took to run all tests as well as the overall number of total and failed assertions. While tests are still running, it will show which test is currently being executed.
+  </p>
+  <p>
+    The actual contents of the page are the test results. Each entry in the numbered list starts with the name of the test followed by, in parentheses, the number of failed, passed, and total assertions. Clicking the entry will show the results of each assertion, usually with details about expected and actual results. The "Rerun" link at the end will run that test on its own.
   </p>
 
   <h2 class="title" id="asserting_results">Asserting Results</h2>
@@ -123,6 +126,9 @@ test( "equal test", function() {
 </code></pre>
   <p>
     Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
+  </p>
+  <p>
+    When you need a strict comparison (<code class="literal">==</code>), use <code class="literal">strictEqual()</code> instead.
   </p>
 
   <h4 class="title" id="deepEqual_open_parenthesis_actual_comma_expec">deepEqual( actual, expected [, message ] )</h4>
@@ -365,7 +371,7 @@ test( "Appends a span", function() {
 
   <h3 class="title" id="discussion-id170">Discussion</h3>
   <p>
-    In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
+    In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient_development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
   </p>
   <pre><code>
 test( "global pollution", function() {
@@ -408,7 +414,7 @@ test( "a basic test example 4", function() {
   ok( true, "this test is fine" );
 });</code></pre>
   <p>
-    All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#selecting_tests_to_run" title="Selecting Tests to Run">the section called "Selecting Tests to Run"</a>).
+    All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient_development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>).
   </p>
 
   <h3 class="title" id="discussion-id171">Discussion</h3>
@@ -433,45 +439,29 @@ test( "test with setup and teardown", function() {
     Calling <code class="literal">module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
   </p>
 
-  <h2 class="title" id="selecting_tests_to_run">Selecting Tests to Run</h2>
+  <h2 class="title" id="efficient_development">Efficient Devlopment</h2>
 
   <h3 class="title" id="problem-169">Problem</h3>
   <p>
-    When debugging a failing test, it can be a huge waste of time to rerun the entire test suite after every little change to your code just to see whether a single test now passes.
+    Once your testsuite takes longer then a few seconds to run, you want to avoid wasting a lot of time just waiting for test results to come in.
   </p>
   <h3 class="title" id="solution-167">Solution</h3>
   <p>
-    QUnit offers URL filtering to select the tests to run. This works best when <span class="keep-together">combined with</span> modules. You can run just the tests from a given module by appending a query string with the module name to the test suite URL. For example, <code class="literal">test.html?filter=validation</code> will run all tests in the module named <code class="literal">validation</code>:
+    QUnit has a bunch of features built-in to make up for that. The most interesting ones require just a single click to activate. Just click the "Hide passed tests" checkbox at the top, and QUnit will only show you tests that failed. That alone doesn't make a difference in speed, but already helps focusing on failing tests.
   </p>
-  <pre><code>
-// test.html?filter=validation - just the validation module
-// test.html?filter=test 3 - just "test 3"
-
-module( "validation" );
-test( "test 1", function () {
-  ok( true, "bool succeeds" );
-});
-test( "test 2", function () {
-  equal( 5, 5.0, "equal succeeds" );
-});
-
-module( "tooltip" );
-test( "test 3", function () {
-  deepEqual( 3 === 3, true, "deepEqual succeeds" );
-});
-test( "test 4", function () {
-  ok( false, "fails!" );
-});
-
-module( "other" );
-test( "test 5", function () {
-  equal( 3, 5, "equal fails" );
-});
-</code></pre>
+  <p>
+    It gets more interesting if you take another QUnit feature into account, which is enabled by default and usually not noticable. Whenever a test fails, QUnit stores the name of that test in <code>sessionStorage</code>. The next time you run a testsuite, that failing test will run before all other tests. The output order isn't affected, only the execution order. In combination with the "Hide passed tests" checkbox you will then get to see the failing test, if it still fails, at the top, as soon as possible.
+  </p>
 
   <h3 class="title" id="discussion-id172">Discussion</h3>
   <p>
-    You can combine tests from various modules by specifying multiple modules at once, delimited with the ampersand; e.g., <code class="literal">test.html?validation&amp;tooltip</code> would run tests that contain <code class="literal">validation</code> or <code class="literal">tooltip</code>.</p><p>You can exclude tests using the exclamation mark; e.g., <code class="literal">test.html?!validation</code> would run all tests except those from the <code class="literal">validation</code> module.</p><p>Instead of manually modifying the URL, you can also double-click any of the test results to rerun just that test. QUnit will use the deepEqual filtering mechanism by appending the name of the test to the current location.
+    The automatic reordering happens by default. It implies that your tests need to be atomic, <a href="">as discussed previously</a>. If your tests aren't, you'll see random non-deterministic errors. Fixing that is usually the right approach. If you're really desperate, you can set <code><a href="//api.qunitjs.com/QUnit.config/">QUnit.config</a>.autorun = false</code>.
+  </p>
+  <p>
+    In addition to the automatic reordering, there are a few manual options available. You can rerun any test by clicking the "Rerun" link next to that test. That will add a "testNumber=N" parameter to the query string, where "N" is the number of the test you clicked. You can then reload the page to keep running just that test, or use the browser's back button to go back to running all tests.
+  </p>
+  <p>
+    Running all tests within a module works pretty much the same way, except that you choose the module to run using the select at the top right. It'll set a "module=N" query string, where "N" is the encoded name of the module, for example "?module=testEnvironment%20with%20object".
   </p>
 
   <h2 class="title" id="more_tutorials">Further tutorials</h2>
