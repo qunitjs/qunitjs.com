@@ -4,14 +4,19 @@
 
 <!-- TODO cleanup -->
 <h2>Bundled Addons</h2>
+<p>QUnit includes a few addons in its repository. These add custom assertions, running multiple testsuite from one, help with continous integration and provide alternative themes.</p>
 <ul>
-	<li><a href="https://github.com/jquery/qunit/tree/master/addons/canvas">Canvas</a></li>
-	<li><a href="https://github.com/jquery/qunit/tree/master/addons/close-enough">Close Enough</a></li>
-	<li><a href="https://github.com/jquery/qunit/tree/master/addons/composite">Composite</a></li>
-	<li><a href="https://github.com/jquery/qunit/tree/master/addons/step">Step</a></li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/canvas">Canvas</a> - provides a <code>pixelEqual</code> assertion, useful when working with a <code>canvas</code> element</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/close-enough">Close Enough</a> - provides <code>close</code> and <code>notClose</code> assertions, useful when testing approximate number values</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/composite">Composite</a> - bundle multiple testsuites intp a single file, running them in an iframe</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/junitlogger">JUnit Logger</a> - produces JUnit-style XML output for test results, for integration into tools like Jenkins</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/phantomjs">PhantomJS Runner</a> - a runner for PhantomJS, providing console output for tests. If you're using grunt, use its <a href="https://github.com/cowboy/grunt/blob/master/docs/task_qunit.md">qunit task</a> instead.</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/step">Step</a> - adds a <code>QUnit.step</code> method that allows you to assert the proper sequence in which the code should execute.</li>
+	<li><a href="https://github.com/jquery/qunit/tree/master/addons/themes">Themes</a> - alternative themes, load their CSS file instead of the default one.</li>
 </ul>
 
 <h2>Third-Party Extensions and integrations </h2>
+<p>If you prefer BDD-style APIs for testing, check out SpecIt and Pavlov. For testing ajaxy code, check mockjax and sinon.js. That and more below.
 <ul><li> <a href="http://github.com/joshuaclayton/specit" class="external text" title="http://github.com/joshuaclayton/specit">SpecIt A QUnit-based API for bdd-style testing</a>
 </li><li> <a href="https://github.com/mmonteleone/pavlov" class="external text" title="https://github.com/mmonteleone/pavlov">Pavlov - extends QUnit with a rich, higher-level, Behavioral API</a>
 </li><li> <a href="http://github.com/mkrisher/qunit_for_rails" class="external text" title="http://github.com/mkrisher/qunit_for_rails">Rails plugin for QUnit integration</a>
