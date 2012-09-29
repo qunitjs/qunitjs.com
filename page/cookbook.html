@@ -447,7 +447,7 @@ test( "test with setup and teardown", function() {
   </p>
   <h3 class="title" id="solution-167">Solution</h3>
   <p>
-    QUnit has a bunch of features built-in to make up for that. The most interesting ones require just a single click to activate. Just click the "Hide passed tests" checkbox at the top, and QUnit will only show you tests that failed. That alone doesn't make a difference in speed, but already helps focusing on failing tests.
+    QUnit has a bunch of features built-in to make up for that. The most interesting ones require just a single click to activate. Toggle the "Hide passed tests" checkbox at the top, and QUnit will only show you tests that failed. That alone doesn't make a difference in speed, but already helps focusing on failing tests.
   </p>
   <p>
     It gets more interesting if you take another QUnit feature into account, which is enabled by default and usually not noticable. Whenever a test fails, QUnit stores the name of that test in <code>sessionStorage</code>. The next time you run a testsuite, that failing test will run before all other tests. The output order isn't affected, only the execution order. In combination with the "Hide passed tests" checkbox you will then get to see the failing test, if it still fails, at the top, as soon as possible.
