@@ -1,4 +1,5 @@
 module.exports = function( grunt ) {
+"use strict";
 
 grunt.loadNpmTasks( "grunt-clean" );
 grunt.loadNpmTasks( "grunt-html" );
