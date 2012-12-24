@@ -5,15 +5,15 @@
 <div class="four columns">
 	<ul>
 		<li><a href="#introduction">Introduction</a></li>
-		<li><a href="#automating_unit_testing">Automating Unit Testing</a></li>
-		<li><a href="#asserting_results">Asserting Results</a></li>
-		<li><a href="#synchronous_callbacks">Synchronous Callbacks</a></li>
-		<li><a href="#asynchronous_callbacks">Asynchronous Callbacks</a></li>
-		<li><a href="#testing_user_actions">Testing User Actions</a></li>
-		<li><a href="#keeping_tests_atomic">Keeping Tests Atomic</a></li>
-		<li><a href="#grouping_tests">Grouping Tests</a></li>
-		<li><a href="#efficient_development">Efficient Development</a></li>
-		<li><a href="#more_tutorials">More Tutorials</a></li>
+		<li><a href="#automating-unit-testing">Automating Unit Testing</a></li>
+		<li><a href="#asserting-results">Asserting Results</a></li>
+		<li><a href="#synchronous-callbacks">Synchronous Callbacks</a></li>
+		<li><a href="#asynchronous-callbacks">Asynchronous Callbacks</a></li>
+		<li><a href="#testing-user-actions">Testing User Actions</a></li>
+		<li><a href="#keeping-tests-atomic">Keeping Tests Atomic</a></li>
+		<li><a href="#grouping-tests">Grouping Tests</a></li>
+		<li><a href="#efficient-development">Efficient Development</a></li>
+		<li><a href="#more-tutorials">More Tutorials</a></li>
 	</ul>
 </div>
 
@@ -29,7 +29,7 @@
 		Unit testing in JavaScript isn't much different from in other programming languages. You need a small framework that provides a test runner, as well as some utilities to write the actual tests.
 	</p>
 
-	<h2 class="title" id="automating_unit_testing">Automating Unit Testing</h2>
+	<h2 class="title" id="automating-unit-testing">Automating Unit Testing</h2>
 
 	<h3 class="title" id="problem-162">Problem</h3>
 	<p>
@@ -49,10 +49,10 @@
 		<iframe src="/resources/example-cookbook-1-basics.html" style="width:100%;height:300px;border:0px"></iframe>
 	</p>
 	<p>
-		The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit tests, even when the element itself is empty. This provides the fixture for tests, which will be explained in <a class="xref" href="#keeping_tests_atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.
+		The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit tests, even when the element itself is empty. This provides the fixture for tests, which will be explained in <a class="xref" href="#keeping-tests-atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.
 	</p>
 	<p>
-		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">testrunner.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in <a class="xref" href="#asserting_results" title="Asserting Results">the section called "Asserting Results"</a>.
+		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">testrunner.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in <a class="xref" href="#asserting-results" title="Asserting Results">the section called "Asserting Results"</a>.
 	</p>
 	<p>
 		Note that there is no <code class="literal">document-ready</code> block. The test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
@@ -64,7 +64,7 @@
 		The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a bar with a few checkboxes to filter test results and a blue bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers).
 	</p>
 	<p>
-		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient_development" title="Efficient Devlopment">the Efficient Devlopment</a> section below).
+		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Devlopment">the Efficient Devlopment</a> section below).
 	</p>
 	<p>
 		Checking "Check for Globals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
@@ -79,7 +79,7 @@
 		The actual contents of the page are the test results. Each entry in the numbered list starts with the name of the test followed by, in parentheses, the number of failed, passed, and total assertions. Clicking the entry will show the results of each assertion, usually with details about expected and actual results. The "Rerun" link at the end will run that test on its own.
 	</p>
 
-	<h2 class="title" id="asserting_results">Asserting Results</h2>
+	<h2 class="title" id="asserting-results">Asserting Results</h2>
 
 	<h3 class="title" id="problem-163">Problem</h3>
 	<p>
@@ -91,7 +91,7 @@
 		QUnit provides three assertions.
 	</p>
 
-	<h4 class="title" id="ok_open_parenthesis_boolean_open_square">ok( truthy [, message ] )</h4>
+	<h4 class="title" id="ok-open-parenthesis-boolean-open-square">ok( truthy [, message ] )</h4>
 	<p>
 		The most basic one is <code class="literal">ok()</code>, which requires just one argument. If the argument evaluates to true, the assertion passes; otherwise, it fails. In addition, it accepts a string to display as a message in the test results:
 	</p>
@@ -108,7 +108,7 @@ test( "ok test", function() {
 	ok( undefined, "undefined fails" );
 });</code></pre>
 
-	<h4 class="title" id="equal_open_parenthesis_actual_comma_exp">equal( actual, expected [, message ] )</h4>
+	<h4 class="title" id="equal-open-parenthesis-actual-comma-exp">equal( actual, expected [, message ] )</h4>
 	<p>
 		The <code class="literal">equal</code> assertion uses the simple comparison operator (<code class="literal">==</code>) to compare the actual and expected arguments. When they are equal, the assertion passes; otherwise, it fails. When it fails, both actual and expected values are displayed in the test result, in addition to a given message:
 	</p>
@@ -131,7 +131,7 @@ test( "equal test", function() {
 		When you need a strict comparison (<code class="literal">==</code>), use <code class="literal">strictEqual()</code> instead.
 	</p>
 
-	<h4 class="title" id="deepEqual_open_parenthesis_actual_comma_expec">deepEqual( actual, expected [, message ] )</h4>
+	<h4 class="title" id="deepEqual-open-parenthesis-actual-comma-expec">deepEqual( actual, expected [, message ] )</h4>
 	<p>
 		The <code class="literal">deepEqual()</code> assertion can be used just like <code class="literal">equal()</code> and is a better choice in most cases. Instead of the simple comparison operator (<code class="literal">==</code>), it uses the more accurate comparison operator (<code class="literal">===</code>). That way,
 		<code class="literal">undefined</code> doesn't equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of objects so that <code class="literal">{key: value}</code> is equal to <code class="literal">{key: value}</code>, even when comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN, dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object identity:
@@ -148,7 +148,7 @@ test( "deepEqual test", function() {
 	</p>
 
 
-	<h2 class="title" id="synchronous_callbacks">Synchronous Callbacks</h2>
+	<h2 class="title" id="synchronous-callbacks">Synchronous Callbacks</h2>
 
 	<h3 class="title" id="problem-164">Problem</h3>
 	<p>
@@ -220,11 +220,11 @@ test( "a test", 1, function() {
 		<code class="literal">expect()</code> provides no additional value&#8212;any error preventing assertions to run would cause the test to fail anyway, because the test runner catches the error and fails the unit.
 	</p>
 
-	<h2 class="title" id="asynchronous_callbacks">Asynchronous Callbacks</h2>
+	<h2 class="title" id="asynchronous-callbacks">Asynchronous Callbacks</h2>
 
 	<h3 class="title" id="problem-165">Problem</h3>
 	<p>
-		While <code class="literal">expect()</code> is useful to test synchronous callbacks (see <a class="xref" href="#synchronous_callbacks" title="Synchronous Callbacks">the section called "Synchronous Callbacks"</a>), it falls short when Asynchronous callbacks. Asynchronous callbacks conflict with the way the test runner queues and executes tests. When code under test starts a timeout or interval or an Ajax request, the test runner will just continue running the rest of the test, as well as other tests following it, instead of waiting for the result of the asynchronous operation.
+		While <code class="literal">expect()</code> is useful to test synchronous callbacks (see <a class="xref" href="#synchronous-callbacks" title="Synchronous Callbacks">the section called "Synchronous Callbacks"</a>), it falls short when Asynchronous callbacks. Asynchronous callbacks conflict with the way the test runner queues and executes tests. When code under test starts a timeout or interval or an Ajax request, the test runner will just continue running the rest of the test, as well as other tests following it, instead of waiting for the result of the asynchronous operation.
 	</p>
 	<h3 class="title" id="solution-161">Solution</h3>
 	<p>
@@ -257,7 +257,7 @@ asyncTest( "asynchronous test: video ready to play", 1, function() {
 
 </code></pre>
 
-	<h2 class="title" id="testing_user_actions">Testing User Actions</h2>
+	<h2 class="title" id="testing-user-actions">Testing User Actions</h2>
 
 	<h3 class="title" id="problem-166">Problem</h3>
 	<p>
@@ -322,7 +322,7 @@ test( "keylogger api behavior", function() {
 		<li><a href="http://dojotoolkit.org/reference-guide/1.8/util/dohrobot.html">DOH Robot</a> "provides an API that enables testers to automate their UI tests using real, cross-platform, system-level input events". This gets you the closest to "real" browser events, but uses Java applets for that.</li>
 	</ul>
 
-	<h2 class="title" id="keeping_tests_atomic">Keeping Tests Atomic</h2>
+	<h2 class="title" id="keeping-tests-atomic">Keeping Tests Atomic</h2>
 
 	<h3 class="title" id="problem-167">Problem</h3>
 	<p>
@@ -371,7 +371,7 @@ test( "Appends a span", function() {
 
 	<h3 class="title" id="discussion-id170">Discussion</h3>
 	<p>
-		In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient_development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
+		In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient-development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
 	</p>
 	<pre><code>
 test( "global pollution", function() {
@@ -386,7 +386,7 @@ test( "global pollution", function() {
 		There is no need to use this flag all the time, but it can be handy to detect global namespace pollution that may be problematic in combination with third-party libraries. And it helps to detect bugs in tests caused by side effects.
 	</p>
 
-	<h2 class="title" id="grouping_tests">Grouping Tests</h2>
+	<h2 class="title" id="grouping-tests">Grouping Tests</h2>
 
 	<h3 class="title" id="problem-168">Problem</h3>
 	<p>
@@ -414,7 +414,7 @@ test( "a basic test example 4", function() {
 	ok( true, "this test is fine" );
 });</code></pre>
 	<p>
-		All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient_development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>).
+		All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient-development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>).
 	</p>
 
 	<h3 class="title" id="discussion-id171">Discussion</h3>
@@ -439,7 +439,7 @@ test( "test with setup and teardown", function() {
 		Calling <code class="literal">module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
 	</p>
 
-	<h2 class="title" id="efficient_development">Efficient Devlopment</h2>
+	<h2 class="title" id="efficient-development">Efficient Devlopment</h2>
 
 	<h3 class="title" id="problem-169">Problem</h3>
 	<p>
@@ -464,7 +464,7 @@ test( "test with setup and teardown", function() {
 		Running all tests within a module works pretty much the same way, except that you choose the module to run using the select at the top right. It'll set a "module=N" query string, where "N" is the encoded name of the module, for example "?module=testEnvironment%20with%20object".
 	</p>
 
-	<h2 class="title" id="more_tutorials">Further tutorials</h2>
+	<h2 class="title" id="more-tutorials">Further tutorials</h2>
 	<ul>
 		<li><a href="http://www.swift-lizard.com/2009/11/24/test-driven-development-with-jquery-qunit/" class="external text" title="http://www.swift-lizard.com/2009/11/24/test-driven-development-with-jquery-qunit/">A short QUnit introduction in english</a></li>
 		<li><a href="http://www.aspnetzone.de/blogs/robertobez/archive/2009/12/02/jQuery-javascript-qunit-unit-test-framework.aspx" class="external text" title="http://www.aspnetzone.de/blogs/robertobez/archive/2009/12/02/jQuery-javascript-qunit-unit-test-framework.aspx">A short QUnit introduction in german</a></li>
