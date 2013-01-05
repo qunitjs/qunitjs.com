@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
 	<title>Refactored date examples</title>
 	<script src="prettydate.js"></script>
 	<script>
@@ -10,7 +10,8 @@
 		var result = prettyDate("2008/01/28 22:25:00", then);
 		if (result !== expected) {
 			results.bad++;
-			console.log("Expected " + expected + ", but was " + result);
+			console.log("Expected " + expected +
+				", but was " + result);
 		}
 	}
 	var results = {
@@ -23,8 +24,9 @@
 	test("2008/01/27 22:23:30", "Yesterday");
 	test("2008/01/26 22:23:30", "2 days ago");
 	test("2007/01/26 22:23:30", undefined);
-	console.log("Of " + results.total + " tests, " + results.bad + " failed, "
-		+ (results.total - results.bad) + " passed.");
+	console.log("Of " + results.total + " tests, " +
+		results.bad + " failed, " +
+		(results.total - results.bad) + " passed.");
 	</script>
 </head>
 <body>

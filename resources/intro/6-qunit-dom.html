@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
 	<title>Refactored date examples</title>
-	<link rel="stylesheet" href="../qunit.css" />
+	<link rel="stylesheet" href="../qunit.css">
 	<script src="../qunit.js"></script>
 	<script src="prettydate2.js"></script>
 	<script>
@@ -20,7 +20,8 @@
 	});
 
 	test("prettyDate.update", function() {
-		var links = document.getElementById("qunit-fixture").getElementsByTagName("a");
+		var links = document.getElementById("qunit-fixture")
+			.getElementsByTagName("a");
 		equal(links[0].innerHTML, "January 28th, 2008");
 		equal(links[2].innerHTML, "January 27th, 2008");
 		prettyDate.update("2008-01-28T22:25:00Z");
@@ -29,7 +30,8 @@
 	});
 
 	test("prettyDate.update, one day later", function() {
-		var links = document.getElementById("qunit-fixture").getElementsByTagName("a");
+		var links = document.getElementById("qunit-fixture")
+			.getElementsByTagName("a");
 		equal(links[0].innerHTML, "January 28th, 2008");
 		equal(links[2].innerHTML, "January 27th, 2008");
 		prettyDate.update("2008/01/29 22:25:00");
@@ -39,24 +41,32 @@
 	</script>
 </head>
 <body>
-	<div id="qunit"></div>
-	<div id="qunit-fixture">
-		<ul>
-			<li class="entry" id="post57">
-				<p>blah blah blah...</p>
-				<small class="extra">
-					Posted <span class="time"><a href="/2008/01/blah/57/" title="2008-01-28T20:24:17Z">January 28th, 2008</a></span>
-					by <span class="author"><a href="/john/">John Resig</a></span>
-				</small>
-			</li>
-			<li class="entry" id="post57">
-				<p>blah blah blah...</p>
-				<small class="extra">
-					Posted <span class="time"><a href="/2008/01/blah/57/" title="2008-01-27T22:24:17Z">January 27th, 2008</a></span>
-					by <span class="author"><a href="/john/">John Resig</a></span>
-				</small>
-			</li>
-		</ul>
-	</div>
+
+<div id="qunit"></div>
+<div id="qunit-fixture">
+	<ul>
+		<li class="entry" id="post57">
+			<p>blah blah blah...</p>
+			<small class="extra">
+				Posted <span class="time">
+					<a href="/2008/01/blah/57/" title="2008-01-28T20:24:17Z"
+						>January 28th, 2008</a>
+				</span>
+				by <span class="author"><a href="/john/">John Resig</a></span>
+			</small>
+		</li>
+		<li class="entry" id="post57">
+			<p>blah blah blah...</p>
+			<small class="extra">
+				Posted <span class="time">
+					<a href="/2008/01/blah/57/" title="2008-01-27T22:24:17Z"
+						>January 27th, 2008</a>
+				</span>
+				by <span class="author"><a href="/john/">John Resig</a></span>
+			</small>
+		</li>
+	</ul>
+</div>
+
 </body>
 </html>
