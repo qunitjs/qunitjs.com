@@ -29,7 +29,8 @@
 		var links = document.getElementsByTagName("a");
 		for ( var i = 0; i < links.length; i++ ) {
 			if ( links[i].title ) {
-				var date = prettyDate("2008-01-28T22:25:00Z", links[i].title);
+				var date = prettyDate("2008-01-28T22:25:00Z",
+					links[i].title);
 				if ( date ) {
 					links[i].innerHTML = date;
 				}
