@@ -64,13 +64,13 @@
 		The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a bar with a few checkboxes to filter test results and a blue bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers).
 	</p>
 	<p>
-		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Devlopment">the Efficient Devlopment</a> section below).
+		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Development">the Efficient Development</a> section below).
 	</p>
 	<p>
 		Checking "Check for Globals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
 	</p>
 	<p>
-		The "No try-catch" ckeckbox tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremdensly debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
+		The "No try-catch" checkbox tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremdensly debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
 	</p>
 	<p>
 		Below the header is a summary, showing the total time it took to run all tests as well as the overall number of total and failed assertions. While tests are still running, it will show which test is currently being executed.
@@ -372,7 +372,7 @@ test( "Appends a span", function() {
 
 	<h3 class="title" id="discussion-id170">Discussion</h3>
 	<p>
-		In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient-development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
+		In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient-development" title="Efficient Development">the section called "Efficient Development"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
 	</p>
 	<pre><code>
 test( "global pollution", function() {
@@ -415,7 +415,7 @@ test( "a basic test example 4", function() {
 	ok( true, "this test is fine" );
 });</code></pre>
 	<p>
-		All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient-development" title="Efficient Devlopment">the section called "Efficient Devlopment"</a>).
+		All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient-development" title="Efficient Development">the section called "Efficient Development"</a>).
 	</p>
 
 	<h3 class="title" id="discussion-id171">Discussion</h3>
@@ -440,7 +440,7 @@ test( "test with setup and teardown", function() {
 		Calling <code class="literal">module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
 	</p>
 
-	<h2 class="title" id="efficient-development">Efficient Devlopment</h2>
+	<h2 class="title" id="efficient-development">Efficient Development</h2>
 
 	<h3 class="title" id="problem-169">Problem</h3>
 	<p>
