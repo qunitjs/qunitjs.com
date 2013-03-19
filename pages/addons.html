@@ -5,18 +5,23 @@
 
 <div class="eight columns">
 <h2>Bundled Add-ons</h2>
-<p>QUnit includes a few add-ons in its repository. These add custom assertions, running multiple testsuite from one, help with continous integration and provide alternative themes.</p>
+<p>QUnit includes a few add-ons in its repository. These add custom assertions, help with continous integration, and provide alternative themes.</p>
 <ul>
 	<li><a href="https://github.com/jquery/qunit/tree/master/addons/canvas">Canvas</a> - provides a <code>pixelEqual</code> assertion, useful when working with a <code>canvas</code> element</li>
 	<li><a href="https://github.com/jquery/qunit/tree/master/addons/close-enough">Close Enough</a> - provides <code>close</code> and <code>notClose</code> assertions, useful when testing approximate number values</li>
-	<li><a href="https://github.com/jquery/qunit/tree/master/addons/composite">Composite</a> - bundle multiple testsuites intp a single file, running them in an iframe</li>
-	<li><a href="https://github.com/jquery/qunit-reporter-junit">JUnit Reporter</a> - produces JUnit-style XML output for test results, for integration into tools like Jenkins</li>
 	<li><a href="https://github.com/jquery/qunit/tree/master/addons/phantomjs">PhantomJS Runner</a> - a runner for PhantomJS, providing console output for tests. If you're using grunt, use its <a href="https://github.com/cowboy/grunt/blob/master/docs/task_qunit.md">qunit task</a> instead.</li>
 	<li><a href="https://github.com/jquery/qunit/tree/master/addons/step">Step</a> - adds a <code>QUnit.step</code> method that allows you to assert the proper sequence in which the code should execute.</li>
 	<li><a href="https://github.com/jquery/qunit/tree/master/addons/themes">Themes</a> - alternative themes, load their CSS file instead of the default one.</li>
 </ul>
 
-<h2>Third-Party Add-ons and integrations </h2>
+<h2>Official Add-ons</h2>
+<p>QUnit also has a few official add-ons in separate repositories. These run multiple test suites from one and help with continous integration.</p>
+<ul>
+	<li><a href="https://github.com/jquery/qunit-composite">Composite</a> - bundle multiple test suites into a single file, running them in an iframe</li>
+	<li><a href="https://github.com/jquery/qunit-reporter-junit">JUnit Logger</a> - produces JUnit-style XML output for test results, for integration into tools like Jenkins</li>
+</ul>
+
+<h2>Third-Party Add-ons and integrations</h2>
 <p>If you prefer BDD-style APIs for testing, check out SpecIt and Pavlov. For testing ajaxy code, check mockjax and sinon.js. That and more below.
 <ul>
 	<li>
