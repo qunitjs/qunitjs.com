@@ -52,10 +52,10 @@
 		The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit tests, even when the element itself is empty. This provides the fixture for tests, which will be explained in <a class="xref" href="#keeping-tests-atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.
 	</p>
 	<p>
-		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">testrunner.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in <a class="xref" href="#asserting-results" title="Asserting Results">the section called "Asserting Results"</a>.
+		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">qunit.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses one type of assertion &mdash; <code class="literal">equal()</code> &mdash; which is explained in detail in <a class="xref" href="#asserting-results" title="Asserting Results">the section called "Asserting Results"</a>.
 	</p>
 	<p>
-		Note that there is no <code class="literal">document-ready</code> block. The test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
+		Note that there is no <code class="literal">document-ready</code> block. The QUnit test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
 	</p>
 
 
@@ -64,13 +64,13 @@
 		The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a bar with a few checkboxes to filter test results and a blue bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers).
 	</p>
 	<p>
-		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Development">the Efficient Development</a> section below).
+		Of the checkboxes, "noglobals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
 	</p>
 	<p>
-		Checking "Check for Globals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
+		Checking "notrycatch" tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremendously debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
 	</p>
 	<p>
-		The "No try-catch" checkbox tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremendously debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
+		The "Hide passed tests" checkbox is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Development">the Efficient Development</a> section below).
 	</p>
 	<p>
 		Below the header is a summary, showing the total time it took to run all tests as well as the overall number of total and failed assertions. While tests are still running, it will show which test is currently being executed.
