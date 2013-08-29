@@ -88,7 +88,7 @@
 
 	<h3 class="title" id="solution-159">Solution</h3>
 	<p>
-		QUnit provides three assertions.
+		QUnit provides five assertions.
 	</p>
 
 	<h4 class="title" id="ok-open-parenthesis-boolean-open-square">ok( truthy [, message ] )</h4>
@@ -125,10 +125,26 @@ test( "equal test", function() {
 });
 </code></pre>
 	<p>
-		Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
-	</p>
-	<p>
 		When you need a strict comparison (<code class="literal">===</code>), use <code class="literal">strictEqual()</code> instead.
+	</p>
+
+		<h4 class="title" id="strictEqual-open-parenthesis-actual-comma-exp">strictEqual( actual, expected [, message ] )</h4>
+	<p>
+		The <code class="literal">strictEqual</code> assertion uses the strict comparison operator (<code class="literal">===</code>) to compare the actual and expected arguments. When they are strictly equal, the assertion passes; otherwise, it fails. When it fails, both actual and expected values are displayed in the test result, in addition to a given message:
+	</p>
+
+	<pre><code>
+test( "strictEqual test", function() {
+	strictEqual( 0, 0, "Zero, Zero; strictEqual succeeds" );
+	strictEqual( "", "", "Empty, Empty; strictEqual succeeds" );
+
+	strictEqual( "", 0, "Empty, Zero; strictEqual fails" );
+	strictEqual( "three", 3, "Three, 3; strictEqual fails" );
+	strictEqual( null, false, "null, false; strictEqual fails" );
+});
+</code></pre>
+	<p>
+		Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> or <code class="literal">strictEqual()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
 	</p>
 
 	<h4 class="title" id="deepEqual-open-parenthesis-actual-comma-expec">deepEqual( actual, expected [, message ] )</h4>
@@ -146,6 +162,23 @@ test( "deepEqual test", function() {
 	<p>
 		In case you want to explicitly not compare the content of two values, <code class="literal">equal()</code> can still be used. In general, <code class="literal">deepEqual()</code> is the better choice.
 	</p>
+
+	<h4 class="title" id="raises-open-parenthesis-actual-comma">raises( block, [expected [, message ]] )</h4>
+	<p>
+		The <code class="literal">raises()</code> assertion is used to verify that a <code class="literal">block</code> of code correctly raises an Error:
+	</p>
+<pre><code>
+test( "raises test", function(){
+	var raisesTypeError = function(){
+		throw new TypeError( "undefined is not a string" );
+	};
+
+	raises( raisesTypeError, TypeError, "raisesTypeError throws an instance of TypeError" );
+	raises( raisesTypeError, undefined, "raisesTypeError throws some Error" );
+
+	raises( raisesTypeError, RangeError, "raisesTypeError fails to throw an instance of TypeError" );
+});
+</code></pre>
 
 
 	<h2 class="title" id="synchronous-callbacks">Synchronous Callbacks</h2>
