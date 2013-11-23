@@ -461,7 +461,7 @@ test("retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="solution-168">Solution</h3>
 	<p>
-		Define a function to encapsulate the expectation in a reusable unit. Invoke <code>QUnit.push</code> within the body to notify QUnit that an assertion has taken place.
+		Define a function to encapsulate the expectation in a reusable unit. Invoke <code><a href="//api.qunitjs.com/QUnit.push/">QUnit.push<a/></code> within the body to notify QUnit that an assertion has taken place.
 	</p>
 	<pre><code>
 QUnit.assert.contains = function( needle, haystack, message ) {
@@ -481,10 +481,10 @@ test("retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="dicussion-id173">Discussion</h3>
 	<p>
-		Custom assertions can help make test suites more readable and more maintainable. At a minimum, they are simply functions that invoke <code>QUnit.push</code> with a Boolean value--this is how QUnit detects that an assertion has taken place and the result of that assertion.
+		Custom assertions can help make test suites more readable and more maintainable. At a minimum, they are simply functions that invoke <code><a href="//api.qunitjs.com/QUnit.push/">QUnit.push</a></code> with a Boolean value--this is how QUnit detects that an assertion has taken place and the result of that assertion.
 	</p>
 	<p>
-		It is a good practice to define this function as a method on the global <code>QUnit.assert</code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code>QUnit.extend</code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
+		It is a good practice to define this function as a method on the global <code><a href="//api.qunitjs.com/QUnit.assert/">QUnit.assert</a></code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code><a href="//api.qunitjs.com/QUnit.extend/">QUnit.extend</a></code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
 	</p>
 	<p>
 		QUnit's assertions are also defined on the global scope--that is why it is possible to make an assertion by simply invoking <code>ok</code>. Defining an assertion as a method on <code>QUnit.assert</code> will not make it available on the global scope. Accomplishing this requires explicitly defining the method on the global object (<code>window</code> in browser environments); again, this can be acheived through direct property assignment or via <code>QUnit.extend</code>.
