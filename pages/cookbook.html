@@ -486,9 +486,6 @@ test("retrieving object keys", function( assert ) {
 	<p>
 		It is a good practice to define this function as a method on the global <code><a href="//api.qunitjs.com/QUnit.assert/">QUnit.assert</a></code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code><a href="//api.qunitjs.com/QUnit.extend/">QUnit.extend</a></code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
 	</p>
-	<p>
-		QUnit's assertions are also defined on the global scope--that is why it is possible to make an assertion by simply invoking <code>ok</code>. Defining an assertion as a method on <code>QUnit.assert</code> will not make it available on the global scope. Accomplishing this requires explicitly defining the method on the global object (<code>window</code> in browser environments); again, this can be acheived through direct property assignment or via <code>QUnit.extend</code>.
-	</p>
 
 	<h2 class="title" id="efficient-development">Efficient Development</h2>
 
