@@ -53,10 +53,10 @@
 		The only markup necessary in the <code class="literal">&lt;body&gt;</code> element is a <code class="literal">&lt;div&gt;</code> with <code class="literal">id="qunit-fixture"</code>. This is required for all QUnit tests, even when the element itself is empty. This provides the fixture for tests, which will be explained in <a class="xref" href="#keeping-tests-atomic" title="Keeping Tests Atomic">the section called "Keeping Tests Atomic"</a>.
 	</p>
 	<p>
-		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">testrunner.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses two assertions, <code class="literal">ok()</code> and <code class="literal">equal()</code>, which are explained in detail in <a class="xref" href="#asserting-results" title="Asserting Results">the section called "Asserting Results"</a>.
+		The interesting part is the <code class="literal">&lt;script&gt;</code> element following the <code class="literal">qunit.js</code> include. It consists of a call to the <code class="literal">test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses one type of assertion &mdash; <code class="literal">equal()</code> &mdash; which is explained in detail in <a class="xref" href="#asserting-results" title="Asserting Results">the section called "Asserting Results"</a>.
 	</p>
 	<p>
-		Note that there is no <code class="literal">document-ready</code> block. The test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
+		Note that there is no <code class="literal">document-ready</code> block. The QUnit test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
 	</p>
 
 
@@ -65,13 +65,13 @@
 		The header of the test suite displays the page title, a green bar when all tests passed (a red bar when at least one test failed), a bar with a few checkboxes to filter test results and a blue bar with the <code class="literal">navigator.userAgent</code> string (handy for screenshots of test results in different browsers).
 	</p>
 	<p>
-		Of the checkboxes, "Hide passed tests" is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Development">the Efficient Development</a> section below).
+		Of the checkboxes, "noglobals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
 	</p>
 	<p>
-		Checking "Check for Globals" causes QUnit to make a list of all properties on the <code>window</code> object, before and after each test, then checking for differences. If properties are added or removed, the test will fail, listing the difference. This helps to make sure your test code and code under test doesn't accidentally export any global properties.
+		Checking "notrycatch" tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremendously debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
 	</p>
 	<p>
-		The "No try-catch" checkbox tells QUnit to run your test outside of a try-catch block. When your test throws an exception, the testrunner will die, unable to continue running, but you'll get a "native" exception, which can help tremendously debugging old browsers with bad debugging support like Internet Explorer 6 (JavaScript sucks at rethrowing exceptions).
+		The "Hide passed tests" checkbox is useful when a lot of tests ran and only a few failed. Checking the checkbox will hide everything that passed, making it easier to focus on the tests that failed (see also <a class="xref" href="#efficient-development" title="Efficient Development">the Efficient Development</a> section below).
 	</p>
 	<p>
 		Below the header is a summary, showing the total time it took to run all tests as well as the overall number of total and failed assertions. While tests are still running, it will show which test is currently being executed.
@@ -89,7 +89,7 @@
 
 	<h3 class="title" id="solution-159">Solution</h3>
 	<p>
-		QUnit provides three assertions.
+		QUnit provides five assertions.
 	</p>
 
 	<h4 class="title" id="ok-open-parenthesis-boolean-open-square">ok( truthy [, message ] )</h4>
@@ -126,10 +126,26 @@ test( "equal test", function() {
 });
 </code></pre>
 	<p>
-		Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
-	</p>
-	<p>
 		When you need a strict comparison (<code class="literal">===</code>), use <code class="literal">strictEqual()</code> instead.
+	</p>
+
+		<h4 class="title" id="strictEqual-open-parenthesis-actual-comma-exp">strictEqual( actual, expected [, message ] )</h4>
+	<p>
+		The <code class="literal">strictEqual</code> assertion uses the strict comparison operator (<code class="literal">===</code>) to compare the actual and expected arguments. When they are strictly equal, the assertion passes; otherwise, it fails. When it fails, both actual and expected values are displayed in the test result, in addition to a given message:
+	</p>
+
+	<pre><code>
+test( "strictEqual test", function() {
+	strictEqual( 0, 0, "Zero, Zero; strictEqual succeeds" );
+	strictEqual( "", "", "Empty, Empty; strictEqual succeeds" );
+
+	strictEqual( "", 0, "Empty, Zero; strictEqual fails" );
+	strictEqual( "three", 3, "Three, 3; strictEqual fails" );
+	strictEqual( null, false, "null, false; strictEqual fails" );
+});
+</code></pre>
+	<p>
+		Compared to <code class="literal">ok()</code>, <code class="literal">equal()</code> or <code class="literal">strictEqual()</code> makes it much easier to debug tests that failed, because it's obvious which value caused the test to fail.
 	</p>
 
 	<h4 class="title" id="deepEqual-open-parenthesis-actual-comma-expec">deepEqual( actual, expected [, message ] )</h4>
@@ -147,6 +163,23 @@ test( "deepEqual test", function() {
 	<p>
 		In case you want to explicitly not compare the content of two values, <code class="literal">equal()</code> can still be used. In general, <code class="literal">deepEqual()</code> is the better choice.
 	</p>
+
+	<h4 class="title" id="raises-open-parenthesis-actual-comma">raises( block, [expected [, message ]] )</h4>
+	<p>
+		The <code class="literal">raises()</code> assertion is used to verify that a <code class="literal">block</code> of code correctly raises an Error:
+	</p>
+<pre><code>
+test( "raises test", function(){
+	var raisesTypeError = function(){
+		throw new TypeError( "undefined is not a string" );
+	};
+
+	raises( raisesTypeError, TypeError, "raisesTypeError throws an instance of TypeError" );
+	raises( raisesTypeError, undefined, "raisesTypeError throws some Error" );
+
+	raises( raisesTypeError, RangeError, "raisesTypeError fails to throw an instance of TypeError" );
+});
+</code></pre>
 
 
 	<h2 class="title" id="synchronous-callbacks">Synchronous Callbacks</h2>
