@@ -382,7 +382,7 @@ test( "global pollution", function() {
 });
 </code></pre>
 	<p>
-		In a normal test run, this passes as a valid result. Running the <code>ok()</code> test with the <a class="ulink" href="http://jquery-cookbook.com/examples/18/06-keeping-tests-atomic/globals.html?noglobals" target="_top">noglobals flag</a> will cause the test to fail, because QUnit detected that it polluted the window object.
+		In a normal test run, this passes as a valid result. Running the <code>ok()</code> test with the <a href="/resources/example-cookbook-noglobals.html?noglobals" target="_top">noglobals flag</a> will cause the test to fail, because QUnit detected that it polluted the window object.
 	</p>
 	<p>
 		There is no need to use this flag all the time, but it can be handy to detect global namespace pollution that may be problematic in combination with third-party libraries. And it helps to detect bugs in tests caused by side effects.

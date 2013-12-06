@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Cookbook - Keeping Tests Atomic, testing for globals</title>
+  <link rel="stylesheet" href="/resources/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="/resources/qunit.js"></script>
+  <script>
+  test( "global pollution", function() {
+    window.pollute = true;
+    strictEqual( pollute, true );
+  });
+  </script>
+</body>
+</html>
