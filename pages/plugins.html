@@ -3,62 +3,38 @@
 	"pageTemplate": "page-contentfull.php"
 }</script>
 
-<h2>Official Plugins</h2>
-<p>QUnit has a few official plugins in separate repositories. These run multiple test suites from one and help with continous integration.</p>
+<h2>API Extensions</h2>
+<p>These plugins provide custom assertions or a complete new interface to use QUnit.</p>
 <ul>
-	<li><a href="https://github.com/jquery/qunit-composite">Composite</a> - bundle multiple test suites into a single file, running them in an iframe</li>
-	<li><a href="https://github.com/jquery/qunit-reporter-junit">JUnit Logger</a> - produces JUnit-style XML output for test results, for integration into tools like Jenkins</li>
+	<li><a href="http://github.com/joshuaclayton/specit">SpecIt A QUnit-based API for bdd-style testing</a></li>
+	<li><a href="https://github.com/mmonteleone/pavlov">Pavlov - extends QUnit with a rich, higher-level, Behavioral API</a>
+	<li><a href="https://github.com/AStepaniuk/qunit-parameterize">Parameterize</a> - A QUnit plugin For Running Parameterized Tests</li>
+	<li><a href="https://github.com/JamesMGreene/qunit-assert-html">HTML</a> - A QUnit plugin for assertion methods to compare two HTML strings for equality after a rigorous normalization process.</li>
+	<li><a href="https://github.com/JamesMGreene/qunit-assert-step">Step</a> - A QUnit plugin for asserting the proper sequence in which the code should execute.</li>
+	<li><a href="https://github.com/JamesMGreene/qunit-assert-close">Close</a> - A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.</li>
+	<li><a href="https://github.com/JamesMGreene/qunit-assert-canvas">Canvas</a> - A QUnit plugin for asserting individual pixel values within a Canvas element.</li>
+	<li><a href="https://github.com/bahmutov/qunit-promises">qunit-promises</a> - A QUnit plugin for asserting results of promises.</li>
+	<li><a href="https://github.com/bahmutov/qunit-once">qunit-once</a> - A QUnit plugin that adds <code>setupOnce</code> and <code>teardownOnce</code> to module's config.</li>
 </ul>
 
-<h2>Third-Party Plugins and Integrations</h2>
-<p>If you prefer BDD-style APIs for testing, check out SpecIt and Pavlov. For testing ajaxy code, check mockjax and sinon.js. That and more below.
+<h2>Mocking Tools</h2>
+<p>These libraries can be used along with QUnit to mock Ajax requests, timers and more.</p>
 <ul>
-	<li>
-		<a href="http://github.com/joshuaclayton/specit">SpecIt A QUnit-based API for bdd-style testing</a>
+	<li><a href="http://github.com/appendto/jquery-mockjax">jQuery-Mockjax - Interface to mock ajax requests and responses</a></li>
+	<li><a href="http://cjohansen.no/en/javascript/using_sinon_js_with_qunit">Sinon.js integration with QUnit</a></li>
+</ul>
+
+<h2>Integration</h2>
+<p>These plugins make it easier to integrate QUnit in various testing setups.</p>
+<ul>
+	<li><a href="https://github.com/jonkemp/qunit-phantomjs-runner">QUnit PhantomJS Runner</a> - A PhantomJS-powered headless test runner, providing basic console output for QUnit tests.</li>
+	<li><a href="https://github.com/jquery/qunit-composite">Composite</a> - bundle multiple test suites into a single file, running them in an iframe</li>
+	<li><a href="https://github.com/jquery/qunit-reporter-junit">JUnit Logger</a> - produces JUnit-style XML output for test results, for integration into tools like Jenkins</li>
 	</li>
-	<li>
-		<a href="https://github.com/mmonteleone/pavlov">Pavlov - extends QUnit with a rich, higher-level, Behavioral API</a>
-	</li>
-	<li>
-		<a href="http://github.com/mkrisher/qunit_for_rails">Rails plugin for QUnit integration</a>
-	</li>
-	<li>
-		<a href="http://github.com/appendto/jquery-mockjax">jQuery-Mockjax - Interface to mock ajax requests and responses</a>
-	</li>
-	<li>
-		<a href="http://cjohansen.no/en/javascript/using_sinon_js_with_qunit">Sinon.js integration with QUnit</a>
-	</li>
-	<li>
-		<a href="https://github.com/jivesoftware/QUnitTestRunnerPlugin">QUnit testrunner plugin for JsTestDriver</a>
-	</li>
-	<li>
-		<a href="http://drupal.org/project/qunit">Drupal module for QUnit</a>
-	</li>
-	<li>
-		<a href="https://github.com/jdalton/qunit-clib">QUnit CLIB</a> - QUnit CLIB helps extend QUnit's CLI support to many common CLI environments.
-	</li>
-	<li>
-		<a href="https://github.com/AStepaniuk/qunit-parameterize">Parameterize</a> - A QUnit plugin For Running Parameterized Tests
-	</li>
-	<li>
-		<a href="https://github.com/JamesMGreene/qunit-assert-html">HTML</a> - A QUnit plugin for assertion methods to compare two HTML strings for equality after a rigorous normalization process.
-	</li>
-	<li>
-		<a href="https://github.com/JamesMGreene/qunit-assert-step">Step</a> - A QUnit plugin for asserting the proper sequence in which the code should execute.
-	</li>
-	<li>
-		<a href="https://github.com/JamesMGreene/qunit-assert-close">Close</a> - A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.
-	</li>
-	<li>
-		<a href="https://github.com/JamesMGreene/qunit-assert-canvas">Canvas</a> - A QUnit plugin for asserting individual pixel values within a Canvas element.
-	</li>
-	<li>
-		<a href="https://github.com/bahmutov/qunit-promises">qunit-promises</a> - A QUnit plugin for asserting results of promises.
-	</li>
-	<li>
-		<a href="https://github.com/bahmutov/qunit-once">qunit-once</a> - A QUnit plugin
-		that adds <code>setupOnce</code> and <code>teardownOnce</code> to module's config.
-	</li>
+	<li><a href="http://github.com/mkrisher/qunit_for_rails">Rails plugin for QUnit integration</a></li>
+	<li><a href="https://github.com/jivesoftware/QUnitTestRunnerPlugin">QUnit testrunner plugin for JsTestDriver</a></li>
+	<li><a href="http://drupal.org/project/qunit">Drupal module for QUnit</a></li>
+	<li><a href="https://github.com/jdalton/qunit-clib">QUnit CLIB</a> - QUnit CLIB helps extend QUnit's CLI support to many common CLI environments.</li>
 </ul>
 
 <h2>Themes</h2>
