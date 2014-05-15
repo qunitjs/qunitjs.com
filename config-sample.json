@@ -1,5 +1,5 @@
 {
-	"url": "local.qunitjs.com",
+	"url": "vagrant.qunitjs.com",
 	"username": "admin",
 	"password": "secret"
 }
