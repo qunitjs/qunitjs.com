@@ -105,7 +105,7 @@
 
 	<p>Three sections are worth a closer look here. Along with the usual HTML boilerplate, we have three included files: two files for QUnit (<code>qunit.css</code> and <code>qunit.js</code>) and the previous <code>prettydate.js</code>.</p>
 
-	<p>Then, there’s another script block with the actual tests. The <code>test</code> method is called once, passing a string as the first argument (naming the test) and passing a function as the second argument (which will run the actual code for this test). This code then defines the <code>now</code> variable, which gets reused below, then calls the <code>equal</code> method a few times with varying arguments. The <code>equal</code> method is one of several assertions that QUnit provides. The first argument is the result of a call to <code>prettyDate</code>, with the <code>now</code> variable as the first argument and a <code>date</code> string as the second. The second argument to <code>equal</code> is the expected result. If the two arguments to <code>equal</code> are the same value, then the assertion will pass; otherwise, it will fail.</p>
+	<p>Then, there’s another script block with the actual tests. The <code>test</code> method is called once, passing a string as the first argument (naming the test) and passing a function as the second argument (which will run the actual code for this test). This code then defines the <code>now</code> variable, which gets reused below, then calls the <code>equal</code> method a few times with varying arguments. The <code>equal</code> method is one of several assertions that QUnit provides through the first parameter in the callback function of the test block. The first argument is the result of a call to <code>prettyDate</code>, with the <code>now</code> variable as the first argument and a <code>date</code> string as the second. The second argument to <code>equal</code> is the expected result. If the two arguments to <code>equal</code> are the same value, then the assertion will pass; otherwise, it will fail.</p>
 
 	<p>Finally, in the body element is some QUnit-specific markup. These elements are optional. If present, QUnit will use them to output the test results.</p>
 
@@ -124,9 +124,9 @@
 	<p>The assertions are currently somewhat incomplete because we aren’t yet testing the <code>n weeks ago</code> variant. Before adding it, we should consider refactoring the test code. Currently, we are calling <code>prettyDate</code> for each assertion and passing the <code>now</code> argument. We could easily refactor this into a custom assertion method:</p>
 
 	<pre><code>
-	test("prettydate basics", function() {
+	QUnit.test("prettydate basics", function( assert ) {
 		function date(then, expected) {
-			equal(prettyDate("2008/01/28 22:25:00", then), expected);
+			assert.equal(prettyDate("2008/01/28 22:25:00", then), expected);
 		}
 		date("2008/01/28 22:24:30", "just now");
 		date("2008/01/28 22:23:30", "1 minute ago");
