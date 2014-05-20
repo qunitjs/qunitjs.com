@@ -10,9 +10,9 @@
   <div id="qunit-fixture"></div>
   <script src="/resources/qunit.js"></script>
   <script>
-  test( "global pollution", function() {
+  QUnit.test( "global pollution", function( assert ) {
     window.pollute = true;
-    strictEqual( pollute, true );
+    assert.strictEqual( pollute, true );
   });
   </script>
 </body>

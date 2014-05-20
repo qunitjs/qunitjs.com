@@ -7,9 +7,9 @@
 	<script src="../qunit.js"></script>
 	<script src="prettydate2.js"></script>
 	<script>
-	test("prettydate.format", function() {
+	QUnit.test("prettydate.format", function( assert ) {
 		function date(then, expected) {
-			equal(prettyDate.format("2008/01/28 22:25:00", then),
+			assert.equal(prettyDate.format("2008/01/28 22:25:00", then),
 				expected);
 		}
 		date("2008/01/28 22:24:30", "just now");
@@ -21,14 +21,14 @@
 	});
 
 	function domtest(name, now, first, second) {
-		test(name, function() {
+		QUnit.test(name, function( assert ) {
 			var links = document.getElementById("qunit-fixture")
 				.getElementsByTagName("a");
-			equal(links[0].innerHTML, "January 28th, 2008");
-			equal(links[2].innerHTML, "January 27th, 2008");
+			assert.equal(links[0].innerHTML, "January 28th, 2008");
+			assert.equal(links[2].innerHTML, "January 27th, 2008");
 			prettyDate.update(now);
-			equal(links[0].innerHTML, first);
-			equal(links[2].innerHTML, second);
+			assert.equal(links[0].innerHTML, first);
+			assert.equal(links[2].innerHTML, second);
 		});
 	}
 	domtest("prettyDate.update", "2008-01-28T22:25:00Z",

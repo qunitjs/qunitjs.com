@@ -10,9 +10,9 @@
   <div id="qunit-fixture"></div>
   <script src="/resources/qunit.js"></script>
   <script>
-    test( "a basic test example", function() {
+    QUnit.test( "a basic test example", function( assert ) {
       var value = "hello";
-      equal( value, "hello", "We expect value to be hello" );
+      assert.equal( value, "hello", "We expect value to be hello" );
     });
   </script>
 </body>
