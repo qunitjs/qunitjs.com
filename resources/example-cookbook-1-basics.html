@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <title>QUnit basic example</title>
-  <link rel="stylesheet" href="/resources/qunit.css">
+  <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.14.0.css">
 </head>
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
-  <script src="/resources/qunit.js"></script>
+  <script src="//code.jquery.com/qunit/qunit-1.14.0.js"></script>
   <script>
-    test( "a basic test example", function() {
+    QUnit.test( "a basic test example", function( assert ) {
       var value = "hello";
-      equal( value, "hello", "We expect value to be hello" );
+      assert.equal( value, "hello", "We expect value to be hello" );
     });
   </script>
 </body>

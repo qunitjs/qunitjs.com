@@ -56,7 +56,7 @@
 		The interesting part is the <code>&lt;script&gt;</code> element following the <code>qunit.js</code> include. It consists of a call to the <code>test</code> function, with two arguments: the name of the test as a string, which is later used to display the test results, and a function. The function contains the actual testing code, which involves one or more assertions. The example uses one assertion, <code>equal()</code>, which is explained in detail in <a href="#asserting-results" title="Asserting Results">Asserting Results</a>.
 	</p>
 	<p>
-		Note that there is no <code class="literal">document-ready</code> block. The test runner handles that: calling <code class="literal">test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
+		Note that there is no <code class="literal">document-ready</code> block. The test runner handles that: calling <code class="literal">QUnit.test()</code> just adds the test to a queue, and its execution is deferred and controlled by the test runner.
 	</p>
 
 
@@ -97,16 +97,16 @@
 		The most basic one is <code class="literal">ok()</code>, which requires just one argument. If the argument evaluates to true, the assertion passes; otherwise, it fails. In addition, it accepts a string to display as a message in the test results:
 	</p>
 	<pre><code>
-test( "ok test", function() {
-	ok( true, "true succeeds" );
-	ok( "non-empty", "non-empty string succeeds" );
+QUnit.test( "ok test", function( assert ) {
+	assert.ok( true, "true succeeds" );
+	assert.ok( "non-empty", "non-empty string succeeds" );
 
-	ok( false, "false fails" );
-	ok( 0, "0 fails" );
-	ok( NaN, "NaN fails" );
-	ok( "", "empty string fails" );
-	ok( null, "null fails" );
-	ok( undefined, "undefined fails" );
+	assert.ok( false, "false fails" );
+	assert.ok( 0, "0 fails" );
+	assert.ok( NaN, "NaN fails" );
+	assert.ok( "", "empty string fails" );
+	assert.ok( null, "null fails" );
+	assert.ok( undefined, "undefined fails" );
 });</code></pre>
 
 	<h4 class="title" id="equal-open-parenthesis-actual-comma-exp">equal( actual, expected [, message ] )</h4>
@@ -115,14 +115,14 @@ test( "ok test", function() {
 	</p>
 
 	<pre><code>
-test( "equal test", function() {
-	equal( 0, 0, "Zero, Zero; equal succeeds" );
-	equal( "", 0, "Empty, Zero; equal succeeds" );
-	equal( "", "", "Empty, Empty; equal succeeds" );
-	equal( 0, false, "Zero, false; equal succeeds" );
+QUnit.test( "equal test", function( assert ) {
+	assert.equal( 0, 0, "Zero, Zero; equal succeeds" );
+	assert.equal( "", 0, "Empty, Zero; equal succeeds" );
+	assert.equal( "", "", "Empty, Empty; equal succeeds" );
+	assert.equal( 0, false, "Zero, false; equal succeeds" );
 
-	equal( "three", 3, "Three, 3; equal fails" );
-	equal( null, false, "null, false; equal fails" );
+	assert.equal( "three", 3, "Three, 3; equal fails" );
+	assert.equal( null, false, "null, false; equal fails" );
 });
 </code></pre>
 	<p>
@@ -138,10 +138,10 @@ test( "equal test", function() {
 		<code class="literal">undefined</code> doesn't equal <code class="literal">null</code>, <code class="literal">0</code>, or the empty string (<code class="literal">""</code>). It also compares the content of objects so that <code class="literal">{key: value}</code> is equal to <code class="literal">{key: value}</code>, even when comparing two objects with distinct identities.</p><p><code class="literal">deepEqual()</code> also handles NaN, dates, regular expressions, arrays, and functions, while <code class="literal">equal()</code> would just check the object identity:
 	</p>
 <pre><code>
-test( "deepEqual test", function() {
+QUnit.test( "deepEqual test", function( assert ) {
 	var obj = { foo: "bar" };
 
-	deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
+	assert.deepEqual( obj, { foo: "bar" }, "Two objects can be the same in value" );
 });
 </code></pre>
 	<p>
@@ -163,7 +163,7 @@ test( "deepEqual test", function() {
 		Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the number of expected assertions as the only argument:
 	</p>
 	<pre><code>
-test( "a test", function() {
+QUnit.test( "a test", function( assert ) {
 	expect( 2 );
 
 	function calc( x, operation ) {
@@ -171,31 +171,11 @@ test( "a test", function() {
 	}
 
 	var result = calc( 2, function( x ) {
-		ok( true, "calc() calls operation function" );
+		assert.ok( true, "calc() calls operation function" );
 		return x * x;
 	});
 
-	equal( result, 4, "2 square equals 4" );
-});
-</code></pre>
-
-	<p>
-		Alternatively, the expectation count can be passed as the second parameter to test():
-	</p>
-
-	<pre><code>
-test( "a test", 2, function() {
-
-	function calc( x, operation ) {
-		return operation( x );
-	}
-
-	var result = calc( 2, function( x ) {
-		ok( true, "calc() calls operation function" );
-		return x * x;
-	});
-
-	equal( result, 4, "2 square equals 4" );
+	assert.equal( result, 4, "2 square equals 4" );
 });
 </code></pre>
 
@@ -204,11 +184,13 @@ test( "a test", 2, function() {
 	</p>
 
 	<pre><code>
-test( "a test", 1, function() {
+QUnit.test( "a test", function( assert ) {
+	expect( 1 );
+
 	var $body = $( "body" );
 
 	$body.on( "click", function() {
-		ok( true, "body was clicked!" );
+		assert.ok( true, "body was clicked!" );
 	});
 
 	$body.trigger( "click" );
@@ -229,15 +211,15 @@ test( "a test", 1, function() {
 	</p>
 	<h3 class="title" id="solution-161">Solution</h3>
 	<p>
-		Instead of wrapping your assertions in a <code class="literal">test()</code>, use <code class="literal">asyncTest()</code> and call <code class="literal">start()</code> when your test block is complete and ready to resume:
+		Instead of wrapping your assertions in a <code class="literal">QUnit.test()</code>, use <code class="literal">QUnit.asyncTest()</code> and call <code class="literal">QUnit.start()</code> when your test block is complete and ready to resume:
 	</p>
 	<pre><code>
-asyncTest( "asynchronous test: one second later!", function() {
+Qunit.asyncTest( "asynchronous test: one second later!", function( assert ) {
 	expect( 1 );
 
 	setTimeout(function() {
-		ok( true, "Passed and ready to resume!" );
-		start();
+		assert.ok( true, "Passed and ready to resume!" );
+		QUnit.start();
 	}, 1000);
 });
 </code></pre>
@@ -247,14 +229,14 @@ asyncTest( "asynchronous test: one second later!", function() {
 
 	<pre><code>
 
-asyncTest( "asynchronous test: video ready to play", function() {
+QUnit.asyncTest( "asynchronous test: video ready to play", function( assert ) {
 	expect( 1 );
 
 	var $video = $( "video" );
 
 	$video.on( "canplaythrough", function() {
-		ok( true, "video has loaded and is ready to play" );
-		start();
+		assert.ok( true, "video has loaded and is ready to play" );
+		QUnit.start();
 	});
 });
 
@@ -295,7 +277,7 @@ function KeyLogger( target ) {
 	</p>
 
 	<pre><code>
-test( "keylogger api behavior", function() {
+QUnit.test( "keylogger api behavior", function( assert ) {
 
 	var event,
 			$doc = $( document ),
@@ -307,8 +289,8 @@ test( "keylogger api behavior", function() {
 	$doc.trigger( event );
 
 	// verify expected behavior
-	equal( keys.log.length, 1, "a key was logged" );
-	equal( keys.log[ 0 ], 9, "correct key was logged" );
+	assert.equal( keys.log.length, 1, "a key was logged" );
+	assert.equal( keys.log[ 0 ], 9, "correct key was logged" );
 
 });</code></pre>
 
@@ -334,14 +316,14 @@ test( "keylogger api behavior", function() {
 	</p>
 
 	<pre><code>
-test( "2 asserts", function() {
+QUnit.test( "2 asserts", function( assert ) {
 	var $fixture = $( "#qunit-fixture" );
 
 	$fixture.append( "&lt;div>hello!&lt;/div>" );
-	equal( $( "div", $fixture ).length, 1, "div added successfully!" );
+	assert.equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 
 	$fixture.append( "&lt;span>hello!&lt;/span>" );
-	equal( $( "span", $fixture ).length, 1, "span added successfully!" );
+	assert.equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
 </code></pre>
 
@@ -351,22 +333,22 @@ test( "2 asserts", function() {
 
 	<h3 class="title" id="solution-165">Solution</h3>
 	<p>
-		Use the <code class="literal">test()</code> method to keep tests atomic, being careful to keep each assertion clean of any possible side effects. You should only rely on the fixture markup, inside the <code class="literal">#qunit-fixture</code> element. Modifying and relying on anything else can have side effects:
+		Use the <code class="literal">QUnit.test()</code> method to keep tests atomic, being careful to keep each assertion clean of any possible side effects. You should only rely on the fixture markup, inside the <code class="literal">#qunit-fixture</code> element. Modifying and relying on anything else can have side effects:
 	</p>
 	<pre><code>
 
-test( "Appends a div", function() {
+QUnit.test( "Appends a div", function( assert ) {
 	var $fixture = $( "#qunit-fixture" );
 
 	$fixture.append( "&lt;div>hello!&lt;/div>" );
 	equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 });
 
-test( "Appends a span", function() {
+QUnit.test( "Appends a span", function( assert ) {
 	var $fixture = $( "#qunit-fixture" );
 
 	$fixture.append("&lt;span>hello!&lt;/span>" );
-	equal( $( "span", $fixture ).length, 1, "span added successfully!" );
+	assert.equal( $( "span", $fixture ).length, 1, "span added successfully!" );
 });
 </code></pre>
 	<p>
@@ -378,9 +360,9 @@ test( "Appends a span", function() {
 		In addition to the <code class="literal">#qunit-fixture</code> fixture element and the filters explained in <a class="xref" href="#efficient-development" title="Efficient Development">the section called "Efficient Development"</a>, QUnit also offers a <code class="literal">?noglobals</code> flag. Consider the following test:
 	</p>
 	<pre><code>
-test( "global pollution", function() {
+QUnit.test( "global pollution", function( assert ) {
 	window.pollute = true;
-	ok( pollute, "nasty pollution" );
+	assert.ok( pollute, "nasty pollution" );
 });
 </code></pre>
 	<p>
@@ -399,48 +381,48 @@ test( "global pollution", function() {
 
 	<h3 class="title" id="solution-166">Solution</h3>
 	<p>
-		You can use the <code class="literal">module()</code> function to group tests together:
+		You can use the <code class="literal">QUnit.module()</code> function to group tests together:
 	</p>
 	<pre><code>
-module( "group a" );
-test( "a basic test example", function() {
-	ok( true, "this test is fine" );
+QUnit.module( "group a" );
+QUnit.test( "a basic test example", function( assert ) {
+	assert.ok( true, "this test is fine" );
 });
-test( "a basic test example 2", function() {
-	ok( true, "this test is fine" );
+QUnit.test( "a basic test example 2", function( assert ) {
+	assert.ok( true, "this test is fine" );
 });
 
-module( "group b" );
-test( "a basic test example 3", function() {
-	ok( true, "this test is fine" );
+QUnit.module( "group b" );
+QUnit.test( "a basic test example 3", function( assert ) {
+	assert.ok( true, "this test is fine" );
 });
-test( "a basic test example 4", function() {
-	ok( true, "this test is fine" );
+QUnit.test( "a basic test example 4", function( assert ) {
+	assert.ok( true, "this test is fine" );
 });</code></pre>
 	<p>
-		All tests that occur after a call to <code class="literal">module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient-development" title="Efficient Development">the section called "Efficient Development"</a>).
+		All tests that occur after a call to <code class="literal">QUnit.module()</code> will be grouped into that module. The test names will all be preceded by the module name in the test results. You can then use that module name to select tests to run (see <a class="xref" href="#efficient-development" title="Efficient Development">the section called "Efficient Development"</a>).
 	</p>
 
 	<h3 class="title" id="discussion-id171">Discussion</h3>
 	<p>
-		In addition to grouping tests, <code class="literal">module()</code> can be used to extract common code from tests within that module. The <code class="literal">module()</code> function takes an optional second parameter to define functions to run before and after each test within the module:
+		In addition to grouping tests, <code class="literal">QUnit.module()</code> can be used to extract common code from tests within that module. The <code class="literal">QUnit.module()</code> function takes an optional second parameter to define functions to run before and after each test within the module:
 	</p>
 	<pre><code>
-module( "module", {
-	setup: function() {
-		ok( true, "one extra assert per test" );
-	}, teardown: function() {
-		ok( true, "and one extra assert after each test" );
+QUnit.module( "module", {
+	setup: function( assert ) {
+		assert.ok( true, "one extra assert per test" );
+	}, teardown: function( assert ) {
+		assert.ok( true, "and one extra assert after each test" );
 	}
 });
-test( "test with setup and teardown", function() {
+QUnit.test( "test with setup and teardown", function() {
 	expect( 2 );
 });</code></pre>
 	<p>
 		You can specify both setup and teardown properties together, or just one of them.
 	</p>
 	<p>
-		Calling <code class="literal">module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
+		Calling <code class="literal">QUnit.module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
 	</p>
 
 	<h2 class="title" id="custom-assertions">Custom Assertions</h2>
@@ -450,7 +432,7 @@ test( "test with setup and teardown", function() {
 		You have several tests that duplicate logic for asserting some expectation. This repetitive code lessens the readability of your tests and increases the surface for bugs.
 	</p>
 	<pre><code>
-test("retrieving object keys", function( assert ) {
+QUnit.test( "retrieving object keys", function( assert ) {
 	var objectKeys = keys( { a: 1, b: 2 } );
 	assert.ok( objectKeys.indexOf("a") > -1, "Object keys" );
 	assert.ok( objectKeys.indexOf("b") > -1, "Object keys" );
@@ -470,7 +452,7 @@ QUnit.assert.contains = function( needle, haystack, message ) {
 	var actual = haystack.indexOf(needle) > -1;
 	QUnit.push(actual, actual, needle, message);
 };
-test("retrieving object keys", function( assert ) {
+QUnit.test("retrieving object keys", function( assert ) {
 	var objectKeys = keys( { a: 1, b: 2 } );
 	assert.contains( "a", objectKeys, "Object keys" );
 	assert.contains( "b", objectKeys, "Object keys" );
