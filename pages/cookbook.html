@@ -180,26 +180,6 @@ test( "a test", function() {
 </code></pre>
 
 	<p>
-		Alternatively, the expectation count can be passed as the second parameter to test():
-	</p>
-
-	<pre><code>
-test( "a test", 2, function() {
-
-	function calc( x, operation ) {
-		return operation( x );
-	}
-
-	var result = calc( 2, function( x ) {
-		ok( true, "calc() calls operation function" );
-		return x * x;
-	});
-
-	equal( result, 4, "2 square equals 4" );
-});
-</code></pre>
-
-	<p>
 		Practical Example:
 	</p>
 
