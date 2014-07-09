@@ -214,7 +214,7 @@ QUnit.test( "a test", function( assert ) {
 		Instead of wrapping your assertions in a <code class="literal">QUnit.test()</code>, use <code class="literal">QUnit.asyncTest()</code> and call <code class="literal">QUnit.start()</code> when your test block is complete and ready to resume:
 	</p>
 	<pre><code>
-Qunit.asyncTest( "asynchronous test: one second later!", function( assert ) {
+QUnit.asyncTest( "asynchronous test: one second later!", function( assert ) {
 	expect( 1 );
 
 	setTimeout(function() {
