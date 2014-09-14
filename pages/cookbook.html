@@ -160,11 +160,11 @@ QUnit.test( "deepEqual test", function( assert ) {
 		QUnit provides a special assertion to define the number of assertions a test contains. When the test completes without the correct number of assertions, it will fail, no matter what result the other assertions, if any, produced.
 	</p>
 	<p>
-		Usage is plain and simple; just call <code class="literal">expect()</code> at the start of a test, with the number of expected assertions as the only argument:
+		Usage is plain and simple; just call <code class="literal">assert.expect()</code> at the start of a test, with the number of expected assertions as the only argument:
 	</p>
 	<pre><code>
 QUnit.test( "a test", function( assert ) {
-	expect( 2 );
+	assert.expect( 2 );
 
 	function calc( x, operation ) {
 		return operation( x );
@@ -185,7 +185,7 @@ QUnit.test( "a test", function( assert ) {
 
 	<pre><code>
 QUnit.test( "a test", function( assert ) {
-	expect( 1 );
+	assert.expect( 1 );
 
 	var $body = $( "body" );
 
@@ -199,28 +199,27 @@ QUnit.test( "a test", function( assert ) {
 
 	<h3 class="title" id="discussion-id167">Discussion</h3>
 	<p>
-		<code class="literal">expect()</code> provides the most value when actually testing callbacks. When all code is running in the scope of the test function,
-		<code class="literal">expect()</code> provides no additional value&#8212;any error preventing assertions to run would cause the test to fail anyway, because the test runner catches the error and fails the unit.
+		<code class="literal">assert.expect()</code> provides the most value when actually testing callbacks. When all code is running in the scope of the test function,
+		<code class="literal">assert.expect()</code> provides no additional value&#8212;any error preventing assertions to run would cause the test to fail anyway, because the test runner catches the error and fails the unit.
 	</p>
 
 	<h2 class="title" id="asynchronous-callbacks">Asynchronous Callbacks</h2>
 
 	<h3 class="title" id="problem-165">Problem</h3>
 	<p>
-		While <code class="literal">expect()</code> is useful to test synchronous callbacks (see <a class="xref" href="#synchronous-callbacks" title="Synchronous Callbacks">the section called "Synchronous Callbacks"</a>), it falls short when Asynchronous callbacks. Asynchronous callbacks conflict with the way the test runner queues and executes tests. When code under test starts a timeout or interval or an Ajax request, the test runner will just continue running the rest of the test, as well as other tests following it, instead of waiting for the result of the asynchronous operation.
+		While <code class="literal">assert.expect()</code> is useful to test synchronous callbacks (see <a class="xref" href="#synchronous-callbacks" title="Synchronous Callbacks">the section called "Synchronous Callbacks"</a>), it can fall short for asynchronous callbacks. Asynchronous callbacks conflict with the way the test runner queues and executes tests. When code under test starts a timeout or interval or an AJAX request, the test runner will just continue running the rest of the test, as well as other tests following it, instead of waiting for the result of the asynchronous operation.
 	</p>
 	<h3 class="title" id="solution-161">Solution</h3>
 	<p>
-		Instead of wrapping your assertions in a <code class="literal">QUnit.test()</code>, use <code class="literal">QUnit.asyncTest()</code> and call <code class="literal">QUnit.start()</code> when your test block is complete and ready to resume:
+		For every asynchronous operation in your <code class="literal">QUnit.test()</code> callback, use <code class="literal">assert.async()</code> to request a unique resolution callback to invoke when that asynchronous operation completes so that the test execution may resume:
 	</p>
 	<pre><code>
-QUnit.asyncTest( "asynchronous test: one second later!", function( assert ) {
-	expect( 1 );
-
+QUnit.test( "asynchronous test: one second later!", function( assert ) {
+	var done = assert.async();
 	setTimeout(function() {
 		assert.ok( true, "Passed and ready to resume!" );
-		QUnit.start();
-	}, 1000);
+		done();
+	}, 1000 );
 });
 </code></pre>
 	<p>
@@ -228,15 +227,14 @@ QUnit.asyncTest( "asynchronous test: one second later!", function( assert ) {
 	</p>
 
 	<pre><code>
-
-QUnit.asyncTest( "asynchronous test: video ready to play", function( assert ) {
-	expect( 1 );
+QUnit.test( "asynchronous test: video ready to play", function( assert ) {
+	var done = assert.async();
 
 	var $video = $( "video" );
 
 	$video.on( "canplaythrough", function() {
 		assert.ok( true, "video has loaded and is ready to play" );
-		QUnit.start();
+		done();
 	});
 });
 
@@ -416,7 +414,7 @@ QUnit.module( "module", {
 	}
 });
 QUnit.test( "test with setup and teardown", function() {
-	expect( 2 );
+	assert.expect( 2 );
 });</code></pre>
 	<p>
 		You can specify both setup and teardown properties together, or just one of them.
