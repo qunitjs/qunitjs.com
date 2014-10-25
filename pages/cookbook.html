@@ -341,7 +341,7 @@ QUnit.test( "Appends a div", function( assert ) {
 	var $fixture = $( "#qunit-fixture" );
 
 	$fixture.append( "&lt;div>hello!&lt;/div>" );
-	equal( $( "div", $fixture ).length, 1, "div added successfully!" );
+	assert.equal( $( "div", $fixture ).length, 1, "div added successfully!" );
 });
 
 QUnit.test( "Appends a span", function( assert ) {
