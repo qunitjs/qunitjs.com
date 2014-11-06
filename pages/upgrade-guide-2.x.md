@@ -5,44 +5,19 @@
 
 ## Overview
 
-This guide will assist in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below, along with how to upgrade your code to work with QUnit 2.x.
+This guide will assist in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below, explaining how to upgrade your code to work with QUnit 2.x.
 
 Note that all the new APIs of QUnit 2.0 are already usable in QUnit 1.16, allowing you to migrate step by step. QUnit 2.0 will include a migration layer that throws descriptive errors for all deprecated methods (<code>"Global 'test()' method is removed, use 'QUnit.test() instead"</code>), to help you migrate to the new APIs. QUnit 2.1+ will remove that layer, causing failures that will be more difficult to debug (<code>"ReferenceError: test is not defined"</code>).
 
-### Only one global variable
+## Removed globals
 
-QUnit no longer exposes global variables for all of its API. The only global variable still exposed is `QUnit`. Use `QUnit.module()` and `QUnit.test()` to define your testsuite, use the `assert` argument in test callbacks to write assertions.
-
-### Better async flow control
+QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use `QUnit.module()` and `QUnit.test()` to define your testsuite, and use the `assert` argument in test callbacks to write assertions.
 
 The global `stop()` and `start()` methods are gone, replaced by `assert.async()`, which returns a callback. Execute this callback when your test is done.
 
-### Better reporter integration
-
-QUnit used to support registering callbacks by assigning to `QUnit.done` and other properties. This is replaced by calling `QUnit.done( callback )`. This style allows multiple reporters to register at the same time.
-
-### Renamed module hooks
-
-Renamed module's `setup` and `teardown` hooks to `beforeEach` and `afterEach`, moved `QUnit.push()` to `assert.push()`.
-
-### Implement custom assertions with `this.push()`
-
-To implement custom assertions, assign functions to `QUnit.assert`, inside use `this.push()`, replacing `QUnit.push`.
-
-### Removed test runner control methods
-
-Two methods that have been deprecated for a long time are finally gone, `QUnit.init` and `QUnit.reset`.
-
-### Renamed `QUnit.jsDump` to `QUnit.dump`
-
-Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed. This should only affect custom reporter code, not regular testsuites.
-
-
-## Removed globals
-
 ### Replace `module()` with `QUnit.module()`
 
-The global function `module()` is gone, use `QUnit.module()` instead.
+The global function `module()` is gone. Use `QUnit.module()` instead.
 
 Before:
 
@@ -74,7 +49,7 @@ QUnit.test( "defaults to home" );
 
 ### Replace `asyncTest()` with `QUnit.test()` and `assert.async()`
 
-The global function `asyncTest()` is gone, instead use `QUnit.test()` and `assert.async()`.
+The global function `asyncTest()` is gone. Use `QUnit.test()` and `assert.async()` instead.
 
 Before:
 
@@ -101,7 +76,7 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 
 ### Replace `stop()` and `start()` with `assert.async()`
 
-The global functions `stop()` and `start()` are gone, use `assert.async()` instead.
+The global functions `stop()` and `start()` are gone. Use `assert.async()` instead, which returns a "done" function that should be called when the asynchronous operation has completed.
 
 Before:
 
@@ -129,7 +104,7 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 
 ### Replace `expect()` with `assert.expect()`
 
-The global function `expect()` is gone, use `assert.expect()` instead.
+The global function `expect()` is gone. Use `assert.expect()` instead.
 
 Before:
 
@@ -155,9 +130,9 @@ QUnit.test( "refresh (sync)", function( assert ) {
 
 ### Replace global assertions with `assert` arguments
 
-All global assertions, like `ok()` and `equal()` are gone, use `assert` instead, like `assert.ok()` or `assert.deepEqual()`.
+All global assertions, like `ok()` and `equal()` are gone. Use `assert` instead, like `assert.ok()` or `assert.deepEqual()`.
 
-All assertion methods affected by this change, in alphabetic order: `deepEqual()`, `equal()`, `notDeepEqual()`, `notEqual()`, `notPropEqual()`, `notStrictEqual()`, `ok()`, `propEqual()`, `strictEqual()`, `throws()`.
+Here are all assertion methods affected by this change in alphabetic order: `deepEqual()`, `equal()`, `notDeepEqual()`, `notEqual()`, `notPropEqual()`, `notStrictEqual()`, `ok()`, `propEqual()`, `strictEqual()`, `throws()`.
 
 Before:
 
@@ -186,7 +161,7 @@ QUnit.test( "static properties", function( assert ) {
 ```
 
 
-## Replace `module` hooks `setup` and `teardown` with `beforeEach` and `afterEach`
+## Rename module hooks
 
 The module hooks `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`, to make it more obvious that they run for each test within a module.
 
@@ -217,13 +192,15 @@ QUnit.module( "router", {
 ```
 
 
-## Removed and modified `QUnit` methods and properties
+## Removed and modified QUnit methods and properties
+
+A few methods and properties in the `QUnit` namespace have been modified or removed.
 
 ### Replace `QUnit.done = callback` with `QUnit.done( callback )` for all reporting callbacks
 
-For several versions of QUnit before 2.0, custom reporters can be registered by calling the appropiate methods, passing a callback. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
+For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropiate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
 
-This applies to all reporting callbacks, in alphabetic order: `begin`, `done`, `log`, `moduleDone`, `moduleStart()`, `testDone`, `testStart`.
+This applies to all reporting callbacks, specifically: `begin`, `done`, `log`, `moduleDone`, `moduleStart()`, `testDone`, `testStart`.
 
 Before:
 
@@ -243,7 +220,7 @@ QUnit.done(function( results ) {
 
 ### Replace `QUnit.push()` with `this.push()`
 
-Custom assertions need to be adjusted slightly, replacing `QUnit.push()` with `this.push`.
+To implement custom assertions, assign functions to `QUnit.assert`, inside use `this.push()`, replacing `QUnit.push`. This way, the assertion will be directly related to its test context, preventing asynchronous tests leaking assertions to other tests.
 
 Before:
 
@@ -265,7 +242,7 @@ QUnit.assert.mod2 = function( value, expected, message ) {
 
 ### Stop using `QUnit.init`, no replacement
 
-This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built a setup that requires the use of `QUnit.init`, contact us (issue tracker, forum, IRC), we can recommend a replacement.
+This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built a setup that requires the use of `QUnit.init`, contact us ([issue tracker](https://github.com/jquery/qunit/issues), [forum](https://forum.jquery.com/qunit-and-testing), [IRC](irc://irc.freenode.net/#jquery-dev)) and we can recommend a replacement.
 
 ### Stop using `QUnit.reset`, split one test into multiple tests
 
