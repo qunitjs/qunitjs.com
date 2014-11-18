@@ -196,7 +196,7 @@ QUnit.module( "router", {
 
 A few methods and properties in the `QUnit` namespace have been modified or removed.
 
-### Replace `QUnit.done = callback` with `QUnit.done( callback )` for all reporting callbacks
+### Replace `QUnit.log = callback` with `QUnit.log( callback )` for all reporting callbacks
 
 For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropiate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
 
@@ -205,7 +205,7 @@ This applies to all reporting callbacks, specifically: [`begin`](http://api.quni
 Before:
 
 ```js
-QUnit.done = function( results ) {
+QUnit.log = function( results ) {
 	console.log( results );
 };
 ```
@@ -213,7 +213,7 @@ QUnit.done = function( results ) {
 After:
 
 ```js
-QUnit.done(function( results ) {
+QUnit.log(function( results ) {
 	console.log( results );
 });
 ```
