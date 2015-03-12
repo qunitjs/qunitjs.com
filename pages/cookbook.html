@@ -380,20 +380,20 @@ QUnit.test( "a basic test example 4", function( assert ) {
 	</p>
 	<pre><code>
 QUnit.module( "module", {
-	setup: function( assert ) {
+	beforeEach: function( assert ) {
 		assert.ok( true, "one extra assert per test" );
-	}, teardown: function( assert ) {
+	}, afterEach: function( assert ) {
 		assert.ok( true, "and one extra assert after each test" );
 	}
 });
-QUnit.test( "test with setup and teardown", function() {
+QUnit.test( "test with beforeEach and afterEach", function() {
 	assert.expect( 2 );
 });</code></pre>
 	<p>
-		You can specify both setup and teardown properties together, or just one of them.
+		You can specify both beforeEach and afterEach properties together, or just one of them.
 	</p>
 	<p>
-		Calling <code class="literal">QUnit.module()</code> again without the additional argument will simply reset any setup/teardown functions defined by another module previously.
+		Calling <code class="literal">QUnit.module()</code> again without the additional argument will simply reset any beforeEach/afterEach functions defined by another module previously.
 	</p>
 
 	<h2 class="title" id="custom-assertions">Custom Assertions</h2>
