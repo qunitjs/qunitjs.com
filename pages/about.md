@@ -29,6 +29,10 @@ There's a lot of work that goes into making QUnit. Between API design, implement
 
 Leo is a software engineer at Bocoup. Born in Rio de Janeiro, Brazil, he's now based in Boston, MA, USA. Leo actively contributes to QUnit since 2013. He also wrote some of [the official JavaScript tests](http://github.com/tc39/test262/) for ES2015, also known as ES6.
 
+### [Richard Gibson](https://twitter.com/gibson042)
+
+Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has been contributing to jQuery Foundation projects since 2011 (QUnit since 2012), and can be spotted on a large handful of open source repositories.
+
 ### [Jörn Zaefferer](http://bassistance.de/)
 
 Jörn is a freelance web developer, consultant and trainer, residing in Cologne, Germany. Jörn evolved jQuery’s testsuite into QUnit and was project lead until mid-2015. He created and maintains a number of popular plugins. As a jQuery UI development lead, he focuses on the development of new plugins, widgets and utilities.
