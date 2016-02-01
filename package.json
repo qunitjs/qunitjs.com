@@ -2,7 +2,7 @@
   "name": "qunitjs.com",
   "title": "QUnit Website",
   "description": "Website for QUnit",
-  "version": "1.20.2",
+  "version": "1.21.0",
   "homepage": "http://qunitjs.com",
   "author": {
     "name": "jQuery Foundation and other contributors"
