@@ -88,7 +88,7 @@
 
 	<h3 class="title" id="solution-159">Solution</h3>
 	<p>
-		QUnit provides a number of <a href="http://api.qunitjs.com/category/assert/">built-in assertions</a>. Let's look at three of those:
+		QUnit provides a number of <a href="https://api.qunitjs.com/category/assert/">built-in assertions</a>. Let's look at three of those:
 	</p>
 
 	<h4 class="title" id="ok-open-parenthesis-boolean-open-square">ok( truthy [, message ] )</h4>
@@ -275,7 +275,7 @@ QUnit.test( "keylogger api behavior", function( assert ) {
 	<ul>
 		<li><a href="https://github.com/bitovi/syn">syn</a> "is a synthetic event library that pretty much handles typing, clicking, moving, and dragging exactly how a real user would perform those actions". Used by FuncUnit, which is based on QUnit, for functional testing of web applications.</li>
 		<li><a href="https://github.com/ephox/JSRobot">JSRobot</a> - "A testing utility for web-apps that can generate real keystrokes rather than simply simulating the JavaScript event firing. This allows the keystroke to trigger the built-in browser behaviour which isn't otherwise possible."</li>
-		<li><a href="http://dojotoolkit.org/reference-guide/1.10/util/dohrobot.html">DOH Robot</a> "provides an API that enables testers to automate their UI tests using real, cross-platform, system-level input events". This gets you the closest to "real" browser events, but uses Java applets for that.</li>
+		<li><a href="https://dojotoolkit.org/reference-guide/1.10/util/dohrobot.html">DOH Robot</a> "provides an API that enables testers to automate their UI tests using real, cross-platform, system-level input events". This gets you the closest to "real" browser events, but uses Java applets for that.</li>
 		<li><a href="https://github.com/gtramontina/keyvent.js">keyvent.js</a> - "Keyboard events simulator."</li>
 	</ul>
 
@@ -416,7 +416,7 @@ QUnit.test( "retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="solution-168">Solution</h3>
 	<p>
-		Define a function to encapsulate the expectation in a reusable unit. Invoke <code><a href="//api.qunitjs.com/push/">this.push<a/></code> within the body to notify QUnit that an assertion has taken place.
+		Define a function to encapsulate the expectation in a reusable unit. Invoke <code><a href="https://api.qunitjs.com/push/">this.push<a/></code> within the body to notify QUnit that an assertion has taken place.
 	</p>
 	<pre><code>
 QUnit.assert.contains = function( needle, haystack, message ) {
@@ -436,10 +436,10 @@ QUnit.test("retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="dicussion-id173">Discussion</h3>
 	<p>
-		Custom assertions can help make test suites more readable and more maintainable. At a minimum, they are simply functions that invoke <code><a href="//api.qunitjs.com/push/">this.push</a></code> with a Boolean value--this is how QUnit detects that an assertion has taken place and the result of that assertion.
+		Custom assertions can help make test suites more readable and more maintainable. At a minimum, they are simply functions that invoke <code><a href="https://api.qunitjs.com/push/">this.push</a></code> with a Boolean value--this is how QUnit detects that an assertion has taken place and the result of that assertion.
 	</p>
 	<p>
-		It is a good practice to define this function as a method on the global <code><a href="//api.qunitjs.com/QUnit.assert/">QUnit.assert</a></code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code><a href="//api.qunitjs.com/QUnit.extend/">QUnit.extend</a></code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
+		It is a good practice to define this function as a method on the global <code><a href="https://api.qunitjs.com/QUnit.assert/">QUnit.assert</a></code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code><a href="https://api.qunitjs.com/QUnit.extend/">QUnit.extend</a></code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
 	</p>
 
 	<h2 class="title" id="efficient-development">Efficient Development</h2>
@@ -458,7 +458,7 @@ QUnit.test("retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="discussion-id172">Discussion</h3>
 	<p>
-		The automatic reordering happens by default. It implies that your tests need to be atomic, <a href="">as discussed previously</a>. If your tests aren't, you'll see random non-deterministic errors. Fixing that is usually the right approach. If you're really desperate, you can set <code><a href="//api.qunitjs.com/QUnit.config/">QUnit.config</a>.reorder = false</code>.
+		The automatic reordering happens by default. It implies that your tests need to be atomic, <a href="">as discussed previously</a>. If your tests aren't, you'll see random non-deterministic errors. Fixing that is usually the right approach. If you're really desperate, you can set <code><a href="https://api.qunitjs.com/QUnit.config/">QUnit.config</a>.reorder = false</code>.
 	</p>
 	<p>
 		In addition to the automatic reordering, there are a few manual options available. You can rerun any test by clicking the "Rerun" link next to that test. That will add a "testNumber=N" parameter to the query string, where "N" is the number of the test you clicked. You can then reload the page to keep running just that test, or use the browser's back button to go back to running all tests.
