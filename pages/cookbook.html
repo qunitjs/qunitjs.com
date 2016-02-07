@@ -152,14 +152,14 @@ QUnit.test( "deepEqual test", function( assert ) {
 
 	<h3 class="title" id="problem-164">Problem</h3>
 	<p>
-		Occasionally, circumstances in your code may prevent callback assertions to never be called, causing the test to fail silently.
+		Occasionally, callback assertions in the code might not be called at all, causing the test to fail silently.
 	</p>
 	<h3 class="title" id="solution-160">Solution</h3>
 	<p>
-		QUnit provides a special assertion to define the number of assertions a test contains. When the test completes without the correct number of assertions, it will fail, no matter what result the other assertions, if any, produced.
+		QUnit provides a special assertion to define the number of assertions a test contains. If the test completes without the expected number of assertions, it will fail.
 	</p>
 	<p>
-		Usage is plain and simple; just call <code class="literal">assert.expect()</code> at the start of a test, with the number of expected assertions as the only argument:
+		In order to indicate the expected number of assertion, call <code class="literal">assert.expect()</code> at the start of a test, with the number of expected assertions as the only argument:
 	</p>
 	<pre><code>
 QUnit.test( "a test", function( assert ) {
