@@ -37,6 +37,10 @@ Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has 
 
 Jörn is a freelance web developer, consultant and trainer, residing in Cologne, Germany. Jörn evolved jQuery’s testsuite into QUnit and was project lead until mid-2015. He created and maintains a number of popular plugins. As a jQuery UI development lead, he focuses on the development of new plugins, widgets and utilities.
 
+### [Trent Willis](http://pretty-okay.com)
+
+Trent is a software engineer at LinkedIn based out of Sunnyvale, CA. He has been contributing to QUnit since 2015 and actively works on a number of test-related projects in the Ember.js ecosystem.
+
 ## Contributors (Past &amp; Present)
 
 ### [James M. Greene](http://greene.io/)
