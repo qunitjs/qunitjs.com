@@ -302,4 +302,23 @@ QUnit.log(function( obj ) {
 });
 ```
 
+### Replace expected argument in `QUnit.test`
 
+The optional second `expected` argument that `QUnit.test` used to accept was removed. Call `assert.expect()` instead.
+
+Before:
+
+```js
+QUnit.test( "addition", 1, function( assert ) {
+    assert.equal( add( 1, 2 ), 3 );
+});
+```
+
+After:
+
+```js
+QUnit.test( "addition", function( assert ) {
+    assert.expect( 1 );
+    assert.equal( add( 1, 2 ), 3 );
+});
+```
