@@ -7,6 +7,8 @@
 
 This guide will assist in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below, explaining how to upgrade your code to work with QUnit 2.x.
 
+<p class="note">The [qunit-migrate](https://github.com/apsdehal/qunit-migrate) project can help you automate the transtions to QUnit 2.x.</p>
+
 Note that almost all the new APIs of QUnit 2.0.0 are already usable in QUnit 1.23.1, allowing you to migrate step by step. The only exception is the new module hooks <code>before</code> and <code>after</code>.
 
 QUnit 2.0.x will include a migration layer that throws descriptive errors for all deprecated methods (<code>"Global 'test()' method is removed, use 'QUnit.test() instead"</code>), to help you migrate to the new APIs. QUnit 2.1+ will remove that layer, causing failures that will be more difficult to debug (<code>"ReferenceError: test is not defined"</code>).
