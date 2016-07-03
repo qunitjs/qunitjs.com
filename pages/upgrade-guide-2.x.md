@@ -165,36 +165,6 @@ QUnit.test( "static properties", function( assert ) {
 ```
 
 
-## Modified assertion methods
-
-A few assertion methods have been modified.
-
-### Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
-
-The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
-
-Before:
-
-```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws(function() {
-		throw new Error("This is an error");
-	}, "This is an error", "An error should have been thrown");
-});
-```
-
-After:
-
-```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws(function() {
-		throw new Error("This is an error");
-	}, /^This is an error$/, "An error should have been thrown");
-});
-```
-
-Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message. You do not need to change any of these assertions.
-
 ## Rename module hooks
 
 The [module hooks](http://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`, to make it more obvious that they run for each test within a module.
@@ -225,6 +195,36 @@ QUnit.module( "router", {
 });
 ```
 
+
+## Modified assertion methods
+
+A few assertion methods have been modified.
+
+### Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
+
+The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
+
+Before:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws(function() {
+		throw new Error("This is an error");
+	}, "This is an error", "An error should have been thrown");
+});
+```
+
+After:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws(function() {
+		throw new Error("This is an error");
+	}, /^This is an error$/, "An error should have been thrown");
+});
+```
+
+Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message. You do not need to change any of these assertions.
 
 ## Removed and modified QUnit methods and properties
 
