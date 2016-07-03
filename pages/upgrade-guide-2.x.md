@@ -208,9 +208,9 @@ Before:
 
 ```js
 QUnit.test( "throws", function( assert ) {
-	assert.throws(function() {
-		throw new Error("This is an error");
-	}, "This is an error", "An error should have been thrown");
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, "This is an error", "An error should have been thrown" );
 });
 ```
 
@@ -218,9 +218,9 @@ After:
 
 ```js
 QUnit.test( "throws", function( assert ) {
-	assert.throws(function() {
-		throw new Error("This is an error");
-	}, /^This is an error$/, "An error should have been thrown");
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, /^This is an error$/, "An error should have been thrown" );
 });
 ```
 
