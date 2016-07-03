@@ -196,6 +196,32 @@ QUnit.module( "router", {
 ```
 
 
+## Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
+
+The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
+
+Before:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, "This is an error", "An error should have been thrown" );
+});
+```
+
+After:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, /^This is an error$/, "An error should have been thrown" );
+});
+```
+
+Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions. Of course, you should use the `assert.throws( block, regexp, message )` form anyway to make your assertions more precise.
+
 ## Removed and modified QUnit methods and properties
 
 A few methods and properties in the `QUnit` namespace have been modified or removed.
