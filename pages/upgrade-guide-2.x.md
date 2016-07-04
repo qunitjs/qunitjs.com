@@ -220,7 +220,7 @@ QUnit.test( "throws", function( assert ) {
 });
 ```
 
-Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions.
+Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions. Of course, you may use the `assert.throws( block, regexp, message )` form anyway to make your assertions more precise.
 
 ## Removed and modified QUnit methods and properties
 
