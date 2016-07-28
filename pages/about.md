@@ -41,6 +41,10 @@ Jörn is a freelance web developer, consultant and trainer, residing in Cologne,
 
 Trent is a software engineer at LinkedIn based out of Sunnyvale, CA. He has been contributing to QUnit since 2015 and actively works on a number of test-related projects in the Ember.js ecosystem.
 
+### [Kevin Partington](https://github.com/platinumazure)
+
+Kevin is a software engineer based out of Minnesota, USA. He has contributed to QUnit since 2015. He is also heavily involved in the ESLint project and actively maintains an [ESLint plugin](https://github.com/platinumazure/eslint-plugin-qunit) for linting QUnit tests.
+
 ## Contributors (Past &amp; Present)
 
 ### [James M. Greene](http://greene.io/)
