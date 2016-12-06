@@ -23,7 +23,7 @@ When a test or assertion fails, QUnit should provide feedback to the developer a
 
 ## QUnit Team
 
-There's a lot of work that goes into making QUnit. Between API design, implementation, ticket triage, bug fixing, developer relations, infrastructure, and everything else, most of the work is done by volunteers. We'd like to recognize the most prominent contributors below, for a full list of all contributors, see the [authors list](https://github.com/jquery/qunit/blob/master/AUTHORS.txt).
+There's a lot of work that goes into making QUnit. Between API design, implementation, ticket triage, bug fixing, developer relations, infrastructure, and everything else, most of the work is done by volunteers. We'd like to recognize the most prominent contributors below, for a full list of all contributors, see the [authors list](https://github.com/qunitjs/qunit/blob/master/AUTHORS.txt).
 
 ### [Leo Balter](https://twitter.com/leobalter) — Project Lead
 

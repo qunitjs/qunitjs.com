@@ -272,7 +272,7 @@ QUnit.assert.mod2 = function( value, expected, message ) {
 
 ### Stop using `QUnit.init`, no replacement
 
-This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built a setup that requires the use of `QUnit.init`, contact us ([issue tracker](https://github.com/jquery/qunit/issues), [forum](https://forum.jquery.com/qunit-and-testing), [IRC](irc://irc.freenode.net/#jquery-dev)) and we can recommend a replacement.
+This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built a setup that requires the use of `QUnit.init`, contact us ([issue tracker](https://github.com/qunitjs/qunit/issues), [forum](https://forum.jquery.com/qunit-and-testing), [IRC](irc://irc.freenode.net/#jquery-dev)) and we can recommend a replacement.
 
 ### Stop using `QUnit.reset`, split one test into multiple tests
 
