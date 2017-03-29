@@ -10,6 +10,8 @@
 
 	<h2>Getting Started</h2>
 
+	<h3>In The Browser</h3>
+
 	<p>
 		A minimal QUnit test setup:
 	</p>
@@ -29,12 +31,31 @@ QUnit.test( "hello test", function( assert ) {
 	</p>
 	<iframe src="/resources/example-index.html" style="width:100%;height:250px;border:0px"></iframe>
 
-	<h3>Browser Support</h3>
-	<p>QUnit currently supports <a href="https://jquery.com/browser-support/" target="_blank">the same browsers as jQuery 3.x</a>.</p>
-	<p>For legacy browser support, including Internet Explorer versions lower than IE9, please use the 1.x series of QUnit.</p>
+	<hr>
 
-	<h3>Node Support</h3>
-	<p>QUnit follows the <a href="https://github.com/nodejs/LTS" target="_blank">Node Long-term Support (LTS) Schedule</a>. Support is provided for Current, Active, and Maintenance releases.</p>
+	<h3>In Node</h3>
+
+	<p>Install QUnit globally so you can use the CLI:</p>
+	<pre><code data-linenum>$ npm install -g qunitjs</code></pre>
+
+	<p>Create test files in a <code>test</code> directory and then simply run:</p>
+	<pre><code data-linenum>$ qunit</code></pre>
+
+	<p>And you should see some output like:</p>
+	<pre><code data-linenum>TAP version 13
+ok 1 Module > Test #1
+ok 2 Module > Test #2
+1..2
+# pass 2
+# skip 0
+# todo 0
+# fail 0</code></pre>
+
+	<p>And that is it! While QUnit defaults to looking for test files in <code>test</code>, you can also put them anywhere and then specify file paths or <a href="https://github.com/isaacs/minimatch" target="_blank">glob</a> expressions:</p>
+	<pre><code data-linenum>$ qunit 'tests/*-test.js'</code></pre>
+
+	<p>To view the additional supported options, simply run:</p>
+	<pre><code data-linenum>$ qunit --help</code></pre>
 </div>
 
 <div class="six columns">
@@ -56,6 +77,13 @@ QUnit.test( "hello test", function( assert ) {
 			<li><a href="https://code.jquery.com/qunit/qunit-git.css">qunit-git.css</a></li>
 		</ul>
 	</div>
+
+	<h3>Browser Support</h3>
+	<p>QUnit currently supports <a href="https://jquery.com/browser-support/" target="_blank">the same browsers as jQuery 3.x</a>.</p>
+	<p>For legacy browser support, including Internet Explorer versions lower than IE9, please use the 1.x series of QUnit.</p>
+
+	<h3>Node Support</h3>
+	<p>QUnit follows the <a href="https://github.com/nodejs/LTS" target="_blank">Node Long-term Support (LTS) Schedule</a>. Support is provided for Current, Active, and Maintenance releases.</p>
 
 	<h3>Learn More</h3>
 	<ul>
