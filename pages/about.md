@@ -37,6 +37,10 @@ Leo is a software engineer at Bocoup based in Boston, MA. Leo contributes to QUn
 
 Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has been contributing to jQuery Foundation projects since 2011 (QUnit since 2012), and can be spotted on a large handful of open source repositories.
 
+### [Richard Gibson](https://twitter.com/gibson042)
+
+Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has been contributing to jQuery Foundation projects since 2011 (QUnit since 2012), and can be spotted on a large handful of open source repositories.
+
 ### [Jörn Zaefferer](http://bassistance.de/)
 
 Jörn is a freelance web developer, consultant and trainer, residing in Cologne, Germany. Jörn evolved jQuery’s testsuite into QUnit and was project lead until mid-2015. He created and maintains a number of popular plugins. As a jQuery UI development lead, he focuses on the development of new plugins, widgets and utilities.
