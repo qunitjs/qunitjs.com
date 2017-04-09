@@ -25,9 +25,13 @@ When a test or assertion fails, QUnit should provide feedback to the developer a
 
 There's a lot of work that goes into making QUnit. Between API design, implementation, ticket triage, bug fixing, developer relations, infrastructure, and everything else, most of the work is done by volunteers. We'd like to recognize the most prominent contributors below, for a full list of all contributors, see the [authors list](https://github.com/qunitjs/qunit/blob/master/AUTHORS.txt).
 
-### [Leo Balter](https://twitter.com/leobalter) — Project Lead
+### [Trent Willis](http://pretty-okay.com) - Project Lead
 
-Leo is a software engineer at Bocoup. Born in Rio de Janeiro, Brazil, he's now based in Boston, MA, USA. Leo actively contributes to QUnit since 2013. He also wrote some of [the official JavaScript tests](http://github.com/tc39/test262/) for ES2015, also known as ES6.
+Trent is a software engineer at LinkedIn based out of Sunnyvale, CA. He has been contributing to QUnit since 2015 and actively works on a number of test-related projects in the Ember.js ecosystem.
+
+### [Leo Balter](https://twitter.com/leobalter)
+
+Leo is a software engineer at Bocoup based in Boston, MA. Leo contributes to QUnit since 2013 and was a project lead from 2015 to early-2017. He represents the JSFoundation at TC39, the technical committee that designs the language specification for JS, and maintains the official spec tests at [test262](http://github.com/tc39/test262/).
 
 ### [Richard Gibson](https://twitter.com/gibson042)
 
@@ -36,10 +40,6 @@ Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has 
 ### [Jörn Zaefferer](http://bassistance.de/)
 
 Jörn is a freelance web developer, consultant and trainer, residing in Cologne, Germany. Jörn evolved jQuery’s testsuite into QUnit and was project lead until mid-2015. He created and maintains a number of popular plugins. As a jQuery UI development lead, he focuses on the development of new plugins, widgets and utilities.
-
-### [Trent Willis](http://pretty-okay.com)
-
-Trent is a software engineer at LinkedIn based out of Sunnyvale, CA. He has been contributing to QUnit since 2015 and actively works on a number of test-related projects in the Ember.js ecosystem.
 
 ### [Kevin Partington](https://github.com/platinumazure)
 
