@@ -49,6 +49,5 @@ Kevin is a software engineer based out of Minnesota, USA. He has contributed to 
 
 ### [James M. Greene](http://greene.io/)
 ### [John Resig](http://ejohn.org/)
-### [Richard Gibson](https://twitter.com/gibson042)
 ### [Scott González](http://nemikor.com/)
 ### [Timo Tijhof](https://timotijhof.net/)
