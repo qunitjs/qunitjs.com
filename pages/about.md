@@ -41,6 +41,10 @@ Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has 
 
 Jörn is a freelance web developer, consultant and trainer, residing in Cologne, Germany. Jörn evolved jQuery’s testsuite into QUnit and was project lead until mid-2015. He created and maintains a number of popular plugins. As a jQuery UI development lead, he focuses on the development of new plugins, widgets and utilities.
 
+### [Timo Tijhof](https://timotijhof.net/)
+
+Timo is a senior engineer at [Wikimedia Foundation](https://www.wikimedia.org/) where he is on the [Architecture Committee](https://www.mediawiki.org/wiki/Architecture_committee), the technical committee that governs the integrity and stability of Wikimedia software projects. He has been contributing to jQuery Foundation projects since 2011, and joined the QUnit Team in 2012.
+
 ### [Kevin Partington](https://github.com/platinumazure)
 
 Kevin is a software engineer based out of Minnesota, USA. He has contributed to QUnit since 2015. He is also heavily involved in the ESLint project and actively maintains an [ESLint plugin](https://github.com/platinumazure/eslint-plugin-qunit) for linting QUnit tests.
@@ -50,4 +54,3 @@ Kevin is a software engineer based out of Minnesota, USA. He has contributed to 
 ### [James M. Greene](http://greene.io/)
 ### [John Resig](http://ejohn.org/)
 ### [Scott González](http://nemikor.com/)
-### [Timo Tijhof](https://timotijhof.net/)
