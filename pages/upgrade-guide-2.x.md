@@ -248,9 +248,9 @@ QUnit.log(function( results ) {
 });
 ```
 
-### Replace `QUnit.push()` with `this.push()`
+### Replace `QUnit.push()` with `this.pushResult()`
 
-To implement custom assertions, assign functions to [`QUnit.assert`](http://api.qunitjs.com/QUnit.assert/), inside use [`this.push()`](http://api.qunitjs.com/push/), replacing `QUnit.push`. This way, the assertion will be directly related to its test context, preventing asynchronous tests leaking assertions to other tests.
+To implement custom assertions, assign functions to [`QUnit.assert`](https://api.qunitjs.com/config/QUnit.assert), inside use [`this.pushResult()`](https://api.qunitjs.com/assert/pushResult), replacing `QUnit.push`. This way, the assertion will be directly related to its test context, preventing asynchronous tests leaking assertions to other tests.
 
 Before:
 
@@ -266,7 +266,7 @@ After:
 ```js
 QUnit.assert.mod2 = function( value, expected, message ) {
     var actual = value % 2;
-    this.push( actual === expected, actual, expected, message );
+    this.pushResult( actual === expected, actual, expected, message );
 };
 ```
 
