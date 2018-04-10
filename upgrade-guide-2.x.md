@@ -1,21 +1,21 @@
-<script>{
-	"title": "QUnit 2.x Upgrade Guide",
-	"toc": true
-}</script>
+---
+layout: page
+title: 2.x Upgrade Guide
+---
 
 ## Overview
 
-This guide will assist in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below, explaining how to upgrade your code to work with QUnit 2.x.
+This guide will assist you in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below with an explanation of how to upgrade your code to work with QUnit 2.x.
 
-<p class="note">The [qunit-migrate](https://github.com/apsdehal/qunit-migrate) project can help you automate the transtions to QUnit 2.x.</p>
+<p class="note" markdown="1">The [qunit-migrate](https://github.com/apsdehal/qunit-migrate) project can help you automate the transition to QUnit 2.x.</p>
 
-Note that almost all the new APIs of QUnit 2.0.0 are already usable in QUnit 1.23.1, allowing you to migrate step by step. The only exception is the new module hooks <code>before</code> and <code>after</code>.
+Note that almost all the new APIs of QUnit 2.0.0 are already usable in QUnit 1.23.1, allowing you to migrate step-by-step. The only exception is the new module hooks `before` and `after`.
 
-QUnit 2.0.x will include a migration layer that throws descriptive errors for all deprecated methods (<code>"Global 'test()' method is removed, use 'QUnit.test() instead"</code>), to help you migrate to the new APIs. QUnit 2.1+ will remove that layer, causing failures that will be more difficult to debug (<code>"ReferenceError: test is not defined"</code>).
+QUnit 2.0.x will include a migration layer that throws descriptive errors for all deprecated methods (`"Global 'test()' method is removed, use 'QUnit.test() instead"`), to help you migrate to the new APIs. QUnit 2.1+ will remove that layer, causing failures that will be more difficult to debug (`"ReferenceError: test is not defined"`).
 
 ## Removed globals
 
-QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use [`QUnit.module()`](http://api.qunitjs.com/QUnit.module/) and [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) to define your testsuite, and use the [`assert`](http://api.qunitjs.com/QUnit.assert/) argument in test callbacks to write assertions.
+QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use [`QUnit.module()`](http://api.qunitjs.com/QUnit.module/) and [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) to define your test suite, and use the [`assert`](http://api.qunitjs.com/QUnit.assert/) argument in test callbacks to write assertions.
 
 The global `stop()` and `start()` methods are gone, replaced by [`assert.async()`](http://api.qunitjs.com/async/), which returns a callback. Execute this callback when your test is done.
 
@@ -37,7 +37,7 @@ QUnit.module( "router" );
 
 ### Replace `test()` with `QUnit.test()`
 
-The global function `test()` is gone, use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) instead.
+The global function `test()` is gone. Use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) instead.
 
 Before:
 
@@ -49,33 +49,6 @@ After:
 
 ```js
 QUnit.test( "defaults to home" );
-```
-
-### Replace `asyncTest()` with `QUnit.test()` and `assert.async()`
-
-The global function `asyncTest()` is gone. Use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) and [`assert.async()`](http://api.qunitjs.com/async/) instead.
-
-Before:
-
-```js
-asyncTest( "navigates to new page (async)", function( assert ) {
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
-		start();
-	})
-});
-```
-
-After:
-
-```js
-QUnit.test( "navigates to new page (async)", function( assert ) {
-	var done = assert.async();
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
-		done();
-	})
-});
 ```
 
 ### Replace `stop()` and `start()` with `assert.async()`
@@ -90,7 +63,7 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 	router.navigate(function( newPage ) {
 		assert.equal( newPage.id, 1 );
 		start();
-	})
+	});
 });
 ```
 
@@ -102,7 +75,34 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 	router.navigate(function( newPage ) {
 		assert.equal( newPage.id, 1 );
 		done();
-	})
+	});
+});
+```
+
+### Replace `asyncTest()` with `QUnit.test()` and `assert.async()`
+
+The global function `asyncTest()` is gone. Use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) and [`assert.async()`](http://api.qunitjs.com/async/) instead.
+
+Before:
+
+```js
+asyncTest( "navigates to new page (async)", function( assert ) {
+	router.navigate(function( newPage ) {
+		assert.equal( newPage.id, 1 );
+		start();
+	});
+});
+```
+
+After:
+
+```js
+QUnit.test( "navigates to new page (async)", function( assert ) {
+	var done = assert.async();
+	router.navigate(function( newPage ) {
+		assert.equal( newPage.id, 1 );
+		done();
+	});
 });
 ```
 
@@ -136,7 +136,7 @@ QUnit.test( "refresh (sync)", function( assert ) {
 
 All global assertions, like `equal()` and `deepEqual()` are gone. Use `assert` instead, like [`assert.equal()`](http://api.qunitjs.com/equal/) or [`assert.deepEqual()`](http://api.qunitjs.com/deepEqual/).
 
-Here are all assertion methods affected by this change in alphabetic order: [`deepEqual()`](http://api.qunitjs.com/deepEqual/), [`equal()`](http://api.qunitjs.com/equal/), [`notDeepEqual()`](http://api.qunitjs.com/notDeepEqual/), [`notEqual()`](http://api.qunitjs.com/notEqual/), [`notPropEqual()`](http://api.qunitjs.com/notPropEqual/), [`notStrictEqual()`](http://api.qunitjs.com/notStrictEqual/), [`ok()`](http://api.qunitjs.com/ok/), [`propEqual()`](http://api.qunitjs.com/propEqual/), [`strictEqual()`](http://api.qunitjs.com/strictEqual/), [`throws()`](http://api.qunitjs.com/throws/).
+Here are all assertion methods affected by this change in alphabetic order: [`deepEqual()`](http://api.qunitjs.com/deepEqual/), [`equal()`](http://api.qunitjs.com/equal/), [`notDeepEqual()`](http://api.qunitjs.com/notDeepEqual/), [`notEqual()`](http://api.qunitjs.com/notEqual/), [`notPropEqual()`](http://api.qunitjs.com/notPropEqual/), [`notStrictEqual()`](http://api.qunitjs.com/notStrictEqual/), [`ok()`](http://api.qunitjs.com/ok/), [`propEqual()`](http://api.qunitjs.com/propEqual/), [`strictEqual()`](http://api.qunitjs.com/strictEqual/), and [`throws()`](http://api.qunitjs.com/throws/).
 
 Before:
 
@@ -195,42 +195,15 @@ QUnit.module( "router", {
 });
 ```
 
-
-## Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
-
-The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
-
-Before:
-
-```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws( function() {
-		throw new Error( "This is an error" );
-	}, "This is an error", "An error should have been thrown" );
-});
-```
-
-After:
-
-```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws( function() {
-		throw new Error( "This is an error" );
-	}, /^This is an error$/, "An error should have been thrown" );
-});
-```
-
-Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions. Of course, you should use the `assert.throws( block, regexp, message )` form anyway to make your assertions more precise.
-
 ## Removed and modified QUnit methods and properties
 
 A few methods and properties in the `QUnit` namespace have been modified or removed.
 
 ### Replace `QUnit.log = callback` with `QUnit.log( callback )` for all reporting callbacks
 
-For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropiate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
+For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropriate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
 
-This applies to all reporting callbacks, specifically: [`begin`](http://api.qunitjs.com/QUnit.begin/), [`done`](http://api.qunitjs.com/QUnit.done/), [`log`](http://api.qunitjs.com/QUnit.log/), [`moduleDone`](http://api.qunitjs.com/QUnit.moduleDone/), [`moduleStart`](http://api.qunitjs.com/QUnit.moduleStart/), [`testDone`](http://api.qunitjs.com/QUnit.testDone/), [`testStart`](http://api.qunitjs.com/QUnit.testStart/).
+This applies to all reporting callbacks, specifically: [`begin`](http://api.qunitjs.com/QUnit.begin/), [`done`](http://api.qunitjs.com/QUnit.done/), [`log`](http://api.qunitjs.com/QUnit.log/), [`moduleDone`](http://api.qunitjs.com/QUnit.moduleDone/), [`moduleStart`](http://api.qunitjs.com/QUnit.moduleStart/), [`testDone`](http://api.qunitjs.com/QUnit.testDone/), and [`testStart`](http://api.qunitjs.com/QUnit.testStart/).
 
 Before:
 
@@ -352,3 +325,31 @@ QUnit.test( "addition", function( assert ) {
     assert.equal( add( 1, 2 ), 3 );
 });
 ```
+
+## Miscellaneous
+
+### Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
+
+The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
+
+Before:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, "This is an error", "An error should have been thrown" );
+});
+```
+
+After:
+
+```js
+QUnit.test( "throws", function( assert ) {
+	assert.throws( function() {
+		throw new Error( "This is an error" );
+	}, /^This is an error$/, "An error should have been thrown" );
+});
+```
+
+Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions. Of course, you should use the `assert.throws( block, regexp, message )` form anyway to make your assertions more precise.

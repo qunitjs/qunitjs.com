@@ -1,0 +1,329 @@
+---
+---
+
+$size-1: 1rem;
+$size-2: 1.333rem;
+$size-3: 1.777rem;
+$size-4: 2.369rem;
+$size-5: 3.157rem;
+$size-spacing: $size-2;
+
+$color-white: #fff;
+$color-off-white: #eee;
+$color-brand: #9c3493;
+$color-accent: #390F39;
+$color-black: #333;
+
+@import "highlight";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: $color-black;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-black;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: $size-spacing;
+}
+h1 { font-size: $size-5; }
+h2 {
+    color: $color-brand;
+    font-size: $size-4;
+
+    a {
+        color: $color-black;
+
+        &:hover {
+            color: $color-brand;
+        }
+    }
+}
+h3 { font-size: $size-3; }
+h4 { font-size: $size-2; }
+h5 { font-size: $size-1; }
+h6 { font-size: $size-1; }
+
+p {
+    margin: 0;
+    margin-bottom: $size-spacing;
+}
+
+a {
+    color: $color-brand;
+    text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+        color: $color-accent;
+    }
+}
+
+code {
+    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    font-size: 95%;
+    background: rgba($color-brand, 0.2);
+    padding: 0 0.25em;
+    border-radius: 3px;
+}
+
+hr {
+    margin: $size-5 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+iframe {
+    width:100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.main {
+    padding: ($size-spacing * 2) 0 $size-spacing;
+}
+
+.wrapper {
+    max-width: 65rem;
+    margin: 0 auto;
+}
+
+.lead {
+    font-size: $size-2;
+}
+
+.button {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #9c3493;
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &.secondary {
+        background-color: transparent;
+        color: white;
+        font-weight: 100;
+    }
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+}
+
+/* Site Header */
+
+.site-header {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.site-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-logo {
+    color: $color-brand;
+    display: flex;
+    align-items: center;
+    font-size: $size-3;
+    font-weight: bold;
+    padding: $size-1 0;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    img {
+        height: $size-4;
+        margin-right: $size-spacing / 2;
+    }
+}
+
+.site-logo:hover {
+    color: #390F39;
+}
+
+/* Site Navigation */
+
+.site-nav-list {
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav-item {
+    display: inline-block;
+    height: 100%;
+}
+
+.site-nav-item:hover {
+    background-color: #efefef;
+}
+
+.site-nav-link {
+    align-items: center;
+    color: #333333;
+    display: flex;
+    height: 100%;
+    padding: 0 0.5rem;
+    text-decoration: none;
+}
+
+.site-nav-link.has-sub-list::after {
+    content: '▼';
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+}
+
+.site-nav-link:hover {
+    color: #9c3493;
+}
+
+.site-nav-sub-list {
+    display: none;
+    position: absolute;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background: #efefef;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    list-style: none;
+    border-radius: 0 0 3px 3px;
+}
+
+.site-nav-item:hover .site-nav-sub-list {
+    display: block;
+}
+
+.site-sub-nav-link {
+    color: #333;
+    display: block;
+    margin: 0.5rem 0;
+    text-decoration: none;
+}
+
+.site-sub-nav-link:hover {
+    color: $color-brand;
+}
+
+/* Home Page Hero */
+
+.hero {
+    background-color: $color-brand;
+    background-image: linear-gradient(-45deg, $color-brand, $color-accent);
+    padding: ($size-4 * 2) 0;
+    text-align: center;
+}
+
+.hero-title img {
+    height: 1em;
+}
+
+.hero-title,
+.hero-description {
+    color: $color-white;
+    margin: 0;
+}
+
+.hero-description {
+    font-weight: 100;
+}
+
+.hero-button {
+    font-size: $size-2;
+    margin-top: $size-4;
+}
+
+/* Home Page Highlights */
+
+#home {
+    h2, h3 {
+        text-align: center;
+        font-weight: 300;
+    }
+}
+
+.highlights {
+    display: grid;
+    grid-gap: $size-4;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+}
+
+.example-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $size-4;
+}
+
+.example-result iframe,
+.example-result pre {
+    height: 360px;
+}
+
+#current-release {
+    margin-bottom: 0;
+}
+
+.current-release {
+    font-size: $size-2;
+    text-align: center;
+}
+
+/* Plugins Page */
+
+#plugins {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $size-spacing;
+    margin: $size-spacing 0;
+}
+
+.plugin {
+    border-bottom: 1px solid $color-off-white;
+
+    h3 {
+        margin-bottom: 0;
+    }
+}
+
+/* Site Footer */
+
+.site-footer {
+    border-top: 1px solid $color-off-white;
+    margin-top: $size-4;
+    padding: $size-4 0;
+}
+
+.site-footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.external-links a {
+    margin: 0 0.5rem;
+}
+
+.cta {
+    text-align: center;
+    font-size: 1.777rem;
+}
+
+.cta .button {
+    background-color: $color-brand;
+    border-color: $color-brand;
+    color: white;
+    font-weight: 100;
+}

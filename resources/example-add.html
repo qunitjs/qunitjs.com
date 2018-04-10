@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>QUnit Cookbook - Keeping Tests Atomic, testing for globals</title>
+  <meta name="viewport" content="width=device-width">
+  <title>QUnit Example</title>
   <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.10.1.css">
 </head>
 <body>
@@ -10,10 +11,12 @@
   <div id="qunit-fixture"></div>
   <script src="https://code.jquery.com/qunit/qunit-2.10.1.js"></script>
   <script>
-  QUnit.test( "global pollution", function( assert ) {
-    window.pollute = true;
-    assert.strictEqual( pollute, true );
-  });
+    const add = (a, b) => a + b;
+    QUnit.module('add', function() {
+      QUnit.test('should add two numbers', function(assert) {
+        assert.equal(add(1, 1), 2, '1 + 1 = 2');
+      });
+    });
   </script>
 </body>
 </html>
