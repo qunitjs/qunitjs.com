@@ -28,6 +28,11 @@ kramdown:
   input: GFM
   toc_levels: "1,2"
 
+algolia: # Search
+  application_id: HOJ487LP0L
+  index_name: qunitjs
+  search_only_api_key: aed00982db05bd21dd05310be057bda8
+
 exclude:
   - Gemfile
   - Gemfile.lock
