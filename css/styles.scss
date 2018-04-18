@@ -14,6 +14,11 @@ $color-brand: #9c3493;
 $color-accent: #390F39;
 $color-black: #333;
 
+$screen-s: 480px;
+$screen-m: 768px;
+$screen-l: 992px;
+$screen-xl: 1200px;
+
 @import "highlight";
 
 * {
@@ -87,13 +92,15 @@ iframe {
     border-radius: 3px;
 }
 
-.main {
-    padding: ($size-spacing * 2) 0 $size-spacing;
-}
-
 .wrapper {
     max-width: 65rem;
     margin: 0 auto;
+    padding: 0 $size-spacing;
+}
+
+.main {
+    padding: $size-spacing;
+    padding-top: ($size-spacing * 2);
 }
 
 .lead {
@@ -122,6 +129,14 @@ iframe {
     }
 }
 
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
 /* Site Header */
 
 .site-header {
@@ -131,6 +146,7 @@ iframe {
 .site-header-wrapper {
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .site-logo {
@@ -155,16 +171,52 @@ iframe {
 
 /* Site Navigation */
 
+.site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid $color-off-white;
+    z-index: 1;
+
+    &.opened {
+        display: block;
+    }
+}
+
+@media (min-width: $screen-m) {
+    .site-nav {
+        display: inline-block;
+        position: relative;
+    }
+}
+
 .site-nav-list {
     height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@media (min-width: $screen-m) {
+    .site-nav-list {
+        box-shadow: none;
+    }
 }
 
 .site-nav-item {
-    display: inline-block;
+    display: block;
     height: 100%;
+    border-bottom: 1px solid $color-off-white;
+}
+
+@media (min-width: $screen-m) {
+    .site-nav-item {
+        display: inline-block;
+    }
 }
 
 .site-nav-link {
@@ -172,7 +224,7 @@ iframe {
     color: #333333;
     display: flex;
     height: 100%;
-    padding: 0 0.5rem;
+    padding: $size-1;
     text-decoration: none;
 }
 
@@ -189,14 +241,20 @@ iframe {
 
 .site-nav-sub-list {
     display: none;
-    position: absolute;
-    padding: 0.5rem 1rem;
+    padding: 0;
     margin: 0;
     list-style: none;
     background-color: $color-white;
     border-radius: 3px;
-    margin-top: 6px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@media (min-width: $screen-m) {
+    .site-nav-sub-list {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        margin-top: 6px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
 }
 
 .site-nav-item.is-open .site-nav-sub-list {
@@ -206,8 +264,14 @@ iframe {
 .site-sub-nav-link {
     color: #333;
     display: block;
-    margin: 0.5rem 0;
+    padding: 0.5rem 2rem;
     text-decoration: none;
+}
+
+@media (min-width: $screen-m) {
+    .site-sub-nav-link {
+        padding: 0.5rem;
+    }
 }
 
 .site-sub-nav-link:hover,
@@ -218,29 +282,51 @@ iframe {
 /* Search */
 
 .site-search {
-    align-self: center;
-    position: relative;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: white;
+    z-index: 1;
+    border: none;
+    border-top: 1px solid $color-off-white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    &.opened {
+        display: block;
+    }
 }
 
-.aa-input-container {
-    display: inline-block;
-    position: relative;
+@media (min-width: $screen-m) {
+    .site-search {
+        display: block;
+        align-self: center;
+        position: relative;
+        flex: 1;
+        max-width: 20rem;
+        margin: 0 $size-spacing;
+        border: 1px solid $color-off-white;
+        border-radius: 3px;
+        box-shadow: none;
+    }
 }
 
-.aa-input-label {
-    position: fixed;
-    opacity: 0;
-    left: 100%;
+.algolia-autocomplete {
+    width: 100%;
+    height: 100%;
 }
 
 .aa-input-search {
-    width: 20rem;
-    border: 1px solid $color-off-white;
-    border-radius: 3px;
+    width: 100%;
+    height: 100%;
     padding: 12px 28px 12px 12px;
+    border: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    font-size: $size-1;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -262,10 +348,20 @@ iframe {
 
 .aa-dropdown-menu {
     background-color: $color-white;
-    border-radius: 3px;
-    min-width: 20rem;
-    margin-top: $size-spacing;
+    border-top: 1px solid $color-off-white;
+    width: 100%;
+    max-height: 50vh;
+    overflow: auto;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@media (min-width: $screen-m) {
+    .aa-dropdown-menu {
+        border-radius: 3px;
+        border-top: none;
+        min-width: 20rem;
+        margin-top: $size-spacing;
+    }
 }
 
 .aa-empty {
@@ -308,6 +404,41 @@ iframe {
     padding-top: 0.25rem;
 }
 
+/* Mobile Toggle Controls */
+
+.site-toggles {
+    display: flex;
+}
+
+@media (min-width: $screen-m) {
+    .site-toggles {
+        display: none;
+    }
+}
+
+.toggle {
+    display: block;
+    height: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    background: transparent;
+}
+
+.icon {
+    position: static;
+    display: inline-block;
+    fill: currentColor;
+    vertical-align: middle;
+    width: $size-2;
+    height: $size-2;
+    transform: none;
+}
+
+.opened .icon {
+    fill: $color-brand;
+}
+
 /* Home Page Hero */
 
 .hero {
@@ -348,14 +479,26 @@ iframe {
 .highlights {
     display: grid;
     grid-gap: $size-4;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     text-align: center;
+}
+
+@media (min-width: $screen-m) {
+    .highlights {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 .example-results {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: $size-4;
+}
+
+@media (min-width: $screen-m) {
+    .example-results {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .example-result iframe,
@@ -378,9 +521,15 @@ iframe {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: $size-spacing;
     margin: $size-spacing 0;
+}
+
+@media (min-width: $screen-m) {
+    #plugins {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .plugin {
