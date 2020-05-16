@@ -416,12 +416,17 @@ QUnit.test( "retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="solution-168">Solution</h3>
 	<p>
-		Define a function to encapsulate the expectation in a reusable unit. Invoke <code><a href="https://api.qunitjs.com/push/">this.push<a/></code> within the body to notify QUnit that an assertion has taken place.
+		Define a function to encapsulate the expectation in a reusable unit. Invoke <code><a href="https://api.qunitjs.com/assert/pushResult/">this.pushResult<a/></code> within the body to notify QUnit that an assertion has taken place.
 	</p>
 	<pre><code>
 QUnit.assert.contains = function( needle, haystack, message ) {
 	var actual = haystack.indexOf(needle) > -1;
-	this.push(actual, actual, needle, message);
+	this.pushResult({
+		result: actual,
+		actual,
+		expected: needle,
+		message
+	});
 };
 QUnit.test("retrieving object keys", function( assert ) {
 	var objectKeys = keys( { a: 1, b: 2 } );
@@ -436,7 +441,7 @@ QUnit.test("retrieving object keys", function( assert ) {
 
 	<h3 class="title" id="dicussion-id173">Discussion</h3>
 	<p>
-		Custom assertions can help make test suites more readable and more maintainable. At a minimum, they are simply functions that invoke <code><a href="https://api.qunitjs.com/push/">this.push</a></code> with a Boolean value--this is how QUnit detects that an assertion has taken place and the result of that assertion.
+		Custom assertions can help make test suites more readable and more maintainable. These are simply functions that invoke <code><a href="https://api.qunitjs.com/assert/pushResult/">this.pushResult</a></code> with an object containing the assertion data; this is how QUnit detects that an assertion has taken place and tracks the result of that assertion.
 	</p>
 	<p>
 		It is a good practice to define this function as a method on the global <code><a href="https://api.qunitjs.com/QUnit.assert/">QUnit.assert</a></code> object. This helps communicate the purpose of the function to other developers. You may accomplish this by directly assigning a new property on the object (i.e. <code>QUnit.assert.myAssertion = myAssertion;</code>) or using <code><a href="https://api.qunitjs.com/QUnit.extend/">QUnit.extend</a></code> (i.e. <code>QUnit.extend(QUnit.assert, { myAssertion: myAssertion });</code>).
