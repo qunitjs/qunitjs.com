@@ -7,4 +7,4 @@ branches:
     - master
     - gh-pages
 rvm:
- - 2.4
+ - 2.7
