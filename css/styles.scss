@@ -10,8 +10,10 @@ $size-spacing: $size-2;
 
 $color-white: #fff;
 $color-off-white: #eee;
-$color-brand: #9c3493;
-$color-accent: #390F39;
+
+// https://brand.jquery.org/colors/#qunit-purple
+$color-brand: #9c3493; // bright purple  (primary)
+$color-accent: #390F39; // deep purple  (secondary)
 $color-black: #333;
 
 $screen-s: 480px;
@@ -40,16 +42,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 { font-size: $size-5; }
 h2 {
-    color: $color-brand;
+    color: $color-accent;
     font-size: $size-4;
-
-    a {
-        color: $color-black;
-
-        &:hover {
-            color: $color-brand;
-        }
-    }
 }
 h3 { font-size: $size-3; }
 h4 { font-size: $size-2; }
@@ -69,6 +63,7 @@ a {
     &:hover,
     &:focus {
         color: $color-accent;
+        text-decoration: underline;
     }
 }
 
@@ -111,7 +106,7 @@ iframe {
     background-color: #fff;
     border: 1px solid #fff;
     border-radius: 4px;
-    color: #9c3493;
+    color: $color-brand;
     display: inline-block;
     margin: 0.5rem;
     padding: 0.5rem 1rem;
@@ -166,7 +161,7 @@ iframe {
 }
 
 .site-logo:hover {
-    color: #390F39;
+    color: $color-accent;
 }
 
 /* Site Navigation */
@@ -221,22 +216,24 @@ iframe {
 
 .site-nav-link {
     align-items: center;
-    color: #333333;
+    color: $color-accent;
     display: flex;
     height: 100%;
     padding: $size-1;
     text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+        color: $color-brand;
+        text-decoration: none;
+    }
 }
 
 .site-nav-link.has-sub-list::after {
     content: '▼';
     font-size: 0.75rem;
     margin-left: 0.5rem;
-}
-
-.site-nav-link:hover,
-.site-nav-link:focus {
-    color: #9c3493;
 }
 
 .site-nav-sub-list {
@@ -262,7 +259,7 @@ iframe {
 }
 
 .site-sub-nav-link {
-    color: #333;
+    color: $color-accent;
     display: block;
     padding: 0.5rem 2rem;
     text-decoration: none;
