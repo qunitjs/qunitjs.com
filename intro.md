@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Getting Started
+redirect_from:
+  - "/cookbook/"
 ---
 
 <p class="lead" markdown="1">The following guide will get you up-and-running with QUnit in either [Node](#in-node) or [the Browser](#in-the-browser) in just a few minutes.</p>

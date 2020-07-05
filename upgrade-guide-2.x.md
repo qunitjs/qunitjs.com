@@ -15,13 +15,13 @@ QUnit 2.0.x will include a migration layer that throws descriptive errors for al
 
 ## Removed globals
 
-QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use [`QUnit.module()`](http://api.qunitjs.com/QUnit.module/) and [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) to define your test suite, and use the [`assert`](http://api.qunitjs.com/QUnit.assert/) argument in test callbacks to write assertions.
+QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use [`QUnit.module()`](https://api.qunitjs.com/QUnit.module/) and [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) to define your test suite, and use the [`assert`](https://api.qunitjs.com/QUnit.assert/) argument in test callbacks to write assertions.
 
-The global `stop()` and `start()` methods are gone, replaced by [`assert.async()`](http://api.qunitjs.com/async/), which returns a callback. Execute this callback when your test is done.
+The global `stop()` and `start()` methods are gone, replaced by [`assert.async()`](https://api.qunitjs.com/async/), which returns a callback. Execute this callback when your test is done.
 
 ### Replace `module()` with `QUnit.module()`
 
-The global function `module()` is gone. Use [`QUnit.module()`](http://api.qunitjs.com/QUnit.module/) instead.
+The global function `module()` is gone. Use [`QUnit.module()`](https://api.qunitjs.com/QUnit.module/) instead.
 
 Before:
 
@@ -37,7 +37,7 @@ QUnit.module( "router" );
 
 ### Replace `test()` with `QUnit.test()`
 
-The global function `test()` is gone. Use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) instead.
+The global function `test()` is gone. Use [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) instead.
 
 Before:
 
@@ -53,7 +53,7 @@ QUnit.test( "defaults to home" );
 
 ### Replace `stop()` and `start()` with `assert.async()`
 
-The global functions `stop()` and `start()` are gone. Use [`assert.async()`](http://api.qunitjs.com/async/) instead, which returns a "done" function that should be called when the asynchronous operation has completed.
+The global functions `stop()` and `start()` are gone. Use [`assert.async()`](https://api.qunitjs.com/async/) instead, which returns a "done" function that should be called when the asynchronous operation has completed.
 
 Before:
 
@@ -81,7 +81,7 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 
 ### Replace `asyncTest()` with `QUnit.test()` and `assert.async()`
 
-The global function `asyncTest()` is gone. Use [`QUnit.test()`](http://api.qunitjs.com/QUnit.test/) and [`assert.async()`](http://api.qunitjs.com/async/) instead.
+The global function `asyncTest()` is gone. Use [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) and [`assert.async()`](https://api.qunitjs.com/async/) instead.
 
 Before:
 
@@ -108,7 +108,7 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 
 ### Replace `expect()` with `assert.expect()`
 
-The global function `expect()` is gone. Use [`assert.expect()`](http://api.qunitjs.com/expect/) instead.
+The global function `expect()` is gone. Use [`assert.expect()`](https://api.qunitjs.com/expect/) instead.
 
 Before:
 
@@ -134,9 +134,9 @@ QUnit.test( "refresh (sync)", function( assert ) {
 
 ### Replace global assertions with `assert` arguments
 
-All global assertions, like `equal()` and `deepEqual()` are gone. Use `assert` instead, like [`assert.equal()`](http://api.qunitjs.com/equal/) or [`assert.deepEqual()`](http://api.qunitjs.com/deepEqual/).
+All global assertions, like `equal()` and `deepEqual()` are gone. Use `assert` instead, like [`assert.equal()`](https://api.qunitjs.com/equal/) or [`assert.deepEqual()`](https://api.qunitjs.com/deepEqual/).
 
-Here are all assertion methods affected by this change in alphabetic order: [`deepEqual()`](http://api.qunitjs.com/deepEqual/), [`equal()`](http://api.qunitjs.com/equal/), [`notDeepEqual()`](http://api.qunitjs.com/notDeepEqual/), [`notEqual()`](http://api.qunitjs.com/notEqual/), [`notPropEqual()`](http://api.qunitjs.com/notPropEqual/), [`notStrictEqual()`](http://api.qunitjs.com/notStrictEqual/), [`ok()`](http://api.qunitjs.com/ok/), [`propEqual()`](http://api.qunitjs.com/propEqual/), [`strictEqual()`](http://api.qunitjs.com/strictEqual/), and [`throws()`](http://api.qunitjs.com/throws/).
+Here are all assertion methods affected by this change in alphabetic order: [`deepEqual()`](https://api.qunitjs.com/deepEqual/), [`equal()`](https://api.qunitjs.com/equal/), [`notDeepEqual()`](https://api.qunitjs.com/notDeepEqual/), [`notEqual()`](https://api.qunitjs.com/notEqual/), [`notPropEqual()`](https://api.qunitjs.com/notPropEqual/), [`notStrictEqual()`](https://api.qunitjs.com/notStrictEqual/), [`ok()`](https://api.qunitjs.com/ok/), [`propEqual()`](https://api.qunitjs.com/propEqual/), [`strictEqual()`](https://api.qunitjs.com/strictEqual/), and [`throws()`](https://api.qunitjs.com/throws/).
 
 Before:
 
@@ -167,7 +167,7 @@ QUnit.test( "static properties", function( assert ) {
 
 ## Rename module hooks
 
-The [module hooks](http://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`, to make it more obvious that they run for each test within a module.
+The [module hooks](https://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`, to make it more obvious that they run for each test within a module.
 
 Before:
 
@@ -203,7 +203,7 @@ A few methods and properties in the `QUnit` namespace have been modified or remo
 
 For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropriate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
 
-This applies to all reporting callbacks, specifically: [`begin`](http://api.qunitjs.com/QUnit.begin/), [`done`](http://api.qunitjs.com/QUnit.done/), [`log`](http://api.qunitjs.com/QUnit.log/), [`moduleDone`](http://api.qunitjs.com/QUnit.moduleDone/), [`moduleStart`](http://api.qunitjs.com/QUnit.moduleStart/), [`testDone`](http://api.qunitjs.com/QUnit.testDone/), and [`testStart`](http://api.qunitjs.com/QUnit.testStart/).
+This applies to all reporting callbacks, specifically: [`begin`](https://api.qunitjs.com/QUnit.begin/), [`done`](https://api.qunitjs.com/QUnit.done/), [`log`](https://api.qunitjs.com/QUnit.log/), [`moduleDone`](https://api.qunitjs.com/QUnit.moduleDone/), [`moduleStart`](https://api.qunitjs.com/QUnit.moduleStart/), [`testDone`](https://api.qunitjs.com/QUnit.testDone/), and [`testStart`](https://api.qunitjs.com/QUnit.testStart/).
 
 Before:
 
@@ -283,7 +283,7 @@ QUnit.test( "refresh, after replaceState", function( assert ) {
 
 ### Replace `QUnit.jsDump` with `QUnit.dump`
 
-Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](http://api.qunitjs.com/QUnit.dump.parse/). This should only affect custom reporter code, not regular testsuites.
+Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](https://api.qunitjs.com/QUnit.dump.parse/). This should only affect custom reporter code, not regular testsuites.
 
 Before:
 

@@ -1,27 +1,31 @@
 # Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
+# This config file is meant for settings that affect your whole site.
+# These values are expected to rarely change. If you are editing this file
+# very often, consider using Jekyll's data files feature.
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+## Site settings
+## https://jekyllrb.com/docs/configuration/
+
 title: QUnit
-# email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  The powerful, easy-to-use JavaScript testing framework
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://qunitjs.com" # the base hostname & protocol for your site, e.g. http://example.com
+description: The powerful, easy-to-use JavaScript testing framework
+# the base hostname and protocol for your site
+url: "https://qunitjs.com"
+# the subpath of your site, e.g. /blog
+baseurl: ""
+
+plugins:
+  # https://help.github.com/articles/redirects-on-github-pages/
+  - jekyll-redirect-from
+
+# Theme
 twitter_username: qunitjs
 github_username:  qunitjs
 
+# Conversion
 highlighter: rouge
 markdown: kramdown
 kramdown:
@@ -33,6 +37,7 @@ algolia: # Search
   index_name: qunitjs
   search_only_api_key: aed00982db05bd21dd05310be057bda8
 
+# Input files
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -41,4 +46,5 @@ exclude:
   - CNAME
   - vendor
 
-permalink: title
+# Output
+permalink: title/

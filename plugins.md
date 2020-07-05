@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Plugins
+redirect_from:
+  - "/addons/"
 ---
 
 <p class="lead">The following plugins provide a myriad of ways to modify, extend, and enhance QUnit itself as well as the developer experience of using QUnit.</p>
