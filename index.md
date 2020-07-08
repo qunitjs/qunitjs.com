@@ -41,7 +41,7 @@ QUnit.module('add', function() {
 
 ### Browser Result
 
-<iframe title="The example test code running in the browser" src="../resources/example-add.html"></iframe>
+<iframe title="The example test code running in the browser" src="/resources/example-add.html"></iframe>
 
 </div>
 
@@ -98,4 +98,4 @@ These downloads give you access to the latest features and bug fixes to QUnit th
 
 ---
 
-<p class="cta">What are you waiting for? <a href="./intro" class="button">Get started!</a></p>
+<p class="cta">What are you waiting for? <a href="{% link intro.md %}" class="button">Get started!</a></p>

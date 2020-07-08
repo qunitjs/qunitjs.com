@@ -29,14 +29,14 @@
             <nav class="site-nav">
                 <ul class="site-nav-list">
                     <li class="site-nav-item has-sub-list">
-                        <a class="site-nav-link has-sub-list" href="/guides">
+                        <a class="site-nav-link has-sub-list" href="{% link guides.md %}">
                             Guides
                         </a>
 
                         <ul class="site-nav-sub-list">
-                            <li><a class="site-sub-nav-link" href="/intro">Getting Started</a></li>
-                            <li><a class="site-sub-nav-link" href="/plugins">Plugins</a></li>
-                            <li><a class="site-sub-nav-link" href="/upgrade-guide-2.x">2.x Upgrade Guide</a></li>
+                            <li><a class="site-sub-nav-link" href="{% link intro.md %}">Getting Started</a></li>
+                            <li><a class="site-sub-nav-link" href="{% link plugins.md %}">Plugins</a></li>
+                            <li><a class="site-sub-nav-link" href="{% link upgrade-guide-2.x.md %}">2.x Upgrade Guide</a></li>
                         </ul>
                     </li>
 
@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="site-nav-item">
-                        <a class="site-nav-link" href="/about">
+                        <a class="site-nav-link" href="{% link about.md %}">
                             About
                         </a>
                     </li>

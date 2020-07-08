@@ -129,7 +129,7 @@ This code defines a test module for the `add` function and then a single test ve
 
 If you open this up in the browser you'll see the following:
 
-<iframe title="The test code running in the browser" src="../resources/example-index.html" style="height:254px;"></iframe>
+<iframe title="The test code running in the browser" src="/resources/example-index.html" style="height:254px;"></iframe>
 
 A detailed report of the tests that run and their assertions, as well as a bunch of options for filtering and re-running the tests.
 
