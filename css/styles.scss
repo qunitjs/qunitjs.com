@@ -179,12 +179,11 @@ iframe {
     &.opened {
         display: block;
     }
-}
 
-@media (min-width: $screen-m) {
-    .site-nav {
+    @media (min-width: $screen-m) {
         display: inline-block;
         position: relative;
+        border-top: 0;
     }
 }
 
@@ -194,10 +193,8 @@ iframe {
     margin: 0;
     padding: 0;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
 
-@media (min-width: $screen-m) {
-    .site-nav-list {
+    @media (min-width: $screen-m) {
         box-shadow: none;
     }
 }
@@ -206,11 +203,10 @@ iframe {
     display: block;
     height: 100%;
     border-bottom: 1px solid $color-off-white;
-}
 
-@media (min-width: $screen-m) {
-    .site-nav-item {
+    @media (min-width: $screen-m) {
         display: inline-block;
+        border-bottom: 0;
     }
 }
 
@@ -243,14 +239,12 @@ iframe {
     list-style: none;
     background-color: $color-white;
     border-radius: 3px;
-}
 
-@media (min-width: $screen-m) {
-    .site-nav-sub-list {
+    @media (min-width: $screen-m) {
         position: absolute;
         padding: 0.5rem 1rem;
         margin-top: 6px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
 }
 
@@ -263,10 +257,8 @@ iframe {
     display: block;
     padding: 0.5rem 2rem;
     text-decoration: none;
-}
 
-@media (min-width: $screen-m) {
-    .site-sub-nav-link {
+    @media (min-width: $screen-m) {
         padding: 0.5rem;
     }
 }
@@ -289,15 +281,13 @@ iframe {
     z-index: 1;
     border: none;
     border-top: 1px solid $color-off-white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
     &.opened {
         display: block;
     }
-}
 
-@media (min-width: $screen-m) {
-    .site-search {
+    @media (min-width: $screen-m) {
         display: block;
         align-self: center;
         position: relative;
@@ -350,10 +340,8 @@ iframe {
     max-height: 50vh;
     overflow: auto;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
 
-@media (min-width: $screen-m) {
-    .aa-dropdown-menu {
+    @media (min-width: $screen-m) {
         border-radius: 3px;
         border-top: none;
         min-width: 20rem;
@@ -478,10 +466,8 @@ iframe {
     grid-gap: $size-4;
     grid-template-columns: 1fr;
     text-align: center;
-}
 
-@media (min-width: $screen-m) {
-    .highlights {
+    @media (min-width: $screen-m) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
@@ -490,10 +476,8 @@ iframe {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: $size-4;
-}
 
-@media (min-width: $screen-m) {
-    .example-results {
+    @media (min-width: $screen-m) {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -521,10 +505,8 @@ iframe {
     grid-template-columns: 1fr;
     grid-gap: $size-spacing;
     margin: $size-spacing 0;
-}
 
-@media (min-width: $screen-m) {
-    #plugins {
+    @media (min-width: $screen-m) {
         grid-template-columns: 1fr 1fr;
     }
 }
