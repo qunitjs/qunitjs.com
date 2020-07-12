@@ -5,6 +5,5 @@ script:
 branches:
   only:
     - master
-    - gh-pages
 rvm:
  - 2.7
