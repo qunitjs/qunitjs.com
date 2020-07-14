@@ -14,6 +14,8 @@ $color-off-white: #eee;
 // https://brand.jquery.org/colors/#qunit-purple
 $color-brand: #9c3493; // bright purple  (primary)
 $color-accent: #390F39; // deep purple  (secondary)
+
+$color-darkgrey: #63676d; // based on 2015 api.jquery.com design
 $color-black: #333;
 
 $screen-s: 480px;
@@ -356,18 +358,24 @@ iframe {
 .aa-suggestion {
     padding: $size-spacing;
     cursor: pointer;
+    border-top: 1px solid $color-off-white;
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;
     transition: background-color 0.2s, border-color 0.2s;
 
-    & + & {
-        border-top: 1px solid $color-off-white;
+    a {
+        // reset default link style
+        text-decoration: none;
     }
 
     &:hover,
     &.aa-cursor {
         background-color: rgba($color-off-white, 0.5);
         border-left: 2px solid $color-brand;
+
+        .aa-suggestion_title {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -375,18 +383,21 @@ iframe {
     font-weight: bold;
 }
 
-.aa-suggestion_content,
-.aa-suggestion_meta {
-    margin-bottom: 0;
-    color: $color-black;
+.aa-suggestion_title,
+.aa-suggestion_content {
+    // reset paragraph margin
+    margin: 0;
+    // clip title chunks and content match  to one line
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-.aa-suggestion_meta {
-    font-size: 0.8rem;
+.aa-suggestion_title {
     color: $color-brand;
-    border-top: 1px solid $color-off-white;
-    margin-top: 0.25rem;
-    padding-top: 0.25rem;
+}
+.aa-suggestion_content {
+    font-size: 0.8rem;
+    color: $color-darkgrey;
 }
 
 /* Mobile Toggle Controls */

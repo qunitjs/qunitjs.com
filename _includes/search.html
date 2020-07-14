@@ -16,30 +16,64 @@ Remember to use the 'defer' attribute.
 <script>
     window.addEventListener('DOMContentLoaded', function setupSearch() {
         const client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
-        const index = client.initIndex('{{ site.algolia.index_name }}');
+        const indexMain = client.initIndex('{{ site.algolia.index_name }}');
+        const indexApi = client.initIndex('qunitjs-api');
         const autocompleteOptions = {
-            hint: false
+            hint: false,
+            ariaLabel: 'search input',
+            // Set debug to true if you want to inspect the dropdown
+            debug: true,
+            templates: {
+                // https://github.com/algolia/autocomplete.js/issues/248
+                empty(query) {
+                    return `No results for "${query.query}".`;
+                }
+            }
         };
+        function formatURL(suggestion) {
+            if (suggestion.anchor && suggestion.url.indexOf('#') === -1) {
+                return suggestion.url + '#' + suggestion.anchor;
+            } else {
+                return suggestion.url;
+            }
+        }
         const autocompleteSources = [
             {
-                source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+                source: autocomplete.sources.hits(indexApi, { hitsPerPage: 5 }),
                 displayKey: '',
                 templates: {
                     suggestion(suggestion) {
+                        const title = [ suggestion.title ].concat(suggestion.headings).join(' › ');
+                        const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
+                        suggestion._href = 'https://api.qunitjs.com' + formatURL(suggestion);
                         return `
-                            <a href="${suggestion.url}" tabindex="-1">
-                                <p class="aa-suggestion_content">${suggestion._highlightResult.content.value}</p>
-                                <p class="aa-suggestion_meta">${suggestion.title}</p>
+                            <a href="${suggestion._href}" tabindex="-1">
+                                <p class="aa-suggestion_title">${title}</p>
+                                <p class="aa-suggestion_content">${content}</p>
                             </a>
                         `;
-                    },
-                    empty(query) {
-                        return `<div class="aa-empty">No results for "${query.query}".</div>`;
+                    }
+                }
+            },
+            {
+                source: autocomplete.sources.hits(indexMain, { hitsPerPage: 5 }),
+                displayKey: '',
+                templates: {
+                    suggestion(suggestion) {
+                        const title = [ suggestion.title ].concat(suggestion.headings).join(' › ');
+                        const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
+                        suggestion._href = formatURL(suggestion);
+                        return `
+                            <a href="${suggestion._href}" tabindex="-1">
+                                <p class="aa-suggestion_title">${title}</p>
+                                <p class="aa-suggestion_content">${content}</p>
+                            </a>
+                        `;
                     }
                 }
             }
         ];
         autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
-            .on('autocomplete:selected', (event, suggestion) => window.location = suggestion.url);
+            .on('autocomplete:selected', (event, suggestion) => location.href = suggestion._href || suggestion.url);
     });
 </script>

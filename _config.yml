@@ -46,9 +46,17 @@ kramdown:
   input: GFM
   toc_levels: "1,2"
 
-algolia: # Search
+# Search
+algolia:
   application_id: HOJ487LP0L
+  # Which index the Travis job will create/update
+  # with the content of the current Jekyll site.
+  # The auth key for this is injected as secure env variable.
   index_name: qunitjs
+  files_to_exclude:
+    # Index destination instead of intermediary
+    - guides.md
+  # Auth key for client-side search queries.
   search_only_api_key: aed00982db05bd21dd05310be057bda8
 
 # Input files
