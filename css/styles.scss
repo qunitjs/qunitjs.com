@@ -7,14 +7,18 @@ $size-3: 1.777rem;
 $size-4: 2.369rem;
 $size-5: 3.157rem;
 $size-spacing: $size-2;
-
-$color-white: #fff;
-$color-off-white: #eee;
+$box-spacing: $size-1;
 
 // https://brand.jquery.org/colors/#qunit-purple
 $color-brand: #9c3493; // bright purple  (primary)
 $color-accent: #390F39; // deep purple  (secondary)
 
+$color-medium: #6a2166; // medium purple, based on 2015 qunitjs.com design
+$color-bright: #fbdbfb; // light purple (derived from primary, hue 300)
+
+$color-white: #fff;
+$color-light: #f4f4f4;
+$color-off-white: #cdcdcd;
 $color-darkgrey: #63676d; // based on 2015 api.jquery.com design
 $color-black: #333;
 
@@ -70,11 +74,13 @@ a {
 }
 
 code {
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    // Menlo – macOS 10.6+. Preferred instead of Monaco which doesn't do bolding very well.
+    // Consolas – Windows Vista & newer
+    // DejaVu Sans Mono – Ubuntu, Fedora
+    font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
     font-size: 95%;
-    background: rgba($color-brand, 0.2);
-    padding: 0 0.25em;
-    border-radius: 3px;
+    background: $color-light;
+    padding: 0.2em 0.4em;
 }
 
 hr {
@@ -137,7 +143,10 @@ iframe {
 /* Site Header */
 
 .site-header {
+    background: $color-accent;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    // Ensure shadow overlaps hero (next sibling)
+    position: relative;
 }
 
 .site-header-wrapper {
@@ -147,7 +156,7 @@ iframe {
 }
 
 .site-logo {
-    color: $color-brand;
+    color: $color-white;
     display: flex;
     align-items: center;
     font-size: $size-3;
@@ -158,12 +167,13 @@ iframe {
 
     img {
         height: $size-4;
+        width: auto;
         margin-right: $size-spacing / 2;
     }
 }
 
 .site-logo:hover {
-    color: $color-accent;
+    color: $color-white;
 }
 
 /* Site Navigation */
@@ -174,7 +184,7 @@ iframe {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: $color-white;
     border-top: 1px solid $color-off-white;
     z-index: 1;
 
@@ -183,14 +193,15 @@ iframe {
     }
 
     @media (min-width: $screen-m) {
-        display: inline-block;
+        display: block;
         position: relative;
+        align-self: center;
+        background: transparent;
         border-top: 0;
     }
 }
 
 .site-nav-list {
-    height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -214,17 +225,20 @@ iframe {
 
 .site-nav-link {
     align-items: center;
-    color: $color-accent;
     display: flex;
     height: 100%;
     padding: $size-1;
     text-decoration: none;
 
-    &:active,
-    &:hover,
-    &:focus {
-        color: $color-brand;
-        text-decoration: none;
+    @media (min-width: $screen-m) {
+        color: $color-bright;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: $color-white;
+            text-decoration: none;
+        }
     }
 }
 
@@ -255,7 +269,6 @@ iframe {
 }
 
 .site-sub-nav-link {
-    color: $color-accent;
     display: block;
     padding: 0.5rem 2rem;
     text-decoration: none;
@@ -263,11 +276,6 @@ iframe {
     @media (min-width: $screen-m) {
         padding: 0.5rem;
     }
-}
-
-.site-sub-nav-link:hover,
-.site-sub-nav-link:focus {
-    color: $color-brand;
 }
 
 /* Search */
@@ -279,9 +287,7 @@ iframe {
     left: 0;
     width: 100vw;
     height: 100%;
-    background: white;
     z-index: 1;
-    border: none;
     border-top: 1px solid $color-off-white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
@@ -296,8 +302,7 @@ iframe {
         flex: 1;
         max-width: 20rem;
         margin: 0 $size-spacing;
-        border: 1px solid $color-off-white;
-        border-radius: 3px;
+        border: none;
         box-shadow: none;
     }
 }
@@ -323,6 +328,14 @@ iframe {
     &::-webkit-search-results-decoration {
         display: none;
     }
+
+    @media (min-width: $screen-m) {
+        border-radius: 3px;
+        &:not(:focus) {
+            background: $color-medium;
+            color: $color-white;
+        }
+    }
 }
 
 .aa-input-icon {
@@ -332,7 +345,13 @@ iframe {
     top: 50%;
     right: 16px;
     transform: translateY(-50%);
-    fill: #e4e4e4;
+    fill: $color-accent;
+
+    @media (min-width: $screen-m) {
+        .site-search:not(:focus-within) & {
+            fill: $color-bright;
+        }
+    }
 }
 
 .aa-dropdown-menu {
@@ -346,7 +365,7 @@ iframe {
     @media (min-width: $screen-m) {
         border-radius: 3px;
         border-top: none;
-        min-width: 20rem;
+        min-width: 500px;
         margin-top: $size-spacing;
     }
 }
@@ -356,12 +375,11 @@ iframe {
 }
 
 .aa-suggestion {
-    padding: $size-spacing;
+    padding: $box-spacing;
     cursor: pointer;
     border-top: 1px solid $color-off-white;
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;
-    transition: background-color 0.2s, border-color 0.2s;
 
     a {
         // reset default link style
@@ -370,12 +388,8 @@ iframe {
 
     &:hover,
     &.aa-cursor {
-        background-color: rgba($color-off-white, 0.5);
+        background: $color-bright;
         border-left: 2px solid $color-brand;
-
-        .aa-suggestion_title {
-            text-decoration: underline;
-        }
     }
 }
 
@@ -387,13 +401,13 @@ iframe {
 .aa-suggestion_content {
     // reset paragraph margin
     margin: 0;
-    // clip title chunks and content match  to one line
+    // clip title chunks and content match to one line
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .aa-suggestion_title {
-    color: $color-brand;
+    color: $color-accent;
 }
 .aa-suggestion_content {
     font-size: 0.8rem;
@@ -404,10 +418,8 @@ iframe {
 
 .site-toggles {
     display: flex;
-}
 
-@media (min-width: $screen-m) {
-    .site-toggles {
+    @media (min-width: $screen-m) {
         display: none;
     }
 }
@@ -419,6 +431,8 @@ iframe {
     padding: 1rem;
     border: none;
     background: transparent;
+    color: $color-bright;
+    cursor: pointer;
 }
 
 .icon {
@@ -438,8 +452,8 @@ iframe {
 /* Home Page Hero */
 
 .hero {
-    background-color: $color-brand;
-    background-image: linear-gradient(-45deg, $color-brand, $color-accent);
+    background-color: $color-medium;
+    background-image: linear-gradient(135deg, $color-medium, $color-brand );
     padding: ($size-4 * 2) 0;
     text-align: center;
 }
@@ -456,6 +470,7 @@ iframe {
 
 .hero-description {
     font-weight: 100;
+    text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.24);
 }
 
 .hero-button {
@@ -535,6 +550,7 @@ iframe {
 .site-footer {
     border-top: 1px solid $color-off-white;
     margin-top: $size-4;
+    background: $color-light;
     padding: $size-4 0;
 }
 

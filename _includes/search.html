@@ -43,7 +43,7 @@ Remember to use the 'defer' attribute.
                 displayKey: '',
                 templates: {
                     suggestion(suggestion) {
-                        const title = [ suggestion.title ].concat(suggestion.headings).join(' › ');
+                        const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
                         const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
                         suggestion._href = 'https://api.qunitjs.com' + formatURL(suggestion);
                         return `
@@ -60,7 +60,7 @@ Remember to use the 'defer' attribute.
                 displayKey: '',
                 templates: {
                     suggestion(suggestion) {
-                        const title = [ suggestion.title ].concat(suggestion.headings).join(' › ');
+                        const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
                         const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
                         suggestion._href = formatURL(suggestion);
                         return `
