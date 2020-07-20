@@ -90,7 +90,7 @@ hr {
 }
 
 iframe {
-    width:100%;
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 3px;
 }
@@ -427,8 +427,8 @@ iframe {
 .toggle {
     display: block;
     height: 100%;
-    font-size: 1rem;
-    padding: 1rem;
+    font-size: $box-spacing;
+    padding: $box-spacing;
     border: none;
     background: transparent;
     color: $color-bright;
@@ -499,12 +499,10 @@ iframe {
 }
 
 .example-results {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: $size-4;
-
     @media (min-width: $screen-m) {
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-gap: $size-4;
     }
 }
 
