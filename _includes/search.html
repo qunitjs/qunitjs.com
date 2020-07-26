@@ -11,9 +11,9 @@ For releases and integrity hashes (SRI), see:
 
 Remember to use the 'defer' attribute.
 {% endcomment %}
-<script defer src="https://cdn.jsdelivr.net/npm/algoliasearch@3.26.0/dist/algoliasearch.min.js" integrity="sha256-dgq8vEaJVxWMmcF/BEk9W6Wm+o2+LFlw1VSl2sx4JCI=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/algoliasearch@4.3.1/dist/algoliasearch-lite.umd.js" integrity="sha256-YuyfhK9VEyfW6ejFiPbfOX2SELbFrgFU/8tU3MHuh60=" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js" integrity="sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=" crossorigin="anonymous"></script>
-<script>
+<script type="module">
     window.addEventListener('DOMContentLoaded', function setupSearch() {
         const client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
         const indexMain = client.initIndex('{{ site.algolia.index_name }}');
@@ -37,9 +37,22 @@ Remember to use the 'defer' attribute.
                 return suggestion.url;
             }
         }
+        function newHitsSource(index, params) {
+            return function doSearch(query, cb) {
+                index
+                    .search(query, params)
+                    .then(function(res) {
+                        cb(res.hits, res);
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                        cb([]);
+                    });
+            };
+        }
         const autocompleteSources = [
             {
-                source: autocomplete.sources.hits(indexApi, { hitsPerPage: 5 }),
+                source: newHitsSource(indexApi, { hitsPerPage: 5 }),
                 displayKey: '',
                 templates: {
                     suggestion(suggestion) {
@@ -56,7 +69,7 @@ Remember to use the 'defer' attribute.
                 }
             },
             {
-                source: autocomplete.sources.hits(indexMain, { hitsPerPage: 5 }),
+                source: newHitsSource(indexMain, { hitsPerPage: 5 }),
                 displayKey: '',
                 templates: {
                     suggestion(suggestion) {
