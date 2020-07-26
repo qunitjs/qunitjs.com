@@ -1,5 +1,12 @@
 ---
 layout: home
+home_img: /img/logo-text.svg
+home_primary_btn:
+  name: Get Started
+  href: /intro/
+home_secondary_btn:
+  name: View the Docs
+  href: https://api.qunitjs.com
 ---
 
 <section class="highlights">
