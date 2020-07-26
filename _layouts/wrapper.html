@@ -19,33 +19,20 @@
                 {% include search.html %}
             </div>
 
-            <nav class="site-nav">
-                <ul class="site-nav-list">
-                    <li class="site-nav-item has-sub-list">
-                        <a class="site-nav-link has-sub-list" href="{% link guides.md %}">
-                            Guides
-                        </a>
-
+            <nav class="site-nav"><ul class="site-nav-list">
+                {%- for item in site.data.sitenav %}
+                    <li class="site-nav-item{%- if item.sub %} has-sub-list{% endif %}">
+                        <a class="site-nav-link{%- if item.sub %} has-sub-list{% endif %}" href="{{ item.href | escape }}">{{ item.name }}</a>
+                        {%- if item.sub %}
                         <ul class="site-nav-sub-list">
-                            <li><a class="site-sub-nav-link" href="{% link intro.md %}">Getting Started</a></li>
-                            <li><a class="site-sub-nav-link" href="{% link plugins.md %}">Plugins</a></li>
-                            <li><a class="site-sub-nav-link" href="{% link upgrade-guide-2.x.md %}">2.x Upgrade Guide</a></li>
+                            {%- for sub in item.sub %}
+                            <li><a class="site-sub-nav-link" href="{{ sub.href | escape }}">{{ sub.name }}</a></li>
+                            {%- endfor %}
                         </ul>
+                        {%- endif %}
                     </li>
-
-                    <li class="site-nav-item">
-                        <a class="site-nav-link" href="https://api.qunitjs.com">
-                            Documentation
-                        </a>
-                    </li>
-
-                    <li class="site-nav-item">
-                        <a class="site-nav-link" href="{% link about.md %}">
-                            About
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                {%- endfor %}
+            </ul></nav>
 
             <div class="site-toggles">
                 <button class="search-toggle toggle" data-opens=".site-search" aria-expanded="false">
@@ -94,9 +81,9 @@
     <footer class="site-footer">
         <div class="wrapper">
             <p class="external-links">
-                <a href="https://github.com/{{ site.github_username | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://twitter.com/{{ site.twitter_username | escape }}" target="_blank" rel="noopener noreferrer">Twitter</a>
-                <a href="https://gitter.im/{{ site.gitter_room | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
+                <a href="https://github.com/{{ site.amethyst.github | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
             </p>
 
             <p class="copyright">Copyright &copy; 2020 <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors</p>

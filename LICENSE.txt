@@ -1,9 +1,5 @@
 Copyright OpenJS Foundation and other contributors, https://openjsf.org/
 
-This software consists of voluntary contributions made by many
-individuals. For exact contribution history, see the revision history
-available at https://github.com/qunitjs/qunitjs.com
-
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including

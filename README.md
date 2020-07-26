@@ -21,7 +21,7 @@ To update Jekyll and any plugins (e.g. after changes to `Gemfile`):
 bundle update
 ```
 
-To regenerate the site and serve locally at <http://127.0.0.1:4000/>:
+To regenerate the site and serve locally at <http://localhost:4000/>:
 
 ```shell
 bundle exec jekyll serve

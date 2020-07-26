@@ -23,9 +23,9 @@ plugins:
 
 # Theme
 # We have a custom theme so the Jekyll is ignored.
-# But, the default theee setting for github-pages is 'primer',
-# which Jekyll would still compile. This is a problem because
-# since at least 2015, the combination of Jekyll/Sass/Primer has
+# But, the default theme setting for github-pages is 'primer',
+# which Jekyll would still try to compile. This is a problem because
+# since at least 2015, the combination of Jekyll/Sass/Primer is
 # broken and simply doesn't compile out of-the-box.
 #
 # - https://github.com/jekyll/jekyll/issues/7426
@@ -36,9 +36,10 @@ plugins:
 # Workaround by using the 'minima' for this no-op setting,
 # which does compile an (unused) file without issue.
 theme: minima
-twitter_username: qunitjs
-github_username: qunitjs
-gitter_room: qunitjs/qunit
+amethyst:
+  twitter: qunitjs
+  github: qunitjs
+  gitter: qunitjs/qunit
 
 # Conversion
 highlighter: rouge
