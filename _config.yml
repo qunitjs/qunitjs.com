@@ -11,7 +11,7 @@
 ## https://jekyllrb.com/docs/configuration/
 
 title: QUnit
-description: The powerful, easy-to-use JavaScript testing framework
+description: "The powerful, easy-to-use JavaScript testing framework."
 # the base hostname and protocol for your site
 url: "https://qunitjs.com"
 # the subpath of your site, e.g. /blog
@@ -23,7 +23,7 @@ plugins:
 
 # Theme
 # We have a custom theme so the Jekyll is ignored.
-# But, the default theeme setting for github-pages is 'primer',
+# But, the default theee setting for github-pages is 'primer',
 # which Jekyll would still compile. This is a problem because
 # since at least 2015, the combination of Jekyll/Sass/Primer has
 # broken and simply doesn't compile out of-the-box.
@@ -37,7 +37,8 @@ plugins:
 # which does compile an (unused) file without issue.
 theme: minima
 twitter_username: qunitjs
-github_username:  qunitjs
+github_username: qunitjs
+gitter_room: qunitjs/qunit
 
 # Conversion
 highlighter: rouge

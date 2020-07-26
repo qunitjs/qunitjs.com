@@ -1,18 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}QUnit</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/styles.css" media="screen">
-    <meta name="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}QUnit">
-    <meta name="og:description" content="The powerful, easy-to-use JavaScript testing framework.">
-    <meta name="twitter:creator" content="@qunitjs">
-    <meta name="twitter:site" content="@qunitjs">
-    <meta name="twitter:card" content="summary_large_image">
-</head>
+<meta charset="utf-8">
+<title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/styles.css" media="screen">
+{% include opengraph.html -%}
 <body>
     <!-- <a class="a11y" href="#main">skip to content</a> -->
 
@@ -101,9 +94,9 @@
     <footer class="site-footer">
         <div class="wrapper">
             <p class="external-links">
-                <a href="https://github.com/qunitjs" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://twitter.com/qunitjs" target="_blank" rel="noopener noreferrer">Twitter</a>
-                <a href="https://gitter.im/qunitjs/qunit" target="_blank" rel="noopener noreferrer">Chat</a>
+                <a href="https://github.com/{{ site.github_username | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://twitter.com/{{ site.twitter_username | escape }}" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://gitter.im/{{ site.gitter_room | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
             </p>
 
             <p class="copyright">Copyright &copy; 2020 <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors</p>
