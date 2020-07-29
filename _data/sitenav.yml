@@ -9,5 +9,16 @@
       href: /upgrade-guide-2.x/
 - name: Documentation
   href: https://api.qunitjs.com
+  sub:
+    - name: Main methods
+      href: https://api.qunitjs.com/QUnit/
+    - name: Assertions
+      href: https://api.qunitjs.com/assert/
+    - name: Configuration tools
+      href: https://api.qunitjs.com/config/
+    - name: Callback events
+      href: https://api.qunitjs.com/callbacks/
+    - name: Async control
+      href: https://api.qunitjs.com/async/
 - name: About
   href: /about/
