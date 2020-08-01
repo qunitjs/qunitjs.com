@@ -145,4 +145,4 @@ QUnit currently supports <a href="https://jquery.com/browser-support/" target="_
 
 ## Further Reading
 
-* [Introdution to JavaScript Unit Testing](https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/)
+* [Introdution to JavaScript Unit Testing](https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/), Jörn Zaefferer (2012).
