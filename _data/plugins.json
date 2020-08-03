@@ -1,21 +1,112 @@
-[{"name":"qunit-dom","scope":"unscoped","version":"1.4.0","description":"High Level DOM Assertions for QUnit","keywords":["browser","dom","ember-addon","html","qunit","qunit-plugin","testing"],"date":"2020-08-02T09:32:22.630Z","links":{"npm":"https://www.npmjs.com/package/qunit-dom","homepage":"https://github.com/simplabs/qunit-dom#readme","repository":"https://github.com/simplabs/qunit-dom"},"author":{"name":"simplabs GmbH"},"publisher":{"username":"simplabs","email":"info@simplabs.com"},"maintainers":[{"username":"simplabs","email":"info@simplabs.com"},{"username":"turbo87","email":"tobias.bieniek@gmx.de"}]}
-,{"name":"qunit-wait-for","scope":"unscoped","version":"1.2.2","description":"Wait for a QUnit assertion","keywords":["qunit","qunit-plugin"],"date":"2020-08-03T14:36:06.210Z","links":{"npm":"https://www.npmjs.com/package/qunit-wait-for"},"author":{"name":"Alex LaFroscia","email":"alex@lafroscia.com","username":"alexlafroscia"},"publisher":{"username":"alexlafroscia","email":"alex@lafroscia.com"},"maintainers":[{"username":"alexlafroscia","email":"alex@lafroscia.com"}]}
-,{"name":"qunit-assertions-extra","scope":"unscoped","version":"0.8.5","description":"Collection of helpful assertions for use with qunit","keywords":["qunit","qunit-plugin","testing","assertions","assert","extra"],"date":"2020-08-03T11:00:53.566Z","links":{"npm":"https://www.npmjs.com/package/qunit-assertions-extra"},"author":{"name":"NullVoxPopuli"},"publisher":{"username":"nullvoxpopuli","email":"theprecognition+npm@gmail.com"},"maintainers":[{"username":"nullvoxpopuli","email":"theprecognition+npm@gmail.com"}]}
-,{"name":"qunit-reporter-junit","scope":"unscoped","version":"1.1.1","description":"Produce JUnit-style XML test reports with QUnit.","keywords":["qunit","qunit-plugin","qunit-reporter","junit","xunit","ci","jenkins"],"date":"2016-10-16T01:23:43.596Z","links":{"npm":"https://www.npmjs.com/package/qunit-reporter-junit"},"author":{"name":"jQuery Foundation and other contributors","url":"https://github.com/JamesMGreene/qunit-reporter-junit/blob/master/AUTHORS.txt"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-composite","scope":"unscoped","version":"2.0.0","description":"Run multiple QUnit test suite pages.","keywords":["qunit","qunit-plugin","composite","multiple","suites","pages"],"date":"2016-10-02T01:26:01.185Z","links":{"npm":"https://www.npmjs.com/package/qunit-composite"},"author":{"name":"jQuery Foundation and other contributors","url":"https://github.com/JamesMGreene/qunit-composite/blob/master/AUTHORS.txt"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-assert-html","scope":"unscoped","version":"1.1.0","description":"QUnit HTML assertion addon","keywords":["qunit-plugin","qunit-assert","qunit","assert","HTML","assertHTMLEquals","DOM"],"date":"2016-10-03T02:49:50.045Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-html"},"author":{"name":"James M. Greene","email":"james.m.greene@gmail.com","url":"http://greene.io/","username":"jamesmgreene"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-assert-step","scope":"unscoped","version":"1.1.1","description":"A QUnit plugin for asserting the proper sequence in which the code should execute.","keywords":["qunit-plugin","qunit-assert","qunit","assert","order","step"],"date":"2016-10-03T03:46:41.981Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-step","homepage":"https://github.com/JamesMGreene/qunit-assert-step","repository":"https://github.com/JamesMGreene/qunit-assert-step","bugs":"https://github.com/JamesMGreene/qunit-assert-step/issues"},"author":{"name":"jQuery Foundation and other contributors","url":"https://github.com/JamesMGreene/qunit-assert-step/blob/master/AUTHORS.txt"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-assert-close","scope":"unscoped","version":"2.1.2","description":"A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.","keywords":["qunit-plugin","qunit-assert","qunit","assert","close","close-enough","roughlyEquals","closeTo","approximate"],"date":"2016-10-02T02:25:51.041Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-close","homepage":"https://github.com/JamesMGreene/qunit-assert-close","repository":"https://github.com/JamesMGreene/qunit-assert-close","bugs":"https://github.com/JamesMGreene/qunit-assert-close/issues"},"author":{"name":"jQuery Foundation and other contributors","url":"https://github.com/JamesMGreene/qunit-assert-close/blob/master/AUTHORS.txt"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-assert-canvas","scope":"unscoped","version":"1.1.0","description":"A QUnit plugin for asserting individual pixel values within a Canvas element.","keywords":["qunit-plugin","qunit-assert","qunit","assert","canvas","drawImage","image","draw","render"],"date":"2016-10-02T02:25:02.752Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-canvas"},"author":{"name":"jQuery Foundation and other contributors","url":"https://github.com/JamesMGreene/qunit-assert-canvas/blob/master/AUTHORS.txt"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-assert-compare","scope":"unscoped","version":"1.1.0","description":"A QUnit plugin for asserting numerical comparisons like greater than, less than, etc.","keywords":["qunit-plugin","qunit-assert","assert","qunit","less","lesser","lessThan","less than","lesserThan","lesser than","greater","greaterThan","greater than","lessThanOrEqual","less than or equal","lesserThanOrEqual","lesser than or equal","greaterThanOrEqual","greater than or equal","equal","notEqual","not equal","compare","comparison","numerical comparison","lt","lte","gt","gte","eq","neq"],"date":"2016-10-02T03:13:17.701Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-compare","homepage":"https://github.com/JamesMGreene/qunit-assert-compare","repository":"https://github.com/JamesMGreene/qunit-assert-compare","bugs":"https://github.com/JamesMGreene/qunit-assert-compare/issues"},"author":{"name":"James M. Greene","email":"james.m.greene@gmail.com","url":"http://greene.io/","username":"jamesmgreene"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"qunit-pending","scope":"unscoped","version":"1.0.0","description":"A QUnit plugin to add the \"pending\" test syntax to QUnit, a la Mocha.","keywords":["qunit-plugin","qunit-test","qunit","test","unit test","pending","skip","skipped","not implemented yet","stub","future"],"date":"2016-10-02T01:55:55.632Z","links":{"npm":"https://www.npmjs.com/package/qunit-pending"},"author":{"name":"James M. Greene","email":"james.m.greene@gmail.com","url":"http://greene.io/","username":"jamesmgreene"},"publisher":{"username":"jamesmgreene","email":"james.m.greene@gmail.com"},"maintainers":[{"username":"jamesmgreene","email":"james.m.greene@gmail.com"}]}
-,{"name":"node-qunit-puppeteer","scope":"unscoped","version":"2.0.3","description":"A simple node module for running qunit tests with headless Chromium","keywords":["qunit","qunit-plugin","qunit-puppeteer","node-qunit-puppeteer","chrome","puppeteer","headless","testing"],"date":"2020-08-02T22:49:28.233Z","links":{"npm":"https://www.npmjs.com/package/node-qunit-puppeteer","homepage":"https://github.com/ameshkov/node-qunit-puppeteer","repository":"https://github.com/ameshkov/node-qunit-puppeteer","bugs":"https://github.com/ameshkov/node-qunit-puppeteer/issues"},"author":{"name":"Andrey Meshkov"},"publisher":{"username":"ameshkov","email":"am@adguard.com"},"maintainers":[{"username":"ameshkov","email":"am@adguard.com"}]}
-,{"name":"qunit-reporter-lcov","scope":"unscoped","version":"1.0.2","description":"Produce lcov test reports with QUnit","keywords":["qunit","qunit-plugin","qunit-reporter","lcov"],"date":"2015-03-15T20:31:35.403Z","links":{"npm":"https://www.npmjs.com/package/qunit-reporter-lcov","homepage":"https://github.com/piranna/qunit-reporter-lcov","repository":"https://github.com/piranna/qunit-reporter-lcov","bugs":"https://github.com/piranna/qunit-reporter-lcov/issues"},"author":{"name":"Jesús Leganés Combarro 'piranna'","url":"https://github.com/piranna/qunit-reporter-lcov/blob/master/AUTHORS.txt"},"publisher":{"username":"piranna","email":"piranna@gmail.com"},"maintainers":[{"username":"piranna","email":"piranna@gmail.com"}]}
-,{"name":"qunit-assert-classes","scope":"unscoped","version":"1.0.2","description":"A set of assertions for checking thats an element has ( or does not have ) any number of classes. The check is order independent and gives a diff of the expected classes.","keywords":["qunit-plugin","qunit-assert","qunit","assert","classes"],"date":"2015-04-29T19:09:20.175Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-classes"},"author":{"name":"Alex Schmitz","url":"https://github.com/arschmitz/qunit-assert-classes/blob/master/AUTHORS.txt"},"publisher":{"username":"arschmitz","email":"arschmitz@gmail.com"},"maintainers":[{"username":"arschmitz","email":"arschmitz@gmail.com"}]}
-,{"name":"qunit-retry","scope":"unscoped","version":"0.0.5","description":"Drop in replacement for qunit `test` which retries a failed test.","keywords":["qunit","qunit-plugin","test","testing","retry"],"date":"2020-07-26T09:02:24.217Z","links":{"npm":"https://www.npmjs.com/package/qunit-retry","homepage":"https://github.com/mrloop/qunit-retry#readme","repository":"https://github.com/mrloop/qunit-retry","bugs":"https://github.com/mrloop/qunit-retry/issues"},"author":{"name":"mrloop"},"publisher":{"username":"mrloop","email":"info@mrloop.com"},"maintainers":[{"username":"mrloop","email":"info@mrloop.com"}]}
-,{"name":"qunit-theme-burce","scope":"unscoped","version":"1.0.0","description":"A QUnit theme by Bryce Dorn.","keywords":["qunit","burce","qunit-plugin","qunit-theme"],"date":"2014-06-09T22:03:07.465Z","links":{"npm":"https://www.npmjs.com/package/qunit-theme-burce","homepage":"https://github.com/brycedorn/qunit-theme-gabe","repository":"https://github.com/brycedorn/qunit-theme-gabe","bugs":"https://github.com/brycedorn/qunit-theme-burce/issues"},"author":{"name":"Bryce Dorn","email":"brycedorn@gmail.com","url":"http://bryce.io","username":"brycedorn"},"publisher":{"username":"brycedorn","email":"brycedorn@gmail.com"},"maintainers":[{"username":"brycedorn","email":"brycedorn@gmail.com"}]}
-,{"name":"qunit-puppeteer-reporter","scope":"unscoped","version":"2.0.4","description":"headless browser testing for QUnit test suites","keywords":["qunit","qunit-plugin","qunit-reporter","puppeteer"],"date":"2020-08-01T08:31:56.699Z","links":{"npm":"https://www.npmjs.com/package/qunit-puppeteer-reporter"},"author":{"name":"FND"},"publisher":{"username":"fnd","email":"fndnpm@burningchrome.com"},"maintainers":[{"username":"fnd","email":"fndnpm@burningchrome.com"}]}
-,{"name":"qunit-dark","scope":"unscoped","version":"0.1.5","description":"A kind of dark theme for qunit","keywords":["qunit","qunit-plugin","qunit-theme","qunit theme dark"],"date":"2014-03-20T17:47:37.864Z","links":{"npm":"https://www.npmjs.com/package/qunit-dark"},"author":{"name":"Roy Riojas"},"publisher":{"username":"royriojas","email":"royriojas@gmail.com"},"maintainers":[{"username":"royriojas","email":"royriojas@gmail.com"}]}
-,{"name":"qunit-assert-nodes","scope":"unscoped","version":"0.0.3","description":"A QUnit plugin providing a convenient API for batch acceptance assertions","keywords":["jquery","qunit-plugin","qunit-assert","qunit","assert","order"],"date":"2013-06-25T07:56:50.394Z","links":{"npm":"https://www.npmjs.com/package/qunit-assert-nodes"},"publisher":{"username":"dsheiko","email":"web.sbelarus@gmail.com"},"maintainers":[{"username":"dsheiko","email":"web.sbelarus@gmail.com"}]}
-,{"name":"qunit-theme-ninja","scope":"unscoped","version":"2.0.0","description":"A QUnit theme for ninjas.","keywords":["qunit","qunit-plugin","qunit-theme"],"date":"2019-01-04T03:56:25.064Z","links":{"npm":"https://www.npmjs.com/package/qunit-theme-ninja"},"author":{"name":"Jamie Hoover","email":"dont.tase@me.com"},"publisher":{"username":"krinkle","email":"krinklemail@gmail.com"},"maintainers":[{"username":"krinkle","email":"krinklemail@gmail.com"}]}
+[
+  {
+    "name": "qunit-dom",
+    "description": "High Level DOM Assertions for QUnit",
+    "date": "2020-08-02T09:32:22.630Z"
+  },
+  {
+    "name": "qunit-wait-for",
+    "description": "Wait for a QUnit assertion",
+    "date": "2020-08-03T14:36:06.210Z"
+  },
+  {
+    "name": "qunit-assertions-extra",
+    "description": "Collection of helpful assertions for use with qunit",
+    "date": "2020-08-03T11:00:53.566Z"
+  },
+  {
+    "name": "node-qunit-puppeteer",
+    "description": "A simple node module for running qunit tests with headless Chromium",
+    "date": "2020-08-02T22:49:28.233Z"
+  },
+  {
+    "name": "qunit-reporter-junit",
+    "description": "Produce JUnit-style XML test reports with QUnit.",
+    "date": "2016-10-16T01:23:43.596Z"
+  },
+  {
+    "name": "qunit-composite",
+    "description": "Run multiple QUnit test suite pages.",
+    "date": "2016-10-02T01:26:01.185Z"
+  },
+  {
+    "name": "qunit-assert-html",
+    "description": "QUnit HTML assertion addon",
+    "date": "2016-10-03T02:49:50.045Z"
+  },
+  {
+    "name": "qunit-assert-step",
+    "description": "A QUnit plugin for asserting the proper sequence in which the code should execute.",
+    "date": "2016-10-03T03:46:41.981Z"
+  },
+  {
+    "name": "qunit-assert-close",
+    "description": "A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.",
+    "date": "2016-10-02T02:25:51.041Z"
+  },
+  {
+    "name": "qunit-assert-canvas",
+    "description": "A QUnit plugin for asserting individual pixel values within a Canvas element.",
+    "date": "2016-10-02T02:25:02.752Z"
+  },
+  {
+    "name": "qunit-assert-compare",
+    "description": "A QUnit plugin for asserting numerical comparisons like greater than, less than, etc.",
+    "date": "2016-10-02T03:13:17.701Z"
+  },
+  {
+    "name": "qunit-pending",
+    "description": "A QUnit plugin to add the \"pending\" test syntax to QUnit, a la Mocha.",
+    "date": "2016-10-02T01:55:55.632Z"
+  },
+  {
+    "name": "qunit-puppeteer-reporter",
+    "description": "headless browser testing for QUnit test suites",
+    "date": "2020-08-01T08:31:56.699Z"
+  },
+  {
+    "name": "qunit-retry",
+    "description": "Drop in replacement for qunit `test` which retries a failed test.",
+    "date": "2020-07-26T09:02:24.217Z"
+  },
+  {
+    "name": "qunit-reporter-lcov",
+    "description": "Produce lcov test reports with QUnit",
+    "date": "2015-03-15T20:31:35.403Z"
+  },
+  {
+    "name": "qunit-assert-classes",
+    "description": "A set of assertions for checking thats an element has ( or does not have ) any number of classes. The check is order independent and gives a diff of the expected classes.",
+    "date": "2015-04-29T19:09:20.175Z"
+  },
+  {
+    "name": "qunit-theme-burce",
+    "description": "A QUnit theme by Bryce Dorn.",
+    "date": "2014-06-09T22:03:07.465Z"
+  },
+  {
+    "name": "qunit-dark",
+    "description": "A kind of dark theme for qunit",
+    "date": "2014-03-20T17:47:37.864Z"
+  },
+  {
+    "name": "qunit-assert-nodes",
+    "description": "A QUnit plugin providing a convenient API for batch acceptance assertions",
+    "date": "2013-06-25T07:56:50.394Z"
+  },
+  {
+    "name": "qunit-theme-ninja",
+    "description": "A QUnit theme for ninjas.",
+    "date": "2019-01-04T03:56:25.064Z"
+  },
+  {
+    "name": "qunit-theme-nv",
+    "description": "A QUnit theme.",
+    "date": "2019-01-03T23:49:09.721Z"
+  },
+  {
+    "name": "qunit-theme-gabe",
+    "description": "A QUnit theme by Gabe Hendry.",
+    "date": "2013-05-06T23:33:24.707Z"
+  }
 ]
