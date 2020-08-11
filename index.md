@@ -45,7 +45,7 @@ QUnit.module('add', function() {
 
 ### Browser Result
 
-<iframe title="The example test code running in the browser" src="/resources/example-add.html"></iframe>
+<iframe loading="lazy" title="The example test code running in the browser" src="/resources/example-add.html"></iframe>
 
 </div>
 
