@@ -26,3 +26,17 @@ To regenerate the site and serve locally at <http://localhost:4000/>:
 ```shell
 bundle exec jekyll serve
 ```
+
+## Scripts
+
+### Update plugins
+
+```shell
+node build/update-plugins
+```
+
+### Update QUnit version
+
+```shell
+node build/set-version <version>
+```

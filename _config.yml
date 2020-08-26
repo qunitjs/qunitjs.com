@@ -82,6 +82,7 @@ exclude:
   - CONTRIBUTING.md
   - CNAME
   - vendor
+  - build
 
 # Output
 permalink: title/

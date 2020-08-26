@@ -9,4 +9,5 @@ const { keyword } = require('./npm-search.js');
 		date: plugin.date
 	}));
 	fs.writeFileSync('./_data/plugins.json', JSON.stringify(plugins, null, 2) + '\n');
+	console.log('Done!');
 }());
