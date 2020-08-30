@@ -3,6 +3,8 @@
   sub:
     - name: Getting Started
       href: /intro/
+    - name: Command-line interface
+      href: /cli/
     - name: Plugins
       href: /plugins/
     - name: 2.x Upgrade Guide

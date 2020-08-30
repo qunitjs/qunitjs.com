@@ -5,43 +5,44 @@ redirect_from:
   - "/cookbook/"
 ---
 
-<p class="lead" markdown="1">The following guide will get you up-and-running with QUnit in either [Node](#in-node) or [the Browser](#in-the-browser) in just a few minutes.</p>
+<p class="lead" markdown="1">The following guide will get you up-and-running with QUnit either [in Node](#in-node) or [in the Browser](#in-the-browser) in just a few minutes.</p>
 
 ## In Node
 
-Getting started with QUnit in Node is quick and easy. First, install QUnit inside your Node package using `npm`:
+Getting started with QUnit in Node is quick and easy. First, install the [qunit](https://www.npmjs.com/package/qunit) package using `npm`:
 
 ```bash
 npm install --save-dev qunit
-```
 
-Or `yarn`:
-
-```bash
+# Or, if using Yarn:
 yarn add --dev qunit
 ```
 
-Then, let's start writing tests! We'll start with a function that adds two numbers. Create a file `add.js` with the following contents:
+Let's create a basic example program that we can test! We'll start with a function that adds two numbers. Create a file `add.js` with the following contents:
 
 ```js
-const add = (a, b) => a + b;
+function add(a, b) {
+  return a + b;
+}
+
 module.exports = add;
 ```
 
-Next, create a file for your test at `test/add.js` and include the following:
+Now, let's start writing tests! Create a file in a test directory, like `test/add.js`, and include the following:
 
 ```js
-const add = require('../add');
-QUnit.module('add', function() {
-  QUnit.test('should add two numbers', function(assert) {
-    assert.equal(add(1, 1), 2, '1 + 1 = 2');
-  });
+const add = require('../add.js');
+
+QUnit.module('add');
+
+QUnit.test('add two numbers', assert => {
+  assert.equal(add(1, 1), 2, '1 + 1 = 2');
 });
 ```
 
-This defines a test module for the function and then a single test that verifies the result of adding two numbers together.
+This defines a test suite for the "add" function and then a single test that verifies the result of adding two numbers together.
 
-To run the test, we'll want to add a script to your `package.json` so that you don't need to install QUnit globally (though you can if you prefer):
+To run the test, make sure the `test` script is defined in your `package.json` file. This makes QUnit and other tools easy to run as a dev dependency, without having to install them install QUnit globally:
 
 ```json
 {
@@ -51,10 +52,10 @@ To run the test, we'll want to add a script to your `package.json` so that you d
 }
 ```
 
-Then, you can run:
+Then, simply run:
 
 ```bash
-npm run test
+npm test
 ```
 
 And QUnit will print out:
@@ -71,15 +72,19 @@ ok 1 add > should add two numbers
 
 Congrats! You just wrote and executed your first QUnit test!
 
-Next, you should try writing a test for some of your own code and then check out the [API documentation](https://api.qunitjs.com) or run `qunit --help` to discover more of QUnit's features.
+Check out the [API documentation](https://api.qunitjs.com) to learn more about the QUnit API for organising tests and making assertions.
+
+See [Command-line interface](./cli.md) for how the `qunit` command works.
 
 ### Support Policy
 
 QUnit follows the <a href="https://github.com/nodejs/LTS" target="_blank">Node Long-term Support (LTS) Schedule</a> and provides support for Current, Active LTS, and Maintenance LTS releases.
 
-### Package Name Prior to 2.4.1
+### Package name prior to 2.4.1
 
-Prior to version 2.4.1, QUnit was published under the package name `qunitjs` on NPM. If you wish to install an older version of QUnit on Node, you will want to use the `qunitjs` package. The `qunit` package prior to version 2.4.1 is an alternative CLI that is now published as `node-qunit`.
+Prior to QUnit 2.4.1, the npm package was published under the name "qunit**js**" instead of "qunit". To install earlier versions of QUnit for Node, check out [qunitjs](https://www.npmjs.com/package/qunitjs).
+
+The 0.x and 1.x versions of the "qunit" package on npm holds an alternative CLI that is now published as [node-qunit](https://github.com/qunitjs/node-qunit).
 
 ---
 
