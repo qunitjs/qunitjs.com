@@ -68,8 +68,8 @@ Jörn is a freelance web developer, consultant, and trainer, residing in Cologne
 
 ### Previous Team Members
 
-* [James M. Greene](http://greene.io/)
-* [John Resig](http://ejohn.org/)
+* [James M. Greene](https://jamesmgreene.github.io/)
+* [John Resig](https://johnresig.com/)
 * [Scott González](http://nemikor.com/)
 
 ## History
