@@ -1,67 +1,101 @@
 ---
 layout: page
-title: 2.x Upgrade Guide
+title: QUnit 2.0 Upgrade Guide
 ---
+
+<!--
+	Follow semistandard in code examples.
+
+	<https://github.com/standard/semistandard>
+	<https://standardjs.com/rules.html>
+-->
+<p class="lead" markdown="1">This guide will assist you in upgrading from QUnit 1 to QUnit 2.</p>
 
 ## Overview
 
-This guide will assist you in upgrading from QUnit 1.x to QUnit 2.x. All breaking changes are listed below with an explanation of how to upgrade your code to work with QUnit 2.x.
+The QUnit 2 release only removes old methods. The "QUnit 2" methods were introduced as part of QUnit 1.x releases. If you are on QUnit 1.23, you can already migrate gradually, before making the jump.
 
-<p class="note" markdown="1">The [qunit-migrate](https://github.com/apsdehal/qunit-migrate) project can help you automate the transition to QUnit 2.x.</p>
+The old methods are removed in QUnit 2.0 and replaced with placeholder methods that throw descriptive errors to simplify migration (`"Global 'test()' method is removed, use 'QUnit.test() instead"`). QUnit 2.1 removes that layer and woul instead throw native errors like `"ReferenceError: test is not defined"`.
 
-Note that almost all the new APIs of QUnit 2.0.0 are already usable in QUnit 1.23.1, allowing you to migrate step-by-step. The only exception is the new module hooks `before` and `after`.
+| QUnit 1.x | QUnit 2.x
+|--|--
+| `module()` | [`QUnit.module()`](https://api.qunitjs.com/QUnit/module/)
+| `test()` | [`QUnit.test()`](https://api.qunitjs.com/QUnit/test/)
+| `asyncTest()` | [`QUnit.test()`](https://api.qunitjs.com/QUnit/test/) with [`assert.async()`](https://api.qunitjs.com/assert/async/)
+| `stop()`/`start()` | [`assert.async()`](https://api.qunitjs.com/assert/async/)
+| `expect()` | [`assert.expect()`](https://api.qunitjs.com/assert/expect/)
+| `ok()`, `equal()`, `deepEqual()`, … | [`assert`](https://api.qunitjs.com/assert/)
+| `setup`/`teardown` options | [`beforeEach` and `afterEach` hooks](https://api.qunitjs.com/QUnit/module/#options-object)
 
-QUnit 2.0.x will include a migration layer that throws descriptive errors for all deprecated methods (`"Global 'test()' method is removed, use 'QUnit.test() instead"`), to help you migrate to the new APIs. QUnit 2.1+ will remove that layer, causing failures that will be more difficult to debug (`"ReferenceError: test is not defined"`).
+For plugins and other integrations:
 
-## Removed globals
+| QUnit 1.x | QUnit 2.x
+|--|--
+| `QUnit.log = …`<br/>`QUnit.begin = …`<br/>… | [`QUnit.log(…)`](https://api.qunitjs.com/callbacks/QUnit.log/),<br/>[`QUnit.begin(…)`](https://api.qunitjs.com/callbacks/QUnit.begin/),<br/>…
+| `QUnit.push()` | [`assert.pushResult()`](https://api.qunitjs.com/assert/pushResult)
+| `QUnit.jsDump.parse()` | [`QUnit.dump.parse()`](https://api.qunitjs.com/config/QUnit.dump.parse/)
 
-QUnit no longer exposes multiple global variables. The only global variable still exposed is `QUnit`. Use [`QUnit.module()`](https://api.qunitjs.com/QUnit.module/) and [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) to define your test suite, and use the [`assert`](https://api.qunitjs.com/QUnit.assert/) argument in test callbacks to write assertions.
+## Changes
 
-The global `stop()` and `start()` methods are gone, replaced by [`assert.async()`](https://api.qunitjs.com/async/), which returns a callback. Execute this callback when your test is done.
+<p class="note" markdown="1">The [qunit-migrate](https://github.com/apsdehal/qunit-migrate) tool can automate the transition to QUnit 2.</p>
 
-### Replace `module()` with `QUnit.module()`
+* [Removed global functions](#removed-global-functions)
+* [Introducing `assert.async`](#introducing-assertasync)
+* [Renamed module hooks](#renamed-module-hooks)
+* [Removed legacy callback properties](#removed-legacy-callback-properties)
+* [Replace `QUnit.push` with `assert.pushResult`](#replace-qunitpush-with-assertpushresult)
+* [Removed `QUnit.init` without replacement](#removed-qunitinit-without-replacement)
+* [Removed `QUnit.reset`](#removed-qunitreset)
+* [Renamed `QUnit.jsDump` to `QUnit.dump`](#renamed-qunitjsdump-to-qunitdump)
+* [Replace `expected` number argument of `QUnit.test`](#replace-expected-number-argument-of-qunittest)
+* [Replace `assert.throws(Function, string, message)` signature](#replace-assertthrowsfunction-string-message-signature)
 
-The global function `module()` is gone. Use [`QUnit.module()`](https://api.qunitjs.com/QUnit.module/) instead.
+### Removed global functions
+
+QUnit 2 no longer uses global functions. The main methods are now part of the `QUnit` interface, and the assertion methods are exposed through a new [`assert`](https://api.qunitjs.com/assert/) object that is bound to each test.
 
 Before:
 
 ```js
-module( "router" );
+module('example');
+
+test('add', function () {
+	equal(add(2, 3), 5);
+});
 ```
 
 After:
 
 ```js
-QUnit.module( "router" );
+QUnit.module('example');
+
+QUnit.test('add', assert => {
+	assert.equal(add(2, 3), 5);
+});
 ```
 
-### Replace `test()` with `QUnit.test()`
+### Introducing `assert.async()`
 
-The global function `test()` is gone. Use [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) instead.
+Use [`assert.async()`](https://api.qunitjs.com/assert/async/) instead of the `stop()` and `start()` functions. Calling `assert.async()` returns a `done` function that should be called once the asynchronous operation is finished.
+
+Similarly, if you were using `asyncTest()`, use the regular [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) with [`assert.async()`](https://api.qunitjs.com/async/) instead.
 
 Before:
 
 ```js
-test( "defaults to home" );
-```
-
-After:
-
-```js
-QUnit.test( "defaults to home" );
-```
-
-### Replace `stop()` and `start()` with `assert.async()`
-
-The global functions `stop()` and `start()` are gone. Use [`assert.async()`](https://api.qunitjs.com/async/) instead, which returns a "done" function that should be called when the asynchronous operation has completed.
-
-Before:
-
-```js
-QUnit.test( "navigates to new page (async)", function( assert ) {
+QUnit.test('navigates to new page', function () {
 	stop();
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
+	router.navigate(function (newPage) {
+		equal(newPage.id, 1);
+		start();
+	});
+});
+
+// Or
+
+asyncTest('navigates to new page', function () {
+	router.navigate(function (newPage) {
+		equal(newPage.id, 1);
 		start();
 	});
 });
@@ -70,113 +104,27 @@ QUnit.test( "navigates to new page (async)", function( assert ) {
 After:
 
 ```js
-QUnit.test( "navigates to new page (async)", function( assert ) {
-	var done = assert.async();
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
+QUnit.test('navigates to new page', assert => {
+	const done = assert.async();
+	router.navigate(newPage => {
+		assert.equal(newPage.id, 1);
 		done();
 	});
 });
 ```
 
-### Replace `asyncTest()` with `QUnit.test()` and `assert.async()`
+### Renamed module hooks
 
-The global function `asyncTest()` is gone. Use [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) and [`assert.async()`](https://api.qunitjs.com/async/) instead.
-
-Before:
-
-```js
-asyncTest( "navigates to new page (async)", function( assert ) {
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
-		start();
-	});
-});
-```
-
-After:
-
-```js
-QUnit.test( "navigates to new page (async)", function( assert ) {
-	var done = assert.async();
-	router.navigate(function( newPage ) {
-		assert.equal( newPage.id, 1 );
-		done();
-	});
-});
-```
-
-### Replace `expect()` with `assert.expect()`
-
-The global function `expect()` is gone. Use [`assert.expect()`](https://api.qunitjs.com/expect/) instead.
+The [module hooks](https://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`. The new names were first introduced in QUnit 1.16, and removed in QUnit 2.0.
 
 Before:
 
 ```js
-QUnit.test( "refresh (sync)", function( assert ) {
-	expect( 1 );
-	router.refresh(function( currentPage ) {
-		assert.equal( currentPage.id, 2 );
-	});
-});
-```
-
-After:
-
-```js
-QUnit.test( "refresh (sync)", function( assert ) {
-	assert.expect( 1 );
-	router.refresh(function( currentPage ) {
-		assert.equal( currentPage.id, 2 );
-	});
-});
-```
-
-### Replace global assertions with `assert` arguments
-
-All global assertions, like `equal()` and `deepEqual()` are gone. Use `assert` instead, like [`assert.equal()`](https://api.qunitjs.com/equal/) or [`assert.deepEqual()`](https://api.qunitjs.com/deepEqual/).
-
-Here are all assertion methods affected by this change in alphabetic order: [`deepEqual()`](https://api.qunitjs.com/deepEqual/), [`equal()`](https://api.qunitjs.com/equal/), [`notDeepEqual()`](https://api.qunitjs.com/notDeepEqual/), [`notEqual()`](https://api.qunitjs.com/notEqual/), [`notPropEqual()`](https://api.qunitjs.com/notPropEqual/), [`notStrictEqual()`](https://api.qunitjs.com/notStrictEqual/), [`ok()`](https://api.qunitjs.com/ok/), [`propEqual()`](https://api.qunitjs.com/propEqual/), [`strictEqual()`](https://api.qunitjs.com/strictEqual/), and [`throws()`](https://api.qunitjs.com/throws/).
-
-Before:
-
-```js
-QUnit.test( "static properties", function() {
-	ok( router.initialized );
-	equal( router.currentPage.id, 3 );
-	deepEqual( router.currentPage, {
-		id: 3,
-		path: "/about"
-	});
-});
-```
-
-After:
-
-```js
-QUnit.test( "static properties", function( assert ) {
-	assert.ok( router.initialized );
-	assert.equal( router.currentPage.id, 3 );
-	assert.deepEqual( router.currentPage, {
-		id: 3,
-		path: "/about"
-	});
-});
-```
-
-
-## Rename module hooks
-
-The [module hooks](https://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`, to make it more obvious that they run for each test within a module.
-
-Before:
-
-```js
-QUnit.module( "router", {
-	setup: function( assert ) {
+QUnit.module('router', {
+	setup: function () {
 		this.router = new Router();
 	},
-	teardown: function( assert ) {
+	teardown: function () {
 		this.router.destroy();
 	}
 });
@@ -185,171 +133,210 @@ QUnit.module( "router", {
 After:
 
 ```js
-QUnit.module( "router", {
-	beforeEach: function( assert ) {
+QUnit.module('router', {
+	beforeEach: () => {
 		this.router = new Router();
 	},
-	afterEach: function( assert ) {
+	afterEach: () => {
 		this.router.destroy();
 	}
 });
 ```
 
-## Removed and modified QUnit methods and properties
+You can also use a [nested scope](https://api.qunitjs.com/QUnit/module/#nested-scope) as of QUnit 1.20, which makes for simpler sharing of variables and associating of tests with modules.
 
-A few methods and properties in the `QUnit` namespace have been modified or removed.
-
-### Replace `QUnit.log = callback` with `QUnit.log( callback )` for all reporting callbacks
-
-For several versions of QUnit before 2.0, custom reporters could be registered by calling the appropriate methods with a callback function. If your code still uses the old approach of overwriting a property on the `QUnit` object, replace that by calling the method instead.
-
-This applies to all reporting callbacks, specifically: [`begin`](https://api.qunitjs.com/QUnit.begin/), [`done`](https://api.qunitjs.com/QUnit.done/), [`log`](https://api.qunitjs.com/QUnit.log/), [`moduleDone`](https://api.qunitjs.com/QUnit.moduleDone/), [`moduleStart`](https://api.qunitjs.com/QUnit.moduleStart/), [`testDone`](https://api.qunitjs.com/QUnit.testDone/), and [`testStart`](https://api.qunitjs.com/QUnit.testStart/).
-
-Before:
+Example:
 
 ```js
-QUnit.log = function( results ) {
-	console.log( results );
-};
-```
+QUnit.module('router', hooks => {
+	let router;
 
-After:
+	hooks.beforeEach(() => {
+		router = new Router();
+	});
+	hooks.afterEach(() => {
+		router.destroy();
+	});
 
-```js
-QUnit.log(function( results ) {
-	console.log( results );
+	QUnit.test('add', assert => {
+		assert.true(router.add('/about'));
+	});
 });
 ```
 
-### Replace `QUnit.push()` with `this.pushResult()`
+### Removed legacy callback properties
 
-To implement custom assertions, assign functions to [`QUnit.assert`](https://api.qunitjs.com/config/QUnit.assert), inside use [`this.pushResult()`](https://api.qunitjs.com/assert/pushResult), replacing `QUnit.push`. This way, the assertion will be directly related to its test context, preventing asynchronous tests leaking assertions to other tests.
+Early alpha releases of QUnit 0.x required property assignments to register callback events. In QUnit 1.0, these were deprecated in favour of more modern event registration methods. The ability to use assignments as way to register callbacks was removed in QUnit 2.0.
+
+<p class="note" markdown="1">See also [`QUnit.on()`](https://api.qunitjs.com/callbacks/QUnit.on/), which implements the [js-reporters spec](https://github.com/js-reporters/js-reporters) since QUnit 2.2.</p>
 
 Before:
 
 ```js
-QUnit.assert.mod2 = function( value, expected, message ) {
-    var actual = value % 2;
-    QUnit.push( actual === expected, actual, expected, message );
+QUnit.log = function (results) {
+	console.log(results);
 };
 ```
 
 After:
 
 ```js
-QUnit.assert.mod2 = function( value, expected, message ) {
-    var actual = value % 2;
-    this.pushResult( actual === expected, actual, expected, message );
-};
+QUnit.log(function (results) {
+	console.log(results);
+});
 ```
 
-### Stop using `QUnit.init`, no replacement
+This applies to all reporting callbacks, specifically: [`begin`](https://api.qunitjs.com/callbacks/QUnit.begin/), [`done`](https://api.qunitjs.com/callbacks/QUnit.done/), [`log`](https://api.qunitjs.com/QUnit.log/), [`moduleDone`](https://api.qunitjs.com/callbacks/QUnit.moduleDone/), [`moduleStart`](https://api.qunitjs.com/callbacks/QUnit.moduleStart/), [`testDone`](https://api.qunitjs.com/callbacks/QUnit.testDone/), and [`testStart`](https://api.qunitjs.com/callbacks/QUnit.testStart/).
 
-This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built a setup that requires the use of `QUnit.init`, reach out in our [Gitter room](https://gitter.im/qunitjs/qunit), or contact us in the [issue tracker](https://github.com/qunitjs/qunit/issues) to help find a replacement.
+### Replace `QUnit.push()` with `assert.pushResult()`
 
-### Stop using `QUnit.reset`, split one test into multiple tests
-
-This method used to give access to QUnit's internal fixture reset. This is now gone, without replacement. If your code is using it, you probably need to split affected tests into multiple tests.
+To implement custom assertions, assign functions to [`QUnit.assert`](https://api.qunitjs.com/config/QUnit.assert), and inside use [`this.pushResult()`](https://api.qunitjs.com/assert/pushResult) instead of `QUnit.push`. This allows assertions to be directly associated with its test context, preventing asynchronous tests from leaking into other tests.
 
 Before:
 
 ```js
-QUnit.test( "refresh", function( assert ) {
+QUnit.assert.mod2 = function (value, expected, message) {
+    const actual = value % 2;
+    QUnit.push(actual === expected, actual, expected, message);
+};
+```
+
+After:
+
+```js
+QUnit.assert.mod2 = function (value, expected, message) {
+    const actual = value % 2;
+    this.pushResult({ result: actual === expected, actual, expected, message });
+};
+```
+
+### Removed `QUnit.init` without replacement
+
+This method used to reinitialize the test runner. It should never have been exposed as a public method and is now gone, without replacement. If you've built an integration or runner framework that requires the use of `QUnit.init`, reach out in our [Chat room](https://gitter.im/qunitjs/qunit), or contact us in the [issue tracker](https://github.com/qunitjs/qunit/issues) to help find a replacement.
+
+### Removed `QUnit.reset`
+
+This method accessed QUnit's internal fixture reset. This is now gone, without replacement. If your code is using it, you may need to split affected tests into separate tests.
+
+Before:
+
+```js
+QUnit.test('currentPage', assert => {
 	router.refresh();
-	assert.equal( router.currentPage.id, 1 );
+	assert.equal(router.currentPage.id, 1);
 
 	QUnit.reset();
 
-	history.replaceState( "/about" );
+	history.replaceState('/about');
 	router.refresh();
-	assert.equal( router.currentPage.id, 2 );
+	assert.equal(router.currentPage.id, 42);
 });
 ```
 
 After:
 
 ```js
-QUnit.test( "refresh, default", function( assert ) {
+QUnit.test('currentPage default', assert => {
 	router.refresh();
-	assert.equal( router.currentPage.id, 1 );
+	assert.equal(router.currentPage.id, 1);
 });
 
-QUnit.test( "refresh, after replaceState", function( assert ) {
-	history.replaceState( "/about" );
+QUnit.test('currentPage after replaceState', assert => {
+	history.replaceState('/about');
 	router.refresh();
-	assert.equal( router.currentPage.id, 2 );
+	assert.equal(router.currentPage.id, 42);
 });
 ```
 
-### Replace `QUnit.jsDump` with `QUnit.dump`
+### Renamed `QUnit.jsDump` to `QUnit.dump`
 
-Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](https://api.qunitjs.com/QUnit.dump.parse/). This should only affect custom reporter code, not regular testsuites.
+Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](https://api.qunitjs.com/config/QUnit.dump.parse/). This should only affect custom reporter code, not regular testsuites.
 
 Before:
 
 ```js
-QUnit.log(function( obj ) {
-  var actual = QUnit.jsDump.parse( obj.actual );
-  var expected = QUnit.jsDump.parse( obj.expected );
-  sendMessage( obj.result, actual, expected );
+QUnit.log(obj => {
+  const actual = QUnit.jsDump.parse(obj.actual);
+  const expected = QUnit.jsDump.parse(obj.expected);
+  sendMessage(obj.result, actual, expected);
 });
 ```
 
 After:
 
 ```js
-QUnit.log(function( obj ) {
-  var actual = QUnit.dump.parse( obj.actual );
-  var expected = QUnit.dump.parse( obj.expected );
-  sendMessage( obj.result, actual, expected );
+QUnit.log(obj => {
+  const actual = QUnit.dump.parse(obj.actual);
+  const expected = QUnit.dump.parse(obj.expected);
+  sendMessage(obj.result, actual, expected);
 });
 ```
 
-### Replace expected argument in `QUnit.test`
+### Replace `expected` number argument of `QUnit.test`
 
-The optional second `expected` argument that `QUnit.test` used to accept was removed. Call `assert.expect()` instead.
+The optional `expected` argument to `QUnit.test` for specifying the expected number of assertions, was removed. Call `assert.expect()` instead.
 
 Before:
 
 ```js
-QUnit.test( "addition", 1, function( assert ) {
-    assert.equal( add( 1, 2 ), 3 );
+QUnit.test('addition', 1, assert => {
+    assert.equal(add(2, 3), 5);
 });
 ```
 
 After:
 
 ```js
-QUnit.test( "addition", function( assert ) {
-    assert.expect( 1 );
-    assert.equal( add( 1, 2 ), 3 );
+QUnit.test('addition', assert => {
+    assert.expect(1);
+    assert.equal(add(2, 3), 5);
 });
 ```
 
-## Miscellaneous
+### Replace `assert.throws(Function, string, message)` signature
 
-### Replace `assert.throws( block, string, message )` with `assert.throws( block, regexp, message )`
+The signature of [`assert.throws()`](https://api.qunitjs.com/assert/throws/) that accepted an error string as second parameter has been removed. This avoids ambiguity with the assertion message, as both parameters were optional.
 
-The overload of `assert.throws()` which expected a block, error string, and assertion message has been removed and will now throw an exception. Use a regular expression instead.
+It is recommended to use a regular expression or error object as the expected value instead.
+
+For example, to test the following code:
+
+```js
+function add(a, b) {
+	if (a === undefined) {
+		throw new Error('This is an error');
+	}
+}
+```
 
 Before:
 
 ```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws( function() {
-		throw new Error( "This is an error" );
-	}, "This is an error", "An error should have been thrown" );
+QUnit.test('add', assert => {
+	assert.throws(() => {
+		add();
+	}, 'This is an error', 'Fail if A is undefined');
 });
 ```
 
 After:
 
 ```js
-QUnit.test( "throws", function( assert ) {
-	assert.throws( function() {
-		throw new Error( "This is an error" );
-	}, /^This is an error$/, "An error should have been thrown" );
+QUnit.test('add', assert => {
+	assert.throws(() => {
+		add();
+	}, /This is an error/, 'Fail if A is undefined');
+});
+
+// Or
+
+QUnit.test('add', assert => {
+	assert.throws(() => {
+		add();
+	}, new Error('This is an error'), 'Fail if A is undefined');
 });
 ```
 
-Note that in the two-argument overload `assert.throws( block, string )`, the string argument has always been interpreted as an assertion message instead of an expected value. You do not need to change any of these assertions. Of course, you should use the `assert.throws( block, regexp, message )` form anyway to make your assertions more precise.
+See [`assert.throws()`](https://api.qunitjs.com/assert/throws/) for an overview of the supported signatures.
+
+Note that in the two-argument signature `assert.throws(Function, string)` has always been interpreted as asserting _anything_ is thrown, with the string argument being the assertion message. This continues to be supported.
