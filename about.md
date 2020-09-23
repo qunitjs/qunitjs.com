@@ -42,25 +42,17 @@ Between API design, feature implementation, ticket triage, bug fixing, and every
 
 For a full list of contributors, see the [authors list](https://github.com/qunitjs/qunit/blob/master/AUTHORS.txt).
 
-### [Trent Willis](https://twitter.com/trentmwillis) - Project Lead
+### [Timo Tijhof](https://timotijhof.net/) - Project Lead
 
-Trent is a Senior UI Engineer at [Netflix](https://www.netflix.com) in beautiful Los Gatos, CA. He has been contributing to QUnit since 2015 and became the project lead in early 2017.
-
-### [Leo Balter](https://twitter.com/leobalter)
-
-Leo is a software engineer at [Bocoup](https://bocoup.com/) based in Boston, MA. He represents the JSFoundation at TC39, the technical committee that designs the language specification for JS, and maintains the official spec tests at [test262](http://github.com/tc39/test262/). He has been contributing to QUnit since 2013 and was a project lead from 2015 to early-2017.
+Timo is a senior engineer at [Wikimedia Foundation](https://www.wikimedia.org/) where he is on the [Architecture Committee](https://www.mediawiki.org/wiki/Architecture_committee), the technical committee that governs the integrity and stability of Wikimedia software projects. He has been contributing to jQuery Foundation projects since 2011, joined the QUnit Team in 2012, and became the project lead in mid-2020.
 
 ### [Richard Gibson](https://twitter.com/gibson042)
 
 Richard is an architect at [Dyn](http://dyn.com/) in New Hampshire, USA. He has been contributing to jQuery Foundation projects since 2011 (QUnit since 2012) and can be spotted on a large handful of open source repositories.
 
-### [Kevin Partington](https://github.com/platinumazure)
+### [Trent Willis](https://twitter.com/trentmwillis)
 
-Kevin is a software engineer based out of Minnesota, USA. He has contributed to QUnit since 2015. He is also heavily involved in the ESLint project and actively maintains an [ESLint plugin](https://github.com/platinumazure/eslint-plugin-qunit) for linting QUnit tests.
-
-### [Timo Tijhof](https://timotijhof.net/)
-
-Timo is a senior engineer at [Wikimedia Foundation](https://www.wikimedia.org/) where he is on the [Architecture Committee](https://www.mediawiki.org/wiki/Architecture_committee), the technical committee that governs the integrity and stability of Wikimedia software projects. He has been contributing to jQuery Foundation projects since 2011 and joined the QUnit Team in 2012.
+Trent is a Senior UI Engineer at [Netflix](https://www.netflix.com) in Los Gatos, CA. He has been contributing to QUnit since 2015 and served as the project lead from early 2017 to mid-2020.
 
 ### [Jörn Zaefferer](http://bassistance.de/)
 
@@ -70,6 +62,8 @@ Jörn is a freelance web developer, consultant, and trainer, residing in Cologne
 
 * [James M. Greene](https://jamesmgreene.github.io/)
 * [John Resig](https://johnresig.com/)
+* [Kevin Partington](https://github.com/platinumazure)
+* [Leo Balter](https://twitter.com/leobalter)
 * [Scott González](http://nemikor.com/)
 
 ## History
