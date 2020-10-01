@@ -9,19 +9,19 @@ Requirements:
 * [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.6+).
 * [Bundler](https://bundler.io/) (if missing, install with `gem install bundler`).
 
-#To install Jekyll and plugins the first time:
+=>To install Jekyll and plugins the first time:
 
 ```shell
 bundle install
 ```
 
-#To update Jekyll and any plugins (e.g. after changes to `Gemfile`):
+=>To update Jekyll and any plugins (e.g. after changes to `Gemfile`):
 
 ```shell
 bundle update
 ```
 
-#To regenerate the site and serve locally at <http://localhost:4000/>:
+=>To regenerate the site and serve locally at <http://localhost:4000/>:
 
 ```shell
 bundle exec jekyll serve
