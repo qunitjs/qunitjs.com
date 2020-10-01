@@ -8,7 +8,7 @@
 'use strict';
 const https = require('https');
 const registryUrl = 'https://registry.npmjs.org/';
-
+/* FUNCTION TO FECTH DATA*/
 function fetch(url) {
 	return new Promise((resolve, reject) => {
 		const req = https.get(url, (resp) => {
