@@ -29,12 +29,13 @@ plugins:
   - jekyll-redirect-from
 
 # Theme
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@6375b63
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@6f9b0d3
 amethyst:
   header_logo:
     src: /img/logo-with-colored-text.svg
     width: 250
     height: 72
+  mastodon: https://mastodon.technology/@qunitjs
   twitter: qunitjs
   github: qunitjs
   gitter: qunitjs/qunit
