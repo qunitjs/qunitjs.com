@@ -7,7 +7,7 @@ redirect_from:
 
 <p class="lead">The following plugins provide a myriad of ways to modify, extend, and enhance QUnit itself as well as the developer experience of using QUnit.</p>
 
-<ul id="plugins">
+<ul id="plugins" class="grid grid--split">
   {% assign _plugins = site.data.plugins | sort: "date" | reverse -%}
   {%- for plugin in _plugins -%}
     <li class="plugin">

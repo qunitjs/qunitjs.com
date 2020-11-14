@@ -4,14 +4,6 @@
 #plugins {
     list-style: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: $size-spacing;
-    margin: $size-spacing 0;
-
-    @media (min-width: $screen-m) {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 .plugin {
     border-bottom: 1px solid $color-off-white;

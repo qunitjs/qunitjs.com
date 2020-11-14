@@ -9,18 +9,18 @@ home_secondary_btn:
   href: https://api.qunitjs.com
 ---
 
-<section class="highlights">
-  <div class="highlight">
+<section class="grid grid--small home-highlights">
+  <div>
     <h2>Easy</h2>
     <p>Easy, zero configuration setup for any Node.js project and minimal configuration for Browser-based projects.</p>
   </div>
 
-  <div class="highlight">
+  <div>
     <h2>Universal</h2>
     <p>Tests can be run anywhere; Node, your browser, even inside a Web Worker. Test your code where it runs.</p>
   </div>
 
-  <div class="highlight">
+  <div>
     <h2>Extensible</h2>
     <p>Flexible APIs for custom assertions, runners, and reporters mean you can extend QUnit to fit your needs.</p>
   </div>
@@ -39,7 +39,7 @@ QUnit.module('add', function() {
 });
 ```
 
-<div class="example-results" markdown="1">
+<div class="grid grid--split" markdown="1">
 
 <div class="example-result" markdown="1">
 
