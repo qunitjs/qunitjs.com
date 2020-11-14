@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-<p class="lead">QUnit is a powerful, easy-to-use JavaScript testing framework. It was originally developed for the <a href="https://jquery.com/">jQuery</a> project but has since evolved to be a dependency of many modern JavaScript libraries and applications, including being the default testing framework for the <a href="https://emberjs.com/">Ember.js</a> ecosystem.</p>
+<p class="lead">QUnit is a powerful, easy-to-use JavaScript testing framework. It was originally developed for the <a href="https://jquery.com/">jQuery</a> project and has since evolved to be a dependency of many modern JavaScript libraries and applications, including being the default testing framework for the <a href="https://emberjs.com/">Ember.js</a> ecosystem.</p>
 
 ## Philosophy
 
@@ -21,20 +21,21 @@ QUnit should be universally applicable for testing JavaScript code and support m
 
 ### Extensible
 
-QUnit should be opinionated with a lean API to support being easy-to-use, but it should also be highly extensible. There are many different approaches to testing and many different types of tests that users may want to write, and while we can not support all of these out of the box, we can support APIs to enable the community to extend QUnit to meet their needs.
+QUnit should be opinionated with a lean API to support being easy-to-use, yet highly extensible. There are many different approaches to testing and many different types of tests that users may want to write, and while we can not support all of these out of the box, we can support APIs to enable the community to extend QUnit to meet their needs.
 
 ## Community
 
-QUnit is free, open source and always will be, but this wouldn't be possible without a first-class team of volunteers and community of users. If you're interested in getting plugged into the community, here are some ways to get started:
+QUnit is freely licensed and open source, and always will be. This is thanks to our team of volunteers and our community. If you're interested in learning about new developments, here are some ways to get started:
 
-* Join [the official chat channel on Gitter](https://gitter.im/qunitjs/qunit).
-* Follow [@qunitjs on Twitter](https://twitter.com/qunitjs) for announcements.
+* Join [the official Chat channel](https://gitter.im/qunitjs/qunit).
+* [Star and Watch](https://github.com/qunitjs/qunit) the repository on GitHub to spread the word, and be notified of releases.
+* Follow [@qunitjs on Mastodon](https://mastodon.technology/@qunitjs) or [@qunitjs on Twitter](https://twitter.com/qunitjs) for announcements.
 
 Furthermore, if you'd like to contribute...
 
-* Features or bug fixes, you can find [the source code on GitHub](https://github.com/qunitjs/qunit).
-* Updates to this website, you can find [this website on GitHub](https://github.com/qunitjs/qunitjs.com).
-* Updates to the API documentation, you can find it in [the "docs" directory of the main repo on GitHub](https://github.com/qunitjs/qunit/tree/master/docs).
+* [Watch the main repository](https://github.com/qunitjs/qunit) to learn about new requests or bug reports.
+* The source of this website, is in the [qunitjs.com](https://github.com/qunitjs/qunitjs.com) repository.
+* The source of the Documentation site, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/master/docs) of the main repo.
 
 ## Team
 
@@ -70,4 +71,4 @@ Jörn is a freelance web developer, consultant, and trainer, residing in Cologne
 
 QUnit was originally developed by John Resig as part of [jQuery](https://jquery.com/). In 2008 it got its own home, name, and API documentation, allowing others to use it for their unit testing as well. At the time it still depended on jQuery. A rewrite in 2009 fixed that and QUnit has been an independent project ever since.
 
-QUnit's assertion methods originally followed the [CommonJS Unit Testing](https://wiki.commonjs.org/wiki/Unit_Testing/1.0) specification (which was to some degree influenced by QUnit) but have since been expanded to include a wider variety of assertions.
+QUnit's assertion methods originally followed the [CommonJS Unit Testing](https://wiki.commonjs.org/wiki/Unit_Testing/1.0) specification (which was to some degree influenced by QUnit) and have since expanded to include a wider variety of assertions.
