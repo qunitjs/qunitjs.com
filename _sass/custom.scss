@@ -1,6 +1,6 @@
 // Custom styles for qunitjs.com
 
-/* Plugins Page */
+/* Plugins */
 #plugins {
     list-style: none;
     padding: 0;
@@ -11,4 +11,11 @@
     h3 {
         margin-bottom: 0;
     }
+}
+
+/* Projects */
+h3 a {
+	// Improve balance of layout color contrast
+	// (not everything the same color)
+	color: inherit;
 }
