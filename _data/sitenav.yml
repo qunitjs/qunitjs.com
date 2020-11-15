@@ -23,4 +23,8 @@
     - name: Async control
       href: https://api.qunitjs.com/async/
 - name: About
-  href: /about/
+  sub:
+    - name: Who's using  QUnit?
+      href: /projects/
+    - name: About QUnit
+      href: /about/

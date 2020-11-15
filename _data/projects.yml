@@ -1,0 +1,110 @@
+# General:
+# - Up to three projects per entry.
+#
+# Organizations should meet these criteria:
+#
+# - One or more its projects are under an OSI-approved free software license and use QUnit.
+# - Meets at least one of the following notability criteria:
+#   - has an official social media account with 5000+ followers.
+#   - or, an English Wikipedia article exists about the organization, and has existed for at least one year.
+#
+# Projects should meet these criteria:
+#
+# - Published under an OSI-approved free software license.
+# - Has had its 1.0 release at least one year ago.
+# - Meets at least one of the following notability criteria:
+#   - published to a package manager with 50+ non-dev dependent packages.
+#   - or, maintained on a social coding platform (e.g. GitLab, GitHub) with 500+ stars.
+#   - or, has a official social media account with 1000+ followers.
+#   - or, an English Wikipedia article exists about the project, and has existed for at least one year.
+#
+entries:
+  - name: Addepar
+    href: https://en.wikipedia.org/wiki/Addepar
+    sub:
+      - name: ember-table
+        href: https://github.com/Addepar/ember-table
+
+  - name: Ember.js
+    href: https://github.com/emberjs
+    sub:
+      - name: ember.js
+        href: https://github.com/emberjs/ember.js
+      - name: ember-qunit
+        href: https://github.com/emberjs/ember-qunit
+      - name: ember-twiddle
+        href: https://github.com/ember-cli/ember-twiddle
+
+  - name: Filament Group
+    href: https://github.com/filamentgroup
+    sub:
+      - name: formcore
+        href: https://github.com/filamentgroup/formcore/
+      - name: layersnap
+        href: https://github.com/filamentgroup/layersnap
+      - name: tablesaw
+        href: https://github.com/filamentgroup/tablesaw
+
+  - name: fluid
+    href: https://github.com/fluid-project
+    sub:
+      - name: infusion
+        href: https://github.com/fluid-project/infusion
+
+  - name: Globalize
+    href: https://github.com/globalizejs/globalize
+    sub:
+      - name: globalize
+        href: https://github.com/globalizejs/globalize
+
+  - name: jQuery
+    href: https://github.com/jquery
+    sub:
+      - name: jQuery
+        href: https://github.com/jquery/jquery
+      - name: Sizzle
+        href: https://github.com/jquery/sizzle
+      - name: jQuery UI
+        href: https://github.com/jquery/jquery-ui
+
+  - name: Moment.js
+    href: https://github.com/moment
+    sub:
+      - name: moment
+        href: https://github.com/moment/moment
+
+  - name: StealJS
+    href: https://github.com/stealjs/
+    sub:
+      - name: steal
+        href: https://github.com/stealjs/steal
+
+  - name: Twitter
+    href: https://github.com/twitter
+    sub:
+      - name: Hogan.js
+        href: https://github.com/twitter/hogan.js
+      - name: twitter-text
+        href: https://github.com/twitter/twitter-text
+
+  - name: Underscore.js
+    href: https://github.com/jashkenas/underscore
+    sub:
+      - name: underscore
+        href: https://github.com/jashkenas/underscore
+
+  - name: Wikimedia
+    href: https://doc.wikimedia.org/
+    sub:
+      - name: MediaWiki
+        href: https://github.com/wikimedia/mediawiki
+      - name: VisualEditor
+        href: https://github.com/wikimedia/VisualEditor
+      - name: CSSJanus
+        href: https://github.com/cssjanus/cssjanus
+
+  - name: WordPress
+    href: https://github.com/WordPress
+    sub:
+      - name: WordPress
+        href: https://github.com/WordPress/wordpress-develop
