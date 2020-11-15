@@ -25,10 +25,18 @@ entries:
       - name: ember-table
         href: https://github.com/Addepar/ember-table
 
+  - name: DocumentCloud
+    href: https://www.documentcloud.org/opensource
+    sub:
+      - name: Underscore.js
+        href: https://github.com/jashkenas/underscore
+      - name: Backbone.js
+        href: https://github.com/jashkenas/backbone
+
   - name: Ember.js
     href: https://github.com/emberjs
     sub:
-      - name: ember.js
+      - name: Ember.js
         href: https://github.com/emberjs/ember.js
       - name: ember-qunit
         href: https://github.com/emberjs/ember-qunit
@@ -48,13 +56,13 @@ entries:
   - name: fluid
     href: https://github.com/fluid-project
     sub:
-      - name: infusion
+      - name: Infusion
         href: https://github.com/fluid-project/infusion
 
   - name: Globalize
     href: https://github.com/globalizejs/globalize
     sub:
-      - name: globalize
+      - name: Globalize
         href: https://github.com/globalizejs/globalize
 
   - name: jQuery
@@ -70,13 +78,13 @@ entries:
   - name: Moment.js
     href: https://github.com/moment
     sub:
-      - name: moment
+      - name: Moment.js
         href: https://github.com/moment/moment
 
   - name: StealJS
     href: https://github.com/stealjs/
     sub:
-      - name: steal
+      - name: StealJS
         href: https://github.com/stealjs/steal
 
   - name: Twitter
@@ -86,12 +94,6 @@ entries:
         href: https://github.com/twitter/hogan.js
       - name: twitter-text
         href: https://github.com/twitter/twitter-text
-
-  - name: Underscore.js
-    href: https://github.com/jashkenas/underscore
-    sub:
-      - name: underscore
-        href: https://github.com/jashkenas/underscore
 
   - name: Wikimedia
     href: https://doc.wikimedia.org/
