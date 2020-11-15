@@ -18,12 +18,15 @@
 #   - or, has a official social media account with 1000+ followers.
 #   - or, an English Wikipedia article exists about the project, and has existed for at least one year.
 #
-entries:
-  - name: Addepar
-    href: https://en.wikipedia.org/wiki/Addepar
+orgs:
+
+  - name: Discourse
+    href: https://github.com/discourse
     sub:
-      - name: ember-table
-        href: https://github.com/Addepar/ember-table
+      - name: Discourse
+        href: https://github.com/discourse/discourse
+      - name: discourse-subscriptions
+        href: https://github.com/discourse/discourse-subscriptions
 
   - name: DocumentCloud
     href: https://www.documentcloud.org/opensource
@@ -32,16 +35,6 @@ entries:
         href: https://github.com/jashkenas/underscore
       - name: Backbone.js
         href: https://github.com/jashkenas/backbone
-
-  - name: Ember.js
-    href: https://github.com/emberjs
-    sub:
-      - name: Ember.js
-        href: https://github.com/emberjs/ember.js
-      - name: ember-qunit
-        href: https://github.com/emberjs/ember-qunit
-      - name: ember-twiddle
-        href: https://github.com/ember-cli/ember-twiddle
 
   - name: Filament Group
     href: https://github.com/filamentgroup
@@ -53,39 +46,13 @@ entries:
       - name: tablesaw
         href: https://github.com/filamentgroup/tablesaw
 
-  - name: fluid
-    href: https://github.com/fluid-project
+  - name: Khan Academy
+    href: https://github.com/Khan
     sub:
-      - name: Infusion
-        href: https://github.com/fluid-project/infusion
-
-  - name: Globalize
-    href: https://github.com/globalizejs/globalize
-    sub:
-      - name: Globalize
-        href: https://github.com/globalizejs/globalize
-
-  - name: jQuery
-    href: https://github.com/jquery
-    sub:
-      - name: jQuery
-        href: https://github.com/jquery/jquery
-      - name: Sizzle
-        href: https://github.com/jquery/sizzle
-      - name: jQuery UI
-        href: https://github.com/jquery/jquery-ui
-
-  - name: Moment.js
-    href: https://github.com/moment
-    sub:
-      - name: Moment.js
-        href: https://github.com/moment/moment
-
-  - name: StealJS
-    href: https://github.com/stealjs/
-    sub:
-      - name: StealJS
-        href: https://github.com/stealjs/steal
+      - name: KAS
+        href: https://github.com/Khan/KAS
+      - name: structured.js
+        href: https://github.com/Khan/structuredjs
 
   - name: Twitter
     href: https://github.com/twitter
@@ -94,6 +61,8 @@ entries:
         href: https://github.com/twitter/hogan.js
       - name: twitter-text
         href: https://github.com/twitter/twitter-text
+      - name: Bootstrap
+        href: https://github.com/twbs/bootstrap
 
   - name: Wikimedia
     href: https://doc.wikimedia.org/
@@ -110,3 +79,89 @@ entries:
     sub:
       - name: WordPress
         href: https://github.com/WordPress/wordpress-develop
+
+projects:
+
+  - name: jQuery
+    href: https://github.com/jquery
+    sub:
+      - name: jQuery
+        href: https://github.com/jquery/jquery
+      - name: Sizzle
+        href: https://github.com/jquery/sizzle
+      - name: jQuery UI
+        href: https://github.com/jquery/jquery-ui
+
+  - name: jQuery community
+    href: https://www.npmjs.com/search?q=keywords%3Ajquery-plugin
+    sub:
+      - name: jquery-validation
+        href: https://github.com/jquery-validation/jquery-validation
+      - name: mockjax
+        href: https://github.com/jakerella/jquery-mockjax
+      - name: hashchange
+        href: https://github.com/cowboy/jquery-hashchange
+
+  - name: js-cookie
+    href: https://github.com/js-cookie/js-cookie
+    sub:
+      - name: js-cookie
+        href: https://github.com/js-cookie/js-cookie
+
+  - name: Ember.js
+    href: https://github.com/emberjs
+    sub:
+      - name: Ember.js
+        href: https://github.com/emberjs/ember.js
+      - name: ember-qunit
+        href: https://github.com/emberjs/ember-qunit
+      - name: ember-twiddle
+        href: https://github.com/ember-cli/ember-twiddle
+
+  - name: Ember.js community
+    href: https://www.npmjs.com/search?q=keywords%3Aember-addon
+    sub:
+      - name: ember-moment
+        href: https://github.com/stefanpenner/ember-moment
+      - name: ember-intl
+        href: https://github.com/ember-intl/ember-intl
+      - name: ember-table
+        href: https://github.com/Addepar/ember-table
+
+  - name: Globalize
+    href: https://github.com/globalizejs/globalize
+    sub:
+      - name: Globalize
+        href: https://github.com/globalizejs/globalize
+
+  - name: Moment.js
+    href: https://github.com/moment
+    sub:
+      - name: Moment.js
+        href: https://github.com/moment/moment
+
+  - name: StealJS
+    href: https://github.com/stealjs/
+    sub:
+      - name: StealJS
+        href: https://github.com/stealjs/steal
+      - name: steal-qunit
+        href: https://github.com/stealjs/steal-qunit
+      - name: steal-tools
+        href: https://github.com/stealjs/steal-tools
+
+  - name: Wikibase
+    href: https://wikiba.se/libraries/
+    sub:
+      - name: Wikibase
+        href: https://github.com/wikimedia/Wikibase
+      - name: data-model
+        href: https://github.com/wmde/WikibaseDataModelJavaScript
+      - name: data-values
+        href: https://github.com/wmde/DataValuesJavaScript
+
+  - name: ZeroClipboard
+    href: https://github.com/zeroclipboard
+    sub:
+      - name: ZeroClipboard
+        href: https://github.com/zeroclipboard/zeroclipboard

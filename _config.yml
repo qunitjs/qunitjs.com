@@ -29,7 +29,7 @@ plugins:
   - jekyll-redirect-from
 
 # Theme
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@a7bd718
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@c12d596
 amethyst:
   header_logo:
     src: /img/logo-with-colored-text.svg
