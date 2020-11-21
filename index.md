@@ -71,7 +71,7 @@ ok 1 add > should add two numbers
 
 ## Current Release
 
-<p class="current-release">v2.12.0 (<a href="https://github.com/qunitjs/qunit/blob/2.12.0/History.md">changelog</a>)</p>
+<p class="lead lead--center">v2.12.0 (<a href="https://github.com/qunitjs/qunit/blob/2.12.0/History.md">changelog</a>)</p>
 
 These are the officially supported download channels for QUnit releases:
 
@@ -79,6 +79,18 @@ These are the officially supported download channels for QUnit releases:
 * Yarn: `yarn add --dev qunit`
 * Bower: `bower install --save-dev qunit`
 * CDN: [`qunit-2.12.0.js`](https://code.jquery.com/qunit/qunit-2.12.0.js) & [`qunit-2.12.0.css`](https://code.jquery.com/qunit/qunit-2.12.0.css)
+
+---
+
+## Join the Community
+
+<p class="lead lead--center" markdown="1">Join us on [Mastodon](https://mastodon.technology/@qunitjs), [Twitter](https://twitter.com/qunitjs), or [Gitter chat](https://gitter.im/qunitjs/qunit).</p>
+
+To contribute:
+
+* [Watch the repository](https://github.com/qunitjs/qunit) to learn about release, new requests, or bug reports.
+* The source of this website, is in the [qunitjs.com](https://github.com/qunitjs/qunitjs.com) repository.
+* The source of the Documentation site, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/master/docs).
 
 ---
 

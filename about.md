@@ -23,20 +23,6 @@ QUnit should be universally applicable for testing JavaScript code and support m
 
 QUnit should be opinionated with a lean API to support being easy-to-use, yet highly extensible. There are many different approaches to testing and many different types of tests that users may want to write, and while we can not support all of these out of the box, we can support APIs to enable the community to extend QUnit to meet their needs.
 
-## Community
-
-QUnit is freely licensed and open source, and always will be. This is thanks to our team of volunteers and our community. If you're interested in learning about new developments, here are some ways to get started:
-
-* Join [the official Chat channel](https://gitter.im/qunitjs/qunit).
-* [Star and Watch](https://github.com/qunitjs/qunit) the repository on GitHub to spread the word, and be notified of releases.
-* Follow [@qunitjs on Mastodon](https://mastodon.technology/@qunitjs) or [@qunitjs on Twitter](https://twitter.com/qunitjs) for announcements.
-
-Furthermore, if you'd like to contribute...
-
-* [Watch the main repository](https://github.com/qunitjs/qunit) to learn about new requests or bug reports.
-* The source of this website, is in the [qunitjs.com](https://github.com/qunitjs/qunitjs.com) repository.
-* The source of the Documentation site, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/master/docs) of the main repo.
-
 ## Team
 
 Between API design, feature implementation, ticket triage, bug fixing, and everything else, there’s a lot of work that goes into QUnit, and all of it is done by volunteers. While we value all of our contributors, there are a few who contribute frequently, provide high-level direction for the project, and are responsible for its overall maintenance, and we recognize them below.
