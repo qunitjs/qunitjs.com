@@ -108,6 +108,12 @@ projects:
       - name: js-cookie
         href: https://github.com/js-cookie/js-cookie
 
+  - name: Kiwix
+    href: https://github.com/kiwix
+    sub:
+      - name: kiwix-js
+        href: https://github.com/kiwix/kiwix-js
+
   - name: Ember.js
     href: https://github.com/emberjs
     sub:
