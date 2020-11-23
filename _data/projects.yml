@@ -146,6 +146,12 @@ projects:
       - name: Moment.js
         href: https://github.com/moment/moment
 
+  - name: Paper.js
+    href: https://github.com/paperjs
+    sub:
+      - name: Paper.js
+        href: https://github.com/paperjs/paper.js
+
   - name: StealJS
     href: https://github.com/stealjs/
     sub:
