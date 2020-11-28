@@ -162,6 +162,12 @@ projects:
       - name: steal-tools
         href: https://github.com/stealjs/steal-tools
 
+  - name: three.js
+    href: https://github.com/mrdoob/three.js
+    sub:
+      - name: three.js
+        href: https://github.com/mrdoob/three.js
+
   - name: Wikibase
     href: https://wikiba.se/libraries/
     sub:
