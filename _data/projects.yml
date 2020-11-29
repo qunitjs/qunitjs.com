@@ -82,6 +82,12 @@ orgs:
 
 projects:
 
+  - name: CefSharp
+    href: https://github.com/cefsharp
+    sub:
+      - name: CefSharp
+        href: https://github.com/cefsharp/CefSharp
+
   - name: jQuery
     href: https://github.com/jquery
     sub:
