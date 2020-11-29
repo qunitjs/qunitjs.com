@@ -71,14 +71,14 @@ ok 1 add > should add two numbers
 
 ## Current Release
 
-<p class="lead lead--center">v2.12.0 (<a href="https://github.com/qunitjs/qunit/blob/2.12.0/History.md">changelog</a>)</p>
+<p class="lead lead--center">v2.13.0 (<a href="https://github.com/qunitjs/qunit/blob/2.13.0/History.md">changelog</a>)</p>
 
 These are the officially supported download channels for QUnit releases:
 
 * npm: `npm install --save-dev qunit`
 * Yarn: `yarn add --dev qunit`
 * Bower: `bower install --save-dev qunit`
-* CDN: [`qunit-2.12.0.js`](https://code.jquery.com/qunit/qunit-2.12.0.js) & [`qunit-2.12.0.css`](https://code.jquery.com/qunit/qunit-2.12.0.css)
+* CDN: [`qunit-2.13.0.js`](https://code.jquery.com/qunit/qunit-2.13.0.js) & [`qunit-2.13.0.css`](https://code.jquery.com/qunit/qunit-2.13.0.css)
 
 ---
 
