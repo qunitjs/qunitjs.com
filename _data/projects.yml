@@ -105,8 +105,8 @@ projects:
         href: https://github.com/jquery-validation/jquery-validation
       - name: mockjax
         href: https://github.com/jakerella/jquery-mockjax
-      - name: hashchange
-        href: https://github.com/cowboy/jquery-hashchange
+      - name: inputmask
+        href: hhttps://www.npmjs.com/package/inputmask
 
   - name: js-cookie
     href: https://github.com/js-cookie/js-cookie
