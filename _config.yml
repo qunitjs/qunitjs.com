@@ -29,9 +29,13 @@ plugins:
   - jekyll-redirect-from
 
 # Theme
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@e3c391f
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@4d74570
 amethyst:
   edituri_base: https://github.com/qunitjs/qunitjs.com/blob/main/
+  # We keep a classic ICO file as well, for compat with de-facto standard
+  # machine discovery of icons associated with a given domain name.
+  # E.g. various statistics software.
+  favicon: /favicon.svg
   header_logo:
     src: /img/logo-with-colored-text.svg
     width: 250
