@@ -46,6 +46,12 @@ orgs:
       - name: tablesaw
         href: https://github.com/filamentgroup/tablesaw
 
+  - name: HashiCorp
+    href: https://github.com/hashicorp
+    sub:
+      - name: Vault
+        href: https://github.com/hashicorp/vault
+
   - name: Khan Academy
     href: https://github.com/Khan
     sub:
