@@ -51,6 +51,10 @@ orgs:
     sub:
       - name: Vault
         href: https://github.com/hashicorp/vault
+      - name: Vault
+        href: https://github.com/hashicorp/consul
+      - name: Nomad
+        href: https://github.com/hashicorp/nomad
 
   - name: Khan Academy
     href: https://github.com/Khan
