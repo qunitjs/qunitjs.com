@@ -86,6 +86,10 @@ Prior to QUnit 2.4.1, the npm package was published under the name "qunit**js**"
 
 The 0.x and 1.x versions of the "qunit" package on npm holds an alternative CLI that is now published as [node-qunit](https://github.com/qunitjs/node-qunit).
 
+### Linting
+
+The [eslint-plugin-qunit](https://github.com/platinumazure/eslint-plugin-qunit) package has a variety of rules available for enforcing best testing practices as well as detecting broken tests.
+
 ---
 
 ## In the Browser
