@@ -111,12 +111,12 @@ Start by creating a new HTML file called `tests.html` and include the following 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Test Suite</title>
-    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.14.0.css">
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.14.1.css">
   </head>
   <body>
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
-    <script src="https://code.jquery.com/qunit/qunit-2.14.0.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.14.1.js"></script>
 </body>
 </html>
 ```
