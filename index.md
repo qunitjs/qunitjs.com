@@ -31,10 +31,13 @@ home_secondary_btn:
 ## A Quick Example
 
 ```js
-const add = (a, b) => a + b;
-QUnit.module('add', function() {
-  QUnit.test('should add two numbers', function(assert) {
-    assert.equal(add(1, 1), 2, '1 + 1 = 2');
+function add(a, b) {
+  return a + b;
+}
+
+QUnit.module('add', hooks => {
+  QUnit.test('should add two numbers', assert => {
+    assert.equal(add(1, 1), 2);
   });
 });
 ```
@@ -73,12 +76,12 @@ ok 1 add > should add two numbers
 
 <p class="lead lead--center">v2.14.1 (<a href="https://github.com/qunitjs/qunit/blob/2.14.1/History.md">changelog</a>)</p>
 
-These are the officially supported download channels for QUnit releases:
+These are the officially supported release channels for QUnit:
 
 * npm: `npm install --save-dev qunit`
 * Yarn: `yarn add --dev qunit`
 * Bower: `bower install --save-dev qunit`
-* CDN: [`qunit-2.14.1.js`](https://code.jquery.com/qunit/qunit-2.14.1.js) & [`qunit-2.14.1.css`](https://code.jquery.com/qunit/qunit-2.14.1.css)
+* CDN: [`qunit-2.14.1.js`](https://code.jquery.com/qunit/qunit-2.14.1.js) and [`qunit-2.14.1.css`](https://code.jquery.com/qunit/qunit-2.14.1.css)
 
 ---
 

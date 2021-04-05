@@ -5,7 +5,7 @@ redirect_from:
   - "/node/"
 ---
 
-<p class="lead" markdown="1">How to use the QUnit CLI (command-line interface), after [installing it from npm](./intro.md#in-node).</p>
+<p class="lead" markdown="1">How to use the QUnit CLI (command-line interface), after [installing it from npm](./intro.md#in-nodejs).</p>
 
 ## QUnit CLI options
 

@@ -1,8 +1,9 @@
 const fs = require( "fs" );
 
 const cdnLinks = [
-	"qunit-VERSION.js",
-	"qunit-VERSION.css"
+
+	// Match qunit-VERSION.js, qunit-VERSION.css, qunit-VERSION.{css.js}
+	"qunit-VERSION"
 ];
 const files = {
 	"index.md": [
