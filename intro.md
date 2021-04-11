@@ -147,7 +147,7 @@ QUnit currently supports the following browsers:
 * Firefox: 45+
 * Safari: 9+
 * Chrome: 58+
-* Android: 4.0+
+* Android: 4.3+
 * iOS: 7+ (Mobile Safari)
 
 For older browser support, including Internet Explorer versions 6-8, please use the 1.x series of QUnit.
