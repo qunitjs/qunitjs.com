@@ -146,11 +146,12 @@ QUnit currently supports the following browsers:
 * Edge: 15+ (both legacy MSEdge and Chromium-based)
 * Firefox: 45+
 * Safari: 9+
+* Opera: 36+
 * Chrome: 58+
 * Android: 4.3+
 * iOS: 7+ (Mobile Safari)
 
-For older browser support, including Internet Explorer versions 6-8, please use the 1.x series of QUnit.
+For older browsers, such as Internet Explorer 6-8, Opera 12+, or Safari 5+, please use the 1.x series of QUnit.
 
 ### Integrations
 
