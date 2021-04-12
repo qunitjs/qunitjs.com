@@ -1,9 +1,0 @@
-language: ruby
-cache: bundler
-script:
-  - bundle exec jekyll algolia
-branches:
-  only:
-    - master
-rvm:
- - 2.7
