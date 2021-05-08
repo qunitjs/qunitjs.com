@@ -76,6 +76,10 @@ algolia:
   # with the content of the current Jekyll site.
   # The auth key for this is injected as secure env variable.
   index_name: qunitjs
+  # By default only HTML paragraphs (and headings, albeit through
+  # a different sectioning mechanism). Extend this to include
+  # most other forms of content as well, especially list items.
+  nodes_to_index: 'p,li,pre'
   files_to_exclude:
     # Index destination instead of intermediary
     - guides.md
