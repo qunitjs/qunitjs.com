@@ -56,7 +56,7 @@ QUnit.module('add', hooks => {
 
 ### CLI Result
 
-```
+```tap
 TAP version 13
 ok 1 add > should add two numbers
 1..1
