@@ -29,7 +29,7 @@ plugins:
   - jekyll-redirect-from
 
 # Theme
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@e4a547df
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@a3181f5
 amethyst:
   edituri_base: https://github.com/qunitjs/qunitjs.com/blob/main/
   # We keep a classic ICO file as well, for compat with de-facto standard
