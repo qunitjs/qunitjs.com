@@ -98,6 +98,12 @@ projects:
       - name: CefSharp
         href: https://github.com/cefsharp/CefSharp
 
+  - name: core-js
+    href: https://github.com/zloirock/core-js
+    sub:
+      - name: core-js
+        href: https://github.com/zloirock/core-js
+
   - name: jQuery
     href: https://github.com/jquery
     sub:
