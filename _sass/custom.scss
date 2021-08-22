@@ -19,3 +19,24 @@ h3 a {
 	// (not everything the same color)
 	color: inherit;
 }
+
+/* Brand */
+.q-color-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+}
+.q-color-block {
+    display: block;
+    padding: 1em;
+}
+
+.main img {
+    max-width: 100%;
+    max-height: 100vh;
+}
+.main figure {
+    text-align: center;
+}

@@ -27,7 +27,9 @@
   sub:
     - name: Who's using QUnit?
       href: /projects/
-    - name: About QUnit
-      href: /about/
     - name: Browser support
       href: /intro/#browser-support
+    - name: About QUnit
+      href: /about/
+    - name: Brand guidelines
+      href: /brand/
