@@ -51,7 +51,7 @@ orgs:
     sub:
       - name: Vault
         href: https://github.com/hashicorp/vault
-      - name: Vault
+      - name: Consul
         href: https://github.com/hashicorp/consul
       - name: Nomad
         href: https://github.com/hashicorp/nomad
