@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/styles.css" media="screen">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="QUnit">
+<title>Getting Started | QUnit</title>
+<meta property="og:title" content="Getting Started"><link rel="me" href="https://mastodon.technology/@qunitjs"><meta name="twitter:creator" content="@qunitjs"><meta name="twitter:site" content="@qunitjs"><meta name="twitter:card" content="summary_large_image">
+<body>
+    <header class="site-header" role="banner">
+        <div class="site-header-wrapper wrapper">
+            <a class="site-logo" href="/"><img src="/img/logo-with-colored-text.svg" alt="QUnit" width="250" height="72"></a><form class="site-search" id="site-search-form" action="https://duckduckgo.com">
+<label class="screen-reader-text" for="aa-search-input">Search</label>
+<input type="search" name="q" id="aa-search-input" class="aa-input-search" placeholder="Search..." autocomplete="off">
+<input type="hidden" name="sites" value="qunitjs.com">
+<svg class="aa-input-icon" viewBox="654 -372 1664 1664" height="20">
+    <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z"/>
+</svg>
+</form><nav class="site-nav"><ul class="site-nav-list"><li class="site-nav-item has-sub-list">
+                        <a class="site-nav-link has-sub-list" href="/guides/">Guides</a><ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/intro/">Getting Started</a></li><li><a class="site-sub-nav-link" href="/cli/">Command-line interface</a></li><li><a class="site-sub-nav-link" href="/plugins/">Plugins</a></li><li><a class="site-sub-nav-link" href="/upgrade-guide-2.x/">2.x Upgrade Guide</a></li></ul></li><li class="site-nav-item has-sub-list">
+                        <a class="site-nav-link has-sub-list" href="https://api.qunitjs.com">Documentation</a><ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="https://api.qunitjs.com/QUnit/">Main methods</a></li><li><a class="site-sub-nav-link" href="https://api.qunitjs.com/assert/">Assertions</a></li><li><a class="site-sub-nav-link" href="https://api.qunitjs.com/config/">Configuration tools</a></li><li><a class="site-sub-nav-link" href="https://api.qunitjs.com/callbacks/">Callback events</a></li><li><a class="site-sub-nav-link" href="https://api.qunitjs.com/async/">Async control</a></li></ul></li><li class="site-nav-item has-sub-list">
+                        <a class="site-nav-link has-sub-list" href="/about/">About</a><ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/projects/">Who&#39;s using QUnit?</a></li><li><a class="site-sub-nav-link" href="/intro/#browser-support">Browser support</a></li><li><a class="site-sub-nav-link" href="/about/">About QUnit</a></li><li><a class="site-sub-nav-link" href="/brand/">Brand guidelines</a></li></ul></li></ul></nav>
+            <div class="site-toggles">
+                <button class="search-toggle toggle" data-opens=".site-search" aria-expanded="false">
+                    <span class="screen-reader-text">Search</span>
+                    <svg class="icon aa-input-icon" aria-hidden="true" viewBox="654 -372 1664 1664" height="20">
+                        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z"/>
+                    </svg>
+                </button>
+                <script type="module">
+                const searchToggle = document.querySelector('.search-toggle');
+                const searchToggleOpens = document.querySelector(searchToggle.dataset.opens);
+                searchToggle.addEventListener('click', () => {
+                    const state = searchToggle.classList.contains('opened');
+                    searchToggle.classList.toggle('opened', !state);
+                    searchToggle.setAttribute('aria-expanded', !state);
+                    searchToggleOpens.classList.toggle('opened', !state);
+                    searchToggleOpens.setAttribute('aria-expanded', !state);
+                });
+                </script>
+                <button class="nav-toggle toggle" data-opens=".site-nav" aria-expanded="false">
+                    <span class="screen-reader-text">Menu</span>
+                    <svg class="icon icon-nav-toggle" aria-hidden="true" viewBox="0 0 100 100" height="20">
+                        <path d="M5,16h90v16H5z"/>
+                        <path d="M5,48h90v16H5z"/>
+                        <path d="M5,80h90v16H5z"/>
+                    </svg>
+                </button>
+                <script type="module">
+                const navToggle = document.querySelector('.nav-toggle');
+                const navToggleOpens = document.querySelector(navToggle.dataset.opens);
+                navToggle.addEventListener('click', () => {
+                    const state = navToggle.classList.contains('opened');
+                    navToggle.classList.toggle('opened', !state);
+                    navToggle.setAttribute('aria-expanded', !state);
+                    navToggleOpens.classList.toggle('opened', !state);
+                    navToggleOpens.setAttribute('aria-expanded', !state);
+                });
+                </script>
+            </div>
+        </div>
+    </header>
+    
+<section class="hero">
+    <div class="wrapper">
+        <h1 class="hero-title">Getting Started</h1>
+    </div>
+</section>
+<div class="main wrapper content"><p class="lead">The following guide will get you up-and-running with QUnit either <a href="#in-nodejs">in Node.js</a> or <a href="#in-the-browser">in the Browser</a>.</p>
+
+<h2 id="in-nodejs">In Node.js</h2>
+
+<p>Getting started with QUnit for Node.js projects is quick and easy. First, install the <a href="https://www.npmjs.com/package/qunit">qunit</a> package using <code class="language-plaintext highlighter-rouge">npm</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> qunit
+
+<span class="c"># Or, if using Yarn:</span>
+yarn add <span class="nt">--dev</span> qunit
+</code></pre></div></div>
+
+<p>Let’s create an example program that we can test! We’ll start with a function that adds two numbers. Create a file <code class="language-plaintext highlighter-rouge">add.js</code> with the following contents:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">add</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Now, let’s start writing tests! Create a file in a test directory, for example <code class="language-plaintext highlighter-rouge">test/add.js</code>, and write the following:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../add.js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">QUnit</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">add</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">add two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="nx">assert</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This defines a test suite for the “add” feature, with a single test case that verifies the result of adding two numbers together.</p>
+
+<p>You can now run the test suite through the <a href="/cli/">QUnit CLI</a>. It is recommended that you run the <code class="language-plaintext highlighter-rouge">qunit</code> command via an npm script, which will find the <code class="language-plaintext highlighter-rouge">qunit</code> command automatically from your local dependencies. In your <code class="language-plaintext highlighter-rouge">package.json</code> file, specify it like so:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qunit"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then, simply run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>And QUnit will run your test!:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TAP version 13
+ok 1 add <span class="o">&gt;</span> should add two numbers
+1..1
+<span class="c"># pass 1</span>
+<span class="c"># skip 0</span>
+<span class="c"># todo 0</span>
+<span class="c"># fail 0</span>
+</code></pre></div></div>
+
+<p>Congrats! You just wrote and executed your first QUnit test!</p>
+
+<p>Check out the <a href="https://api.qunitjs.com">API documentation</a> to learn more about the QUnit APIs for organising tests and making assertions.</p>
+
+<p>See <a href="/cli/">Command-line interface</a> for help with the <code class="language-plaintext highlighter-rouge">qunit</code> command.</p>
+
+<h3 id="support-policy">Support policy</h3>
+
+<p>QUnit follows the <a href="https://github.com/nodejs/LTS" target="_blank">Node.js Long-term Support (LTS) schedule</a> and provides support for Current, Active LTS, and Maintenance LTS releases.</p>
+
+<h3 id="package-name-prior-to-241">Package name prior to 2.4.1</h3>
+
+<p>Prior to QUnit 2.4.1, the npm package was published under the name “qunit<strong>js</strong>” instead of “qunit”. To install earlier versions of QUnit for Node, check out <a href="https://www.npmjs.com/package/qunitjs">qunitjs</a>.</p>
+
+<p>The 0.x and 1.x versions of the “qunit” package on npm holds an alternative CLI that is now published as <a href="https://github.com/qunitjs/node-qunit">node-qunit</a>.</p>
+
+<h3 id="linting">Linting</h3>
+
+<p>The <a href="https://github.com/platinumazure/eslint-plugin-qunit">eslint-plugin-qunit</a> package has a variety of rules available for enforcing best testing practices as well as detecting broken tests.</p>
+
+<hr />
+
+<h2 id="in-the-browser">In the Browser</h2>
+
+<p>To get started with QUnit in the browser, create a simple HTML file called <code class="language-plaintext highlighter-rouge">test.html</code> and include the following markup:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Test Suite<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://code.jquery.com/qunit/qunit-2.17.0.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"qunit"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"qunit-fixture"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/qunit/qunit-2.17.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<p>That’s all the markup you need to start writing tests. Note that this loads the library from the <a href="https://code.jquery.com/qunit/">jQuery CDN</a>.</p>
+
+<p>See also <a href="#integrations">Integrations &amp; Downloads</a> for integration you can use to automate browser testing. These usually also manage the HTML file for you.</p>
+
+<p>Let’s add the following script, which tests an example <code class="language-plaintext highlighter-rouge">add()</code> function for adding two numbers together:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">QUnit</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">add</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">should add two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">assert</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>This code defines a test module for the <code class="language-plaintext highlighter-rouge">add()</code> function and verifies the result of adding two numbers.</p>
+
+<p>If you open this up in the browser you’ll find a detailed report of the tests that ran and their assertions, as well as various options for filtering and re-running individual tests to help during development. Like so:</p>
+
+<iframe loading="lazy" title="The test code running in the browser" src="/resources/example-index.html" style="height: 300px;"></iframe>
+
+<p>Congrats! You just wrote and executed your first QUnit test!</p>
+
+<p>Check out the <a href="https://api.qunitjs.com">API documentation</a> to learn more about the QUnit APIs for organising tests and making assertions.</p>
+
+<h3 id="browser-support">Browser support</h3>
+
+<p>QUnit currently supports the following browsers:</p>
+
+<ul>
+  <li>Internet Explorer: 9+</li>
+  <li>Edge: 15+ (both legacy MSEdge and Chromium-based)</li>
+  <li>Firefox: 45+</li>
+  <li>Safari: 9+</li>
+  <li>Opera: 36+</li>
+  <li>Chrome: 58+</li>
+  <li>Android: 4.3+</li>
+  <li>iOS: 7+ (Mobile Safari)</li>
+</ul>
+
+<p>For older browsers, such as Internet Explorer 6-8, Opera 12+, or Safari 5+, please use the 1.x series of QUnit.</p>
+
+<h3 id="integrations">Integrations</h3>
+
+<p>The following integrations can be used to automate the running of browser tests with QUnit:</p>
+
+<ul>
+  <li><a href="https://github.com/gruntjs/grunt-contrib-qunit">grunt-contrib-qunit</a> for <a href="https://gruntjs.com/">Grunt task runner</a> (test Headless Chrome).</li>
+  <li><a href="https://karma-runner.github.io/latest/index.html">Karma</a> with <a href="https://github.com/karma-runner/karma-qunit">karma-qunit</a> (test any local browser or cloud).</li>
+  <li><a href="https://github.com/ameshkov/node-qunit-puppeteer">node-qunit-puppeteer</a> (test Headless Chrome).</li>
+  <li><a href="https://stealjs.com/">StealJS</a> with <a href="https://stealjs.com/docs/steal-qunit.html">steal-qunit</a> via <a href="https://www.npmjs.com/package/testee">Testee</a> (test any local browser or cloud).</li>
+  <li><a href="https://github.com/DevExpress/testcafe">testcafe</a> (test any local browser or cloud).</li>
+</ul>
+
+<p>Example projects:</p>
+
+<ul>
+  <li><a href="https://github.com/Krinkle/example-node-and-browser-qunit-ci/">Krinkle/example-node-and-browser-qunit-ci</a>: Run QUnit tests locally and in CI, on Headless Firefox and Chrome (using Karma).<br />
+ Also demonstrates code coverage, and testing of isomorphic JavaScript projects on Node.js.</li>
+</ul>
+
+<h3 id="release-channels">Release channels</h3>
+
+<p>These are the officially supported download channels for QUnit releases:</p>
+
+<ul>
+  <li>
+    <p>Download:</p>
+
+    <p>QUnit has no runtime dependencies for browser use. You can save the <a href="https://code.jquery.com/qunit/qunit-2.17.0.js"><code class="language-plaintext highlighter-rouge">qunit-2.17.0.js</code></a> and <a href="https://code.jquery.com/qunit/qunit-2.17.0.css"><code class="language-plaintext highlighter-rouge">qunit-2.17.0.css</code></a> files directly from the <a href="https://code.jquery.com/qunit/">jQuery CDN</a>, which is hosted by <a href="https://www.maxcdn.com/">MaxCDN</a>.</p>
+
+    <p>Download them from your terminal:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-O</span> <span class="s1">'https://code.jquery.com/qunit/qunit-2.17.0.{js,css}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>npm Registry:</p>
+
+    <p>If your development workflow uses <a href="https://nodejs.org/en/">Node.js</a>, you can install the <a href="https://www.npmjs.com/package/qunit">qunit</a> package the npm Registry, using the <code class="language-plaintext highlighter-rouge">npm</code> or <code class="language-plaintext highlighter-rouge">yarn</code> CLI:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> qunit
+
+<span class="c"># Or, if using Yarn:</span>
+yarn add <span class="nt">--dev</span> qunit
+</code></pre></div>    </div>
+
+    <p>You can then reference <code class="language-plaintext highlighter-rouge">node_modules/qunit/qunit/qunit.js</code> and <code class="language-plaintext highlighter-rouge">node_modules/qunit/qunit/qunit.css</code> in your HTML.</p>
+
+    <p>If your project uses a custom npm frontend that locates packages elsewhere, you may need to generate the HTML dynamically and use <a href="https://nodejs.org/api/modules.html#modules_require_resolve_request_options"><code class="language-plaintext highlighter-rouge">require.resolve()</code></a> to locate <code class="language-plaintext highlighter-rouge">qunit/qunit/qunit.js</code> and <code class="language-plaintext highlighter-rouge">qunit/qunit/qunit.css</code>. Alternatively, use one of the <a href="#integration">Integrations</a> such as karma-qunit which do all of that for you.</p>
+  </li>
+  <li>
+    <p>Bower:</p>
+
+    <p>Using <a href="https://bower.io/">Bower</a>:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bower <span class="nb">install</span> <span class="nt">--save-dev</span> qunit
+</code></pre></div>    </div>
+
+    <p>Then reference <code class="language-plaintext highlighter-rouge">bower_components/qunit/qunit/qunit.js</code> and <code class="language-plaintext highlighter-rouge">bower_components/qunit/qunit/qunit.css</code> in your HTML.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><a href="https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/">Introdution to JavaScript Unit Testing</a>, Jörn Zaefferer (2012).</li>
+</ul>
+
+</div>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <p class="external-links">
+                <a href="https://github.com/qunitjs" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://mastodon.technology/@qunitjs" target="_blank" rel="noopener noreferrer">Mastodon</a>
+                
+                <a href="https://twitter.com/qunitjs" target="_blank" rel="noopener noreferrer">Twitter</a>
+                
+                <a href="https://gitter.im/qunitjs/qunit" target="_blank" rel="noopener noreferrer">Chat</a>
+            </p>
+            <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.<br><a href="https://github.com/qunitjs/qunitjs.com/blob/main/intro.md">Edit this page</a></p>
+        </div>
+    </footer><script type="module">
+const loadSearch = () => Promise.all([
+    new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
+        crossOrigin: 'anonymous',
+        integrity: 'sha256-YuyfhK9VEyfW6ejFiPbfOX2SELbFrgFU/8tU3MHuh60=',
+        src: 'https://cdn.jsdelivr.net/npm/algoliasearch@4.3.1/dist/algoliasearch-lite.umd.js',
+        onload: resolve
+    }))),
+    new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
+        crossOrigin: 'anonymous',
+        integrity: 'sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=',
+        src: 'https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js',
+        onload: resolve
+    })))
+]);
+const input = document.querySelector('#aa-search-input');
+const form = document.querySelector('#site-search-form');
+let restoreFocus = false;
+async function setupSearch(e) {
+    restoreFocus = restoreFocus || (e && (e.type === 'click' || e.type === 'focus'));
+    if (setupSearch.setup) return;
+    setupSearch.setup = true;
+    await loadSearch();
+
+    const client = algoliasearch('EQYECMT6Q0', 'f492bec49e061a41cb8f57128483fd16');
+    const indexSources = [{"index":"qunitjs-api","base":"https://api.qunitjs.com"},{"index":"qunitjs"}];
+    const escapeString = autocomplete.escapeHighlightedString;
+    const autocompleteOptions = {
+        // Debug allows inspecting the suggestions
+        debug: true,
+        // (Re)open suggestions on (re)focus when input is non-empty
+        openOnFocus: true,
+        hint: false,
+        ariaLabel: 'search input',
+        templates: {
+            // https://github.com/algolia/autocomplete.js/issues/248
+            empty(query) {
+                return `No results for "${escapeString(query.query)}".`;
+            },
+            footer: '<div class="aa-footer">Search by <a class="aa-logo" href="https://algolia.com" target="_blank">Algolia</a></div>'
+        }
+    };
+    function formatURL(suggestion) {
+        return (suggestion.anchor && !suggestion.url.includes('#')) ? suggestion.url + '#' + suggestion.anchor : suggestion.url;
+    }
+    function newHitsSource(index, params) {
+        return function(query, cb) {
+            index.search(query, params).then(
+                res => { cb(res.hits, res); },
+                err => { cb([]); console.error(err); }
+            );
+        };
+    }
+    const autocompleteSources = indexSources.map(source => ({
+        source: newHitsSource(client.initIndex(source.index), { hitsPerPage: 5 }),
+        displayKey: '',
+        templates: {
+            suggestion(suggestion) {
+                const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
+                const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
+                suggestion._href = (source.base || '') + formatURL(suggestion);
+                return `<a href="${suggestion._href}" tabindex="-1">
+                    <p class="aa-suggestion_title">${title}</p>
+                    <p class="aa-suggestion_content">${content}</p>
+                </a>`;
+            }
+        }
+    }));
+    const $input = autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
+        .on('autocomplete:selected', (e, suggestion) => location.href = suggestion._href || suggestion.url);
+
+    if (restoreFocus) $input.focus();
+
+    // Disable fallback form
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !(document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))) {
+        input.focus();
+        e.preventDefault();
+    }
+});
+input.addEventListener('focus', setupSearch, { once: true });
+form.addEventListener('click', setupSearch, { once: true });
+form.classList.add('site-search--bound');
+</script>
+<script type="module">
+window.addEventListener('DOMContentLoaded', function setupSubNav() {
+    const siteNav = document.querySelector('.site-nav-list');
+    const closeSubNav = () => {
+        const prevSub = siteNav.querySelector('.is-open');
+        if (prevSub) {
+            prevSub.classList.remove('is-open');
+        }
+    }
+    siteNav.addEventListener('click', (event) => {
+        if (event.target.classList.contains('has-sub-list')) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (event.target.parentNode.classList.contains('is-open')) {
+                closeSubNav();
+            } else {
+                closeSubNav();
+                event.target.parentNode.classList.add('is-open');
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
