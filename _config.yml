@@ -27,16 +27,12 @@ exclude:
   - vendor
   - build
 
-# Theme
-theme: null
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@2522216
-
-
 # Theme settings
 #
 # Amethyst theme options are documented at:
 # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
 #
+theme: jekyll-theme-amethyst
 amethyst:
   # We keep a classic ICO file as well, for compat with de-facto standard
   # machine discovery, e.g. search engines and analytics software.
