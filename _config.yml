@@ -23,7 +23,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - CONTRIBUTING.md
-  - CNAME
   - vendor
   - build
 
