@@ -1,5 +1,11 @@
 // Custom styles for qunitjs.com
 
+h3 a {
+    // Improve balance of layout color contrast on "Plugins" and "Projects" pages
+    // (not everything the same color)
+    color: inherit;
+}
+
 /* Plugins */
 #plugins {
     list-style: none;
@@ -7,17 +13,6 @@
 }
 .plugin {
     border-bottom: 1px solid $color-off-white;
-
-    h3 {
-        margin-bottom: 0;
-    }
-}
-
-/* Projects */
-h3 a {
-	// Improve balance of layout color contrast
-	// (not everything the same color)
-	color: inherit;
 }
 
 /* Brand */

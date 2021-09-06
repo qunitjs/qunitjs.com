@@ -1,45 +1,53 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole site.
-# These values are expected to rarely change. If you are editing this file
-# very often, consider using Jekyll's data files feature.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
 #
-# https://jekyllrb.com/docs/configuration/
+# Docs: https://jekyllrb.com/docs/configuration/
 title: QUnit
-description: "The powerful, easy-to-use JavaScript testing framework."
+description: The powerful, easy-to-use JavaScript testing framework.
 url: "https://qunitjs.com"
-baseurl: ""
-# This a custom theme so the native Jekyll theme system is ignored.
-# But, we use github-pages which has a default theme of 'primer'.
-# This is a problem because, even if we ignore its output file,
-# the combination of Jekyll/Sass/Primer has compile errors:
-# - https://github.com/jekyll/jekyll/issues/7426
-# - https://github.com/jekyll/jekyll/issues/4268
-# - https://github.com/sindresorhus/gulp-ruby-sass/issues/232
-# Workaround by disabling this. – https://github.com/github/pages-gem/issues/613
-theme: null
-
-plugins:
-  # https://help.github.com/articles/redirects-on-github-pages/
-  - jekyll-redirect-from
+# For pages (not blog posts) this is equivalant to /:title/
+permalink: /:year/:month/:day/:title/
+lang: en
+timezone: UTC
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: "1,2"
+sass:
+  # https://jekyllrb.com/docs/assets/#sassscss
+  style: compressed
+  sourcemap: never
+exclude:
+  # Don't include these files in the website
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - CNAME
+  - vendor
+  - build
 
 # Theme
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@a3181f5
+theme: null
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@2522216
+
+
+# Theme settings
+#
+# Amethyst theme options are documented at:
+# https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
+#
 amethyst:
-  edituri_base: https://github.com/qunitjs/qunitjs.com/blob/main/
   # We keep a classic ICO file as well, for compat with de-facto standard
-  # machine discovery of icons associated with a given domain name.
-  # E.g. various statistics software.
+  # machine discovery, e.g. search engines and analytics software.
   favicon: /favicon.svg
+  home_href:
   header_logo:
     src: /img/logo-with-colored-text.svg
     width: 250
     height: 72
+  edituri_base: https://github.com/qunitjs/qunitjs.com/blob/main/
+  release_base: https://github.com/qunitjs/qunit/releases/tag/
   mastodon: https://mastodon.technology/@qunitjs
   twitter: qunitjs
   github: qunitjs
@@ -51,48 +59,32 @@ amethyst:
         base: https://api.qunitjs.com
       - index: qunitjs
 
-# Conversion
-highlighter: rouge
-markdown: kramdown
-kramdown:
-  input: GFM
-  toc_levels: "1,2"
 
-# Sass
-# https://jekyllrb.com/docs/assets/#sassscss
-sass:
-  style: compressed
-  sourcemap: never
-
-# Backend search index
+# Backend search settings
 #
-# This applies to the 'jekyll algolia' command.
-# Requires the ALGOLIA_API_KEY secret environment variable.
+# This applies to the 'jekyll algolia' command, which is typically
+# run from an after a commit is merged. The settings are documented at:
+# https://github.com/algolia/jekyll-algolia
 #
-# See <https://github.com/algolia/jekyll-algolia>.
+# To learn how to set this up, refer to:
+# https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-algolia-search
+#
 algolia:
   application_id: EQYECMT6Q0
-  # Which index the CI job will create/update
-  # with the content of the current Jekyll site.
-  # The auth key for this is injected as secure env variable.
+  # Which index_name the 'jekyll algolia' command will create or update.
   index_name: qunitjs
-  # By default only HTML paragraphs (and headings, albeit through
-  # a different sectioning mechanism). Extend this to include
-  # most other forms of content as well, especially list items.
-  nodes_to_index: 'p,li,pre'
+  nodes_to_index: 'p,li,tr,pre'
   files_to_exclude:
     # Index destination instead of intermediary
     - guides.md
 
-# Input files
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CONTRIBUTING.md
-  - CNAME
-  - vendor
-  - build
 
-# Output
-permalink: title/
+# Blog archives
+#
+# Docs: https://github.com/jekyll/jekyll-archives/
+jekyll-archives:
+  enabled:
+    - year
+  layout: posts-year
+  permalinks:
+    year: "/:year/"

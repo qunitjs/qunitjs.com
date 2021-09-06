@@ -1,3 +1,5 @@
+[![Build Status: spider-check](https://github.com/qunitjs/qunitjs.com/actions/workflows/spider-check.yaml/badge.svg)](https://github.com/qunitjs/qunitjs.com/actions/workflows/spider-check.yaml)
+
 # qunitjs.com
 
 This repository houses the content and code for the [qunitjs.com](https://qunitjs.com/) website.
@@ -6,10 +8,10 @@ This repository houses the content and code for the [qunitjs.com](https://qunitj
 
 Requirements:
 
-* [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.6+)
+* [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.7+)
 * [Bundler](https://bundler.io/) (if missing, install with `gem install bundler`)
 
-To install Jekyll and plugins the first time:
+To install Jekyll the first time:
 
 ```shell
 bundle install
