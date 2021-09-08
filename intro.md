@@ -58,7 +58,7 @@ Then, simply run:
 npm test
 ```
 
-And QUnit will run your test!:
+And QUnit will run your test!
 
 ```bash
 TAP version 13
