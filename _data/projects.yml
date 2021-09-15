@@ -90,6 +90,8 @@ orgs:
 
 projects:
   - name: Bootstrap
+    href: https://github.com/twbs
+    sub:
       - name: Bootstrap
         href: https://github.com/twbs/bootstrap
       - name: bootlint
