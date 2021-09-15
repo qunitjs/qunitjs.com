@@ -71,8 +71,6 @@ orgs:
         href: https://github.com/twitter/hogan.js
       - name: twitter-text
         href: https://github.com/twitter/twitter-text
-      - name: Bootstrap
-        href: https://github.com/twbs/bootstrap
 
   - name: Wikimedia
     href: https://doc.wikimedia.org/
@@ -91,6 +89,11 @@ orgs:
         href: https://github.com/WordPress/wordpress-develop
 
 projects:
+  - name: Bootstrap
+      - name: Bootstrap
+        href: https://github.com/twbs/bootstrap
+      - name: bootlint
+        href: https://github.com/twbs/bootlint
 
   - name: CefSharp
     href: https://github.com/cefsharp
