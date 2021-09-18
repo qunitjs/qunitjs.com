@@ -2,6 +2,7 @@
 layout: page
 title: Getting Started
 redirect_from:
+  - "/guides/"
   - "/cookbook/"
 ---
 

@@ -1,5 +1,4 @@
 - name: Guides
-  href: /guides/
   sub:
     - name: Getting Started
       href: /intro/
@@ -10,7 +9,6 @@
     - name: 2.x Upgrade Guide
       href: /upgrade-guide-2.x/
 - name: Documentation
-  href: https://api.qunitjs.com
   sub:
     - name: Main methods
       href: https://api.qunitjs.com/QUnit/

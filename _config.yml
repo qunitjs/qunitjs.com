@@ -70,8 +70,6 @@ algolia:
   index_name: qunitjs
   nodes_to_index: 'p,li,tr,pre'
   files_to_exclude:
-    # Index destination instead of intermediary
-    - guides.md
 
 
 # Blog archives
