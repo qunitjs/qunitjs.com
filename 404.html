@@ -5,8 +5,8 @@
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/styles.css?v=d2e1ec57" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="QUnit">
-<title>Command-line interface | QUnit</title>
-<meta property="og:title" content="Command-line interface"><link rel="me" href="https://mastodon.technology/@qunitjs"><meta name="twitter:creator" content="@qunitjs"><meta name="twitter:site" content="@qunitjs"><meta name="twitter:card" content="summary_large_image">
+<title>Page not found | QUnit</title>
+<meta property="og:title" content="Page not found"><link rel="me" href="https://mastodon.technology/@qunitjs"><meta name="twitter:creator" content="@qunitjs"><meta name="twitter:site" content="@qunitjs"><meta name="twitter:card" content="summary_large_image">
 <body>
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
@@ -64,61 +64,10 @@
     
 <section class="hero">
     <div class="wrapper">
-        <h1 class="hero-title">Command-line interface</h1>
+        <h1 class="hero-title">Page not found</h1>
     </div>
 </section>
-<div class="main wrapper content"><p class="lead">How to use the QUnit CLI (command-line interface), after <a href="/intro/#in-nodejs">installing it from npm</a>.</p>
-
-<h2 id="qunit-cli-options">QUnit CLI options</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage: qunit [options] [files]
-
-  Files should be a space-separated list of files, directories, or glob expressions.
-  Defaults to 'test/**/*.js'.
-
-Options:
-  -V, --version          output the version number
-  -f, --filter &lt;filter&gt;  filter which tests run
-  -r, --reporter [name]  specify the reporter to use
-  --require &lt;module&gt;     specify a module or script include to require before running
-  --seed [value]         specify a seed to re-order your tests
-  -w, --watch            watch files for changes and re-run the test suite
-  -h, --help             display help for command
-</code></pre></div></div>
-
-<h3 id="filter">filter</h3>
-
-<p>This option assigns <a href="https://api.qunitjs.com/config/QUnit.config/#qunitconfigfilter-string--default-undefined"><code class="language-plaintext highlighter-rouge">QUnit.config.filter</code></a> for you.</p>
-
-<p>Only tests of which the name matches the filter will run.</p>
-
-<p>The filter can be a full or partial string match, or by using <code class="language-plaintext highlighter-rouge">'/pattern/'</code> it can be a regular expression.</p>
-
-<h3 id="reporter">reporter</h3>
-
-<p>By default, the TAP reporter is used.</p>
-
-<p>Run <code class="language-plaintext highlighter-rouge">qunit --reporter &lt;name&gt;</code> to use a different reporter, where <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code> can be the name of a built-in reporter, or an Node module that implements the <a href="https://github.com/js-reporters/js-reporters">js-reporters</a> spec. The reporter will be loaded and initialised automatically.</p>
-
-<p>Built-in reporters:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">tap</code>: <a href="https://testanything.org/">TAP compliant</a> reporter.</li>
-  <li><code class="language-plaintext highlighter-rouge">console</code>: Log the JSON object for each reporter event from <a href="https://api.qunitjs.com/callbacks/QUnit.on/"><code class="language-plaintext highlighter-rouge">QUnit.on</code></a>. Use this to explore or debug the reporter interface.</li>
-</ul>
-
-<h2 id="nodejs-cli-options">Node.js CLI options</h2>
-
-<p>The QUnit CLI uses Node.js. You can pass <a href="https://nodejs.org/api/cli.html">Node.js CLI</a> options via the <a href="https://nodejs.org/api/cli.html#cli_node_options_options"><code class="language-plaintext highlighter-rouge">NODE_OPTIONS</code></a> environment variable. For example, to use <code class="language-plaintext highlighter-rouge">--enable-source-maps</code> or <code class="language-plaintext highlighter-rouge">--inspect</code>, invoke QUnit as follows:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NODE_OPTIONS='--enable-source-maps' qunit test/
-</code></pre></div></div>
-
-<h2 id="qunit-configuration">QUnit configuration</h2>
-
-<p>The <code class="language-plaintext highlighter-rouge">filter</code> and <code class="language-plaintext highlighter-rouge">seed</code> options can be configured directly using command-line arguments. These, and many more options, can also be set programmatically. Either from your test suite file (if you have a single entry point), or from a bootstrap file passed to <code class="language-plaintext highlighter-rouge">--require</code>.</p>
-
-<p>See <a href="https://api.qunitjs.com/config/QUnit.config/">QUnit.config</a> for the available configuration options.</p>
+<div class="main wrapper content"><p class="lead">It seems we can’t find what you’re looking for.</p>
 
 </div>
 
@@ -132,7 +81,7 @@ Options:
                 
                 <a href="https://gitter.im/qunitjs/qunit" target="_blank" rel="noopener noreferrer">Chat</a>
             </p>
-            <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.<br><a href="https://github.com/qunitjs/qunitjs.com/blob/main/cli.md">Edit this page</a></p>
+            <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.<br><a href="https://github.com/qunitjs/qunitjs.com/blob/main/404.md">Edit this page</a></p>
         </div>
     </footer><script type="module">
 const loadSearch = () => Promise.all([
