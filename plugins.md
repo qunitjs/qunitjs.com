@@ -5,7 +5,7 @@ redirect_from:
   - "/addons/"
 ---
 
-<p class="lead">The following plugins provide a myriad of ways to modify, extend, and enhance QUnit itself as well as the developer experience of using QUnit.</p>
+<p class="lead">Plugins can extend, enhance, and modify QUnit itself; as well as the developer experience of using QUnit.</p>
 
 <ul id="plugins" class="grid grid--split">
   {% assign _plugins = site.data.plugins | sort: "date" | reverse -%}
@@ -17,4 +17,6 @@ redirect_from:
   {% endfor %}
 </ul>
 
-_Note: This list is automatically generated from npm packages using the [**qunit-plugin** keyword](https://www.npmjs.com/search?q=keywords:qunit-plugin) and is updated when the website is deployed._
+Plugins are sometimes known as QUnit addons.
+
+_Note: This list is automatically generated from npm packages using the [**qunit-plugin** keyword](https://www.npmjs.com/search?q=keywords:qunit-plugin)._

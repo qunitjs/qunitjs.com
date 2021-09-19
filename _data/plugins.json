@@ -1,13 +1,28 @@
 [
   {
-    "name": "qunit-dom",
-    "description": "High Level DOM Assertions for QUnit",
-    "date": "2020-08-02T09:32:22.630Z"
+    "name": "qunit-retry",
+    "description": "Drop in replacement for qunit `test` which retries a failed test.",
+    "date": "2021-04-05T08:44:23.358Z"
   },
   {
     "name": "qunit-wait-for",
     "description": "Wait for a QUnit assertion",
-    "date": "2020-08-03T14:36:06.210Z"
+    "date": "2021-03-02T00:01:50.974Z"
+  },
+  {
+    "name": "qunit-reporter-junit",
+    "description": "Produce JUnit-style XML test reports with QUnit.",
+    "date": "2016-10-16T01:23:43.596Z"
+  },
+  {
+    "name": "qunit-dom",
+    "description": "High Level DOM Assertions for QUnit",
+    "date": "2021-08-30T17:29:59.033Z"
+  },
+  {
+    "name": "node-qunit-puppeteer",
+    "description": "A simple node module for running qunit tests with headless Chromium",
+    "date": "2021-05-29T17:30:57.724Z"
   },
   {
     "name": "qunit-assertions-extra",
@@ -15,14 +30,24 @@
     "date": "2020-08-03T11:00:53.566Z"
   },
   {
-    "name": "node-qunit-puppeteer",
-    "description": "A simple node module for running qunit tests with headless Chromium",
-    "date": "2020-08-02T22:49:28.233Z"
+    "name": "qunitx-dom",
+    "description": "High Level DOM Assertions for QUnit",
+    "date": "2021-05-31T16:37:57.111Z"
   },
   {
-    "name": "qunit-reporter-junit",
-    "description": "Produce JUnit-style XML test reports with QUnit.",
-    "date": "2016-10-16T01:23:43.596Z"
+    "name": "qunit-assert-close",
+    "description": "A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.",
+    "date": "2016-10-02T02:25:51.041Z"
+  },
+  {
+    "name": "qunit-assert-step",
+    "description": "A QUnit plugin for asserting the proper sequence in which the code should execute.",
+    "date": "2016-10-03T03:46:41.981Z"
+  },
+  {
+    "name": "qunit-assert-compare",
+    "description": "A QUnit plugin for asserting numerical comparisons like greater than, less than, etc.",
+    "date": "2016-10-02T03:13:17.701Z"
   },
   {
     "name": "qunit-composite",
@@ -35,39 +60,14 @@
     "date": "2016-10-03T02:49:50.045Z"
   },
   {
-    "name": "qunit-assert-step",
-    "description": "A QUnit plugin for asserting the proper sequence in which the code should execute.",
-    "date": "2016-10-03T03:46:41.981Z"
-  },
-  {
-    "name": "qunit-assert-close",
-    "description": "A QUnit plugin for asserting that a number is approximately equal (or not) to an expected number, within a given tolerance.",
-    "date": "2016-10-02T02:25:51.041Z"
-  },
-  {
-    "name": "qunit-assert-canvas",
-    "description": "A QUnit plugin for asserting individual pixel values within a Canvas element.",
-    "date": "2016-10-02T02:25:02.752Z"
-  },
-  {
-    "name": "qunit-assert-compare",
-    "description": "A QUnit plugin for asserting numerical comparisons like greater than, less than, etc.",
-    "date": "2016-10-02T03:13:17.701Z"
-  },
-  {
     "name": "qunit-pending",
     "description": "A QUnit plugin to add the \"pending\" test syntax to QUnit, a la Mocha.",
     "date": "2016-10-02T01:55:55.632Z"
   },
   {
-    "name": "qunit-puppeteer-reporter",
-    "description": "headless browser testing for QUnit test suites",
-    "date": "2020-08-01T08:31:56.699Z"
-  },
-  {
-    "name": "qunit-retry",
-    "description": "Drop in replacement for qunit `test` which retries a failed test.",
-    "date": "2020-07-26T09:02:24.217Z"
+    "name": "qunit-assert-canvas",
+    "description": "A QUnit plugin for asserting individual pixel values within a Canvas element.",
+    "date": "2016-10-02T02:25:02.752Z"
   },
   {
     "name": "qunit-reporter-lcov",
@@ -90,6 +90,11 @@
     "date": "2014-03-20T17:47:37.864Z"
   },
   {
+    "name": "qunit-theme-gabe",
+    "description": "A QUnit theme by Gabe Hendry.",
+    "date": "2020-09-14T23:15:22.306Z"
+  },
+  {
     "name": "qunit-assert-nodes",
     "description": "A QUnit plugin providing a convenient API for batch acceptance assertions",
     "date": "2013-06-25T07:56:50.394Z"
@@ -105,8 +110,8 @@
     "date": "2019-01-03T23:49:09.721Z"
   },
   {
-    "name": "qunit-theme-gabe",
-    "description": "A QUnit theme by Gabe Hendry.",
-    "date": "2013-05-06T23:33:24.707Z"
+    "name": "qunit-puppeteer-reporter",
+    "description": "headless browser testing for QUnit test suites",
+    "date": "2020-08-01T08:31:56.699Z"
   }
 ]
