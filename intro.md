@@ -176,26 +176,29 @@ These are the officially supported download channels for QUnit releases:
 
 * Download:
 
-  QUnit has no runtime dependencies for browser use. You can save the [`qunit-2.17.1.js`](https://code.jquery.com/qunit/qunit-2.17.1.js) and [`qunit-2.17.1.css`](https://code.jquery.com/qunit/qunit-2.17.1.css) files directly from the [jQuery CDN](https://code.jquery.com/qunit/), which is hosted by [MaxCDN](https://www.maxcdn.com/).
+  QUnit has no runtime dependencies for browser use. You can save the [`qunit-2.17.1.js`](https://code.jquery.com/qunit/qunit-2.17.1.js) and [`qunit-2.17.1.css`](https://code.jquery.com/qunit/qunit-2.17.1.css) files directly from the [jQuery CDN](https://code.jquery.com/qunit/), which is powered by [StackPath](https://www.stackpath.com/).
 
-  Download them from your terminal:
+  Or download them via the terminal:
 
   ```bash
-  curl -O 'https://code.jquery.com/qunit/qunit-2.17.1.{js,css}'
+  curl -o qunit.css 'https://code.jquery.com/qunit/qunit-2.17.1.css'
+  curl -o qunit.js 'https://code.jquery.com/qunit/qunit-2.17.1.js'
   ```
 
 * npm Registry:
 
-  If your development workflow uses [Node.js](https://nodejs.org/en/), you can install the [qunit](https://www.npmjs.com/package/qunit) package the npm Registry, using the `npm` or `yarn` CLI:
+  If your development workflow uses [Node.js](https://nodejs.org/en/), you can install the [qunit](https://www.npmjs.com/package/qunit) package the npm Registry, using the `npm` CLI:
 
   ```bash
   npm install --save-dev qunit
+  ```
 
-  # Or, if using Yarn:
+  Or, if using Yarn:
+  ```bash
   yarn add --dev qunit
   ```
 
-  You can then reference `node_modules/qunit/qunit/qunit.js` and `node_modules/qunit/qunit/qunit.css` in your HTML.
+  You can then reference `node_modules/qunit/qunit/qunit.css` and `node_modules/qunit/qunit/qunit.js` in your HTML.
 
   If your project uses a custom npm frontend that locates packages elsewhere, you may need to generate the HTML dynamically and use [`require.resolve()`](https://nodejs.org/api/modules.html#modules_require_resolve_request_options) to locate `qunit/qunit/qunit.js` and `qunit/qunit/qunit.css`. Alternatively, use one of the [Integrations](#integration) such as karma-qunit which do all of that for you.
 
@@ -207,7 +210,7 @@ These are the officially supported download channels for QUnit releases:
   bower install --save-dev qunit
   ```
 
-  Then reference `bower_components/qunit/qunit/qunit.js` and `bower_components/qunit/qunit/qunit.css` in your HTML.
+  Then reference `bower_components/qunit/qunit/qunit.css` and `bower_components/qunit/qunit/qunit.js` in your HTML.
 
 ---
 

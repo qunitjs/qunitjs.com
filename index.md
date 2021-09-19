@@ -76,7 +76,7 @@ ok 1 add > should add two numbers
 
 <p class="lead lead--center">v2.17.1 (<a href="https://github.com/qunitjs/qunit/blob/2.17.1/History.md">changelog</a>)</p>
 
-These are the officially supported release channels for QUnit:
+These are the officially supported [release channels](intro.md#release-channels) for QUnit:
 
 * npm: `npm install --save-dev qunit`
 * Yarn: `yarn add --dev qunit`
