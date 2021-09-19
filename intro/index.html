@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/styles.css?v=d2e1ec57" media="screen">
+<link rel="stylesheet" href="/assets/styles.css?v=ae8aa835" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="QUnit">
 <title>Getting Started | QUnit</title>
 <meta property="og:title" content="Getting Started"><link rel="me" href="https://mastodon.technology/@qunitjs"><meta name="twitter:creator" content="@qunitjs"><meta name="twitter:site" content="@qunitjs"><meta name="twitter:card" content="summary_large_image">
@@ -67,7 +67,8 @@
         <h1 class="hero-title">Getting Started</h1>
     </div>
 </section>
-<div class="main wrapper content"><p class="lead">The following guide will get you up-and-running with QUnit either <a href="#in-nodejs">in Node.js</a> or <a href="#in-the-browser">in the Browser</a>.</p>
+<div class="main main--columns wrapper">
+<div class="content"><p class="lead">The following guide will get you up-and-running with QUnit either <a href="#in-nodejs">in Node.js</a> or <a href="#in-the-browser">in the Browser</a>.</p>
 
 <h2 id="in-nodejs">In Node.js</h2>
 
@@ -94,8 +95,8 @@ yarn add <span class="nt">--dev</span> qunit
 
 <span class="nx">QUnit</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">add</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">add two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="nx">assert</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="nx">assert</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
@@ -118,7 +119,7 @@ yarn add <span class="nt">--dev</span> qunit
 <p>And QUnit will run your test!</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TAP version 13
-ok 1 add <span class="o">&gt;</span> should add two numbers
+ok 1 add <span class="o">&gt;</span> two numbers
 1..1
 <span class="c"># pass 1</span>
 <span class="c"># skip 0</span>
@@ -175,8 +176,8 @@ ok 1 add <span class="o">&gt;</span> should add two numbers
   <span class="p">}</span>
 
   <span class="nx">QUnit</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">add</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">should add two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">assert</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="nx">QUnit</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">two numbers</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">assert</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
@@ -280,9 +281,12 @@ curl <span class="nt">-o</span> qunit.js <span class="s1">'https://code.jquery.c
 <ul>
   <li><a href="https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/">Introdution to JavaScript Unit Testing</a>, Jörn Zaefferer (2012).</li>
 </ul>
+</div>
+<aside class="sidebar" role="complementary"><div class="toc-wrapper">
+	<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#in-nodejs">In Node.js</a><ol><li class="sidebar-item"><a href="#support-policy">Support policy</a></li><li class="sidebar-item"><a href="#package-name-prior-to-241">Package name prior to 2.4.1</a></li><li class="sidebar-item"><a href="#linting">Linting</a></li></ol></li><li class="sidebar-item"><a href="#in-the-browser">In the Browser</a><ol><li class="sidebar-item"><a href="#browser-support">Browser support</a></li><li class="sidebar-item"><a href="#integrations">Integrations</a></li><li class="sidebar-item"><a href="#release-channels">Release channels</a></li></ol></li><li class="sidebar-item"><a href="#further-reading">Further Reading</a></li></ol>
+</div></aside>
 
 </div>
-
     <footer class="site-footer">
         <div class="wrapper">
             <p class="external-links">

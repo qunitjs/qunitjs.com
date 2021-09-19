@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/styles.css?v=d2e1ec57" media="screen">
+<link rel="stylesheet" href="/assets/styles.css?v=ae8aa835" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="QUnit">
 <title>Command-line interface | QUnit</title>
 <meta property="og:title" content="Command-line interface"><link rel="me" href="https://mastodon.technology/@qunitjs"><meta name="twitter:creator" content="@qunitjs"><meta name="twitter:site" content="@qunitjs"><meta name="twitter:card" content="summary_large_image">
@@ -67,7 +67,8 @@
         <h1 class="hero-title">Command-line interface</h1>
     </div>
 </section>
-<div class="main wrapper content"><p class="lead">How to use the QUnit CLI (command-line interface), after <a href="/intro/#in-nodejs">installing it from npm</a>.</p>
+<div class="main main--columns wrapper">
+<div class="content"><p class="lead">How to use the QUnit CLI (command-line interface), after <a href="/intro/#in-nodejs">installing it from npm</a>.</p>
 
 <h2 id="qunit-cli-options">QUnit CLI options</h2>
 
@@ -80,21 +81,21 @@ Options:
   -V, --version          output the version number
   -f, --filter &lt;filter&gt;  filter which tests run
   -r, --reporter [name]  specify the reporter to use
-  --require &lt;module&gt;     specify a module or script include to require before running
+  --require &lt;module&gt;     specify a module or script to include before running any tests
   --seed [value]         specify a seed to re-order your tests
   -w, --watch            watch files for changes and re-run the test suite
   -h, --help             display help for command
 </code></pre></div></div>
 
-<h3 id="filter">filter</h3>
+<h3 id="--filter"><code class="language-plaintext highlighter-rouge">--filter</code></h3>
 
-<p>This option assigns <a href="https://api.qunitjs.com/config/QUnit.config/#qunitconfigfilter-string--default-undefined"><code class="language-plaintext highlighter-rouge">QUnit.config.filter</code></a> for you.</p>
+<p>Only run tests that match the given filter. The filter is matched against the module and test name, and may either be substring match (case insensitive), or a regular expression.</p>
 
-<p>Only tests of which the name matches the filter will run.</p>
+<p>Examples: <code class="language-plaintext highlighter-rouge">--filter foo</code>, <code class="language-plaintext highlighter-rouge">--filter !foo</code>, <code class="language-plaintext highlighter-rouge">--filter "/foo/"</code>, <code class="language-plaintext highlighter-rouge">--filter "!/foo/"</code></p>
 
-<p>The filter can be a full or partial string match, or by using <code class="language-plaintext highlighter-rouge">'/pattern/'</code> it can be a regular expression.</p>
+<p>Check <a href="https://api.qunitjs.com/config/filter/"><code class="language-plaintext highlighter-rouge">QUnit.config.filter</code></a> for more information.</p>
 
-<h3 id="reporter">reporter</h3>
+<h3 id="--reporter"><code class="language-plaintext highlighter-rouge">--reporter</code></h3>
 
 <p>By default, the TAP reporter is used.</p>
 
@@ -107,6 +108,30 @@ Options:
   <li><code class="language-plaintext highlighter-rouge">console</code>: Log the JSON object for each reporter event from <a href="https://api.qunitjs.com/callbacks/QUnit.on/"><code class="language-plaintext highlighter-rouge">QUnit.on</code></a>. Use this to explore or debug the reporter interface.</li>
 </ul>
 
+<h3 id="--require"><code class="language-plaintext highlighter-rouge">--require</code></h3>
+
+<p>These modules or scripts will be required before any tests begin running.</p>
+
+<p>This can be used to install Node.js require hooks, such as for TypeScript (<a href="https://typestrong.org/ts-node/docs/">ts-node/register</a>), Babel (<a href="https://babeljs.io/docs/en/babel-register/">@babel/register</a>), or CoffeeScript (<a href="https://coffeescript.org/">coffeescript/register</a>).</p>
+
+<p>It can also be used for your own setup scripts to bootstrap the environment, or tweak <code class="language-plaintext highlighter-rouge">QUnit.config</code>. For example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qunit <span class="nt">--require</span> ./test/setup.js
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// test/setup.js</span>
+<span class="nx">QUnit</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">noglobals</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">QUnit</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">notrycatch</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nb">global</span><span class="p">.</span><span class="nx">MyApp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="dl">'</span><span class="s1">./index</span><span class="dl">'</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>See <a href="https://api.qunitjs.com/config/QUnit.config/">QUnit.config</a> for all available configuration options.</p>
+
+<h3 id="--seed"><code class="language-plaintext highlighter-rouge">--seed</code></h3>
+
+<p>This option assigns <a href="https://api.qunitjs.com/config/seed/"><code class="language-plaintext highlighter-rouge">QUnit.config.seed</code></a> for you.</p>
+
 <h2 id="nodejs-cli-options">Node.js CLI options</h2>
 
 <p>The QUnit CLI uses Node.js. You can pass <a href="https://nodejs.org/api/cli.html">Node.js CLI</a> options via the <a href="https://nodejs.org/api/cli.html#cli_node_options_options"><code class="language-plaintext highlighter-rouge">NODE_OPTIONS</code></a> environment variable. For example, to use <code class="language-plaintext highlighter-rouge">--enable-source-maps</code> or <code class="language-plaintext highlighter-rouge">--inspect</code>, invoke QUnit as follows:</p>
@@ -114,14 +139,28 @@ Options:
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NODE_OPTIONS='--enable-source-maps' qunit test/
 </code></pre></div></div>
 
-<h2 id="qunit-configuration">QUnit configuration</h2>
+<h2 id="code-coverage">Code coverage</h2>
 
-<p>The <code class="language-plaintext highlighter-rouge">filter</code> and <code class="language-plaintext highlighter-rouge">seed</code> options can be configured directly using command-line arguments. These, and many more options, can also be set programmatically. Either from your test suite file (if you have a single entry point), or from a bootstrap file passed to <code class="language-plaintext highlighter-rouge">--require</code>.</p>
+<p>Generate code coverage reports with <a href="https://istanbul.js.org/">nyc</a>:</p>
 
-<p>See <a href="https://api.qunitjs.com/config/QUnit.config/">QUnit.config</a> for the available configuration options.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nyc qunit"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nyc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"qunit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>For an example project that generates code coverage from Node.js, see <a href="https://github.com/Krinkle/example-node-and-browser-qunit-ci/">Krinkle/example-node-and-browser-qunit</a>.</p>
+</div>
+<aside class="sidebar" role="complementary"><div class="toc-wrapper">
+	<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#qunit-cli-options">QUnit CLI options</a><ol><li class="sidebar-item"><a href="#--filter">--filter</a></li><li class="sidebar-item"><a href="#--reporter">--reporter</a></li><li class="sidebar-item"><a href="#--require">--require</a></li><li class="sidebar-item"><a href="#--seed">--seed</a></li></ol></li><li class="sidebar-item"><a href="#nodejs-cli-options">Node.js CLI options</a></li><li class="sidebar-item"><a href="#code-coverage">Code coverage</a></li></ol>
+</div></aside>
 
 </div>
-
     <footer class="site-footer">
         <div class="wrapper">
             <p class="external-links">
