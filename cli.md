@@ -21,21 +21,21 @@ Options:
   -V, --version          output the version number
   -f, --filter <filter>  filter which tests run
   -r, --reporter [name]  specify the reporter to use
-  --require <module>     specify a module or script include to require before running
+  --require <module>     specify a module or script to include before running any tests
   --seed [value]         specify a seed to re-order your tests
   -w, --watch            watch files for changes and re-run the test suite
   -h, --help             display help for command
 ```
 
-### filter
+### `--filter`
 
-This option assigns [`QUnit.config.filter`](https://api.qunitjs.com/config/QUnit.config/#qunitconfigfilter-string--default-undefined) for you.
+Only run tests that match the given filter. The filter is matched against the module and test name, and may either be substring match (case insensitive), or a regular expression.
 
-Only tests of which the name matches the filter will run.
+Examples: `--filter foo`, `--filter !foo`, `--filter "/foo/"`, `--filter "!/foo/"`
 
-The filter can be a full or partial string match, or by using `'/pattern/'` it can be a regular expression.
+Check [`QUnit.config.filter`](https://api.qunitjs.com/config/filter/) for more information.
 
-### reporter
+### `--reporter`
 
 By default, the TAP reporter is used.
 
@@ -46,6 +46,32 @@ Built-in reporters:
 * `tap`: [TAP compliant](https://testanything.org/) reporter.
 * `console`: Log the JSON object for each reporter event from [`QUnit.on`](https://api.qunitjs.com/callbacks/QUnit.on/). Use this to explore or debug the reporter interface.
 
+### `--require`
+
+These modules or scripts will be required before any tests begin running.
+
+This can be used to install Node.js require hooks, such as for TypeScript ([ts-node/register](https://typestrong.org/ts-node/docs/)), Babel ([@babel/register](https://babeljs.io/docs/en/babel-register/)), or CoffeeScript ([coffeescript/register](https://coffeescript.org/)).
+
+It can also be used for your own setup scripts to bootstrap the environment, or tweak `QUnit.config`. For example:
+
+```bash
+qunit --require ./test/setup.js
+```
+
+```js
+// test/setup.js
+QUnit.config.noglobals = true;
+QUnit.config.notrycatch = true;
+
+global.MyApp = require( './index' );
+```
+
+See [QUnit.config](https://api.qunitjs.com/config/QUnit.config/) for all available configuration options.
+
+### `--seed`
+
+This option assigns [`QUnit.config.seed`](https://api.qunitjs.com/config/seed/) for you.
+
 ## Node.js CLI options
 
 The QUnit CLI uses Node.js. You can pass [Node.js CLI](https://nodejs.org/api/cli.html) options via the [`NODE_OPTIONS`](https://nodejs.org/api/cli.html#cli_node_options_options) environment variable. For example, to use `--enable-source-maps` or `--inspect`, invoke QUnit as follows:
@@ -54,8 +80,20 @@ The QUnit CLI uses Node.js. You can pass [Node.js CLI](https://nodejs.org/api/cl
 NODE_OPTIONS='--enable-source-maps' qunit test/
 ```
 
-## QUnit configuration
+## Code coverage
 
-The `filter` and `seed` options can be configured directly using command-line arguments. These, and many more options, can also be set programmatically. Either from your test suite file (if you have a single entry point), or from a bootstrap file passed to `--require`.
+Generate code coverage reports with [nyc](https://istanbul.js.org/):
 
-See [QUnit.config](https://api.qunitjs.com/config/QUnit.config/) for the available configuration options.
+```json
+{
+  "scripts": {
+    "test": "nyc qunit"
+  },
+  "devDependencies": {
+    "nyc": "*",
+    "qunit": "*"
+  }
+}
+```
+
+For an example project that generates code coverage from Node.js, see [Krinkle/example-node-and-browser-qunit](https://github.com/Krinkle/example-node-and-browser-qunit-ci/).
