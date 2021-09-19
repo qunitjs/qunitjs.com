@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Brand guidelines
+amethyst:
+  toc: true
 ---
 
 ## Brand colors

@@ -36,8 +36,8 @@ function add(a, b) {
 }
 
 QUnit.module('add', hooks => {
-  QUnit.test('should add two numbers', assert => {
-    assert.equal(add(1, 1), 2);
+  QUnit.test('two numbers', assert => {
+    assert.equal(add(1, 2), 3);
   });
 });
 ```
@@ -58,7 +58,7 @@ QUnit.module('add', hooks => {
 
 ```tap
 TAP version 13
-ok 1 add > should add two numbers
+ok 1 add > two numbers
 1..1
 # pass 1
 # skip 0
@@ -78,10 +78,10 @@ ok 1 add > should add two numbers
 
 These are the officially supported [release channels](intro.md#release-channels) for QUnit:
 
+* CDN: [`qunit-2.17.1.js`](https://code.jquery.com/qunit/qunit-2.17.1.js) and [`qunit-2.17.1.css`](https://code.jquery.com/qunit/qunit-2.17.1.css)
 * npm: `npm install --save-dev qunit`
 * Yarn: `yarn add --dev qunit`
 * Bower: `bower install --save-dev qunit`
-* CDN: [`qunit-2.17.1.js`](https://code.jquery.com/qunit/qunit-2.17.1.js) and [`qunit-2.17.1.css`](https://code.jquery.com/qunit/qunit-2.17.1.css)
 
 ---
 

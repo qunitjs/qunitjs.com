@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Getting Started
+amethyst:
+  toc: true
 redirect_from:
   - "/guides/"
   - "/cookbook/"
@@ -36,8 +38,8 @@ const add = require('../add.js');
 
 QUnit.module('add');
 
-QUnit.test('add two numbers', assert => {
-  assert.equal(add(1, 1), 2);
+QUnit.test('two numbers', assert => {
+  assert.equal(add(1, 2), 3);
 });
 ```
 
@@ -63,7 +65,7 @@ And QUnit will run your test!
 
 ```bash
 TAP version 13
-ok 1 add > should add two numbers
+ok 1 add > two numbers
 1..1
 # pass 1
 # skip 0
@@ -122,8 +124,8 @@ Let's add the following script, which tests an example `add()` function for addi
   }
 
   QUnit.module('add', function() {
-    QUnit.test('should add two numbers', function(assert) {
-      assert.equal(add(1, 1), 2);
+    QUnit.test('two numbers', function(assert) {
+      assert.equal(add(1, 2), 3);
     });
   });
 </script>

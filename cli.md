@@ -3,6 +3,8 @@ layout: page
 title: Command-line interface
 redirect_from:
   - "/node/"
+amethyst:
+  toc: true
 ---
 
 <p class="lead" markdown="1">How to use the QUnit CLI (command-line interface), after [installing it from npm](./intro.md#in-nodejs).</p>
