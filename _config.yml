@@ -26,6 +26,7 @@ exclude:
   - vendor
   - build
 
+
 # Theme settings
 #
 # Amethyst theme options are documented at:

@@ -22,11 +22,11 @@ jobs:
           git clone --depth 5 --branch "${DEPLOY_BRANCH}" "https://github.com/${GITHUB_REPOSITORY}.git" . || git init -b "${DEPLOY_BRANCH}"
 
       - uses: ruby/setup-ruby@v1
-        # If your site is in a subdirectory
-        # working-directory: ./
         with:
           ruby-version: 2.7
           bundler-cache: true
+          # If your site is in a subdirectory
+          # working-directory: ./
 
       - name: Jekyll build
         # If your site is in a subdirectory

@@ -96,4 +96,4 @@ Generate code coverage reports with [nyc](https://istanbul.js.org/):
 }
 ```
 
-For an example project that generates code coverage from Node.js, see [Krinkle/example-node-and-browser-qunit](https://github.com/Krinkle/example-node-and-browser-qunit-ci/).
+For an example project that generates code coverage from Node.js an from the browser, see [Krinkle/example-node-and-browser-qunit](https://github.com/Krinkle/example-node-and-browser-qunit-ci/).
