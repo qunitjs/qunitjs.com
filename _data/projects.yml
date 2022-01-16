@@ -200,7 +200,11 @@ projects:
     sub:
       - name: video.js
         href: https://github.com/videojs/video.js
-
+      - name: videojs/http-streaming
+        href: https://github.com/videojs/http-streaming
+      - name: mux.js
+        href: https://github.com/videojs/mux.js
+        
   - name: Wikibase
     href: https://wikiba.se/libraries/
     sub:
