@@ -195,6 +195,12 @@ projects:
       - name: three.js
         href: https://github.com/mrdoob/three.js
 
+  - name: Video.js
+    href: https://github.com/videojs/video.js
+    sub:
+      - name: video.js
+        href: https://github.com/videojs/video.js
+
   - name: Wikibase
     href: https://wikiba.se/libraries/
     sub:
