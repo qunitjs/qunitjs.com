@@ -206,7 +206,7 @@ projects:
         href: https://github.com/videojs/mux.js
         
   - name: Wikibase
-    href: https://wikiba.se/libraries/
+    href: https://wikiba.se/
     sub:
       - name: Wikibase
         href: https://github.com/wikimedia/Wikibase
