@@ -15,7 +15,7 @@ title: QUnit 2.0 Upgrade Guide
 
 The QUnit 2 release only removes old methods. The "QUnit 2" methods were introduced as part of QUnit 1.x releases. If you are on QUnit 1.23, you can already migrate gradually, before making the jump.
 
-The old methods are removed in QUnit 2.0 and replaced with placeholder methods that throw descriptive errors to simplify migration (`"Global 'test()' method is removed, use 'QUnit.test() instead"`). QUnit 2.1 removes that layer and woul instead throw native errors like `"ReferenceError: test is not defined"`.
+The old methods are removed in QUnit 2.0 and replaced with placeholder methods that throw descriptive errors to simplify migration (`"Global 'test()' method is removed, use 'QUnit.test() instead"`). QUnit 2.1 removes that layer and would instead throw native errors like `"ReferenceError: test is not defined"`.
 
 | QUnit 1.x | QUnit 2.x
 |--|--
