@@ -169,8 +169,7 @@ The following integrations can be used to automate the running of browser tests 
 
 Example projects:
 
-* [Krinkle/example-node-and-browser-qunit-ci](https://github.com/Krinkle/example-node-and-browser-qunit-ci/): Run QUnit tests locally and in CI, on Headless Firefox and Chrome (using Karma).<br/>
-   Also demonstrates code coverage, and testing of isomorphic JavaScript projects on Node.js.
+* [Krinkle/example-node-and-browser-qunit-ci](https://github.com/Krinkle/example-node-and-browser-qunit-ci/): Run QUnit tests locally and in CI, on Headless Firefox and Chrome (using Karma), and with Node.js.<br/>Also demonstrates code coverage, and testing of isomorphic JavaScript projects.
 
 ### Release channels
 
