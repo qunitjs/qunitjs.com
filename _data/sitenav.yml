@@ -1,12 +1,14 @@
 - name: Guides
   sub:
-    - name: Getting Started
+    - name: Getting started
       href: /intro/
+    - name: Browser interface
+      href: /browser/
     - name: Command-line interface
       href: /cli/
     - name: Plugins
       href: /plugins/
-    - name: 2.x Upgrade Guide
+    - name: 2.x Upgrade guide
       href: /upgrade-guide-2.x/
 - name: Documentation
   href: https://api.qunitjs.com/

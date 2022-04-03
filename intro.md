@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Started
+title: Getting started
 amethyst:
   toc: true
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
   - "/cookbook/"
 ---
 
-<p class="lead" markdown="1">The following guide will get you up-and-running with QUnit either in Node.js or [in the Browser](#in-the-browser).</p>
+<p class="lead" markdown="1">This tutorial gets you up-and-running with QUnit, [in Node.js](#in-nodejs) or [in the browser](#in-the-browser).</p>
 
 ## In Node.js
 
@@ -61,7 +61,7 @@ Then run:
 npm test
 ```
 
-... and QUnit will run your test!
+Congrats! You just wrote and executed your first QUnit test!
 
 ```bash
 TAP version 13
@@ -73,11 +73,7 @@ ok 1 add > two numbers
 # fail 0
 ```
 
-Congrats! You just wrote and executed your first QUnit test!
-
-Check out the [API documentation](https://api.qunitjs.com) to learn about QUnit APIs for organising tests and making assertions.
-
-See [Command-line interface](./cli.md) for help with the `qunit` command.
+Check out the [API documentation](https://api.qunitjs.com) to learn more about the QUnit APIs for organising tests and making assertions. See [Command-line interface](./cli.md) for what the `qunit` command can do.
 
 ### Support policy
 
@@ -97,49 +93,6 @@ The [eslint-plugin-qunit](https://github.com/platinumazure/eslint-plugin-qunit) 
 
 ## In the Browser
 
-To get started with QUnit in the browser, create a simple HTML file called `test.html` and include the following markup:
-
-```html
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Test Suite</title>
-<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.4.css">
-<body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-  <script src="https://code.jquery.com/qunit/qunit-2.19.4.js"></script>
-</body>
-```
-
-That's all the markup you need to start writing tests. Note that this loads the library from the [jQuery CDN](https://code.jquery.com/qunit/).
-
-See also [Integrations & Downloads](#integrations) for integration you can use to automate browser testing. These usually also manage the HTML file for you.
-
-Let's add the following script, which tests an example `add()` function for adding two numbers together:
-
-```html
-<script>
-  function add(a, b) {
-    return a + b;
-  }
-
-  QUnit.module('add', function() {
-    QUnit.test('two numbers', function(assert) {
-      assert.equal(add(1, 2), 3);
-    });
-  });
-</script>
-```
-
-This code defines a test module for the `add()` function and verifies the result of adding two numbers.
-
-If you open this up in the browser you'll find a detailed report of the tests that ran and their assertions, as well as various options for filtering and re-running individual tests to help during development. Like so:
-
-<iframe loading="lazy" title="The test code running in the browser" src="/resources/example-index.html" style="height: 300px;"></iframe>
-
-Congrats! You just wrote and executed your first QUnit test!
-
-Check out the [API documentation](https://api.qunitjs.com) to learn more about the QUnit APIs for organising tests and making assertions.
 
 ### Browser support
 
@@ -215,6 +168,6 @@ These are the officially supported download channels for QUnit releases:
 
 ---
 
-## Further Reading
+## Further reading
 
 * [Introdution to JavaScript Unit Testing](https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/), Jörn Zaefferer (2012).

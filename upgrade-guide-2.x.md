@@ -1,6 +1,6 @@
 ---
 layout: page
-title: QUnit 2.0 Upgrade Guide
+title: QUnit 2.0 Upgrade guide
 ---
 
 <!--
