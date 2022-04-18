@@ -161,6 +161,12 @@ projects:
       - name: ember-table
         href: https://github.com/Addepar/ember-table
 
+  - name: Fabric.js
+    href: https://github.com/fabricjs
+    sub:
+      - name: Fabric.js
+        href: https://github.com/fabricjs/fabric.js
+
   - name: Globalize
     href: https://github.com/globalizejs/globalize
     sub:
