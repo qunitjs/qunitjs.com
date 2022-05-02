@@ -78,7 +78,8 @@
 
 Options:
   -V, --version          output the version number
-  -f, --filter &lt;filter&gt;  filter which tests run
+  -f, --filter &lt;filter&gt;  run only matching module or test names
+  -m, --module &lt;name&gt;    run only the specified module
   -r, --reporter [name]  specify the reporter to use
   --require &lt;module&gt;     specify a module or script to include before running any tests
   --seed [value]         specify a seed to re-order your tests
@@ -93,6 +94,14 @@ Options:
 <p>Examples: <code class="language-plaintext highlighter-rouge">--filter foo</code>, <code class="language-plaintext highlighter-rouge">--filter !foo</code>, <code class="language-plaintext highlighter-rouge">--filter "/foo/"</code>, <code class="language-plaintext highlighter-rouge">--filter "!/foo/"</code></p>
 
 <p>Check <a href="https://api.qunitjs.com/config/filter/"><code class="language-plaintext highlighter-rouge">QUnit.config.filter</code></a> for more information.</p>
+
+<h3 id="--module"><code class="language-plaintext highlighter-rouge">--module</code></h3>
+
+<p>Only run tests that belong to the specified module. The name is matched case-insensitively, but must otherwise be complete.</p>
+
+<p>Examples: <code class="language-plaintext highlighter-rouge">--module foo</code>, <code class="language-plaintext highlighter-rouge">--module "Foo"</code></p>
+
+<p>Check <a href="https://api.qunitjs.com/config/module/"><code class="language-plaintext highlighter-rouge">QUnit.config.module</code></a> for more information.</p>
 
 <h3 id="--reporter"><code class="language-plaintext highlighter-rouge">--reporter</code></h3>
 
@@ -158,7 +167,7 @@ Options:
 <p>For a more elaborate example showcasing a unified test coverage report for tests in both Node.js and a headless browser, see <a href="https://github.com/Krinkle/example-node-and-browser-qunit-ci/">Krinkle/example-node-and-browser-qunit</a>.</p>
 </div>
 <aside class="sidebar" role="complementary"><div class="toc-wrapper">
-	<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#qunit-cli-options">QUnit CLI options</a><ol><li class="sidebar-item"><a href="#--filter">--filter</a></li><li class="sidebar-item"><a href="#--reporter">--reporter</a></li><li class="sidebar-item"><a href="#--require">--require</a></li><li class="sidebar-item"><a href="#--seed">--seed</a></li></ol></li><li class="sidebar-item"><a href="#nodejs-cli-options">Node.js CLI options</a></li><li class="sidebar-item"><a href="#code-coverage">Code coverage</a></li></ol>
+	<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#qunit-cli-options">QUnit CLI options</a><ol><li class="sidebar-item"><a href="#--filter">--filter</a></li><li class="sidebar-item"><a href="#--module">--module</a></li><li class="sidebar-item"><a href="#--reporter">--reporter</a></li><li class="sidebar-item"><a href="#--require">--require</a></li><li class="sidebar-item"><a href="#--seed">--seed</a></li></ol></li><li class="sidebar-item"><a href="#nodejs-cli-options">Node.js CLI options</a></li><li class="sidebar-item"><a href="#code-coverage">Code coverage</a></li></ol>
 </div></aside>
 
 </div>
