@@ -19,7 +19,8 @@ Usage: qunit [options] [files]
 
 Options:
   -V, --version          output the version number
-  -f, --filter <filter>  filter which tests run
+  -f, --filter <filter>  run only matching module or test names
+  -m, --module <name>    run only the specified module
   -r, --reporter [name]  specify the reporter to use
   --require <module>     specify a module or script to include before running any tests
   --seed [value]         specify a seed to re-order your tests
@@ -34,6 +35,14 @@ Only run tests that match the given filter. The filter is matched against the mo
 Examples: `--filter foo`, `--filter !foo`, `--filter "/foo/"`, `--filter "!/foo/"`
 
 Check [`QUnit.config.filter`](https://api.qunitjs.com/config/filter/) for more information.
+
+### `--module`
+
+Only run tests that belong to the specified module. The name is matched case-insensitively, but must otherwise be complete.
+
+Examples: `--module foo`, `--module "Foo"`
+
+Check [`QUnit.config.module`](https://api.qunitjs.com/config/module/) for more information.
 
 ### `--reporter`
 
