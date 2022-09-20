@@ -101,6 +101,14 @@ orgs:
         href: https://github.com/WordPress/wordpress-develop
 
 projects:
+  - name: Bestie
+    href: https://github.com/bestiejs/benchmark.js
+    sub:
+    - name: Benchmark.js
+      href: https://github.com/bestiejs/benchmark.js
+    - name: Platform.js
+      href: https://github.com/bestiejs/platform.js
+
   - name: Bootstrap
     href: https://github.com/twbs
     sub:
