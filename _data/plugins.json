@@ -107,7 +107,7 @@
   {
     "name": "qunit-theme-ninja",
     "description": "A QUnit theme for ninjas.",
-    "date": "2019-01-04T03:56:25.064Z"
+    "date": "2022-04-18T23:56:40.520Z"
   },
   {
     "name": "qunit-theme-nv",
@@ -118,6 +118,11 @@
     "name": "qunit-wait-for",
     "description": "Wait for a QUnit assertion",
     "date": "2021-11-29T21:09:31.345Z"
+  },
+  {
+    "name": "qunitx",
+    "description": "Experimental improvements, suggestions for qunit CLI",
+    "date": "2022-04-04T18:12:25.920Z"
   },
   {
     "name": "qunitx-dom",
