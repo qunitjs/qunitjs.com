@@ -28,11 +28,11 @@ bundle exec jekyll serve
 ### Update plugins
 
 ```shell
-node build/update-plugins
+node build/update-plugins.js
 ```
 
 ### Update QUnit version
 
 ```shell
-node build/set-version <version>
+node build/set-version.js <version>
 ```
