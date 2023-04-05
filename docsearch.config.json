@@ -1,0 +1,14 @@
+{
+  "index_name": "qunitjs_com",
+  "start_urls": ["https://qunitjs.com"],
+  "selectors": {
+    "lvl0": "h1",
+    "lvl1": "h2",
+    "lvl2": "h3",
+    "lvl3": "h4",
+    "lvl4": "h5",
+    "lvl5": "h6",
+    "text": "p,li,tr,pre"
+  }
+}
+
