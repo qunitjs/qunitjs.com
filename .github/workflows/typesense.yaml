@@ -1,0 +1,37 @@
+name: Update TypeSense index
+on:
+  # Once a day at 11:30 UTC <https://crontab.guru/>
+  schedule:
+    - cron: '30 11 * * *'
+  # Or shortly after a deployment completes
+  workflow_run:
+    workflows:
+      - GitHub Pages
+    types:
+      - completed
+  # Or manually
+  workflow_dispatch:
+  # Or when developing this workflow
+  push:
+    paths:
+      - .github/workflows/typesense.yaml
+
+jobs:
+  typesense:
+    name: Update Typesense
+    if: ${{ github.repository == 'qunitjs/qunitjs.com' }} # skip on forks, needs secret
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Docsearch Scraper
+        shell: bash
+        run: |
+          docker run \
+            -e TYPESENSE_API_KEY=${{ secrets.TYPESENSE_ADMIN_KEY }} \
+            -e TYPESENSE_HOST="${{ secrets.TYPESENSE_HOST }}" \
+            -e TYPESENSE_PORT="443" \
+            -e TYPESENSE_PROTOCOL="https" \
+            -e CONFIG="$(cat docsearch.config.json | jq -r tostring)" \
+            typesense/docsearch-scraper
