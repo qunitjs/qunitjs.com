@@ -8,7 +8,7 @@
     "lvl3": "h4",
     "lvl4": "h5",
     "lvl5": "h6",
-    "text": "p,li,tr,pre"
+    "text": ".content p, .content li, .content tr, .content pre"
   }
 }
 
