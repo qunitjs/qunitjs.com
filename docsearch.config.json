@@ -9,11 +9,11 @@
   ],
   "selectors": {
     "lvl0": "h1",
-    "lvl1": "h2",
-    "lvl2": "h3",
-    "lvl3": "h4",
-    "lvl4": "h5",
-    "lvl5": "h6",
+    "lvl1": "h2:not(.screen-reader-text)",
+    "lvl2": "h3:not(.screen-reader-text)",
+    "lvl3": "h4:not(.screen-reader-text)",
+    "lvl4": "h5:not(.screen-reader-text)",
+    "lvl5": "h6:not(.screen-reader-text)",
     "text": ".content p, .content li, .content tr, .content pre"
   }
 }
