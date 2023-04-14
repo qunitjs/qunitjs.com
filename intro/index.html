@@ -67,7 +67,7 @@
     </div>
 </section>
 <div class="main main--columns wrapper">
-<div class="content"><p class="lead">The following guide will get you up-and-running with QUnit either <a href="#in-nodejs">in Node.js</a> or <a href="#in-the-browser">in the Browser</a>.</p>
+<div class="content"><p class="lead">The following guide will get you up-and-running with QUnit either in Node.js or <a href="#in-the-browser">in the Browser</a>.</p>
 
 <h2 id="in-nodejs">In Node.js</h2>
 
@@ -99,9 +99,9 @@ yarn add <span class="nt">--dev</span> qunit
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>This defines a test suite for the “add” feature, with a single test case that verifies the result of adding two numbers together.</p>
+<p>This defines a test suite for the “add” feature, with a single test case that verifies the result of adding two numbers together. Refer to the <a href="https://api.qunitjs.com/QUnit/test/"><code class="language-plaintext highlighter-rouge">QUnit.test()</code> page</a> in our API Documentation for how to organise tests and make other assertions.</p>
 
-<p>You can now run the test suite through the <a href="/cli/">QUnit CLI</a>. It is recommended that you run the <code class="language-plaintext highlighter-rouge">qunit</code> command via an npm script, which will find the <code class="language-plaintext highlighter-rouge">qunit</code> command automatically from your local dependencies. In your <code class="language-plaintext highlighter-rouge">package.json</code> file, specify it like so:</p>
+<p>You can now run your first test through the <a href="/cli/">QUnit CLI</a>. It is recommended that you run the <code class="language-plaintext highlighter-rouge">qunit</code> command via an npm script, which will automatically find the <code class="language-plaintext highlighter-rouge">qunit</code> program in your local <code class="language-plaintext highlighter-rouge">node_modules</code> folder, which is where npm keeps the dependencies you download. In your <code class="language-plaintext highlighter-rouge">package.json</code> file, specify it like so:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -110,12 +110,12 @@ yarn add <span class="nt">--dev</span> qunit
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Then, simply run:</p>
+<p>Then run:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">test</span>
 </code></pre></div></div>
 
-<p>And QUnit will run your test!</p>
+<p>… and QUnit will run your test!</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TAP version 13
 ok 1 add <span class="o">&gt;</span> two numbers
@@ -128,7 +128,7 @@ ok 1 add <span class="o">&gt;</span> two numbers
 
 <p>Congrats! You just wrote and executed your first QUnit test!</p>
 
-<p>Check out the <a href="https://api.qunitjs.com">API documentation</a> to learn more about the QUnit APIs for organising tests and making assertions.</p>
+<p>Check out the <a href="https://api.qunitjs.com">API documentation</a> to learn about QUnit APIs for organising tests and making assertions.</p>
 
 <p>See <a href="/cli/">Command-line interface</a> for help with the <code class="language-plaintext highlighter-rouge">qunit</code> command.</p>
 
