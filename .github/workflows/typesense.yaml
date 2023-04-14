@@ -3,18 +3,12 @@ on:
   # Once a day at 11:30 UTC <https://crontab.guru/>
   schedule:
     - cron: '30 11 * * *'
-  # Or shortly after a deployment completes
-  workflow_run:
-    workflows:
-      - GitHub Pages
-    types:
-      - completed
+  # Or after a deployment
+  push:
+    branches:
+      - main
   # Or manually
   workflow_dispatch:
-  # Or when developing this workflow
-  push:
-    paths:
-      - .github/workflows/typesense.yaml
 
 jobs:
   typesense:
