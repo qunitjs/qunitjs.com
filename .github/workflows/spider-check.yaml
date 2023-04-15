@@ -26,6 +26,7 @@ jobs:
       #
       MY_SITE:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'qunitjs' }} # skip on forks
     steps:
       - uses: actions/checkout@v2
       - name: Get site address
@@ -47,6 +48,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: jquery/hydra-link-checker
-          ref: v1.0.2
+          ref: v2.0.0
       - name: Run hydra-link-checker
         run: python3 hydra.py "$MY_SITE"

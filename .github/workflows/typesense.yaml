@@ -13,7 +13,7 @@ on:
 jobs:
   typesense:
     name: Update Typesense
-    if: ${{ github.repository == 'qunitjs/qunitjs.com' }} # skip on forks, needs secret
+    if: ${{ github.repository_owner == 'qunitjs' }} # skip on forks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
