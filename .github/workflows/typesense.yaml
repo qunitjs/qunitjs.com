@@ -1,4 +1,4 @@
-name: Update TypeSense index
+name: typesense
 on:
   # Once a day at 11:30 UTC <https://crontab.guru/>
   schedule:
