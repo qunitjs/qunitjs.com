@@ -15,6 +15,14 @@
     "lvl4": "h5:not(.screen-reader-text)",
     "lvl5": "h6:not(.screen-reader-text)",
     "text": ".content p, .content li, .content tr, .content pre"
-  }
+  },
+  "custom_settings": {
+    "token_separators": ["_", "-", "."]
+  },
+  "selectors_exclude": [
+    "aside.sidebar",
+    ".toc-wrapper"
+  ],
+  "scrape_start_urls": false
 }
 
