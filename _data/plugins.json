@@ -7,7 +7,7 @@
   {
     "name": "node-qunit-puppeteer",
     "description": "A simple node module for running qunit tests with headless Chromium",
-    "date": "2021-05-29T17:30:57.724Z"
+    "date": "2022-12-31T10:59:09.869Z"
   },
   {
     "name": "qunit-assert-canvas",
@@ -47,12 +47,12 @@
   {
     "name": "qunit-assertions-extra",
     "description": "Collection of helpful assertions for use with qunit",
-    "date": "2020-08-03T11:00:53.566Z"
+    "date": "2023-07-03T22:41:29.910Z"
   },
   {
     "name": "qunit-ava-spec",
     "description": "Helper functions for using QUnit as if it was ava/ava-spec.",
-    "date": "2022-02-16T12:14:52.279Z"
+    "date": "2022-11-10T20:10:03.296Z"
   },
   {
     "name": "qunit-composite",
@@ -67,7 +67,12 @@
   {
     "name": "qunit-dom",
     "description": "High Level DOM Assertions for QUnit",
-    "date": "2021-08-30T17:29:59.033Z"
+    "date": "2023-10-12T14:40:16.837Z"
+  },
+  {
+    "name": "qunit-junit",
+    "description": "Produce JUnit-style XML test reports with QUnit.",
+    "date": "2023-07-08T17:02:23.203Z"
   },
   {
     "name": "qunit-pending",
@@ -78,6 +83,11 @@
     "name": "qunit-puppeteer-reporter",
     "description": "headless browser testing for QUnit test suites",
     "date": "2020-08-01T08:31:56.699Z"
+  },
+  {
+    "name": "qunit-puppeteer-runner",
+    "description": "Runs QUnit tests in a Puppeteer instance and compiles results to JUnit XML",
+    "date": "2023-07-20T21:46:06.528Z"
   },
   {
     "name": "qunit-reporter-junit",
@@ -100,6 +110,11 @@
     "date": "2014-06-09T22:03:07.465Z"
   },
   {
+    "name": "qunit-theme-ember",
+    "description": "A theme for the QUnit web UI test runner powered by the Ember styleguide.",
+    "date": "2023-12-09T14:25:04.302Z"
+  },
+  {
     "name": "qunit-theme-gabe",
     "description": "A QUnit theme by Gabe Hendry.",
     "date": "2020-09-14T23:15:22.306Z"
@@ -118,11 +133,6 @@
     "name": "qunit-wait-for",
     "description": "Wait for a QUnit assertion",
     "date": "2021-11-29T21:09:31.345Z"
-  },
-  {
-    "name": "qunitx",
-    "description": "Experimental improvements, suggestions for qunit CLI",
-    "date": "2022-04-04T18:12:25.920Z"
   },
   {
     "name": "qunitx-dom",
