@@ -134,10 +134,10 @@ projects:
     sub:
       - name: jQuery
         href: https://github.com/jquery/jquery
-      - name: Sizzle
-        href: https://github.com/jquery/sizzle
       - name: jQuery UI
         href: https://github.com/jquery/jquery-ui
+      - name: typesense-minibar
+        href: https://github.com/jquery/typesense-minibar
 
   - name: jQuery community
     href: https://www.npmjs.com/search?q=keywords%3Ajquery-plugin
