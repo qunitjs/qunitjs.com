@@ -11,19 +11,23 @@ amethyst:
 * <span class="q-color-icon" style="background: #390F39;"></span> QUnit Secondary Purple `#390F39`
 
 <p class="q-color-block" style="background: #9C3493; color: #FFF;" markdown="1">
+
 **QUnit Primary Purple**<br>
 HEX: #9C3493<br>
 CMYK: 0 67 6 39<br>
 RGB: 156 52 147<br>
 Pantone: 253
+
 </p>
 
 <p class="q-color-block" style="background: #390F39; color: #FFF;" markdown="1">
+
 **QUnit Secondary Purple**<br>
 HEX: #390F39<br>
 CMYK: 0 74 0 78<br>
 RGB: 57 15 57<br>
 Pantone: 229
+
 </p>
 
 ## Logo

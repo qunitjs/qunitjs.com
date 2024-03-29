@@ -1,0 +1,23 @@
+- group: main
+  expand: initial
+
+- group: assert
+
+- group: callbacks
+
+- group: async
+  # These pages are all in at least one other group.
+  # It exists for discoverability, but we don't need
+  # to highlight its pages in two places.
+  expand: false
+
+- title: Configuration
+  group: config
+
+- group: extension
+
+- group: deprecated
+  expand: false
+
+# - group: removed
+#   expand: false

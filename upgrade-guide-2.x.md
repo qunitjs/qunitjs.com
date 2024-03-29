@@ -19,21 +19,21 @@ The old methods are removed in QUnit 2.0 and replaced with placeholder methods t
 
 | QUnit 1.x | QUnit 2.x
 |--|--
-| `module()` | [`QUnit.module()`](https://api.qunitjs.com/QUnit/module/)
-| `test()` | [`QUnit.test()`](https://api.qunitjs.com/QUnit/test/)
-| `asyncTest()` | [`QUnit.test()`](https://api.qunitjs.com/QUnit/test/) with [`assert.async()`](https://api.qunitjs.com/assert/async/)
-| `stop()`/`start()` | [`assert.async()`](https://api.qunitjs.com/assert/async/)
-| `expect()` | [`assert.expect()`](https://api.qunitjs.com/assert/expect/)
-| `ok()`, `equal()`, `deepEqual()`, … | [`assert`](https://api.qunitjs.com/assert/)
-| `setup`/`teardown` options | [`beforeEach` and `afterEach` hooks](https://api.qunitjs.com/QUnit/module/#options-object)
+| `module()` | [`QUnit.module()`](./api/QUnit/module.md)
+| `test()` | [`QUnit.test()`](./api/QUnit/test.md)
+| `asyncTest()` | [`QUnit.test()`](./api/QUnit/test.md) with [`assert.async()`](./api/assert/async.md)
+| `stop()`/`start()` | [`assert.async()`](./api/assert/async.md)
+| `expect()` | [`assert.expect()`](./api/assert/expect.md)
+| `ok()`, `equal()`, `deepEqual()`, … | [`assert`](./api/assert/index.md)
+| `setup`/`teardown` options | [`beforeEach` and `afterEach` hooks](./api/QUnit/module.md#options-object)
 
 For plugins and other integrations:
 
 | QUnit 1.x | QUnit 2.x
 |--|--
-| `QUnit.log = …`<br/>`QUnit.begin = …`<br/>… | [`QUnit.log(…)`](https://api.qunitjs.com/callbacks/QUnit.log/),<br/>[`QUnit.begin(…)`](https://api.qunitjs.com/callbacks/QUnit.begin/),<br/>…
-| `QUnit.push()` | [`assert.pushResult()`](https://api.qunitjs.com/assert/pushResult)
-| `QUnit.jsDump.parse()` | [`QUnit.dump.parse()`](https://api.qunitjs.com/config/QUnit.dump.parse/)
+| `QUnit.log = …`<br/>`QUnit.begin = …`<br/>… | [`QUnit.log(…)`](./api/callbacks/QUnit.log.md),<br/>[`QUnit.begin(…)`](./api/callbacks/QUnit.begin.md),<br/>…
+| `QUnit.push()` | [`assert.pushResult()`](./api/assert/pushResult.md)
+| `QUnit.jsDump.parse()` | [`QUnit.dump.parse()`](./api/extension/QUnit.dump.parse.md)
 
 ## Changes
 
@@ -52,7 +52,7 @@ For plugins and other integrations:
 
 ### Removed global functions
 
-QUnit 2 no longer uses global functions. The main methods are now part of the `QUnit` interface, and the assertion methods are exposed through a new [`assert`](https://api.qunitjs.com/assert/) object that is bound to each test.
+QUnit 2 no longer uses global functions. The main methods are now part of the `QUnit` interface, and the assertion methods are exposed through a new [`assert`](./api/assert/index.md) object that is bound to each test.
 
 Before:
 
@@ -76,9 +76,9 @@ QUnit.test('add', assert => {
 
 ### Introducing `assert.async()`
 
-Use [`assert.async()`](https://api.qunitjs.com/assert/async/) instead of the `stop()` and `start()` functions. Calling `assert.async()` returns a `done` function that should be called once the asynchronous operation is finished.
+Use [`assert.async()`](./api/assert/async.md) instead of the `stop()` and `start()` functions. Calling `assert.async()` returns a `done` function that should be called once the asynchronous operation is finished.
 
-Similarly, if you were using `asyncTest()`, use the regular [`QUnit.test()`](https://api.qunitjs.com/QUnit.test/) with [`assert.async()`](https://api.qunitjs.com/async/) instead.
+Similarly, if you were using `asyncTest()`, use the regular [`QUnit.test()`](./api/QUnit/test.md) with [`assert.async()`](./api/async.md) instead.
 
 Before:
 
@@ -115,7 +115,7 @@ QUnit.test('navigates to new page', assert => {
 
 ### Renamed module hooks
 
-The [module hooks](https://api.qunitjs.com/QUnit.module/) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`. The new names were first introduced in QUnit 1.16, and removed in QUnit 2.0.
+The [module hooks](./api/QUnit/module.md) `setup` and `teardown` have been renamed to `beforeEach` and `afterEach`. The new names were first introduced in QUnit 1.16, and removed in QUnit 2.0.
 
 Before:
 
@@ -143,7 +143,7 @@ QUnit.module('router', {
 });
 ```
 
-You can also use a [nested scope](https://api.qunitjs.com/QUnit/module/#nested-scope) as of QUnit 1.20, which makes for simpler sharing of variables and associating of tests with modules.
+You can also use a [nested scope](./api/QUnit/module.md#nested-scope) as of QUnit 1.20, which makes for simpler sharing of variables and associating of tests with modules.
 
 Example:
 
@@ -168,7 +168,11 @@ QUnit.module('router', hooks => {
 
 Early alpha releases of QUnit 0.x required property assignments to register callback events. In QUnit 1.0, these were deprecated in favour of more modern event registration methods. The ability to use assignments as way to register callbacks was removed in QUnit 2.0.
 
-<p class="note" markdown="1">See also [`QUnit.on()`](https://api.qunitjs.com/callbacks/QUnit.on/), which implements the [js-reporters spec](https://github.com/js-reporters/js-reporters) since QUnit 2.2.</p>
+<p class="note" markdown="1">
+
+See also [`QUnit.on()`](./api/callbacks/QUnit.on.md), which implements the [js-reporters spec](https://github.com/js-reporters/js-reporters) since QUnit 2.2.
+
+</p>
 
 Before:
 
@@ -186,11 +190,11 @@ QUnit.log(function (results) {
 });
 ```
 
-This applies to all reporting callbacks, specifically: [`begin`](https://api.qunitjs.com/callbacks/QUnit.begin/), [`done`](https://api.qunitjs.com/callbacks/QUnit.done/), [`log`](https://api.qunitjs.com/QUnit.log/), [`moduleDone`](https://api.qunitjs.com/callbacks/QUnit.moduleDone/), [`moduleStart`](https://api.qunitjs.com/callbacks/QUnit.moduleStart/), [`testDone`](https://api.qunitjs.com/callbacks/QUnit.testDone/), and [`testStart`](https://api.qunitjs.com/callbacks/QUnit.testStart/).
+This applies to all reporting callbacks, specifically: [`begin`](./api/callbacks/QUnit.begin.md), [`done`](./api/callbacks/QUnit.done.md), [`log`](./api/callbacks/QUnit.log.md), [`moduleDone`](./api/callbacks/QUnit.moduleDone.md), [`moduleStart`](./api/callbacks/QUnit.moduleStart.md), [`testDone`](./api/callbacks/QUnit.testDone.md), and [`testStart`](./api/callbacks/QUnit.testStart.md).
 
 ### Replace `QUnit.push()` with `assert.pushResult()`
 
-To implement custom assertions, assign functions to [`QUnit.assert`](https://api.qunitjs.com/config/QUnit.assert), and inside use [`this.pushResult()`](https://api.qunitjs.com/assert/pushResult) instead of `QUnit.push`. This allows assertions to be directly associated with its test context, preventing asynchronous tests from leaking into other tests.
+To implement custom assertions, assign functions to [`QUnit.assert`](./api/extension/QUnit.assert.md), and inside use [`this.pushResult()`](./api/assert/pushResult.md) instead of `QUnit.push`. This allows assertions to be directly associated with its test context, preventing asynchronous tests from leaking into other tests.
 
 Before:
 
@@ -250,7 +254,7 @@ QUnit.test('currentPage after replaceState', assert => {
 
 ### Renamed `QUnit.jsDump` to `QUnit.dump`
 
-Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](https://api.qunitjs.com/config/QUnit.dump.parse/). This should only affect custom reporter code, not regular testsuites.
+Originally `jsDump` was a standalone library imported into QUnit. It has since evolved further within the library. To reflect that, the property was renamed to [`QUnit.dump.parse`](./api/extension/QUnit.dump.parse.md). This should only affect custom reporter code, not regular testsuites.
 
 Before:
 
@@ -295,7 +299,7 @@ QUnit.test('addition', assert => {
 
 ### Replace `assert.throws(Function, string, message)` signature
 
-The signature of [`assert.throws()`](https://api.qunitjs.com/assert/throws/) that accepted an error string as second parameter has been removed. This avoids ambiguity with the assertion message, as both parameters were optional.
+The signature of [`assert.throws()`](./api/assert/throws.md) that accepted an error string as second parameter has been removed. This avoids ambiguity with the assertion message, as both parameters were optional.
 
 It is recommended to use a regular expression or error object as the expected value instead.
 
@@ -337,6 +341,6 @@ QUnit.test('add', assert => {
 });
 ```
 
-See [`assert.throws()`](https://api.qunitjs.com/assert/throws/) for an overview of the supported signatures.
+See [`assert.throws()`](./api/assert/throws.md) for an overview of the supported signatures.
 
 Note that in the two-argument signature `assert.throws(Function, string)` has always been interpreted as asserting _anything_ is thrown, with the string argument being the assertion message. This continues to be supported.

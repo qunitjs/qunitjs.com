@@ -7,7 +7,11 @@ amethyst:
   toc: true
 ---
 
-<p class="lead" markdown="1">How to use the QUnit CLI (command-line interface), after [installing it from npm](./intro.md#in-nodejs).</p>
+<p class="lead" markdown="1">
+
+How to use the QUnit CLI (command-line interface), after [installing it from npm](./intro.md#in-nodejs).
+
+</p>
 
 ## QUnit CLI options
 
@@ -34,7 +38,7 @@ Only run tests that match the given filter. The filter is matched against the mo
 
 Examples: `--filter foo`, `--filter !foo`, `--filter "/foo/"`, `--filter "!/foo/"`
 
-Check [`QUnit.config.filter`](https://api.qunitjs.com/config/filter/) for more information.
+Check [`QUnit.config.filter`](./api/config/filter.md) for more information.
 
 ### `--module`
 
@@ -42,7 +46,7 @@ Only run tests that belong to the specified module. The name is matched case-ins
 
 Examples: `--module foo`, `--module "Foo"`
 
-Check [`QUnit.config.module`](https://api.qunitjs.com/config/module/) for more information.
+Check [`QUnit.config.module`](./api/config/module.md) for more information.
 
 ### `--reporter`
 
@@ -53,7 +57,7 @@ Run `qunit --reporter <name>` to use a different reporter, where `<name>` can be
 Built-in reporters:
 
 * `tap`: [TAP compliant](https://testanything.org/) reporter.
-* `console`: Log the JSON object for each reporter event from [`QUnit.on`](https://api.qunitjs.com/callbacks/QUnit.on/). Use this to explore or debug the reporter interface.
+* `console`: Log the JSON object for each reporter event from [`QUnit.on`](./api/callbacks/QUnit.on.md). Use this to explore or debug the reporter interface.
 
 ### `--require`
 
@@ -75,11 +79,11 @@ QUnit.config.notrycatch = true;
 global.MyApp = require( './index' );
 ```
 
-See [QUnit.config](https://api.qunitjs.com/config/QUnit.config/) for all available configuration options.
+See [QUnit.config](./api/config/index.md) for all available configuration options.
 
 ### `--seed`
 
-This option assigns [`QUnit.config.seed`](https://api.qunitjs.com/config/seed/) for you.
+This option assigns [`QUnit.config.seed`](./api/config/seed.md) for you.
 
 ## Node.js CLI options
 

@@ -8,7 +8,13 @@ redirect_from:
   - "/cookbook/"
 ---
 
-<p class="lead" markdown="1">The following guide will get you up-and-running with QUnit either in Node.js or [in the Browser](#in-the-browser).</p>
+<p class="lead" markdown="1">
+
+The following guide will get you up-and-running with QUnit either in Node.js or [in the Browser](#in-the-browser).
+
+</p>
+
+QUnit has no dependencies and supports Node.js, SpiderMonkey, and all [major browsers](#browser-support).
 
 ## In Node.js
 
@@ -43,7 +49,7 @@ QUnit.test('two numbers', assert => {
 });
 ```
 
-This defines a test suite for the "add" feature, with a single test case that verifies the result of adding two numbers together. Refer to the [`QUnit.test()` page](https://api.qunitjs.com/QUnit/test/) in our API Documentation for how to organise tests and make other assertions.
+This defines a test suite for the "add" feature, with a single test case that verifies the result of adding two numbers together. Refer to the [`QUnit.test()` page](./api/QUnit/test.md) in our API Documentation for how to organise tests and make other assertions.
 
 You can now run your first test through the [QUnit CLI](./cli.md). It is recommended that you run the `qunit` command via an npm script, which will automatically find the `qunit` program in your local `node_modules` folder, which is where npm keeps the dependencies you download. In your `package.json` file, specify it like so:
 
@@ -75,7 +81,7 @@ ok 1 add > two numbers
 
 Congrats! You just wrote and executed your first QUnit test!
 
-Check out the [API documentation](https://api.qunitjs.com) to learn about QUnit APIs for organising tests and making assertions.
+Check out the [API documentation](./api/index.md) to learn about QUnit APIs for organising tests and making assertions.
 
 See [Command-line interface](./cli.md) for help with the `qunit` command.
 
@@ -139,7 +145,7 @@ If you open this up in the browser you'll find a detailed report of the tests th
 
 Congrats! You just wrote and executed your first QUnit test!
 
-Check out the [API documentation](https://api.qunitjs.com) to learn more about the QUnit APIs for organising tests and making assertions.
+Check out the [API documentation](./api/index.md) to learn more about the QUnit APIs for organising tests and making assertions.
 
 ### Browser support
 

@@ -224,7 +224,7 @@ projects:
         href: https://github.com/videojs/http-streaming
       - name: mux.js
         href: https://github.com/videojs/mux.js
-        
+
   - name: Wikibase
     href: https://wikiba.se/
     sub:

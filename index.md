@@ -6,7 +6,7 @@ home_primary_btn:
   href: /intro/
 home_secondary_btn:
   name: View the Docs
-  href: https://api.qunitjs.com
+  href: /api/
 ---
 
 <section class="grid grid--small home-highlights">
@@ -17,7 +17,7 @@ home_secondary_btn:
 
   <div>
     <h2>Universal</h2>
-    <p>Tests can be run anywhere; Node, your browser, even inside a Web Worker. Test your code where it runs.</p>
+    <p>QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker! Test your code where it runs.</p>
   </div>
 
   <div>
@@ -92,8 +92,7 @@ These are the officially supported [release channels](intro.md#release-channels)
 To contribute:
 
 * [Watch the repository](https://github.com/qunitjs/qunit) to learn about release, new requests, or bug reports.
-* The source of this website, is in the [qunitjs.com](https://github.com/qunitjs/qunitjs.com) repository.
-* The source of the Documentation site, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/master/docs).
+* The source of this website, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/main/docs).
 
 ---
 

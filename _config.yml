@@ -26,7 +26,6 @@ exclude:
   - vendor
   - build
 
-
 # Theme settings
 #
 # Amethyst theme options are documented at:
@@ -53,7 +52,6 @@ amethyst:
     origin: https://typesense.jquery.com
     collection: qunitjs_com
     search_only_api_key: Zh8mMgohXECel9wjPwqT7lekLSG3OCgz
-
 
 # Blog archives
 #
