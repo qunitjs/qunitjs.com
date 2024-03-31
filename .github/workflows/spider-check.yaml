@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'qunitjs' }} # skip on forks
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: jquery/hydra-link-checker
           ref: v2.0.0

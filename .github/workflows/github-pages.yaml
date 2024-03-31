@@ -12,7 +12,7 @@ jobs:
       DEPLOY_DIR: _site/
       DEPLOY_BRANCH: gh-pages
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Prepare branch
         run: |
@@ -23,7 +23,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.0
           bundler-cache: true
           # If your site is in a subdirectory
           # working-directory: ./
