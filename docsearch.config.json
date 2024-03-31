@@ -1,8 +1,7 @@
 {
   "index_name": "qunitjs_com",
   "start_urls": [
-    "https://qunitjs.com",
-    "https://api.qunitjs.com"
+    "https://qunitjs.com"
   ],
   "stop_content": [
     "<meta name=\"docsearch:amethyst_pagetype_navigation\""
